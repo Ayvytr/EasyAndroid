@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--width-height-->
+    <style name="MatchParent_WrapContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--width-height-->
+    <style name="Wrap_Contents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--width-height-->
+    <style name="MatchParents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!--EditText-->
+    <style name="EditText_NumberPassword">
+        <item name="android:inputType">numberPassword</item>
+    </style>
+
+    <style name="EditText_TextPassword">
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <!--View Gravity-->
+    <style name="View_Left_Center">
+        <item name="android:gravity">start|center</item>
+    </style>
+
+    <style name="View_Center">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="View_Right_Center">
+        <item name="android:gravity">end|center</item>
+    </style>
+
+    <style name="View_Top_Center">
+        <item name="android:gravity">top|center</item>
+    </style>
+
+    <style name="View_Bottom_Center">
+        <item name="android:gravity">bottom|center</item>
+    </style>
+
+    <style name="View_Left_Top">
+        <item name="android:gravity">left|top</item>
+    </style>
+
+    <style name="View_Left_Bottom">
+        <item name="android:gravity">left|bottom</item>
+    </style>
+
+    <style name="View_Right_Top">
+        <item name="android:gravity">right|top</item>
+    </style>
+
+    <style name="View_Right_Bottom">
+        <item name="android:gravity">right|bottom</item>
+    </style>
+
+    <!--RadioButton-->
+    <style name="RadioButton_CustomButton">
+        <item name="android:button">@null</item>
+    </style>
+
+    <!--horizontal RadioGroup-->
+    <style name="RadioGroup_Horizontal">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--vertical RadioGroup-->
+    <style name="RadioGroup_Vertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>
