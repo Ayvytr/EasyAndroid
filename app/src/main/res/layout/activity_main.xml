@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.ayvytr.androideasydeveloper.MainActivity">
+        tools:context="com.ayvytr.easyandroid.MainActivity">
 
         <TextView
             style="@style/MatchParent_WrapContent"
@@ -37,17 +37,17 @@
             android:layout_height="wrap_content"
             android:text="aaa"/>
 
-        <com.ayvytr.easydeveloper.view.CenterTextView
+        <com.ayvytr.easyandroid.view.CenterTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="aaa"/>
 
-        <com.ayvytr.easydeveloper.view.LeftCenterTextView
+        <com.ayvytr.easyandroid.view.LeftCenterTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="aaa"/>
 
-        <com.ayvytr.easydeveloper.view.RightCenterTextView
+        <com.ayvytr.easyandroid.view.RightCenterTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="bbb"/>

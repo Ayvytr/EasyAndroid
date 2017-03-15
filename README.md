@@ -30,7 +30,7 @@
     
     ...
     
-##USE
+##Use
     About Context: 
         1.Call 'Easy.getDefault().init(this);' on your Application.onCreate();
         2.Call DensityTool.dp2px(...) ...
