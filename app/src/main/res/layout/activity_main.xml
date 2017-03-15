@@ -1,51 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/dp_16"
-    android:weightSum="1"
-    tools:context="com.ayvytr.androideasydeveloper.MainActivity">
+    android:padding="@dimen/dp_16">
 
-    <TextView
-        style="@style/MatchParent_WrapContent"
-        android:text="aaaa"/>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.ayvytr.androideasydeveloper.MainActivity">
 
-    <RadioGroup
-        style="@style/RadioGroup_Vertical">
+        <TextView
+            style="@style/MatchParent_WrapContent"
+            android:text="aaaa"/>
 
-        <RadioButton
-            style="@style/RadioButton_CustomButton"
+        <RadioGroup
+            style="@style/RadioGroup_Vertical">
+
+            <RadioButton
+                style="@style/RadioButton_CustomButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"/>
+
+            <RadioButton
+                style="@style/RadioButton_CustomButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"/>
+
+        </RadioGroup>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aaa"/>
+
+        <com.ayvytr.easydeveloper.view.CenterTextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"/>
+            android:layout_height="50dp"
+            android:text="aaa"/>
 
-        <RadioButton
-            style="@style/RadioButton_CustomButton"
+        <com.ayvytr.easydeveloper.view.LeftCenterTextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"/>
+            android:layout_height="@dimen/dp_50"
+            android:text="aaa"/>
 
-    </RadioGroup>
+        <com.ayvytr.easydeveloper.view.RightCenterTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:text="bbb"/>
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aaa"/>
 
-    <com.ayvytr.easydeveloper.CenterTextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="aaa"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50">
 
-    <com.ayvytr.easydeveloper.LeftCenterTextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:text="aaa"/>
+            <Button
+                android:text="获取剪贴板"
+                android:onClick="onGetClipboard"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
 
-    <com.ayvytr.easydeveloper.RightCenterTextView
-        android:text="bbb"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"/>
+            <Button
+                android:onClick="onSetClipboard"
+                android:text="设置剪贴板"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
 
-</LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:text="获取APP名称"
+            android:onClick="onGetAppName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
