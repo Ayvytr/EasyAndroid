@@ -1,9 +1,7 @@
 package com.ayvytr.easyandroidlibrary.exception;
 
 /**
- * Created by davidwang on 2017/3/15.
- * <p>
- * 使用withcontext库中的类时，未调用 Easy类的初始化过程
+ * 使用withcontext包中的类时，未调用 Easy类的初始化过程抛出此异常.
  */
 
 public class UnInitLibraryException extends RuntimeException

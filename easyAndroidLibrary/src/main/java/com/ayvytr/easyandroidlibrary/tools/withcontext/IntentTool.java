@@ -16,12 +16,12 @@ import com.ayvytr.easyandroidlibrary.tools.FileTool;
 import java.io.File;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/23
- *     desc  : 意图相关工具类
- * </pre>
+ * 意图相关工具类.
+ * <p>
+ * blog  : http://blankj.com
+ * </p>
+ *
+ * @author Blankj
  */
 public class IntentTool
 {

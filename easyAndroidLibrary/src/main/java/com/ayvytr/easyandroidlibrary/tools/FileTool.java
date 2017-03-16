@@ -14,15 +14,17 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/11
- *     desc  : 文件相关工具类
- * </pre>
+ * 文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出/搜索文件，
+ * 获取文件名/文件标题（不包含扩展名), 有没有扩展名，读/写文件等功能.
+ * <p>
+ * 前作者: Blankj
+ * blog  : http://blankj.com
+ * </p>
  *
- * @author davidwang
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
+
 public class FileTool
 {
     //默认byte数组大小，读取文件时使用
@@ -1051,7 +1053,7 @@ public class FileTool
      * 根据File返回扩展名
      *
      * @param file
-     * @return
+     * @return 扩展名
      */
     public static String getExtension(File file)
     {
@@ -1068,7 +1070,7 @@ public class FileTool
      * 判断文件是不是有扩展名
      *
      * @param file
-     * @return
+     * @return true 有扩展名
      */
     private static boolean hasExtension(File file)
     {

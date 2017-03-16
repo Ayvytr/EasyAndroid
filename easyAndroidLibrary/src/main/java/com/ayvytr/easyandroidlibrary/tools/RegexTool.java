@@ -9,12 +9,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : 正则相关工具类
- * </pre>
+ * 正则工具类，包括验证手机号，邮箱，身份证号码等.
+ * <p>
+ * blog  : http://blankj.com
+ * </p>
+ * @author Blankj
  */
 public class RegexTool
 {

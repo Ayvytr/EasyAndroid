@@ -4,9 +4,9 @@ import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
 /**
- * Created by davidwang on 2017/3/15.
- * DensityTool
- * dp - px 相互转化。提供int，float，double重载，尽可能最大化方便计算，减少类外强转
+ * Dp - Px 相互转化，提供了int，float，double 3种类型的重载方法，尽可能减少外部强制类型转换.
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 
 public class DensityTool

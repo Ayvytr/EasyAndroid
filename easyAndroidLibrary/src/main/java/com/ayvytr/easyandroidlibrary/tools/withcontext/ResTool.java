@@ -12,7 +12,9 @@ import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
 /**
- * Created by davidwang on 2017/3/15.
+ * 获取资源中Drawable，String，dimension，color, Configuration.
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 
 public class ResTool
@@ -40,15 +42,15 @@ public class ResTool
     }
 
     /**
-     * 从资源中获取Dimension，返回int类型
+     * 从资源中获取Dimension并返回
      */
     public static int getDimen(@DimenRes int id)
     {
-        return (int) Easy.getContext().getResources().getDimension(id);
+        return (int) getDimenFloat(id);
     }
 
     /**
-     * 从资源中获取Dimension，返回float类型
+     * 从资源中获取Dimension并返回float类型
      */
     public static float getDimenFloat(@DimenRes int id)
     {
@@ -56,11 +58,19 @@ public class ResTool
     }
 
     /**
-     * 从资源中获取Dimension
+     * 从资源中获取Dimension并返回
      */
-    public static float getDimenToDp(@DimenRes int id)
+    public static int getDimenToDp(@DimenRes int id)
     {
-        return Easy.getContext().getResources().getDimension(id);
+        return (int) getDimenFloat(id);
+    }
+
+    /**
+     * 从资源中获取Dimension并返回float类型
+     */
+    public static float getDimenFloatToDp(@DimenRes int id)
+    {
+        return DensityTool.px2dp(Easy.getContext().getResources().getDimension(id));
     }
 
     /**

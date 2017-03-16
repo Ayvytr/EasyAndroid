@@ -10,11 +10,13 @@ import com.ayvytr.easyandroidlibrary.exception.UnInitLibraryException;
 import java.lang.ref.SoftReference;
 
 /**
- * Created by davidwang on 2017/3/15.
- * Easy:入口类，单例模式。Tools包中或者其他需要用到Context的类在使用之前，
- * 需要初始化这个类
+ * 这个库的单例入口类, Tools包中或者其他需要用到Context的类在使用之前，需要初始化这个类.
  * <p>
- * 提供了获取Context，常用SystemService等方法
+ * 提供了获取Context，常用SystemService等方法，在使用 ClipboardTool, DensityTool 等类之前，
+ * 需要调用'Easy.getDefault().init(context);' 初始化。
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 
 public class Easy

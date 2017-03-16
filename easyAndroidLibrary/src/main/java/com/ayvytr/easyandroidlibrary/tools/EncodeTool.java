@@ -9,12 +9,12 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/7
- *     desc  : 编码解码相关工具类
- * </pre>
+ * 编码解码相关操作, 未写测试用例测试，请谨慎使用.
+ * <p>
+ * blog  : http://blankj.com
+ * </p>
+ *
+ * @author Blankj
  */
 public class EncodeTool
 {

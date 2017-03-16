@@ -6,15 +6,23 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.ayvytr.easyandroidlibrary.Easy;
-import com.ayvytr.easyandroidlibrary.consts.EasyConst;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
 /**
- * Created by davidwang on 2017/3/15.
+ * 剪贴板操作类，从剪贴板中获取/设置文本，Intent，Uri.
+ * <p>
+ * 因为剪贴板需要的SDK最小是11，所以设置了 minSdkVersion 为 11.
+ * </p>
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 
 public class ClipboardTool
 {
+    private static final String TEXT = "text";
+    private static final String URI = "uri";
+    private static final String Intent = "intent";
+
     private ClipboardTool()
     {
         throw new UnsupportedInitializationException();
@@ -28,7 +36,7 @@ public class ClipboardTool
     public static void setText(CharSequence text)
     {
         ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
-        clipboardManager.setPrimaryClip(ClipData.newPlainText(EasyConst.TEXT, text));
+        clipboardManager.setPrimaryClip(ClipData.newPlainText(TEXT, text));
     }
 
     /**
@@ -68,7 +76,7 @@ public class ClipboardTool
     {
         ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
         clipboardManager.setPrimaryClip(
-                ClipData.newUri(Easy.getContext().getContentResolver(), EasyConst.Uri, uri));
+                ClipData.newUri(Easy.getContext().getContentResolver(), URI, uri));
     }
 
     /**
@@ -95,7 +103,7 @@ public class ClipboardTool
     public static void setIntent(Intent intent)
     {
         ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
-        clipboardManager.setPrimaryClip(ClipData.newIntent(EasyConst.Intent, intent));
+        clipboardManager.setPrimaryClip(ClipData.newIntent(Intent, intent));
     }
 
     /**

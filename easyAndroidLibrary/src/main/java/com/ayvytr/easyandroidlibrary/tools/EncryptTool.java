@@ -12,12 +12,12 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : 加密解密相关的工具类
- * </pre>
+ * 包含了加密解密相关操作，未写测试用例测试，请谨慎使用.
+ * <p>
+ * blog  : http://blankj.com
+ * </p>
+ *
+ * @author Blankj
  */
 public class EncryptTool
 {

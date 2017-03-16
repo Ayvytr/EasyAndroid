@@ -1,12 +1,14 @@
 package com.ayvytr.easyandroidlibrary.consts;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2017/03/13
- *     desc  : 正则相关常量
- * </pre>
+ * 正则工具相关常量类.
+ * <p>
+ * blog  : http://blankj.com
+ * </p>
+ *
+ * <p>
+ * @see com.ayvytr.easyandroidlibrary.tools.RegexTool
+ * @author Blankj
  */
 public class RegexConstant
 {

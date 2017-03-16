@@ -15,7 +15,10 @@ import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationExceptio
 import static com.ayvytr.easyandroidlibrary.tools.withcontext.ResTool.getConfiguration;
 
 /**
- * ScreenTool 获取屏幕尺寸，
+ * 提供了获取屏幕尺寸，宽高，屏幕旋转方向，设置为竖屏，是不是横屏/竖屏，获取屏幕截图（包含/不包含状态栏)，
+ * 判断是不是锁屏的功能.
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 public class ScreenTool
 {
@@ -102,7 +105,29 @@ public class ScreenTool
      * @param activity activity
      * @return 屏幕旋转角度
      */
-    public static int getScreenRotation(Activity activity)
+    public static int getScreenRotationAngle(Activity activity)
+    {
+        switch(activity.getWindowManager().getDefaultDisplay().getRotation())
+        {
+            default:
+            case Surface.ROTATION_0:
+                return 0;
+            case Surface.ROTATION_90:
+                return 90;
+            case Surface.ROTATION_180:
+                return 180;
+            case Surface.ROTATION_270:
+                return 270;
+        }
+    }
+
+    /**
+     * 获取屏幕旋转角度
+     *
+     * @param activity activity
+     * @return 屏幕旋转角度
+     */
+    public static int getRotationAngle(Activity activity)
     {
         switch(activity.getWindowManager().getDefaultDisplay().getRotation())
         {
