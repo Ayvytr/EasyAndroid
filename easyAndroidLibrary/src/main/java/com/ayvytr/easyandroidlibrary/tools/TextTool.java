@@ -77,7 +77,10 @@ public class TextTool
         return new String(chars);
     }
 
-    private static String emptyString()
+    /**
+     * 返回长度为0的空字符串.
+     */
+    public static String emptyString()
     {
         return "";
     }

@@ -2,8 +2,10 @@ package com.ayvytr.easyandroidlibrary.tools;
 
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -21,6 +23,8 @@ import java.util.List;
  */
 public class FileTool
 {
+    //默认byte数组大小，读取文件时使用
+    private static final int DEFAULT_BYTE_SIZE = 1024;
 
     private FileTool()
     {
@@ -776,16 +780,43 @@ public class FileTool
         return list;
     }
 
+
+    /**
+     * 写入content到filepath文件中，覆盖文件内容
+     *
+     * @param filepath File
+     * @param content  内容
+     * @see FileTool#writeFile(String, String, boolean)
+     */
+    public static void writeFile(String filepath, String content)
+    {
+        writeFile(filepath, content, false);
+    }
+
     /**
      * 写入content到file，不处理filepath，content异常
      *
      * @param filepath 文件路径
      * @param content  文件内容
      * @param isAppend 是不是追加模式
+     *
+     * @see FileTool#writeFile(File, String, boolean)
      */
-    public void writeFile(String filepath, String content, boolean isAppend)
+    public static void writeFile(String filepath, String content, boolean isAppend)
     {
-        writeFile(new File(filepath), content, isAppend);
+        writeFile(fromName(filepath), content, isAppend);
+    }
+
+    /**
+     * 写入content到file,覆盖文件内容
+     *
+     * @param file    File
+     * @param content 内容
+     * @see FileTool#writeFile(File, String, boolean)
+     */
+    public static void writeFile(File file, String content)
+    {
+        writeFile(file, content, false);
     }
 
     /**
@@ -795,7 +826,7 @@ public class FileTool
      * @param content  文件内容
      * @param isAppend 是不是追加模式
      */
-    public void writeFile(File file, String content, boolean isAppend)
+    public static void writeFile(File file, String content, boolean isAppend)
     {
         try
         {
@@ -810,6 +841,131 @@ public class FileTool
         }
     }
 
+    /**
+     * 写入content到全路径为filepath的文件中,简化WriteFile方法名称.
+     *
+     * @param filepath 文件路径名
+     * @param content  内容
+     * @param isAppend true 追加, false 覆盖
+     * @see FileTool#writeFile(String, String, boolean)
+     */
+    public static void write(String filepath, String content, boolean isAppend)
+    {
+        writeFile(filepath, content, isAppend);
+    }
+
+    /**
+     * 写入content到文件filepath
+     *
+     * @param filepath File
+     * @param content  内容
+     * @see FileTool#write(File, String, boolean)
+     */
+    public static void write(String filepath, String content)
+    {
+        write(filepath, content, false);
+    }
+
+    /**
+     * 写入content到文件file中，简化WriteFile方法名.
+     *
+     * @param file     File
+     * @param content  内容
+     * @param isAppend true 追加; false 覆盖
+     * @see FileTool#writeFile(File, String, boolean)
+     */
+    public static void write(File file, String content, boolean isAppend)
+    {
+        writeFile(file, content, isAppend);
+    }
+
+    /**
+     * 写入content到file中，覆盖文件内容.
+     *
+     * @param file    File
+     * @param content 内容
+     * @see FileTool#write(File, String, boolean)
+     */
+    public static void write(File file, String content)
+    {
+        write(file, content, false);
+    }
+
+    /**
+     * 读取文件pathname，返回文件内容。如果文件为空，返回空字符串
+     *
+     * @param pathname File
+     * @return 文件内容
+     * @see FileTool#readFile(File)
+     */
+    public static String readFile(String pathname)
+    {
+        return readFile(fromName(pathname));
+    }
+
+    /**
+     * 读取文件file，返回文件内容。如果文件为空，返回空字符串
+     *
+     * @param file File
+     * @return 文件内容
+     */
+    public static String readFile(File file)
+    {
+        try
+        {
+            FileInputStream fis = new FileInputStream(file);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            byte[] byteArray = getByteArray();
+            StringBuffer stringBuffer = new StringBuffer();
+            int length;
+            while((length = bis.read(byteArray)) != -1)
+            {
+                stringBuffer.append(new String(byteArray, 0, length));
+            }
+            bis.close();
+            fis.close();
+            return stringBuffer.toString();
+        } catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return TextTool.emptyString();
+    }
+
+    /**
+     * 读取文件pathname，返回文件内容。如果文件为空，返回空字符串
+     *
+     * @param pathname File
+     * @return 文件内容
+     * @see FileTool#readFile(File)
+     */
+    public static String read(String pathname)
+    {
+        return readFile(pathname);
+    }
+
+    /**
+     * 读取文件file，返回文件内容。如果文件为空，返回空字符串
+     *
+     * @param file File
+     * @return 文件内容
+     * @see FileTool#readFile(String)
+     */
+    public static String read(File file)
+    {
+        return readFile(file);
+    }
+
+    /**
+     * 返回一个长度1024的byte数组
+     *
+     * @see FileTool#DEFAULT_BYTE_SIZE
+     */
+    public static byte[] getByteArray()
+    {
+        return new byte[DEFAULT_BYTE_SIZE];
+    }
 
     /**
      * 获取文件最后修改的毫秒时间戳

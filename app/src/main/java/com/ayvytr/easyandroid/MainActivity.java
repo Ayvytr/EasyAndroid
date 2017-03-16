@@ -4,9 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.ayvytr.easyandroid.tools.withcontext.ClipboardTool;
-import com.ayvytr.easyandroid.tools.withcontext.ResTool;
-import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
+import com.ayvytr.easyandroidlibrary.Easy;
+import com.ayvytr.easyandroidlibrary.tools.withcontext.ClipboardTool;
+import com.ayvytr.easyandroidlibrary.tools.withcontext.ResTool;
+import com.ayvytr.easyandroidlibrary.tools.withcontext.ToastTool;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(com.ayvytr.easyandroidLibrary.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         Easy.getDefault().init(getApplicationContext());
         init();
     }
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onGetAppName(View view)
     {
-        String string = ResTool.getString(com.ayvytr.easyandroidLibrary.R.string.app_name);
+        String string = ResTool.getString(R.string.app_name);
         ToastTool.show("获取到Res中APP名称:" + string);
     }
 }

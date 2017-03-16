@@ -9,21 +9,21 @@ import android.view.Gravity;
  * Created by Doing on 2017/3/5.
  */
 
-public class CenterTextView extends AppCompatTextView
+public class LeftCenterGravityTextView extends AppCompatTextView
 {
-    public CenterTextView(Context context)
+    public LeftCenterGravityTextView(Context context)
     {
         this(context, null);
     }
 
-    public CenterTextView(Context context, AttributeSet attrs)
+    public LeftCenterGravityTextView(Context context, AttributeSet attrs)
     {
         this(context, attrs, android.R.attr.textViewStyle);
     }
 
-    public CenterTextView(Context context, AttributeSet attrs, int defStyleAttr)
+    public LeftCenterGravityTextView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
-        setGravity(Gravity.CENTER);
+        setGravity(Gravity.CENTER_VERTICAL);
     }
 }
