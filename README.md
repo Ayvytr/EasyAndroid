@@ -64,3 +64,9 @@
 2. https://github.com/Trinea/android-common
 3. https://github.com/wyouflf/xUtils3
 4. https://github.com/jingle1267/android-utils
+
+###TODO:
+1. Complements Convert class
+2. Create my PrettyVideoPlayer
+3. Complements my library
+4. Personal website
