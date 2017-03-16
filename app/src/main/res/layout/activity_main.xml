@@ -37,17 +37,17 @@
             android:layout_height="wrap_content"
             android:text="aaa"/>
 
-        <com.ayvytr.easyandroid.view.CenterTextView
+        <com.ayvytr.easyandroidlibrary.view.CenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="aaa"/>
 
-        <com.ayvytr.easyandroid.view.LeftCenterTextView
+        <com.ayvytr.easyandroidlibrary.view.LeftCenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="aaa"/>
 
-        <com.ayvytr.easyandroid.view.RightCenterTextView
+        <com.ayvytr.easyandroidlibrary.view.RightCenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="bbb"/>
