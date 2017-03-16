@@ -60,7 +60,7 @@
 
 
 ###Quote below,thanks for their libraries
-1.https://github.com/Blankj/AndroidUtilCode
-2.https://github.com/Trinea/android-common
-3.https://github.com/wyouflf/xUtils3
-4.https://github.com/jingle1267/android-utils
+1. https://github.com/Blankj/AndroidUtilCode
+2. https://github.com/Trinea/android-common
+3. https://github.com/wyouflf/xUtils3
+4. https://github.com/jingle1267/android-utils
