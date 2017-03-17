@@ -6,6 +6,7 @@
 
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AAndroidEasyDeveloper%3A1.0.0"><img src="https://img.shields.io/badge/Methods and size-core: 15 | deps: 19163 | 20 KB-e91e63.svg"/></a>
 
+#
 #EasyAndroid Library
 
 #[Chinese][README_CN.md]
@@ -52,9 +53,9 @@
 	SeekBarPressure: double Thumb SeekBar
 
 ###Tool classes with out Context
-	Convert: 	Type conversion class, modeled on the C# Convert class (for this 
-				kind of love have alone bell)
-				Provides most of the basic types to bool, int, byte conversion, and isZero method
+	Convert 	Type conversion class, modeled on the C# Convert class (for this 
+			kind of love have alone bell)
+			Provides most of the basic types to bool, int, byte conversion, and isZero methods
 		toBool
 		izZero
 		toInt
@@ -298,7 +299,7 @@
 ###TODO:
 1. Complements Convert class
 2. Create my PrettyVideoPlayer
-3. Complements my library
+3. Complements my library, Add more useful features
 4. Personal website
-5. Separate Android and Java code
+5. Separate Android and Java code, Packaged into different libraries
 6. Publish to JCenter
