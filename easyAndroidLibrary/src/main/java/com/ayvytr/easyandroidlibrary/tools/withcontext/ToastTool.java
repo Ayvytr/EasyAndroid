@@ -6,7 +6,7 @@ import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
 /**
- * Toast工具，提供简便的Toast创建和输出功能.
+ * Toast工具类，提供简便的Toast创建和输出功能.
  * @see Toast
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.0

@@ -16,7 +16,7 @@ import com.ayvytr.easyandroidlibrary.tools.FileTool;
 import java.io.File;
 
 /**
- * 意图相关工具类.
+ * 获取常用的Intent.
  * <p>
  * blog  : http://blankj.com
  * </p>

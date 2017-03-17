@@ -19,7 +19,7 @@ import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationExceptio
 import java.lang.reflect.Method;
 
 /**
- * StatusBar, ActionBar等相关工具类.
+ * StatusBar, ActionBar操作工具类.
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.2.0
  */

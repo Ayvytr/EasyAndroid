@@ -6,7 +6,9 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 
 /**
- * Created by Doing on 2017/3/5.
+ * Center gravity text TextView.
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.5.0
  */
 
 public class CenterGravityTextView extends AppCompatTextView

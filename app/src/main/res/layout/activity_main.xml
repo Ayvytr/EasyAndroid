@@ -17,21 +17,6 @@
             style="@style/MatchParent_WrapContent"
             android:text="aaaa"/>
 
-        <RadioGroup
-            style="@style/RadioGroup_Vertical">
-
-            <RadioButton
-                style="@style/RadioButton_CustomButton"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_50"/>
-
-            <RadioButton
-                style="@style/RadioButton_CustomButton"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_50"/>
-
-        </RadioGroup>
-
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,17 +25,17 @@
         <com.ayvytr.easyandroidlibrary.view.CenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="aaa"/>
+            android:text="Center Gravity tv"/>
 
         <com.ayvytr.easyandroidlibrary.view.LeftCenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
-            android:text="aaa"/>
+            android:text="Left Center Gravity tv"/>
 
         <com.ayvytr.easyandroidlibrary.view.RightCenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
-            android:text="bbb"/>
+            android:text="Right Center Gravity tv"/>
 
 
         <LinearLayout
@@ -58,24 +43,40 @@
             android:layout_height="@dimen/dp_50">
 
             <Button
-                android:text="获取剪贴板"
-                android:onClick="onGetClipboard"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:onClick="onGetClipboard"
+                android:text="获取剪贴板"/>
 
             <Button
-                android:onClick="onSetClipboard"
-                android:text="设置剪贴板"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:onClick="onSetClipboard"
+                android:text="设置剪贴板"/>
 
         </LinearLayout>
 
         <Button
-            android:text="获取APP名称"
-            android:onClick="onGetAppName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:onClick="onGetAppName"
+            android:text="获取APP名称"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50">
+
+            <com.ayvytr.easyandroidlibrary.view.CenterGravityTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="SeekBarPressure"/>
+
+            <com.ayvytr.easyandroidlibrary.view.SeekBarPressure
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

@@ -6,15 +6,14 @@
 
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AAndroidEasyDeveloper%3A1.0.0"><img src="https://img.shields.io/badge/Methods and size-core: 15 | deps: 19163 | 20 KB-e91e63.svg"/></a>
 
-#EasyAndroid Library
+#EasyAndroid 库
 
-#[Chinese][README_CN.md]
+#[English][README.md]
 
 ##Use
-    (About Context classes: You need call 'Easy.getDefault().init(this);' 
-	on your 'Application.onCreate()' first)
+    (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
         
-    Then, use directly;
+    直接使用
 
 ##Build
 
@@ -34,33 +33,32 @@
 	dependencies {
 	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.1.0'
 	}
-
+	
 
 ##Contains 
 
-###Resource
-	Dp and sp from 0 to 100
-	Some styles about TextView, etc.
+###资源
+	从 0-100 dp 和 sp 资源
+	有关TextView等View的Style
 
 
-###Custom View (About TextView aren't very useful)
+###自定义View (有关TextView的类可能作用不大)
 
 	CenterGravityTextView
 	LeftCenterGravityTextView
 	RightCenterGravityTextView
 
-	SeekBarPressure: double Thumb SeekBar
+	SeekBarPressure: 双Thumb的SeekBar
 
 ###Tool classes with out Context
-	Convert: 	Type conversion class, modeled on the C# Convert class (for this 
-				kind of love have alone bell)
-				Provides most of the basic types to bool, int, byte conversion, and isZero method
+	Convert		类型转换类，仿照了C#的Convert类（对这个类情(zhen)有(de)独(hao)钟(yong)）
+				提供了大部分基本类型到bool，int，byte的转换，以及isZero方法
 		toBool
 		izZero
 		toInt
 		toByte
 
-	EncodeTool 	Encoding and decoding related operation class
+	EncodeTool 	编码解码相关操作类
 		urlEncode
 		urlDecode
 		base64Encode
@@ -69,7 +67,7 @@
 		htmlEncode
 		htmlDecode
 
-	EncryptTool	Encryption and decryption related operations
+	EncryptTool	加密解密相关操作类
 		encryptMD2ToString
 		encryptMD2
 		encryptMD5ToString
@@ -123,10 +121,8 @@
 		base64Encode
 		base64Decode
 
-	FileTool	File operation class, judgment is not a file / directory, is it present, 
-				rename, create file / directory, list / search file, get file name / file
-				title (not including extension), there is no extension, 
-				read / write Documents and other methods
+	FileTool	文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出/搜索文件，
+				获取文件名/文件标题（不包含扩展名), 有没有扩展名，读/写文件等方法
 		fromName
 		isExists
 		rename
@@ -149,8 +145,7 @@
 		hasExtension
 		isTyped
 
-	RegexTool	Regular tool classes, including verification of mobile phone number, 
-				mailbox, ID number and so on
+	RegexTool	正则工具类，包括验证手机号，邮箱，身份证号码等
 		isMobileSimple
 		isMobileExact
 		isTel
@@ -168,9 +163,7 @@
 		getReplaceFirst
 		getReplaceAll
 
-	TextTool	Provides a number of string manipulation functions, including sentenced, 
-				is not a string, segmentation string (will remove the end of the regex) 
-				and other functions
+	TextTool	提供了众多的字符串操作功能，包括判空，是不是字符串，分割字符串（会去掉末尾的regex）等功能
 		isEmpty
 		isDigit
 		isNumber
@@ -180,8 +173,7 @@
 		isBlank
 
 ###Tool classes with Context
-	Easy	The library of the single case of the import class,  to use the Context 
-			classes, you need to initialize this class
+	Easy	这个库的单例入口类, 使用有关Context的类之前，需要初始化这个类
 		getContext
 		checkInitState
 		getDefault
@@ -191,8 +183,8 @@
 		getWindowManager
 		getKeyguardManager
 
-	BarTool		About StatusBar, ActionBar peration tool class
-		setColor	
+	BarTool	StatusBar, ActionBar操作工具类		
+		setColor
 		setColorForSwipeBack
 		setColorNoTranslucent
 		setColorDiff
@@ -225,7 +217,7 @@
 		hideNotificationBar
 		invokePanels
 
-	ClipboardTool	Clipboard operation class
+	ClipboardTool	剪贴板操作类
 		setText
 		getText
 		getText
@@ -234,13 +226,11 @@
 		setIntent
 		getIntent
 
-	DensityTool		The Dp - Px transformation class provides three types of 
-					overloaded methods, int, float, and double, that minimize 
-					external casts.
+	DensityTool	Dp - Px 相互转化类，提供了int，float，double 3种类型的重载方法，尽可能减少外部强制类型转换.
 		px2dp
 		dp2px
 
-	IntentTool	Get the usual Intent.
+	IntentTool	获取常用的Intent
 		getInstallAppIntent
 		getUninstallAppIntent
 		getLaunchAppIntent
@@ -254,7 +244,7 @@
 		getSendSmsIntent
 		getCaptureIntent
 
-	ResTool		Get the Drawable, String, dimension, color, Configuration in the resource.
+	ResTool		获取资源中Drawable，String，dimension，color, Configuration.
 		getDrawable
 		getString
 		getDimen
@@ -264,9 +254,7 @@
 		getColor
 		getConfiguration
 
-	ScreenTool		Provides the screen size, width, screen rotation direction, set to 
-					vertical screen, is not horizontal / vertical screen, get 
-					screenshots (include StatusBar or not), screen is locked or not.
+	ScreenTool	提供了获取屏幕尺寸，宽高，屏幕旋转方向，设置为竖屏，是不是横屏/竖屏，获取屏幕截图（包含/不包含状态栏)， 判断是不是锁屏的功能.
 		getDisplayMetrics
 		getScreenWidth
 		getScreenHeight
@@ -280,25 +268,25 @@
 		captureWithoutStatusBar
 		isScreenLock
 
-	ToastTool 	The Toast tool class provides easy Toast creation and output capabilities.
+	ToastTool 	Toast工具类，提供简便的Toast创建和输出功能
     	make
 		makeLong
 		show
 		showLong
 		    
 
-       
 
-###Quote below, thanks for their libraries
+
+###引用如下，感谢他们的库
 1. https://github.com/Blankj/AndroidUtilCode
 2. https://github.com/Trinea/android-common
 3. https://github.com/wyouflf/xUtils3
 4. https://github.com/jingle1267/android-utils
 
 ###TODO:
-1. Complements Convert class
-2. Create my PrettyVideoPlayer
-3. Complements my library
-4. Personal website
-5. Separate Android and Java code
-6. Publish to JCenter
+1. 完善Convert类
+2. 开发我自己的视频播放器 PrettyVideoPlayer
+3. 完善这个库，添加更多实用的功能
+4. 个人网站
+5. 分离Android和Java代码，打包成不同的库
+6. 发布到JCenter

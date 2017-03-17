@@ -12,7 +12,7 @@ import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
 /**
- * 获取资源中Drawable，String，dimension，color, Configuration.
+ * 获取资源中的Drawable，String，dimension，color, Configuration.
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.0
  */
