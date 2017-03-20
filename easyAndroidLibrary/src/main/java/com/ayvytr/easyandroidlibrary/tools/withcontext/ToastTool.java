@@ -16,6 +16,10 @@ import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationExceptio
 
 public class ToastTool
 {
+    /**
+     * 改成1个Toast实例接受每次更改和显示。Toast显示时，多次点击同一个Toast，Toast不会重复显示；切换显示其他
+     * Toast时，有动态切换的效果，很赞，推荐使用
+     */
     private static Toast toast;
 
     private ToastTool()
