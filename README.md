@@ -10,17 +10,16 @@
 # EasyAndroid Library
 Simplify development steps for Android Developers.(为Android开发者提供的简化开发过程的库)
 
-[Chinese][README_CN.md]
+> ## [Chinese](README_CN.md)
 
-## Use
+> ## Use
     (About Context classes: You need call 'Easy.getDefault().init(this);' 
-	on your 'Application.onCreate()' first)
-        
+	on your 'Application.onCreate()' first) 
     Then, use directly;
 
 ## Build
 
-### Step 1. Add the JitPack repository to your build file
+### 1. Add the JitPack repository to your build file
 
 #### Add it in your root build.gradle at the end of repositories:
 
@@ -31,10 +30,10 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		}
 	}
 	
-#### Step 2. Add the dependency
+#### 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.1.0'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.6.1'
 	}
 
 
@@ -291,13 +290,13 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 
        
 
-### Quote below, thanks for their libraries
+> ### Quote below, thanks for their libraries
 1. https://github.com/Blankj/AndroidUtilCode
 2. https://github.com/Trinea/android-common
 3. https://github.com/wyouflf/xUtils3
 4. https://github.com/jingle1267/android-utils
 
-### TODO:
+> ### TODO:
 1. Complements Convert class
 2. Create my PrettyVideoPlayer
 3. Complements my library, Add more useful features

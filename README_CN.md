@@ -1,6 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/AndroidEasyDeveloper.svg)](https://github.com/Ayvytr/AndroidEasyDeveloper/releases)
 [![](https://jitpack.io/v/Ayvytr/AndroidEasyDeveloper.svg)](https://jitpack.io/#Ayvytr/AndroidEasyDeveloper)
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AAndroidEasyDeveloper%3A1.0.0"><img src="https://img.shields.io/badge/Size-20 KB-e91e63.svg"/></a>
+
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AAndroidEasyDeveloper%3A1.0.0"><img src="https://img.shields.io/badge/Methods count-core: 15 | deps: 19163-e91e63.svg"/></a>
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AAndroidEasyDeveloper%3A1.0.0"><img src="https://img.shields.io/badge/Methods and size-core: 15 | deps: 19163 | 20 KB-e91e63.svg"/></a>
 
@@ -9,18 +10,17 @@
 
 # EasyAndroid 库
 
-# [English][README.md]
+> ## [English](README.md)
 
-## Use
+> ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
-        
     直接使用
 
-## Build
+## 编译
 
-### Step 1. Add the JitPack repository to your build file
+### Step 1. 添加JitPack依赖
 
-#### Add it in your root build.gradle at the end of repositories:
+#### 在你的Project目录的build.gradle文件添加如下依赖：
 
 	allprojects {
 		repositories {
@@ -29,14 +29,14 @@
 		}
 	}
 	
-#### Step 2. Add the dependency
+#### Step 2. 添加你的仓库
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.1.0'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.6.1'
 	}
 	
 
-## Contains 
+## 包含 
 
 ### 资源
 	从 0-100 dp 和 sp 资源
@@ -278,13 +278,14 @@
 
 
 
-### 引用如下，感谢他们的库
+> ### 引用如下，感谢他们的库
 1. https://github.com/Blankj/AndroidUtilCode
 2. https://github.com/Trinea/android-common
 3. https://github.com/wyouflf/xUtils3
 4. https://github.com/jingle1267/android-utils
 
-### TODO:
+
+> ### TODO:
 1. 完善Convert类
 2. 开发我自己的视频播放器 PrettyVideoPlayer
 3. 完善这个库，添加更多实用的功能
