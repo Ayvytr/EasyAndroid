@@ -10,7 +10,7 @@
 # EasyAndroid Library
 Simplify development steps for Android Developers.(为Android开发者提供的简化开发过程的库)
 
-# [Chinese][README_CN.md]
+[Chinese][README_CN.md]
 
 ## Use
     (About Context classes: You need call 'Easy.getDefault().init(this);' 
