@@ -16,6 +16,8 @@ import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationExceptio
 
 public class ToastTool
 {
+    private static Toast toast;
+
     private ToastTool()
     {
         throw new UnsupportedInitializationException();
@@ -29,7 +31,17 @@ public class ToastTool
      */
     public static Toast make(String text)
     {
-        return Toast.makeText(Easy.getContext(), text, Toast.LENGTH_SHORT);
+        if(toast == null)
+        {
+            toast = Toast.makeText(Easy.getContext(), text, Toast.LENGTH_SHORT);
+        }
+        else
+        {
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setText(text);
+        }
+
+        return toast;
     }
 
     /**
@@ -40,7 +52,17 @@ public class ToastTool
      */
     public static Toast makeLong(String text)
     {
-        return Toast.makeText(Easy.getContext(), text, Toast.LENGTH_LONG);
+        if(toast == null)
+        {
+            toast = Toast.makeText(Easy.getContext(), text, Toast.LENGTH_LONG);
+        }
+        else
+        {
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setText(text);
+        }
+
+        return toast;
     }
 
     /**
@@ -71,7 +93,17 @@ public class ToastTool
      */
     public static Toast make(@StringRes int id)
     {
-        return Toast.makeText(Easy.getContext(), id, Toast.LENGTH_SHORT);
+        if(toast == null)
+        {
+            toast = Toast.makeText(Easy.getContext(), id, Toast.LENGTH_SHORT);
+        }
+        else
+        {
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setText(id);
+        }
+
+        return toast;
     }
 
     /**
@@ -82,7 +114,17 @@ public class ToastTool
      */
     public static Toast makeLong(@StringRes int id)
     {
-        return Toast.makeText(Easy.getContext(), id, Toast.LENGTH_LONG);
+        if(toast == null)
+        {
+            toast = Toast.makeText(Easy.getContext(), id, Toast.LENGTH_LONG);
+        }
+        else
+        {
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setText(id);
+        }
+
+        return toast;
     }
 
     /**
