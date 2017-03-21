@@ -35,13 +35,21 @@ public class ToastTool
      */
     public static Toast make(String text)
     {
+        return create(text, Toast.LENGTH_SHORT);
+    }
+
+    /**
+     * 创建并返回Toast.
+     */
+    private static Toast create(String text, int length)
+    {
         if(toast == null)
         {
-            toast = Toast.makeText(Easy.getContext(), text, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(Easy.getContext(), text, length);
         }
         else
         {
-            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setDuration(length);
             toast.setText(text);
         }
 
@@ -56,17 +64,7 @@ public class ToastTool
      */
     public static Toast makeLong(String text)
     {
-        if(toast == null)
-        {
-            toast = Toast.makeText(Easy.getContext(), text, Toast.LENGTH_LONG);
-        }
-        else
-        {
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setText(text);
-        }
-
-        return toast;
+        return create(text, Toast.LENGTH_LONG);
     }
 
     /**
@@ -97,13 +95,21 @@ public class ToastTool
      */
     public static Toast make(@StringRes int id)
     {
+        return create(id, Toast.LENGTH_SHORT);
+    }
+
+    /**
+     * 创建并返回Toast.
+     */
+    private static Toast create(@StringRes int id, int length)
+    {
         if(toast == null)
         {
-            toast = Toast.makeText(Easy.getContext(), id, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(Easy.getContext(), id, length);
         }
         else
         {
-            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setDuration(length);
             toast.setText(id);
         }
 
@@ -118,17 +124,7 @@ public class ToastTool
      */
     public static Toast makeLong(@StringRes int id)
     {
-        if(toast == null)
-        {
-            toast = Toast.makeText(Easy.getContext(), id, Toast.LENGTH_LONG);
-        }
-        else
-        {
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setText(id);
-        }
-
-        return toast;
+        return create(id, Toast.LENGTH_LONG);
     }
 
     /**

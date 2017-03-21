@@ -275,7 +275,11 @@
 		show
 		showLong
 		    
-
+> ## 库的测试类
+	ConvertTest
+	FileToolTest
+	TextToolTest
+	DensityToolTest
 
 
 > ### 引用如下，感谢他们的库

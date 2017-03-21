@@ -287,8 +287,11 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		show
 		showLong
 		    
-
-       
+> ## Test Classes for library classes
+	ConvertTest
+	FileToolTest
+	TextToolTest
+	DensityToolTest
 
 > ### Quote below, thanks for their libraries
 1. https://github.com/Blankj/AndroidUtilCode
