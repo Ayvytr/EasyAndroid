@@ -23,6 +23,8 @@ public class TextToolTest
         assertEquals(TextTool.isEmpty(str), true);
         str = "";
         assertEquals(TextTool.isEmpty(str), true);
+        str = "aaa";
+        assertEquals(TextTool.isEmpty(str), false);
     }
 
     @Test
