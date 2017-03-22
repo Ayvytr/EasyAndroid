@@ -92,16 +92,16 @@ public class FileToolTest
             }
         });
 
-        files = FileTool.listFilesLikeNames(".", "build.gradle");
+        files = FileTool.listFilesWithNames(".", "build.gradle");
         assertEquals(files.length, 1);
 
-        files = FileTool.listFilesLikeNamesNoCase(".", "BUILD.GRADLE");
+        files = FileTool.listFilesWithNamesNoCase(".", "BUILD.GRADLE");
         assertEquals(files.length, 1);
 
-        files = FileTool.listFilesDislikeNames(".", "build.gradle");
+        files = FileTool.listFilesWithoutNames(".", "build.gradle");
         assertEquals(files.length, FileTool.listFiles(".").length - 1);
 
-        files = FileTool.listFilesDislikeNamesNoCase(".", "BUILD.gradle");
+        files = FileTool.listFilesWithoutNamesNoCase(".", "BUILD.gradle");
         assertEquals(files.length, FileTool.listFiles(".").length - 1);
 
     }

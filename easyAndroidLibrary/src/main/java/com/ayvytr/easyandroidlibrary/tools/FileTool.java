@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -485,7 +486,18 @@ public class FileTool
             return "";
         }
 
-        return name.substring(name.lastIndexOf(".") + 1);
+        return name.substring(name.lastIndexOf(".") + 1).toLowerCase();
+    }
+
+    /**
+     * 判断文件是不是有扩展名
+     *
+     * @param pathname 文件名
+     * @return true 有扩展名
+     */
+    public static boolean hasExtension(String pathname)
+    {
+        return hasExtension(fromName(pathname));
     }
 
     /**
@@ -494,9 +506,16 @@ public class FileTool
      * @param file
      * @return true 有扩展名
      */
-    private static boolean hasExtension(File file)
+    public static boolean hasExtension(File file)
     {
         String name = file.getName();
+
+        //需要考虑隐藏文件，隐藏文件以.开头，需要进行处理
+        while(name.startsWith("."))
+        {
+            name = name.substring(1);
+        }
+
         if(!name.contains("."))
         {
             return false;
@@ -509,6 +528,17 @@ public class FileTool
         }
 
         return true;
+    }
+
+    /**
+     * 判断文件是不是类型化的文件（相当于判断是不是有扩展名)
+     *
+     * @param pathname 文件名
+     * @return true 是类型化文件. false 不是类型化文件
+     */
+    public static boolean isTyped(String pathname)
+    {
+        return isTyped(fromName(pathname));
     }
 
     /**
@@ -624,12 +654,12 @@ public class FileTool
         return file.listFiles(filenameFilter);
     }
 
-    public static File[] listFilesLikeNames(String pathname, String... names)
+    public static File[] listFilesWithNames(String pathname, String... names)
     {
-        return listFilesLikeNames(fromName(pathname), names);
+        return listFilesWithNames(fromName(pathname), names);
     }
 
-    public static File[] listFilesLikeNames(File file, String[] names)
+    public static File[] listFilesWithNames(File file, String[] names)
     {
         final List<String> list = asList(names);
         return file.listFiles(new FilenameFilter()
@@ -642,12 +672,12 @@ public class FileTool
         });
     }
 
-    public static File[] listFilesLikeNamesNoCase(String pathname, String... names)
+    public static File[] listFilesWithNamesNoCase(String pathname, String... names)
     {
-        return listFilesLikeNamesNoCase(fromName(pathname), names);
+        return listFilesWithNamesNoCase(fromName(pathname), names);
     }
 
-    public static File[] listFilesLikeNamesNoCase(File file, String... names)
+    public static File[] listFilesWithNamesNoCase(File file, String... names)
     {
         final List<String> list = new ArrayList<>();
         for(String name : names)
@@ -665,12 +695,12 @@ public class FileTool
         });
     }
 
-    public static File[] listFilesDislikeNames(String pathname, String... names)
+    public static File[] listFilesWithoutNames(String pathname, String... names)
     {
-        return listFilesDislikeNames(fromName(pathname), names);
+        return listFilesWithoutNames(fromName(pathname), names);
     }
 
-    public static File[] listFilesDislikeNames(File file, String... names)
+    public static File[] listFilesWithoutNames(File file, String... names)
     {
         final List<String> list = asList(names);
         return file.listFiles(new FilenameFilter()
@@ -683,12 +713,12 @@ public class FileTool
         });
     }
 
-    public static File[] listFilesDislikeNamesNoCase(String pathname, String... names)
+    public static File[] listFilesWithoutNamesNoCase(String pathname, String... names)
     {
-        return listFilesDislikeNamesNoCase(fromName(pathname), names);
+        return listFilesWithoutNamesNoCase(fromName(pathname), names);
     }
 
-    public static File[] listFilesDislikeNamesNoCase(File file, String... names)
+    public static File[] listFilesWithoutNamesNoCase(File file, String... names)
     {
         final List<String> list = new ArrayList<>();
         for(String name : names)
@@ -706,4 +736,175 @@ public class FileTool
         });
     }
 
+    public static File[] listFilesLikeNames(String pathname, String... names)
+    {
+        return listFilesLikeNames(fromName(pathname), names);
+    }
+
+    public static File[] listFilesLikeNames(File file, final String... names)
+    {
+        final List<String> list = getNamesList(names);
+        return file.listFiles(new FilenameFilter()
+        {
+            @Override
+            public boolean accept(File dir, String name)
+            {
+                for(String s : list)
+                {
+                    if(name.contains(s))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+    }
+
+    public static File[] listFilesLikeNamesNoCase(String pathname, String... names)
+    {
+        return listFilesLikeNamesNoCase(fromName(pathname), names);
+    }
+
+    public static File[] listFilesLikeNamesNoCase(File file, String... names)
+    {
+        final List<String> list = getNamesList(names, true);
+        return file.listFiles(new FilenameFilter()
+        {
+            @Override
+            public boolean accept(File dir, String name)
+            {
+                String lowerName = name.toLowerCase();
+                for(String s : list)
+                {
+                    if(lowerName.contains(s))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+    }
+
+
+    private static List<String> getNamesList(String[] names)
+    {
+        return getNamesList(names, false);
+    }
+
+    private static List<String> getNamesList(String[] names, boolean ignoreCase)
+    {
+        if(!ignoreCase)
+        {
+            return Arrays.asList(names);
+        }
+
+        List<String> list = new ArrayList<>();
+        for(String name : names)
+        {
+            list.add(name.toLowerCase());
+        }
+
+        return list;
+    }
+
+    public static File[] listFilesDislikeNames(String pathname, String... names)
+    {
+        return listFilesDislikeNames(fromName(pathname), names);
+    }
+
+    public static File[] listFilesDislikeNames(File file, String... names)
+    {
+        final List<String> list = getNamesList(names);
+        return file.listFiles(new FilenameFilter()
+        {
+            @Override
+            public boolean accept(File dir, String name)
+            {
+                for(String s : list)
+                {
+                    if(name.contains(s))
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        });
+    }
+
+    public static File[] listFilesDislikeNamesNoCase(String pathname, String... names)
+    {
+        return listFilesDislikeNamesNoCase(fromName(pathname), names);
+    }
+
+    public static File[] listFilesDislikeNamesNoCase(File file, String... names)
+    {
+        final List<String> list = getNamesList(names, true);
+        return file.listFiles(new FilenameFilter()
+        {
+            @Override
+            public boolean accept(File dir, String name)
+            {
+                String lowerName = name.toLowerCase();
+                for(String s : list)
+                {
+                    if(lowerName.contains(s))
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+        });
+    }
+
+    public static File[] listFilesWithExtension(String pathname, String... extensions)
+    {
+        return listFilesWithExtension(fromName(pathname), extensions);
+    }
+
+    public static File[] listFilesWithExtension(File file, String... extensions)
+    {
+        final List<String> list = getNamesList(extensions, true);
+        return file.listFiles(new FilenameFilter()
+        {
+            @Override
+            public boolean accept(File dir, String name)
+            {
+                if(list.contains(getExtension(name).toLowerCase()))
+                {
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    public static File[] listFilesWithoutExtension(String pathname, String... extensions)
+    {
+        return listFilesWithoutExtension(fromName(pathname), extensions);
+    }
+
+    public static File[] listFilesWithoutExtension(File file, String... extensions)
+    {
+        final List<String> list = getNamesList(extensions, true);
+        return file.listFiles(new FilenameFilter()
+        {
+            @Override
+            public boolean accept(File dir, String name)
+            {
+                if(list.contains(getExtension(name).toLowerCase()))
+                {
+                    return false;
+                }
+                return true;
+            }
+        });
+    }
 }
