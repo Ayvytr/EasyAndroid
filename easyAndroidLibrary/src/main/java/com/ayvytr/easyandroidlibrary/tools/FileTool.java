@@ -508,6 +508,12 @@ public class FileTool
      */
     public static boolean hasExtension(File file)
     {
+        //如果是目录，直接返回，判断扩展名没有意义
+        if(file.isDirectory())
+        {
+            return false;
+        }
+
         String name = file.getName();
 
         //需要考虑隐藏文件，隐藏文件以.开头，需要进行处理
@@ -559,7 +565,40 @@ public class FileTool
 
     public static File[] listFiles(File file)
     {
-        return file.listFiles();
+        return listFiles(file, false);
+    }
+
+    public static File[] listFiles(String pathname, boolean isAllFiles)
+    {
+        return listFiles(fromName(pathname), isAllFiles);
+    }
+
+    public static File[] listFiles(File file, boolean isAllFiles)
+    {
+        if(isAllFiles)
+        {
+            List<File> list = new ArrayList<>();
+            listAll(list, file);
+            File[] files = new File[list.size()];
+            return list.toArray(files);
+        }
+        else
+        {
+            return file.listFiles();
+        }
+    }
+
+    public static void listAll(List<File> list, File file)
+    {
+        File[] files = file.listFiles();
+        list.addAll(Arrays.asList(files));
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAll(list, f);
+            }
+        }
     }
 
     public static String[] listFilesNames(String pathname)
@@ -569,7 +608,17 @@ public class FileTool
 
     public static String[] listFilesNames(File file)
     {
-        File[] files = listFiles(file);
+        return listFilesNames(file, false);
+    }
+
+    public static String[] listFilesNames(String pathname, boolean isAllFiles)
+    {
+        return listFilesNames(fromName(pathname), isAllFiles);
+    }
+
+    public static String[] listFilesNames(File file, boolean isAllFiles)
+    {
+        File[] files = listFiles(file, isAllFiles);
         if(files == null)
         {
             return null;
@@ -613,22 +662,32 @@ public class FileTool
 
     public static String[] listFilesPaths(File file)
     {
-        File[] files = listFiles(file);
+        return listFilesPaths(file, false);
+    }
+
+    public static String[] listFilesPaths(String pathname, boolean isAllFiles)
+    {
+        return listFilesPaths(fromName(pathname), isAllFiles);
+    }
+
+    public static String[] listFilesPaths(File file, boolean isAllFiles)
+    {
+        File[] files = listFiles(file, isAllFiles);
         if(files == null)
         {
             return null;
         }
 
         String[] names = new String[files.length];
-        for(int i = 0; i < files.length; i++)
+        try
         {
-            try
+            for(int i = 0; i < files.length; i++)
             {
                 names[i] = files[i].getCanonicalPath();
-            } catch(IOException e)
-            {
-                e.printStackTrace();
             }
+        } catch(IOException e)
+        {
+            e.printStackTrace();
         }
 
         return names;
@@ -642,6 +701,32 @@ public class FileTool
     public static File[] listFiles(File file, FileFilter fileFilter)
     {
         return file.listFiles(fileFilter);
+    }
+
+    public static File[] listFiles(String pathname, FileFilter fileFilter, boolean isAllFiles)
+    {
+        return listFiles(fromName(pathname), fileFilter, isAllFiles);
+    }
+
+    public static File[] listFiles(File file, FileFilter fileFilter, boolean isAllFiles)
+    {
+        List<File> list = new ArrayList<>();
+        listAll(list, file, fileFilter);
+        File[] strings = new File[list.size()];
+        return list.toArray(strings);
+    }
+
+    private static void listAll(List<File> list, File file, FileFilter fileFilter)
+    {
+        File[] files = listFiles(file, fileFilter);
+        list.addAll(Arrays.asList(files));
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAll(list, f, fileFilter);
+            }
+        }
     }
 
     public static File[] listFiles(String pathname, FilenameFilter filenameFilter)
@@ -659,7 +744,7 @@ public class FileTool
         return listFilesWithNames(fromName(pathname), names);
     }
 
-    public static File[] listFilesWithNames(File file, String[] names)
+    public static File[] listFilesWithNames(File file, String... names)
     {
         final List<String> list = asList(names);
         return file.listFiles(new FilenameFilter()
@@ -871,19 +956,37 @@ public class FileTool
 
     public static File[] listFilesWithExtension(File file, String... extensions)
     {
-        final List<String> list = getNamesList(extensions, true);
+        final List<String> list = getNamesExtensionsList(extensions);
         return file.listFiles(new FilenameFilter()
         {
             @Override
             public boolean accept(File dir, String name)
             {
-                if(list.contains(getExtension(name).toLowerCase()))
+                if(list.contains(getExtension(name)))
                 {
                     return true;
                 }
                 return false;
             }
         });
+    }
+
+    private static List<String> getNamesExtensionsList(String[] extensions)
+    {
+        List<String> list = new ArrayList<>();
+        String s;
+        for(String extension : extensions)
+        {
+            s = extension;
+            while(s.startsWith("."))
+            {
+                s = s.substring(1);
+            }
+
+            list.add(s.toLowerCase());
+        }
+
+        return list;
     }
 
     public static File[] listFilesWithoutExtension(String pathname, String... extensions)
@@ -893,13 +996,13 @@ public class FileTool
 
     public static File[] listFilesWithoutExtension(File file, String... extensions)
     {
-        final List<String> list = getNamesList(extensions, true);
+        final List<String> list = getNamesExtensionsList(extensions);
         return file.listFiles(new FilenameFilter()
         {
             @Override
             public boolean accept(File dir, String name)
             {
-                if(list.contains(getExtension(name).toLowerCase()))
+                if(list.contains(getExtension(name)))
                 {
                     return false;
                 }
