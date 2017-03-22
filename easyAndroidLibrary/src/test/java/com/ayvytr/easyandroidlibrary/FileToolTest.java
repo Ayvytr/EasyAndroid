@@ -70,7 +70,7 @@ public class FileToolTest
     @Test
     public void testListFiles()
     {
-        File[] files = FileTool.listFiles(("."));
+        File[] files;
         String[] names = FileTool.listFilesNames(".");
         String[] paths = FileTool.listFilesPaths(".");
 
@@ -92,16 +92,16 @@ public class FileToolTest
             }
         });
 
-        files = FileTool.listFilesWithNames(".", "build.gradle");
+        files = FileTool.listFilesLikeNames(".", "build.gradle");
         assertEquals(files.length, 1);
 
-        files = FileTool.listFilesWithNamesNoCase(".", "BUILD.GRADLE");
+        files = FileTool.listFilesLikeNamesNoCase(".", "BUILD.GRADLE");
         assertEquals(files.length, 1);
 
-        files = FileTool.listFilesWithoutNames(".", "build.gradle");
+        files = FileTool.listFilesDislikeNames(".", "build.gradle");
         assertEquals(files.length, FileTool.listFiles(".").length - 1);
 
-        files = FileTool.listFilesWithoutNamesNoCase(".", "BUILD.gradle");
+        files = FileTool.listFilesDislikeNamesNoCase(".", "BUILD.gradle");
         assertEquals(files.length, FileTool.listFiles(".").length - 1);
 
     }

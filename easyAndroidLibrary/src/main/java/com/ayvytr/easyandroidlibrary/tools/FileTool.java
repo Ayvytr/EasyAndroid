@@ -624,12 +624,12 @@ public class FileTool
         return file.listFiles(filenameFilter);
     }
 
-    public static File[] listFilesWithNames(String pathname, String... names)
+    public static File[] listFilesLikeNames(String pathname, String... names)
     {
-        return listFilesWithNames(fromName(pathname), names);
+        return listFilesLikeNames(fromName(pathname), names);
     }
 
-    public static File[] listFilesWithNames(File file, String[] names)
+    public static File[] listFilesLikeNames(File file, String[] names)
     {
         final List<String> list = asList(names);
         return file.listFiles(new FilenameFilter()
@@ -642,12 +642,12 @@ public class FileTool
         });
     }
 
-    public static File[] listFilesWithNamesNoCase(String pathname, String... names)
+    public static File[] listFilesLikeNamesNoCase(String pathname, String... names)
     {
-        return listFilesWithNamesNoCase(fromName(pathname), names);
+        return listFilesLikeNamesNoCase(fromName(pathname), names);
     }
 
-    public static File[] listFilesWithNamesNoCase(File file, String... names)
+    public static File[] listFilesLikeNamesNoCase(File file, String... names)
     {
         final List<String> list = new ArrayList<>();
         for(String name : names)
@@ -665,12 +665,12 @@ public class FileTool
         });
     }
 
-    public static File[] listFilesWithoutNames(String pathname, String... names)
+    public static File[] listFilesDislikeNames(String pathname, String... names)
     {
-        return listFilesWithoutNames(fromName(pathname), names);
+        return listFilesDislikeNames(fromName(pathname), names);
     }
 
-    public static File[] listFilesWithoutNames(File file, String... names)
+    public static File[] listFilesDislikeNames(File file, String... names)
     {
         final List<String> list = asList(names);
         return file.listFiles(new FilenameFilter()
@@ -683,12 +683,12 @@ public class FileTool
         });
     }
 
-    public static File[] listFilesWithoutNamesNoCase(String pathname, String... names)
+    public static File[] listFilesDislikeNamesNoCase(String pathname, String... names)
     {
-        return listFilesWithoutNamesNoCase(fromName(pathname), names);
+        return listFilesDislikeNamesNoCase(fromName(pathname), names);
     }
 
-    public static File[] listFilesWithoutNamesNoCase(File file, String... names)
+    public static File[] listFilesDislikeNamesNoCase(File file, String... names)
     {
         final List<String> list = new ArrayList<>();
         for(String name : names)
