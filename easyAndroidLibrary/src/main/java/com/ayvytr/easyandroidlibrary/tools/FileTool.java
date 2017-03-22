@@ -50,6 +50,28 @@ public class FileTool
     }
 
     /**
+     * 根据文件名打开文件并返回
+     *
+     * @param pathname 文件名
+     * @return File
+     */
+    public static File open(String pathname)
+    {
+        return new File(pathname);
+    }
+
+    /**
+     * 根据文件名打开文件并返回
+     *
+     * @param pathname 文件名
+     * @return File
+     */
+    public static File of(String pathname)
+    {
+        return new File(pathname);
+    }
+
+    /**
      * 判断文件是否存在
      *
      * @param filePath 文件路径
@@ -703,32 +725,6 @@ public class FileTool
         return file.listFiles(fileFilter);
     }
 
-    public static File[] listFiles(String pathname, FileFilter fileFilter, boolean isAllFiles)
-    {
-        return listFiles(fromName(pathname), fileFilter, isAllFiles);
-    }
-
-    public static File[] listFiles(File file, FileFilter fileFilter, boolean isAllFiles)
-    {
-        List<File> list = new ArrayList<>();
-        listAll(list, file, fileFilter);
-        File[] strings = new File[list.size()];
-        return list.toArray(strings);
-    }
-
-    private static void listAll(List<File> list, File file, FileFilter fileFilter)
-    {
-        File[] files = listFiles(file, fileFilter);
-        list.addAll(Arrays.asList(files));
-        for(File f : files)
-        {
-            if(f.isDirectory())
-            {
-                listAll(list, f, fileFilter);
-            }
-        }
-    }
-
     public static File[] listFiles(String pathname, FilenameFilter filenameFilter)
     {
         return listFiles(fromName(pathname), filenameFilter);
@@ -757,6 +753,39 @@ public class FileTool
         });
     }
 
+    public static File[] listFilesWithNames(String pathname, boolean isAllFiles, String... names)
+    {
+        return listFilesWithNames(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesWithNames(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            List<File> list = new ArrayList<>();
+            listAllWithNames(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesWithNames(file, names);
+        }
+    }
+
+    private static void listAllWithNames(List<File> list, File file, String[] names)
+    {
+        File[] files = listFilesWithNames(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllWithNames(list, f, names);
+            }
+        }
+    }
+
     public static File[] listFilesWithNamesNoCase(String pathname, String... names)
     {
         return listFilesWithNamesNoCase(fromName(pathname), names);
@@ -780,6 +809,40 @@ public class FileTool
         });
     }
 
+    public static File[] listFilesWithNamesNoCase(String pathname, boolean isAllFiles,
+                                                  String... names)
+    {
+        return listFilesWithNamesNoCase(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesWithNamesNoCase(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllWithNamesNoCase(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesWithNamesNoCase(file, names);
+        }
+    }
+
+    private static void listAllWithNamesNoCase(ArrayList<File> list, File file, String[] names)
+    {
+        File[] files = listFilesWithNamesNoCase(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllWithNamesNoCase(list, f, names);
+            }
+        }
+    }
+
     public static File[] listFilesWithoutNames(String pathname, String... names)
     {
         return listFilesWithoutNames(fromName(pathname), names);
@@ -796,6 +859,39 @@ public class FileTool
                 return !list.contains(name);
             }
         });
+    }
+
+    public static File[] listFilesWithoutNames(String pathname, boolean isAllFiles, String... names)
+    {
+        return listFilesWithoutNames(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesWithoutNames(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            List<File> list = new ArrayList<>();
+            listAllWithoutNames(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesWithoutNames(file, names);
+        }
+    }
+
+    private static void listAllWithoutNames(List<File> list, File file, String[] names)
+    {
+        File[] files = listFilesWithoutNames(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllWithoutNames(list, f, names);
+            }
+        }
     }
 
     public static File[] listFilesWithoutNamesNoCase(String pathname, String... names)
@@ -819,6 +915,40 @@ public class FileTool
                 return !list.contains(name.toLowerCase());
             }
         });
+    }
+
+    public static File[] listFilesWithoutNamesNoCase(String pathname, boolean isAllFiles,
+                                                     String... names)
+    {
+        return listFilesWithoutNamesNoCase(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesWithoutNamesNoCase(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllWithoutNamesNoCase(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesWithoutNamesNoCase(file, names);
+        }
+    }
+
+    private static void listAllWithoutNamesNoCase(ArrayList<File> list, File file, String[] names)
+    {
+        File[] files = listFilesWithoutNamesNoCase(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllWithoutNamesNoCase(list, f, names);
+            }
+        }
     }
 
     public static File[] listFilesLikeNames(String pathname, String... names)
@@ -845,6 +975,39 @@ public class FileTool
                 return false;
             }
         });
+    }
+
+    public static File[] listFilesLikeNames(String pathname, boolean isAllFiles, String... names)
+    {
+        return listFilesLikeNames(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesLikeNames(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllLikeNames(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesLikeNames(file, names);
+        }
+    }
+
+    private static void listAllLikeNames(ArrayList<File> list, File file, String[] names)
+    {
+        File[] files = listFilesLikeNames(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllLikeNames(list, f, names);
+            }
+        }
     }
 
     public static File[] listFilesLikeNamesNoCase(String pathname, String... names)
@@ -874,6 +1037,40 @@ public class FileTool
         });
     }
 
+
+    public static File[] listFilesLikeNamesNoCase(String pathname, boolean isAllFiles,
+                                                  String... names)
+    {
+        return listFilesLikeNamesNoCase(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesLikeNamesNoCase(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllLikeNamesNoCase(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesLikeNamesNoCase(file, names);
+        }
+    }
+
+    private static void listAllLikeNamesNoCase(ArrayList<File> list, File file, String[] names)
+    {
+        File[] files = listFilesLikeNamesNoCase(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllLikeNamesNoCase(list, f, names);
+            }
+        }
+    }
 
     private static List<String> getNamesList(String[] names)
     {
@@ -922,6 +1119,38 @@ public class FileTool
         });
     }
 
+    public static File[] listFilesDislikeNames(String pathname, boolean isAllFiles, String... names)
+    {
+        return listFilesDislikeNames(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesDislikeNames(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllDislikeNames(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesDislikeNames(file, names);
+        }
+    }
+
+    private static void listAllDislikeNames(ArrayList<File> list, File file, String[] names)
+    {
+        File[] files = listFilesDislikeNames(file, names);
+        list.addAll(Arrays.asList(files));
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllDislikeNames(list, f, names);
+            }
+        }
+    }
+
     public static File[] listFilesDislikeNamesNoCase(String pathname, String... names)
     {
         return listFilesDislikeNamesNoCase(fromName(pathname), names);
@@ -947,6 +1176,40 @@ public class FileTool
                 return true;
             }
         });
+    }
+
+    public static File[] listFilesDislikeNamesNoCase(String pathname, boolean isAllFiles,
+                                                     String... names)
+    {
+        return listFilesDislikeNamesNoCase(fromName(pathname), isAllFiles, names);
+    }
+
+    private static File[] listFilesDislikeNamesNoCase(File file, boolean isAllFiles, String[] names)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllDislikeNamesNoCase(list, file, names);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesDislikeNamesNoCase(file, names);
+        }
+    }
+
+    private static void listAllDislikeNamesNoCase(ArrayList<File> list, File file, String[] names)
+    {
+        File[] files = listFilesDislikeNamesNoCase(file, names);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllDislikeNamesNoCase(list, f, names);
+            }
+        }
     }
 
     public static File[] listFilesWithExtension(String pathname, String... extensions)

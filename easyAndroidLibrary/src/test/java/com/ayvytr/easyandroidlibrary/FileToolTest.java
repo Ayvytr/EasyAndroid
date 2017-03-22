@@ -9,6 +9,7 @@ import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
+import static com.ayvytr.easyandroidlibrary.tools.FileTool.listFilesLikeNames;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -137,15 +138,18 @@ public class FileToolTest
         assertEquals(0, reads.length);
 
         //README.md README_CN.md
-        reads = FileTool.listFilesLikeNames(".", "READ");
+        reads = listFilesLikeNames(".", "READ");
         assertEquals(2, reads.length);
 
         // .gradle gradle build.gradle gradle.properties gradlew gradlew.bat settings.gradle
-        File[] gradles = FileTool.listFilesLikeNames(new File("."), "gradle");
+        File[] gradles = listFilesLikeNames(new File("."), "gradle");
         assertEquals(7, gradles.length);
 
-        gradles = FileTool.listFilesLikeNames(new File("."), "GRADLE");
+        gradles = listFilesLikeNames(new File("."), "GRADLE");
         assertEquals(0, gradles.length);
+
+        gradles = FileTool.listFilesLikeNames(".", true, "gradle");
+        gradles = FileTool.listFilesLikeNames(".", true, ".gradle");
     }
 
     @Test
@@ -167,6 +171,9 @@ public class FileToolTest
 
         File[] files = FileTool.listFilesLikeNamesNoCase(new File("."), "gRADLE", "READ");
         assertEquals(9, files.length);
+
+        gradles = FileTool.listFilesLikeNamesNoCase(".", true, "GRADle");
+        gradles = FileTool.listFilesLikeNamesNoCase(".", true, "xml");
     }
 
     @Test
@@ -183,6 +190,9 @@ public class FileToolTest
         reads = FileTool.listFilesDislikeNames(".", "gradle");
         assertEquals(reads.length, allFiles.length - 7);
 
+        String pathname = "app\\src\\main\\res";
+        File[] mipmaps = FileTool.listFilesDislikeNames(pathname, true, "mipmap");
+        File[] launchers = FileTool.listFilesDislikeNames(pathname, true, "launcher");
     }
 
     @Test
@@ -201,6 +211,10 @@ public class FileToolTest
 
         reads = FileTool.listFilesDislikeNamesNoCase(".", "GRAD", "rEAd");
         assertEquals(reads.length, allFiles.length - 9);
+
+        String pathname = "app\\src\\main\\res";
+        File[] mipmaps = FileTool.listFilesDislikeNamesNoCase(pathname, true, "MIPmAP");
+        File[] launchers = FileTool.listFilesDislikeNamesNoCase(pathname, true, "_LAUNCHER");
     }
 
     @Test
@@ -231,8 +245,56 @@ public class FileToolTest
     }
 
     @Test
-    public void testListFilesByFileFilter()
+    public void testListFilesAll()
     {
+        File[] files = FileTool.listFiles("app", true);
+        files = FileTool.listFiles("app", false);
+        assertEquals(files.length, 7);
+        files = FileTool.listFiles(".idea", true);
+        files = FileTool.listFiles("easyandroidlibrary", false);
+        assertEquals(files.length, 6);
     }
+
+
+    @Test
+    public void testListFilesWithNames()
+    {
+        File[] files = FileTool.listFilesWithNames(".", true, "build.gradle");
+        assertEquals(files.length, 3);
+        files = FileTool.listFilesWithNames("app", true, "ic_launcher.png");
+        assertEquals(files.length, 10);
+    }
+
+    @Test
+    public void testListFilesWithNamesNoCase()
+    {
+        File[] files = FileTool.listFilesWithNamesNoCase(".", true, "BUILD.gradle");
+        assertEquals(files.length, 3);
+        files = FileTool.listFilesWithNamesNoCase("app", true, "ic_launcher.PNg");
+        assertEquals(files.length, 10);
+    }
+
+    @Test
+    public void testListFilesWithoutNames()
+    {
+        File[] files = FileTool.listFilesWithoutNames("app", true, "app");
+        files = FileTool.listFilesWithoutNames(".", true, "build.gradle");
+        files = FileTool.listFilesWithoutNames(".", true, "build.gradle");
+
+        String pathname = "app\\src\\main\\res";
+        files = FileTool.listFilesWithoutNames(pathname, true, "ic_launcher.png");
+        assertEquals(files.length, FileTool.listFiles(pathname, true).length - 5);
+    }
+
+    @Test
+    public void testListFilesWithoutNamesNoCase()
+    {
+        File[] files = FileTool.listFilesWithoutNames("app", true, "app");
+
+        String pathname = "app\\src\\main\\res";
+        files = FileTool.listFilesWithoutNamesNoCase(pathname, true, "IC_LAUNcher.png");
+        assertEquals(files.length, FileTool.listFiles(pathname, true).length - 5);
+    }
+
 }
 
