@@ -309,5 +309,141 @@ public class FileToolTest
         assertEquals(files.length, FileTool.listFiles(pathname, true).length - 5);
     }
 
+    @Test
+    public void testListDirs()
+    {
+        File[] dirs = FileTool.listDirs(".");
+        dirs = FileTool.listDirs("app/src", true);
+    }
+
+    @Test
+    public void testListDirsWithNames()
+    {
+        File[] dirs = FileTool.listDirsWithNames(".", "test");
+        assertEquals(dirs.length, 0);
+        dirs = FileTool.listDirsWithNames(".", "app");
+        assertEquals(dirs.length, 1);
+        dirs = FileTool.listDirsWithNames(".", "Gradle");
+        assertEquals(dirs.length, 0);
+    }
+
+    @Test
+    public void testListAllDirsWithNames()
+    {
+        File[] dirs = FileTool.listDirsWithNames(".", true, "test");
+        dirs = FileTool.listDirsWithNames(".", true, "app");
+        dirs = FileTool.listDirsWithNames(".", true, "src");
+        assertEquals(dirs.length, 2);
+    }
+
+    @Test
+    public void testListAllDirsWithNamesNoCase()
+    {
+        File[] dirs = FileTool.listDirsWithNamesNoCase(".", true, "TEst");
+        dirs = FileTool.listDirsWithNamesNoCase(".", true, "apP");
+        dirs = FileTool.listDirsWithNamesNoCase(".", true, "SRC");
+        assertEquals(dirs.length, 2);
+    }
+
+    @Test
+    public void testListDirsWithoutNames()
+    {
+        File[] dirs = FileTool.listDirsWithoutNames(".", "app");
+        dirs = FileTool.listDirsWithoutNames(".", "AA");
+        dirs = FileTool.listDirsWithoutNames(".", "gradle", "app", ".gradle");
+    }
+
+    @Test
+    public void testListAllDirsWithoutNames()
+    {
+        File[] dirs = FileTool.listDirsWithoutNames(".", true, "app");
+        dirs = FileTool.listDirsWithoutNames(".", true, "AA");
+        dirs = FileTool.listDirsWithoutNames(".", true, "gradle", "app", ".gradle");
+    }
+
+    @Test
+    public void testListDirsWithoutNamesNoCase()
+    {
+        File[] dirs = FileTool.listDirsWithoutNamesNoCase("app/src", "main", "test");
+        dirs = FileTool.listDirsWithoutNamesNoCase(".", "AAA");
+        dirs = FileTool.listDirsWithoutNamesNoCase(".", "GRADLE", "APP", ".GrADLE");
+    }
+
+    @Test
+    public void testListAllDirsWithoutNamesNoCase()
+    {
+        File[] dirs = FileTool
+                .listDirsWithoutNamesNoCase("app/src/main/java", true, "src", "BUild");
+        dirs = FileTool.listDirsWithoutNamesNoCase("app", true, "AA", "Main");
+        dirs = FileTool.listDirsWithoutNamesNoCase(".", true, "gradle", "aPP", ".gradle");
+    }
+
+    @Test
+    public void testListDirsLikeNames()
+    {
+        File[] dirs = FileTool.listDirsLikeNames(".", "gradle");
+        assertEquals(dirs.length, 2);
+        dirs = FileTool.listDirsLikeNames(".", "d");
+        assertEquals(dirs.length, 5);
+    }
+
+    @Test
+    public void testListDirsLikeNamesNoCase()
+    {
+        File[] dirs = FileTool.listDirsLikeNamesNoCase(".", "GRADLE");
+        assertEquals(dirs.length, 2);
+        dirs = FileTool.listDirsLikeNamesNoCase(".", "D", "id");
+        assertEquals(dirs.length, 5);
+    }
+
+    @Test
+    public void testListAllDirsLikeNames()
+    {
+        File[] dirs = FileTool.listDirsLikeNames("app/src", true, "main");
+        dirs = FileTool.listDirsLikeNames("app/src", true, "tes");
+        dirs = FileTool.listDirsLikeNames("app/src", true, "and");
+    }
+
+    @Test
+    public void testListAllDirsLikeNamesNoCase()
+    {
+        File[] dirs = FileTool.listDirsLikeNamesNoCase("app/src", true, "MAIN");
+        dirs = FileTool.listDirsLikeNamesNoCase("app/src", true, "TesT");
+        dirs = FileTool.listDirsLikeNamesNoCase("app/src", true, "AND");
+    }
+
+    @Test
+    public void testListDirsDislikeNames()
+    {
+        File[] dirs = FileTool.listDirsDislikeNames(".", "gradle");
+        assertEquals(dirs.length, 5);
+        dirs = FileTool.listDirsDislikeNames(".", "d");
+        assertEquals(dirs.length, 2);
+    }
+
+    @Test
+    public void testListDirsDislikeNamesNoCase()
+    {
+        File[] dirs = FileTool.listDirsDislikeNamesNoCase(".", "GRADLE");
+        assertEquals(dirs.length, 5);
+        dirs = FileTool.listDirsDislikeNamesNoCase(".", "D", "id");
+        assertEquals(dirs.length, 2);
+    }
+
+    @Test
+    public void testListAllDirsDislikeNames()
+    {
+        File[] dirs = FileTool.listDirsDislikeNames("app/src", true, "main");
+        dirs = FileTool.listDirsDislikeNames("app/src", true, "tes");
+        dirs = FileTool.listDirsDislikeNames("app/src", true, "and");
+    }
+
+    @Test
+    public void testListAllDirsDislikeNamesNoCase()
+    {
+        File[] dirs = FileTool.listDirsDislikeNamesNoCase("app/src", true, "MAIN");
+        dirs = FileTool.listDirsDislikeNamesNoCase("app/src", true, "TesT");
+        dirs = FileTool.listDirsDislikeNamesNoCase("app/src", true, "AND");
+    } 
 }
 
