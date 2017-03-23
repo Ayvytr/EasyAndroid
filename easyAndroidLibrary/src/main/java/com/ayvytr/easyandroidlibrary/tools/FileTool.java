@@ -17,12 +17,8 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 /**
- * 文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出/搜索文件，
+ * 文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出文件/目录，
  * 获取文件名/文件标题（不包含扩展名), 有没有扩展名，读/写文件等功能.
- * <p>
- * 前作者: Blankj
- * blog  : http://blankj.com
- * </p>
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.0

@@ -125,30 +125,77 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		base64Decode
 
 	FileTool	File operation class, judgment is not a file / directory, is it present, 
-				rename, create file / directory, list / search file, get file name / file
+				rename, create file / directory, list file/directory, get file name / file
 				title (not including extension), there is no extension, 
 				read / write Documents and other methods
-		fromName
-		isExists
-		rename
-		isDir
-		isFile
 		createDir
-		createFile
-		listFilesInDir
-		listFilesInDirWithFilter
-		searchFileInDir
-		writeFile
-		write
-		readFile
-		read
-		getByteArray
-		getLastModified
-		getName
-		getTitle
-		getExtension
-		hasExtension
-		isTyped
+        createFile
+        fromName
+        getByteArray
+        getExtension
+        getExtension
+        getLastModified
+        getLowerName
+        getName
+        getNamesExtensionsList
+        getNamesList
+        getTitle
+        hasExtension
+        isDir
+        isExists
+        isFile
+        isTyped
+        listAll
+        listAllDirs
+        listAllDirsDislikeNames
+        listAllDirsDislikeNamesNoCase
+        listAllDirsLikeNames
+        listAllDirsLikeNamesNoCase
+        listAllDirsWithNames
+        listAllDirsWithNamesNoCase
+        listAllDirsWithoutNames
+        listAllDirsWithoutNamesNoCase
+        listAllDislikeNames
+        listAllDislikeNamesNoCase
+        listAllLikeNames
+        listAllLikeNamesNoCase
+        listAllWithExtension
+        listAllWithNames
+        listAllWithNamesNoCase
+        listAllWithoutExtension
+        listAllWithoutNames
+        listAllWithoutNamesNoCase
+        listDirs
+        listDirsDislikeNames
+        listDirsDislikeNamesNoCase
+        listDirsLikeNames
+        listDirsLikeNamesNoCase
+        listDirsWithNames
+        listDirsWithNamesNoCase
+        listDirsWithoutNames
+        listDirsWithoutNamesNoCase
+        listFiles
+        listFilesDislikeNames
+        listFilesDislikeNamesNoCase
+        listFilesLikeNames
+        listFilesLikeNamesNoCase
+        listFilesNames
+        listFilesPaths
+        listFilesWithExtension
+        listFilesWithNames
+        listFilesWithNamesNoCase
+        listFilesWithoutExtension
+        listFilesWithoutNames
+        listFilesWithoutNamesNoCase
+        of
+        open
+        read
+        readFile
+        rename
+        toFileNames
+        toFilePaths
+        write
+        writeFile
 
 	RegexTool	Regular tool classes, including verification of mobile phone number, 
 				mailbox, ID number and so on

@@ -122,29 +122,76 @@
 		base64Encode
 		base64Decode
 
-	FileTool	文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出/搜索文件，
+	FileTool	文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出文件/目录，
 				获取文件名/文件标题（不包含扩展名), 有没有扩展名，读/写文件等方法
-		fromName
-		isExists
-		rename
-		isDir
-		isFile
 		createDir
-		createFile
-		listFilesInDir
-		listFilesInDirWithFilter
-		searchFileInDir
-		writeFile
-		write
-		readFile
-		read
-		getByteArray
-		getLastModified
-		getName
-		getTitle
-		getExtension
-		hasExtension
-		isTyped
+        createFile
+        fromName
+        getByteArray
+        getExtension
+        getExtension
+        getLastModified
+        getLowerName
+        getName
+        getNamesExtensionsList
+        getNamesList
+        getTitle
+        hasExtension
+        isDir
+        isExists
+        isFile
+        isTyped
+        listAll
+        listAllDirs
+        listAllDirsDislikeNames
+        listAllDirsDislikeNamesNoCase
+        listAllDirsLikeNames
+        listAllDirsLikeNamesNoCase
+        listAllDirsWithNames
+        listAllDirsWithNamesNoCase
+        listAllDirsWithoutNames
+        listAllDirsWithoutNamesNoCase
+        listAllDislikeNames
+        listAllDislikeNamesNoCase
+        listAllLikeNames
+        listAllLikeNamesNoCase
+        listAllWithExtension
+        listAllWithNames
+        listAllWithNamesNoCase
+        listAllWithoutExtension
+        listAllWithoutNames
+        listAllWithoutNamesNoCase
+        listDirs
+        listDirsDislikeNames
+        listDirsDislikeNamesNoCase
+        listDirsLikeNames
+        listDirsLikeNamesNoCase
+        listDirsWithNames
+        listDirsWithNamesNoCase
+        listDirsWithoutNames
+        listDirsWithoutNamesNoCase
+        listFiles
+        listFilesDislikeNames
+        listFilesDislikeNamesNoCase
+        listFilesLikeNames
+        listFilesLikeNamesNoCase
+        listFilesNames
+        listFilesPaths
+        listFilesWithExtension
+        listFilesWithNames
+        listFilesWithNamesNoCase
+        listFilesWithoutExtension
+        listFilesWithoutNames
+        listFilesWithoutNamesNoCase
+        of
+        open
+        read
+        readFile
+        rename
+        toFileNames
+        toFilePaths
+        write
+        writeFile
 
 	RegexTool	正则工具类，包括验证手机号，邮箱，身份证号码等
 		isMobileSimple
