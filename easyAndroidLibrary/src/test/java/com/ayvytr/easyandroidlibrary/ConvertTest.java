@@ -8,7 +8,7 @@ import static junit.framework.TestCase.assertEquals;
 
 /**
  * @author davidwang
- * @date 2017/3/16
+ * Date 2017/3/16
  */
 
 public class ConvertTest
