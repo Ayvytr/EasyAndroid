@@ -31,9 +31,9 @@ import static java.util.Arrays.asList;
 public class FileTool
 {
     //默认byte数组大小，读取文件时使用
-    private static final int DEFAULT_BYTE_SIZE = 1024;
+    public static final int DEFAULT_BYTE_SIZE = 1024;
 
-    private FileTool()
+    public FileTool()
     {
         throw new UnsupportedInitializationException();
     }
@@ -195,7 +195,7 @@ public class FileTool
      *
      * @param file File实例
      */
-    private static void createDir(File file)
+    public static void createDir(File file)
     {
         if(file != null && !isExists(file))
         {
@@ -208,7 +208,7 @@ public class FileTool
         createFile(fromName(pathname));
     }
 
-    private static void createFile(File file)
+    public static void createFile(File file)
     {
         if(file == null || file.exists())
         {
@@ -450,7 +450,7 @@ public class FileTool
         return getName(fromName(pathname));
     }
 
-    private static String getName(File file)
+    public static String getName(File file)
     {
         return file.getName();
     }
@@ -472,7 +472,7 @@ public class FileTool
      * @param file File
      * @return 文件标题
      */
-    private static String getTitle(File file)
+    public static String getTitle(File file)
     {
         String name = file.getName();
         if(!name.contains("."))
@@ -580,21 +580,47 @@ public class FileTool
         return hasExtension(file);
     }
 
+    /**
+     * 列出名为pathname文件下的所有文件
+     *
+     * @param pathname 文件名
+     * @return 文件列表
+     */
     public static File[] listFiles(String pathname)
     {
         return listFiles(fromName(pathname));
     }
 
+    /**
+     * 列出文件file下的所有文件
+     *
+     * @param file 文件
+     * @return 文件列表
+     */
     public static File[] listFiles(File file)
     {
         return listFiles(file, false);
     }
 
+    /**
+     * 列出名为pathname文件下的所有文件
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件列表
+     */
     public static File[] listFiles(String pathname, boolean isAllFiles)
     {
         return listFiles(fromName(pathname), isAllFiles);
     }
 
+    /**
+     * 列出名为pathname文件下的所有文件
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件列表
+     */
     public static File[] listFiles(File file, boolean isAllFiles)
     {
         if(isAllFiles)
@@ -610,6 +636,12 @@ public class FileTool
         }
     }
 
+    /**
+     * 列出文件file下所有文件，递归调用
+     *
+     * @param list 要传出的文件列表
+     * @param file 文件
+     */
     public static void listAll(List<File> list, File file)
     {
         File[] files = file.listFiles();
@@ -623,21 +655,47 @@ public class FileTool
         }
     }
 
+    /**
+     * 列出名为pathname文件包含的所有文件名称
+     *
+     * @param pathname 文件名
+     * @return 文件名称列表
+     */
     public static String[] listFilesNames(String pathname)
     {
         return listFilesNames(fromName(pathname));
     }
 
+    /**
+     * 列出file文件包含的所有文件名称
+     *
+     * @param file 文件
+     * @return 文件名称列表
+     */
     public static String[] listFilesNames(File file)
     {
         return listFilesNames(file, false);
     }
 
+    /**
+     * 列出名为pathname文件包含的所有文件名称
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件名称列表
+     */
     public static String[] listFilesNames(String pathname, boolean isAllFiles)
     {
         return listFilesNames(fromName(pathname), isAllFiles);
     }
 
+    /**
+     * 列出file文件包含的所有文件名称
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件名称列表
+     */
     public static String[] listFilesNames(File file, boolean isAllFiles)
     {
         File[] files = listFiles(file, isAllFiles);
@@ -655,6 +713,12 @@ public class FileTool
         return names;
     }
 
+    /**
+     * 将文件数组转换为文件名称数组返回
+     *
+     * @param files 文件数组
+     * @return 文件名称数组
+     */
     public static String[] toFileNames(File[] files)
     {
         String[] names = new String[files.length];
@@ -666,6 +730,12 @@ public class FileTool
         return names;
     }
 
+    /**
+     * 将文件数组转换为文件路径数组返回
+     *
+     * @param files 文件数组
+     * @return 文件路径数组
+     */
     public static String[] toFilePaths(File[] files)
     {
         String[] names = new String[files.length];
@@ -677,21 +747,47 @@ public class FileTool
         return names;
     }
 
+    /**
+     * 列出名为pathname文件包含的所有文件名称
+     *
+     * @param pathname 文件名
+     * @return 文件名称列表
+     */
     public static String[] listFilesPaths(String pathname)
     {
         return listFilesPaths(fromName(pathname));
     }
 
+    /**
+     * 列出file文件中所有文件路径
+     *
+     * @param file 文件
+     * @return 文件名称列表
+     */
     public static String[] listFilesPaths(File file)
     {
         return listFilesPaths(file, false);
     }
 
+    /**
+     * 列出名为pathname文件中所有文件路径
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件名称列表
+     */
     public static String[] listFilesPaths(String pathname, boolean isAllFiles)
     {
         return listFilesPaths(fromName(pathname), isAllFiles);
     }
 
+    /**
+     * 列出file文件中所有文件路径
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件名称列表
+     */
     public static String[] listFilesPaths(File file, boolean isAllFiles)
     {
         File[] files = listFiles(file, isAllFiles);
@@ -715,31 +811,186 @@ public class FileTool
         return names;
     }
 
+    /**
+     * 列出名为pathname文件中所有文件路径
+     *
+     * @param pathname   文件名
+     * @param fileFilter 筛选器
+     * @return 文件名称列表
+     */
     public static File[] listFiles(String pathname, FileFilter fileFilter)
     {
         return listFiles(fromName(pathname), fileFilter);
     }
 
+    /**
+     * 列出file文件中所有文件路径
+     *
+     * @param file       文件
+     * @param fileFilter 筛选器
+     * @return 文件名称列表
+     */
     public static File[] listFiles(File file, FileFilter fileFilter)
     {
         return file.listFiles(fileFilter);
     }
 
+    /**
+     * 列出名为pathname文件中所有文件路径
+     *
+     * @param pathname   文件名
+     * @param fileFilter 筛选器
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件名称列表
+     */
+    public static File[] listFiles(String pathname, FileFilter fileFilter, boolean isAllFiles)
+    {
+        return listFiles(fromName(pathname), fileFilter, isAllFiles);
+    }
+
+    /**
+     * 列出file文件中所有文件路径
+     *
+     * @param file       文件
+     * @param fileFilter 筛选器
+     * @param isAllFiles 是不是包含所有目录文件
+     * @return 文件名称列表
+     */
+    public static File[] listFiles(File file, FileFilter fileFilter, boolean isAllFiles)
+    {
+        if(isAllFiles)
+        {
+            List<File> list = new ArrayList<>();
+            listAll(list, file, fileFilter);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFiles(file, fileFilter);
+        }
+    }
+
+    /**
+     * 列出file文件中所有文件，递归调用
+     *
+     * @param list       文件列表，传出参数
+     * @param file       文件
+     * @param fileFilter 筛选器
+     */
+    public static void listAll(List<File> list, File file, FileFilter fileFilter)
+    {
+        File[] files = listFiles(file, fileFilter);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAll(list, f, fileFilter);
+            }
+        }
+    }
+
+    /**
+     * 列出名为pathname文件中所有符合筛选器的文件
+     *
+     * @param pathname       文件名
+     * @param filenameFilter 筛选器
+     * @return 文件数组
+     */
     public static File[] listFiles(String pathname, FilenameFilter filenameFilter)
     {
         return listFiles(fromName(pathname), filenameFilter);
     }
 
+    /**
+     * 列出file文件中所有符合筛选器的文件
+     *
+     * @param file           文件
+     * @param filenameFilter 筛选器
+     * @return 文件数组
+     */
     public static File[] listFiles(File file, FilenameFilter filenameFilter)
     {
         return file.listFiles(filenameFilter);
     }
 
+    /**
+     * 列出名为pathname文件中所有符合筛选器的文件
+     *
+     * @param pathname       文件名
+     * @param filenameFilter 筛选器
+     * @param isAllFiles     是不是包含所有目录文件
+     * @return 文件数组
+     */
+    public static File[] listFiles(String pathname, FilenameFilter filenameFilter,
+                                   boolean isAllFiles)
+    {
+        return listFiles(fromName(pathname), filenameFilter, isAllFiles);
+    }
+
+    /**
+     * 列出file文件中所有符合筛选器的文件
+     *
+     * @param file           文件
+     * @param filenameFilter 筛选器
+     * @param isAllFiles     是不是包含所有目录文件
+     * @return 文件数组
+     */
+    public static File[] listFiles(File file, FilenameFilter filenameFilter, boolean isAllFiles)
+    {
+        if(isAllFiles)
+        {
+            List<File> list = new ArrayList<>();
+            listAll(list, file, filenameFilter);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFiles(file, filenameFilter);
+        }
+    }
+
+    /**
+     * 列出file文件中所有文件，递归调用
+     *
+     * @param list           文件列表，传出参数
+     * @param file           文件
+     * @param filenameFilter 筛选器
+     */
+    public static void listAll(List<File> list, File file, FilenameFilter filenameFilter)
+    {
+        File[] files = listFiles(file, filenameFilter);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAll(list, f, filenameFilter);
+            }
+        }
+    }
+
+    /**
+     * 返回名为pathname目录下所有符合names中任意名称的文件
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithNames(String pathname, String... names)
     {
         return listFilesWithNames(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有符合names中任意名称的文件
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithNames(File file, String... names)
     {
         final List<String> list = asList(names);
@@ -753,12 +1004,28 @@ public class FileTool
         });
     }
 
+    /**
+     * 返回名为pathname目录下所有符合names中任意名称的文件
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithNames(String pathname, boolean isAllFiles, String... names)
     {
         return listFilesWithNames(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesWithNames(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有符合names中任意名称的文件
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
+    public static File[] listFilesWithNames(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -772,7 +1039,14 @@ public class FileTool
         }
     }
 
-    private static void listAllWithNames(List<File> list, File file, String[] names)
+    /**
+     * 列出file目录中所有符合names中任意名称的文件，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
+     */
+    public static void listAllWithNames(List<File> list, File file, String[] names)
     {
         File[] files = listFilesWithNames(file, names);
         list.addAll(Arrays.asList(files));
@@ -786,11 +1060,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有符合names中任意名称的文件，不区分大小写
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithNamesNoCase(String pathname, String... names)
     {
         return listFilesWithNamesNoCase(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有符合names中任意名称的文件，不区分大小写
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithNamesNoCase(File file, String... names)
     {
         final List<String> list = new ArrayList<>();
@@ -809,13 +1097,29 @@ public class FileTool
         });
     }
 
+    /**
+     * 返回名为pathname目录下所有符合names中任意名称的文件，不区分大小写
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithNamesNoCase(String pathname, boolean isAllFiles,
                                                   String... names)
     {
         return listFilesWithNamesNoCase(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesWithNamesNoCase(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有符合names中任意名称的文件，不区分大小写
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
+    public static File[] listFilesWithNamesNoCase(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -829,7 +1133,14 @@ public class FileTool
         }
     }
 
-    private static void listAllWithNamesNoCase(ArrayList<File> list, File file, String[] names)
+    /**
+     * 列出file目录中所有符合names中任意名称的文件，不区分大小写，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
+     */
+    public static void listAllWithNamesNoCase(ArrayList<File> list, File file, String[] names)
     {
         File[] files = listFilesWithNamesNoCase(file, names);
         list.addAll(Arrays.asList(files));
@@ -843,11 +1154,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有不符合names中任意名称的文件
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithoutNames(String pathname, String... names)
     {
         return listFilesWithoutNames(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有不符合names中任意名称的文件
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithoutNames(File file, String... names)
     {
         final List<String> list = asList(names);
@@ -861,12 +1186,28 @@ public class FileTool
         });
     }
 
+    /**
+     * 返回名为pathname目录下所有不符合names中任意名称的文件
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithoutNames(String pathname, boolean isAllFiles, String... names)
     {
         return listFilesWithoutNames(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesWithoutNames(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有不符合names中任意名称的文件
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
+    public static File[] listFilesWithoutNames(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -880,7 +1221,14 @@ public class FileTool
         }
     }
 
-    private static void listAllWithoutNames(List<File> list, File file, String[] names)
+    /**
+     * 列出file目录下所有不符合names中任意名称的文件，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
+     */
+    public static void listAllWithoutNames(List<File> list, File file, String[] names)
     {
         File[] files = listFilesWithoutNames(file, names);
         list.addAll(Arrays.asList(files));
@@ -894,11 +1242,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有不符合names中任意名称的文件，不区分大小写
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithoutNamesNoCase(String pathname, String... names)
     {
         return listFilesWithoutNamesNoCase(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有不符合names中任意名称的文件，不区分大小写
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithoutNamesNoCase(File file, String... names)
     {
         final List<String> list = new ArrayList<>();
@@ -917,13 +1279,29 @@ public class FileTool
         });
     }
 
+    /**
+     * 返回名为pathname目录下所有不符合names中任意名称的文件，不区分大小写
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
     public static File[] listFilesWithoutNamesNoCase(String pathname, boolean isAllFiles,
                                                      String... names)
     {
         return listFilesWithoutNamesNoCase(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesWithoutNamesNoCase(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有不符合names中任意名称的文件，不区分大小写
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件数组
+     */
+    public static File[] listFilesWithoutNamesNoCase(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -937,7 +1315,14 @@ public class FileTool
         }
     }
 
-    private static void listAllWithoutNamesNoCase(ArrayList<File> list, File file, String[] names)
+    /**
+     * 列出file目录下所有不符合names中任意名称的文件，不区分大小写，递归调用
+     *
+     * @param list  文件列表
+     * @param file  文件
+     * @param names 名称列表
+     */
+    public static void listAllWithoutNamesNoCase(ArrayList<File> list, File file, String[] names)
     {
         File[] files = listFilesWithoutNamesNoCase(file, names);
         list.addAll(Arrays.asList(files));
@@ -951,11 +1336,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有包含names列表中任意名称的文件列表
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesLikeNames(String pathname, String... names)
     {
         return listFilesLikeNames(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有包含names列表中任意名称的文件列表
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesLikeNames(File file, final String... names)
     {
         final List<String> list = getNamesList(names);
@@ -977,12 +1376,28 @@ public class FileTool
         });
     }
 
+    /**
+     * 返回名为pathname目录下所有包含names列表中任意名称的文件列表
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesLikeNames(String pathname, boolean isAllFiles, String... names)
     {
         return listFilesLikeNames(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesLikeNames(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有包含names列表中任意名称的文件列表
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
+    public static File[] listFilesLikeNames(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -996,7 +1411,14 @@ public class FileTool
         }
     }
 
-    private static void listAllLikeNames(ArrayList<File> list, File file, String[] names)
+    /**
+     * 列出file文件中所有包含name数组中名称的文件，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称数组
+     */
+    public static void listAllLikeNames(ArrayList<File> list, File file, String[] names)
     {
         File[] files = listFilesLikeNames(file, names);
         list.addAll(Arrays.asList(files));
@@ -1010,11 +1432,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesLikeNamesNoCase(String pathname, String... names)
     {
         return listFilesLikeNamesNoCase(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesLikeNamesNoCase(File file, String... names)
     {
         final List<String> list = getNamesList(names, true);
@@ -1038,13 +1474,29 @@ public class FileTool
     }
 
 
+    /**
+     * 返回名为pathname目录下所有包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesLikeNamesNoCase(String pathname, boolean isAllFiles,
                                                   String... names)
     {
         return listFilesLikeNamesNoCase(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesLikeNamesNoCase(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
+    public static File[] listFilesLikeNamesNoCase(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -1058,7 +1510,14 @@ public class FileTool
         }
     }
 
-    private static void listAllLikeNamesNoCase(ArrayList<File> list, File file, String[] names)
+    /**
+     * 列出file文件中所有包含name数组中名称的文件，不区分大小写，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称数组
+     */
+    public static void listAllLikeNamesNoCase(ArrayList<File> list, File file, String[] names)
     {
         File[] files = listFilesLikeNamesNoCase(file, names);
         list.addAll(Arrays.asList(files));
@@ -1072,12 +1531,25 @@ public class FileTool
         }
     }
 
-    private static List<String> getNamesList(String[] names)
+    /**
+     * 根据names数组返回列表
+     *
+     * @param names 名称数组
+     * @return 列表
+     */
+    public static List<String> getNamesList(String[] names)
     {
         return getNamesList(names, false);
     }
 
-    private static List<String> getNamesList(String[] names, boolean ignoreCase)
+    /**
+     * 根据names数组返回列表
+     *
+     * @param names      名称数组
+     * @param ignoreCase true：不区分大小写; false:区分大小写
+     * @return 列表
+     */
+    public static List<String> getNamesList(String[] names, boolean ignoreCase)
     {
         if(!ignoreCase)
         {
@@ -1093,11 +1565,25 @@ public class FileTool
         return list;
     }
 
+    /**
+     * 返回名为pathname目录下所有不包含names列表中任意名称的文件列表
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesDislikeNames(String pathname, String... names)
     {
         return listFilesDislikeNames(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有不包含names列表中任意名称的文件列表
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesDislikeNames(File file, String... names)
     {
         final List<String> list = getNamesList(names);
@@ -1119,12 +1605,29 @@ public class FileTool
         });
     }
 
+
+    /**
+     * 返回名为pathname目录下所有不包含names列表中任意名称的文件列表
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesDislikeNames(String pathname, boolean isAllFiles, String... names)
     {
         return listFilesDislikeNames(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesDislikeNames(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有不包含names列表中任意名称的文件列表
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
+    public static File[] listFilesDislikeNames(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -1138,7 +1641,14 @@ public class FileTool
         }
     }
 
-    private static void listAllDislikeNames(ArrayList<File> list, File file, String[] names)
+    /**
+     * 列出file文件中所有不符合name数组中名称的文件，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称数组
+     */
+    public static void listAllDislikeNames(ArrayList<File> list, File file, String[] names)
     {
         File[] files = listFilesDislikeNames(file, names);
         list.addAll(Arrays.asList(files));
@@ -1151,11 +1661,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有不包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param pathname 文件名
+     * @param names    名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesDislikeNamesNoCase(String pathname, String... names)
     {
         return listFilesDislikeNamesNoCase(fromName(pathname), names);
     }
 
+    /**
+     * 返回file目录下所有不包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param file  文件
+     * @param names 名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesDislikeNamesNoCase(File file, String... names)
     {
         final List<String> list = getNamesList(names, true);
@@ -1178,13 +1702,29 @@ public class FileTool
         });
     }
 
+    /**
+     * 返回名为pathname目录下所有不包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
     public static File[] listFilesDislikeNamesNoCase(String pathname, boolean isAllFiles,
                                                      String... names)
     {
         return listFilesDislikeNamesNoCase(fromName(pathname), isAllFiles, names);
     }
 
-    private static File[] listFilesDislikeNamesNoCase(File file, boolean isAllFiles, String[] names)
+    /**
+     * 返回file目录下所有不包含names列表中任意名称的文件列表，不区分大小写
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param names      名称列表
+     * @return 文件列表
+     */
+    public static File[] listFilesDislikeNamesNoCase(File file, boolean isAllFiles, String[] names)
     {
         if(isAllFiles)
         {
@@ -1198,7 +1738,14 @@ public class FileTool
         }
     }
 
-    private static void listAllDislikeNamesNoCase(ArrayList<File> list, File file, String[] names)
+    /**
+     * 列出file文件中所有不包含name数组中名称的文件，不区分大小写，递归调用
+     *
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称数组
+     */
+    public static void listAllDislikeNamesNoCase(ArrayList<File> list, File file, String[] names)
     {
         File[] files = listFilesDislikeNamesNoCase(file, names);
         list.addAll(Arrays.asList(files));
@@ -1212,11 +1759,25 @@ public class FileTool
         }
     }
 
+    /**
+     * 返回名为pathname目录下所有符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param pathname   文件名
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
     public static File[] listFilesWithExtension(String pathname, String... extensions)
     {
         return listFilesWithExtension(fromName(pathname), extensions);
     }
 
+    /**
+     * 返回file目录下所有符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param file       文件
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
     public static File[] listFilesWithExtension(File file, String... extensions)
     {
         final List<String> list = getNamesExtensionsList(extensions);
@@ -1234,7 +1795,70 @@ public class FileTool
         });
     }
 
-    private static List<String> getNamesExtensionsList(String[] extensions)
+    /**
+     * 返回名为pathname目录下所有符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
+    public static File[] listFilesWithExtension(String pathname, boolean isAllFiles,
+                                                String... extensions)
+    {
+        return listFilesWithExtension(fromName(pathname), isAllFiles, extensions);
+    }
+
+    /**
+     * 返回file目录下所有符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
+    public static File[] listFilesWithExtension(File file, boolean isAllFiles, String... extensions)
+    {
+        if(isAllFiles)
+        {
+            ArrayList<File> list = new ArrayList<>();
+            listAllWithExtension(list, file, extensions);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesWithExtension(file, extensions);
+        }
+    }
+
+    /**
+     * 列出file目录中所有符合extensions中任意扩展名的文件，递归调用
+     *
+     * @param list       文件列表，传出参数
+     * @param file       文件
+     * @param extensions 扩展名列表
+     */
+    public static void listAllWithExtension(List<File> list, File file, String[] extensions)
+    {
+        File[] files = listFilesWithExtension(file, extensions);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllWithExtension(list, f, extensions);
+            }
+        }
+    }
+
+    /**
+     * 根据扩展名数组返回扩展名列表
+     *
+     * @param extensions 扩展名数组
+     * @return 数组名列表
+     */
+    public static List<String> getNamesExtensionsList(String[] extensions)
     {
         List<String> list = new ArrayList<>();
         String s;
@@ -1252,11 +1876,25 @@ public class FileTool
         return list;
     }
 
+    /**
+     * 返回名为pathname目录下所有不符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param pathname   文件名
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
     public static File[] listFilesWithoutExtension(String pathname, String... extensions)
     {
         return listFilesWithoutExtension(fromName(pathname), extensions);
     }
 
+    /**
+     * 返回file目录下所有不符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param file       文件
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
     public static File[] listFilesWithoutExtension(File file, String... extensions)
     {
         final List<String> list = getNamesExtensionsList(extensions);
@@ -1272,5 +1910,63 @@ public class FileTool
                 return true;
             }
         });
+    }
+
+    /**
+     * 返回名为pathname目录下所有不符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param pathname   文件名
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
+    public static File[] listFilesWithoutExtension(String pathname, boolean isAllFiles,
+                                                   String... extensions)
+    {
+        return listFilesWithoutExtension(fromName(pathname), isAllFiles, extensions);
+    }
+
+    /**
+     * 返回file目录下所有不符合extensions列表中任意扩展名文件列表，不区分扩展名大小写
+     *
+     * @param file       文件
+     * @param isAllFiles 是不是包含所有目录文件
+     * @param extensions 扩展名列表
+     * @return 文件列表
+     */
+    public static File[] listFilesWithoutExtension(File file, boolean isAllFiles,
+                                                   String... extensions)
+    {
+        if(isAllFiles)
+        {
+            List<File> list = new ArrayList<>();
+            listAllWithoutExtension(list, file, extensions);
+            return list.toArray(new File[list.size()]);
+        }
+        else
+        {
+            return listFilesWithoutExtension(file, extensions);
+        }
+    }
+
+    /**
+     * 列出file目录中所有不符合extensions中任意扩展名的文件，递归调用
+     *
+     * @param list       文件列表，传出参数
+     * @param file       文件
+     * @param extensions 扩展名列表
+     */
+    public static void listAllWithoutExtension(List<File> list, File file, String[] extensions)
+    {
+        File[] files = listFilesWithoutExtension(file, extensions);
+        list.addAll(Arrays.asList(files));
+        files = listFiles(file);
+        for(File f : files)
+        {
+            if(f.isDirectory())
+            {
+                listAllWithoutExtension(list, f, extensions);
+            }
+        }
     }
 }

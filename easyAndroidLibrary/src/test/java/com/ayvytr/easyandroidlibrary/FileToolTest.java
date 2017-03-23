@@ -234,6 +234,19 @@ public class FileToolTest
 
         bats = FileTool.listFilesWithExtension(".", ".bat");
         assertEquals(bats.length, 1);
+
+        File[] mds1 = FileTool.listFilesWithExtension(".", true, "md");
+        assertEquals(mds1.length, 2);
+
+        File[] apps = FileTool.listFilesWithExtension("app/src", true, ".java");
+        assertEquals(apps.length, 3);
+    }
+
+    @Test
+    public void testListFilesWithoutExtension()
+    {
+        File[] files = FileTool.listFilesWithoutExtension("app/src", ".java");
+        files = FileTool.listFilesWithoutExtension("app/src", true, ".java");
     }
 
     @Test
