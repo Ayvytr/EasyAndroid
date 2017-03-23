@@ -11,7 +11,9 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 
 > ## [Chinese](README_CN.md)
 
+
 > ## [Download Docs](https://github.com/Ayvytr/EasyAndroid/releases/download/aar/EasyAndroidDocs-1.7.7z) 
+
 > ## [Download Aar](https://github.com/Ayvytr/EasyAndroid/releases/download/aar/EasyAndroid-1.7.0.aar)
 
 > ## Use
