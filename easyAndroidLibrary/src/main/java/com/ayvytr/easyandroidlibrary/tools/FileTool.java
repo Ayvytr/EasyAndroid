@@ -2345,7 +2345,6 @@ public class FileTool
      *
      * @param pathname 文件名
      * @param names    名称列表
-     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNamesNoCase(String pathname, String... names)
@@ -2431,7 +2430,6 @@ public class FileTool
      * 返回名为pathname目录下所有包含names列表中任意名称的目录
      *
      * @param pathname 文件名
-     * @param names    名称列表
      * @param names    名称列表
      * @return 目录列表
      */
@@ -2730,7 +2728,6 @@ public class FileTool
      * 返回名为pathname目录下所有不包含names列表中任意名称的目录，不区分大小写
      *
      * @param pathname 文件名
-     * @param names    名称列表
      * @param names    名称列表
      * @return 目录列表
      */
