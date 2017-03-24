@@ -1,5 +1,6 @@
 package com.ayvytr.easyandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,5 +42,10 @@ public class MainActivity extends AppCompatActivity
     {
         String string = ResTool.getString(R.string.app_name);
         ToastTool.show("获取到Res中APP名称:" + string);
+    }
+
+    public void onSeePopupWindow(View view)
+    {
+        startActivity(new Intent(this, PopupWindowActivity.class));
     }
 }

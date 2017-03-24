@@ -415,6 +415,7 @@ public class FileTool
     /**
      * 返回一个长度1024的byte数组
      *
+     * @return byte array
      * @see FileTool#DEFAULT_BYTE_SIZE
      */
     public static byte[] getByteArray()
@@ -532,7 +533,7 @@ public class FileTool
     /**
      * 根据File返回扩展名
      *
-     * @param file
+     * @param file 文件
      * @return 扩展名
      */
     public static String getExtension(File file)
@@ -560,7 +561,7 @@ public class FileTool
     /**
      * 判断文件是不是有扩展名
      *
-     * @param file
+     * @param file 文件
      * @return {@code true} 有扩展名<br>{@code false} 没有扩展名
      */
     public static boolean hasExtension(File file)
@@ -2087,6 +2088,7 @@ public class FileTool
      * 返回名为pathname目录下所有符合names列表中任意名称的目录
      *
      * @param pathname 文件名
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNames(String pathname, String... names)
@@ -2097,7 +2099,8 @@ public class FileTool
     /**
      * 返回file目录下所有符合names列表中任意名称的目录
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNames(File file, String... names)
@@ -2118,6 +2121,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNames(String pathname, boolean isAllFiles, String... names)
@@ -2130,6 +2134,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNames(File file, boolean isAllFiles, String... names)
@@ -2149,8 +2154,9 @@ public class FileTool
     /**
      * 列出file目录下所有符合names列表中任意名称的目录，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
      */
     public static void listAllDirsWithNames(List<File> list, File file, String[] names)
     {
@@ -2167,6 +2173,7 @@ public class FileTool
      * 返回名为pathname目录下所有符合names列表中任意名称的目录，不区分大小写
      *
      * @param pathname 文件名
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNamesNoCase(String pathname, String... names)
@@ -2177,7 +2184,8 @@ public class FileTool
     /**
      * 返回file目录下所有符合names列表中任意名称的目录，不区分大小写
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNamesNoCase(File file, String... names)
@@ -2198,6 +2206,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNamesNoCase(String pathname, boolean isAllFiles,
@@ -2211,6 +2220,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithNamesNoCase(File file, boolean isAllFiles, String... names)
@@ -2230,8 +2240,9 @@ public class FileTool
     /**
      * 列出file目录下所有符合names列表中任意名称的目录，忽略大小写，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
      */
     public static void listAllDirsWithNamesNoCase(List<File> list, File file, String[] names)
     {
@@ -2248,6 +2259,7 @@ public class FileTool
      * 返回名为pathname目录下所有不符合names列表中任意名称的目录
      *
      * @param pathname 文件名
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNames(String pathname, String... names)
@@ -2258,7 +2270,8 @@ public class FileTool
     /**
      * 返回file目录下所有不符合names列表中任意名称的目录
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNames(File file, String... names)
@@ -2279,6 +2292,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNames(String pathname, boolean isAllFiles, String... names)
@@ -2291,6 +2305,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNames(File file, boolean isAllFiles, String... names)
@@ -2310,8 +2325,9 @@ public class FileTool
     /**
      * 列出file目录下所有不符合names列表中任意名称的目录，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
      */
     public static void listAllDirsWithoutNames(List<File> list, File file, String[] names)
     {
@@ -2328,6 +2344,8 @@ public class FileTool
      * 返回名为pathname目录下所有不符合names列表中任意名称的目录，不区分大小写
      *
      * @param pathname 文件名
+     * @param names    名称列表
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNamesNoCase(String pathname, String... names)
@@ -2338,7 +2356,8 @@ public class FileTool
     /**
      * 返回file目录下所有不符合names列表中任意名称的目录，不区分大小写
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNamesNoCase(File file, String... names)
@@ -2359,6 +2378,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNamesNoCase(String pathname, boolean isAllFiles,
@@ -2372,6 +2392,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsWithoutNamesNoCase(File file, boolean isAllFiles, String... names)
@@ -2391,8 +2412,9 @@ public class FileTool
     /**
      * 列出file目录下所有不符合names列表中任意名称的目录，忽略大小写，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
      */
     public static void listAllDirsWithoutNamesNoCase(List<File> list, File file, String[] names)
     {
@@ -2409,6 +2431,8 @@ public class FileTool
      * 返回名为pathname目录下所有包含names列表中任意名称的目录
      *
      * @param pathname 文件名
+     * @param names    名称列表
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNames(String pathname, String... names)
@@ -2419,7 +2443,8 @@ public class FileTool
     /**
      * 返回file目录下所有包含names列表中任意名称的目录
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNames(File file, String... names)
@@ -2454,6 +2479,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNames(String pathname, boolean isAllFiles, String... names)
@@ -2466,6 +2492,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNames(File file, boolean isAllFiles, String... names)
@@ -2485,8 +2512,9 @@ public class FileTool
     /**
      * 列出file目录下所有包含names列表中任意名称的目录，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
      */
     public static void listAllDirsLikeNames(List<File> list, File file, String[] names)
     {
@@ -2503,6 +2531,7 @@ public class FileTool
      * 返回名为pathname目录下所有包含names列表中任意名称的目录，不区分大小写
      *
      * @param pathname 文件名
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNamesNoCase(String pathname, String... names)
@@ -2513,7 +2542,8 @@ public class FileTool
     /**
      * 返回file目录下所有包含names列表中任意名称的目录，不区分大小写
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNamesNoCase(File file, String... names)
@@ -2548,6 +2578,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNamesNoCase(String pathname, boolean isAllFiles,
@@ -2561,6 +2592,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsLikeNamesNoCase(File file, boolean isAllFiles, String... names)
@@ -2580,8 +2612,9 @@ public class FileTool
     /**
      * 列出file目录下所有包含names列表中任意名称的目录，忽略大小写，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param names 名称列表
+     * @param file  文件
      */
     public static void listAllDirsLikeNamesNoCase(List<File> list, File file, String[] names)
     {
@@ -2598,6 +2631,7 @@ public class FileTool
      * 返回名为pathname目录下所有不包含names列表中任意名称的目录
      *
      * @param pathname 文件名
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNames(String pathname, String... names)
@@ -2608,7 +2642,8 @@ public class FileTool
     /**
      * 返回file目录下所有不包含names列表中任意名称的目录
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNames(File file, String... names)
@@ -2643,6 +2678,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNames(String pathname, boolean isAllFiles, String... names)
@@ -2655,6 +2691,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNames(File file, boolean isAllFiles, String... names)
@@ -2674,8 +2711,9 @@ public class FileTool
     /**
      * 列出file目录下所有不包含names列表中任意名称的目录，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param file  文件
+     * @param names 名称列表
      */
     public static void listAllDirsDislikeNames(List<File> list, File file, String[] names)
     {
@@ -2692,6 +2730,8 @@ public class FileTool
      * 返回名为pathname目录下所有不包含names列表中任意名称的目录，不区分大小写
      *
      * @param pathname 文件名
+     * @param names    名称列表
+     * @param names    名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNamesNoCase(String pathname, String... names)
@@ -2702,7 +2742,8 @@ public class FileTool
     /**
      * 返回file目录下所有不包含names列表中任意名称的目录，不区分大小写
      *
-     * @param file 文件
+     * @param file  文件
+     * @param names 名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNamesNoCase(File file, String... names)
@@ -2737,6 +2778,7 @@ public class FileTool
      *
      * @param pathname   文件名
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNamesNoCase(String pathname, boolean isAllFiles,
@@ -2750,6 +2792,7 @@ public class FileTool
      *
      * @param file       文件
      * @param isAllFiles <br>{@code true} 包含所有目录文件<br>{@code false} 仅当前目录
+     * @param names      名称列表
      * @return 目录列表
      */
     public static File[] listDirsDislikeNamesNoCase(File file, boolean isAllFiles, String... names)
@@ -2769,8 +2812,9 @@ public class FileTool
     /**
      * 列出file目录下所有不包含names列表中任意名称的目录，忽略大小写，包括子目录
      *
-     * @param list 文件列表，传出参数
-     * @param file 文件
+     * @param list  文件列表，传出参数
+     * @param names 名称列表
+     * @param file  文件
      */
     public static void listAllDirsDislikeNamesNoCase(List<File> list, File file, String[] names)
     {

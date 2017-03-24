@@ -3,11 +3,9 @@ package com.ayvytr.easyandroidlibrary.tools;
 /**
  * 类型转换类，包含从大部分基本类型到 boolean, int , byte的转换等.
  * <p>
- * <p>
  * 涉及浮点数是否相等的运算，精度默认按照 {@link Convert#DOUBLE_ACCURACY}(0.00001).
  * <p>
  * 当前版本只提供了 toInt, toBool, toByte, isZero 一类方法，其他进制转换等后续根据情况决定是否添加。
- * <p>
  * <p>
  * 这个类参照 C#的Convert类设计了部分方法，有关SDK见：
  * <a href="https://msdn.microsoft.com/zh-cn/library/system.convert(v=vs.110).aspx" target="_blank">C# Convert</a>

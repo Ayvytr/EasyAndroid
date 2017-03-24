@@ -1,5 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.2-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](./LICENSE)
 
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Methods count-core: 732 | deps: 19163-e91e63.svg"/></a>
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Size-75 KB-e91e63.svg"/></a>
@@ -10,16 +12,20 @@
 
 > ## [English](README.md)
 
-
-> ## [下载文档](https://github.com/Ayvytr/EasyAndroid/releases/download/aar/EasyAndroidDocs-1.7.7z) 
-
-> ## [下载 Aar](https://github.com/Ayvytr/EasyAndroid/releases/download/aar/EasyAndroid-1.7.0.aar)
+> ## [下载文档](https://github.com/Ayvytr/EasyAndroid/releases/download/doc/EasyAndroidDocs-1.7.2.7z) 
 
 > ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
     直接使用
+    
+> ### [我要打印日志](README_Logger.md)
 
-## 编译
+# 编译
+
+## JCenter
+	compile 'com.ayvytr:EasyAndroid:1.7.2'
+
+## JitPack
 
 ### Step 1. 添加JitPack依赖
 
@@ -35,7 +41,7 @@
 #### Step 2. 添加你的仓库
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.0'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.1'
 	}
 	
 
@@ -53,6 +59,12 @@
 	RightCenterGravityTextView
 
 	SeekBarPressure: 双Thumb的SeekBar
+
+### PopupWindows  [浏览 Readme->](README_PopupWindow.md)
+	AlphaPopupWindow 
+	BasePopupWindow
+	ToggleSoftInputPopupWindow
+	TopPopupWindow
 
 ### Tool classes with out Context
 	Convert		类型转换类，仿照了C#的Convert类（对这个类情(zhen)有(de)独(hao)钟(yong)）
@@ -332,7 +344,7 @@
 	DensityToolTest
 
 
-> ### 引用如下，感谢他们的库
+> ### 借鉴如下，感谢他们的库
 1. https://github.com/Blankj/AndroidUtilCode
 2. https://github.com/Trinea/android-common
 3. https://github.com/wyouflf/xUtils3

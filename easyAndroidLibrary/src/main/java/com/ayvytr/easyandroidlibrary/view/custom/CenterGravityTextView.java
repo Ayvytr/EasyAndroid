@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidlibrary.view;
+package com.ayvytr.easyandroidlibrary.view.custom;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
@@ -6,26 +6,26 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 
 /**
- * Right center gravity text TextView.
+ * Center gravity text TextView.
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.5.0
  */
 
-public class RightCenterGravityTextView extends AppCompatTextView
+public class CenterGravityTextView extends AppCompatTextView
 {
-    public RightCenterGravityTextView(Context context)
+    public CenterGravityTextView(Context context)
     {
         this(context, null);
     }
 
-    public RightCenterGravityTextView(Context context, AttributeSet attrs)
+    public CenterGravityTextView(Context context, AttributeSet attrs)
     {
         this(context, attrs, android.R.attr.textViewStyle);
     }
 
-    public RightCenterGravityTextView(Context context, AttributeSet attrs, int defStyleAttr)
+    public CenterGravityTextView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
-        setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+        setGravity(Gravity.CENTER);
     }
 }

@@ -1,5 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.2-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](./LICENSE)
 
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Methods count-core: 732 | deps: 19163-e91e63.svg"/></a>
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Size-75 KB-e91e63.svg"/></a>
@@ -11,17 +13,21 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 
 > ## [Chinese](README_CN.md)
 
-
-> ## [Download Docs](https://github.com/Ayvytr/EasyAndroid/releases/download/aar/EasyAndroidDocs-1.7.7z) 
-
-> ## [Download Aar](https://github.com/Ayvytr/EasyAndroid/releases/download/aar/EasyAndroid-1.7.0.aar)
+> ## [Download Docs](https://github.com/Ayvytr/EasyAndroid/releases/download/doc/EasyAndroidDocs-1.7.2.7z) 
 
 > ## Use
     (About Context classes: You need call 'Easy.getDefault().init(this);' 
 	on your 'Application.onCreate()' first) 
     Then, use directly;
+    
+> ### [I want print logger](README_Logger.md)
 
-## Build
+# Build
+
+## JCenter
+	compile 'com.ayvytr:EasyAndroid:1.7.2'
+
+## JitPack
 
 ### 1. Add the JitPack repository to your build file
 
@@ -37,7 +43,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 #### 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.0'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.2'
 	}
 
 
@@ -55,6 +61,12 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 	RightCenterGravityTextView
 
 	SeekBarPressure: double Thumb SeekBar
+
+### PopupWindows  [See Readme->](README_PopupWindow.md)
+	AlphaPopupWindow 
+	BasePopupWindow
+	ToggleSoftInputPopupWindow
+	TopPopupWindow
 
 ### Tool classes with out Context
 	Convert 	Type conversion class, modeled on the C# Convert class (for this 

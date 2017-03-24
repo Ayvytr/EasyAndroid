@@ -13,6 +13,7 @@ import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationExceptio
 
 /**
  * 获取资源中的Drawable，String，dimension，color, Configuration.
+ *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.0
  */
@@ -26,6 +27,9 @@ public class ResTool
 
     /**
      * 从资源中获取Drawable
+     *
+     * @param id Drawable资源id
+     * @return Drawable
      */
     public static Drawable getDrawable(@DrawableRes int id)
     {
@@ -35,6 +39,9 @@ public class ResTool
 
     /**
      * 从资源中获取String
+     *
+     * @param id String资源id
+     * @return String
      */
     public static String getString(@StringRes int id)
     {
@@ -43,6 +50,9 @@ public class ResTool
 
     /**
      * 从资源中获取Dimension并返回
+     *
+     * @param id 尺寸资源id
+     * @return 尺寸像素值
      */
     public static int getDimen(@DimenRes int id)
     {
@@ -51,6 +61,9 @@ public class ResTool
 
     /**
      * 从资源中获取Dimension并返回float类型
+     *
+     * @param id 尺寸资源id
+     * @return 尺寸像素值
      */
     public static float getDimenFloat(@DimenRes int id)
     {
@@ -59,6 +72,9 @@ public class ResTool
 
     /**
      * 从资源中获取Dimension并返回
+     *
+     * @param id 像素资源id
+     * @return 尺寸dp值
      */
     public static int getDimenToDp(@DimenRes int id)
     {
@@ -67,6 +83,9 @@ public class ResTool
 
     /**
      * 从资源中获取Dimension并返回float类型
+     *
+     * @param id 像素资源id
+     * @return 尺寸dp值
      */
     public static float getDimenFloatToDp(@DimenRes int id)
     {
@@ -76,8 +95,8 @@ public class ResTool
     /**
      * 从资源中获取Color
      *
-     * @param id
-     * @return
+     * @param id 颜色资源id
+     * @return 颜色值
      */
     public static int getColor(@ColorRes int id)
     {
@@ -86,6 +105,8 @@ public class ResTool
 
     /**
      * 获取 Configuration
+     *
+     * @return Configuration
      */
     public static Configuration getConfiguration()
     {

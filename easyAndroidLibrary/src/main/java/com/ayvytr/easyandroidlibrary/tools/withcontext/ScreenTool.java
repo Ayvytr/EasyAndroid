@@ -17,6 +17,7 @@ import static com.ayvytr.easyandroidlibrary.tools.withcontext.ResTool.getConfigu
 /**
  * 提供了获取屏幕尺寸，宽高，屏幕旋转方向，设置为竖屏，是不是横屏/竖屏，获取屏幕截图（包含/不包含状态栏)，
  * 判断是不是锁屏的功能.
+ *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.0
  */
@@ -29,6 +30,8 @@ public class ScreenTool
 
     /**
      * 获取屏幕DisplayMetrics
+     *
+     * @return DisplayMetrics
      */
     public static DisplayMetrics getDisplayMetrics()
     {
@@ -42,6 +45,8 @@ public class ScreenTool
 
     /**
      * 获取屏幕的宽度（单位：px）
+     *
+     * @return 屏幕宽度
      */
     public static int getScreenWidth()
     {
@@ -50,6 +55,8 @@ public class ScreenTool
 
     /**
      * 获取屏幕的高度（单位：px）
+     *
+     * @return 屏幕高度
      */
     public static int getScreenHeight()
     {
@@ -83,6 +90,8 @@ public class ScreenTool
 
     /**
      * 判断是否横屏
+     *
+     * @return {@code true} 是横屏<br>
      */
     public static boolean isLandscape()
     {
@@ -92,6 +101,8 @@ public class ScreenTool
 
     /**
      * 判断是否竖屏
+     *
+     * @return {@code true} 是竖屏<br>
      */
     public static boolean isPortrait()
     {
@@ -185,6 +196,8 @@ public class ScreenTool
 
     /**
      * 判断是否锁屏
+     *
+     * @return {@code true} 是锁屏
      */
     public static boolean isScreenLock()
     {

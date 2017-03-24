@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidlibrary.view;
+package com.ayvytr.easyandroidlibrary.view.custom;
 
 import android.content.Context;
 import android.content.res.Resources;

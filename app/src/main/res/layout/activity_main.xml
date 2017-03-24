@@ -13,6 +13,12 @@
         android:orientation="vertical"
         tools:context="com.ayvytr.easyandroid.MainActivity">
 
+        <Button
+            android:text="我要看PopupWindow"
+            android:onClick="onSeePopupWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <TextView
             style="@style/MatchParent_WrapContent"
             android:text="aaaa"/>
@@ -22,17 +28,17 @@
             android:layout_height="wrap_content"
             android:text="aaa"/>
 
-        <com.ayvytr.easyandroidlibrary.view.CenterGravityTextView
+        <com.ayvytr.easyandroidlibrary.view.custom.CenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Center Gravity tv"/>
 
-        <com.ayvytr.easyandroidlibrary.view.LeftCenterGravityTextView
+        <com.ayvytr.easyandroidlibrary.view.custom.LeftCenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="Left Center Gravity tv"/>
 
-        <com.ayvytr.easyandroidlibrary.view.RightCenterGravityTextView
+        <com.ayvytr.easyandroidlibrary.view.custom.RightCenterGravityTextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="Right Center Gravity tv"/>
@@ -66,12 +72,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50">
 
-            <com.ayvytr.easyandroidlibrary.view.CenterGravityTextView
+            <com.ayvytr.easyandroidlibrary.view.custom.CenterGravityTextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="SeekBarPressure"/>
 
-            <com.ayvytr.easyandroidlibrary.view.SeekBarPressure
+            <com.ayvytr.easyandroidlibrary.view.custom.SeekBarPressure
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>

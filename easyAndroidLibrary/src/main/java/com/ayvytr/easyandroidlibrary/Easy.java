@@ -77,6 +77,8 @@ public class Easy
 
     /**
      * 获取 ClipboardManager
+     *
+     * @return ClipboardManager
      */
     public ClipboardManager getClipboardManager()
     {
@@ -85,6 +87,8 @@ public class Easy
 
     /**
      * 获取WindowManager
+     *
+     * @return WindowManager
      */
     public WindowManager getWindowManager()
     {
@@ -93,6 +97,8 @@ public class Easy
 
     /**
      * 获取KeyguardManager
+     *
+     * @return KeyguardManager
      */
     public KeyguardManager getKeyguardManager()
     {

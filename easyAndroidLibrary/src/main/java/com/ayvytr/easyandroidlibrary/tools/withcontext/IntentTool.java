@@ -215,6 +215,7 @@ public class IntentTool
      * 获取跳至拨号界面意图
      *
      * @param phoneNumber 电话号码
+     * @return Intent
      */
     public static Intent getDialIntent(String phoneNumber)
     {
@@ -227,6 +228,7 @@ public class IntentTool
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.CALL_PHONE"/>}</p>
      *
      * @param phoneNumber 电话号码
+     * @return Intent
      */
     public static Intent getCallIntent(String phoneNumber)
     {
@@ -239,6 +241,7 @@ public class IntentTool
      *
      * @param phoneNumber 接收号码
      * @param content     短信内容
+     * @return Intent
      */
     public static Intent getSendSmsIntent(String phoneNumber, String content)
     {
