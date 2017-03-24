@@ -2,6 +2,8 @@ package com.ayvytr.easyandroidlibrary.tools.withcontext;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,14 +16,17 @@ import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationExceptio
 import com.ayvytr.easyandroidlibrary.tools.FileTool;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * 获取常用的Intent.
  * <p>
+ * 原作者：blankj
  * blog  : http://blankj.com
  * </p>
  *
- * @author Blankj
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 public class IntentTool
 {
@@ -264,5 +269,18 @@ public class IntentTool
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outUri);
         return intent
                 .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+
+    /**
+     * 获取可以响应intent的Activity列表.<br>
+     * {@code null} 没有可以相应这个intent的Activity.
+     *
+     * @param intent
+     * @return 可以响应intent的Activity列表
+     */
+    public static List<ResolveInfo> queryIntentActivities(Intent intent)
+    {
+        PackageManager packageManager = Easy.getContext().getPackageManager();
+        return packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
     }
 }

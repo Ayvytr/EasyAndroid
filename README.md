@@ -368,4 +368,3 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 3. Complements my library, Add more useful features
 4. Personal website
 5. Separate Android and Java code, Packaged into different libraries
-6. Publish to JCenter

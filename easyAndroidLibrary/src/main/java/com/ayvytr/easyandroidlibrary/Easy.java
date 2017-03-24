@@ -1,9 +1,6 @@
 package com.ayvytr.easyandroidlibrary;
 
-import android.app.KeyguardManager;
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.view.WindowManager;
 
 import com.ayvytr.easyandroidlibrary.exception.UnInitLibraryException;
 
@@ -75,33 +72,4 @@ public class Easy
         easy = null;
     }
 
-    /**
-     * 获取 ClipboardManager
-     *
-     * @return ClipboardManager
-     */
-    public ClipboardManager getClipboardManager()
-    {
-        return (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-    }
-
-    /**
-     * 获取WindowManager
-     *
-     * @return WindowManager
-     */
-    public WindowManager getWindowManager()
-    {
-        return (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-    }
-
-    /**
-     * 获取KeyguardManager
-     *
-     * @return KeyguardManager
-     */
-    public KeyguardManager getKeyguardManager()
-    {
-        return (KeyguardManager) getContext().getSystemService(Context.KEYGUARD_SERVICE);
-    }
 }
