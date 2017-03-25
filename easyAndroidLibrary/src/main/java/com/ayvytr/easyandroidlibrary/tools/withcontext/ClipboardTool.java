@@ -8,6 +8,8 @@ import android.net.Uri;
 import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
+import static com.ayvytr.easyandroidlibrary.tools.withcontext.Managers.getClipboardManager;
+
 /**
  * 剪贴板操作类，从剪贴板中获取/设置文本，Intent，Uri.
  * <p>
@@ -35,7 +37,7 @@ public class ClipboardTool
      */
     public static void setText(CharSequence text)
     {
-        ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
+        ClipboardManager clipboardManager = getClipboardManager();
         clipboardManager.setPrimaryClip(ClipData.newPlainText(TEXT, text));
     }
 
@@ -57,7 +59,7 @@ public class ClipboardTool
      */
     public static String getText(String textIfNull)
     {
-        ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
+        ClipboardManager clipboardManager = getClipboardManager();
         ClipData clipData = clipboardManager.getPrimaryClip();
         if(clipData != null && clipData.getItemCount() > 0)
         {
@@ -74,7 +76,7 @@ public class ClipboardTool
      */
     public static void setUri(Uri uri)
     {
-        ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
+        ClipboardManager clipboardManager = Managers.getClipboardManager();
         clipboardManager.setPrimaryClip(
                 ClipData.newUri(Easy.getContext().getContentResolver(), URI, uri));
     }
@@ -86,7 +88,7 @@ public class ClipboardTool
      */
     public static Uri getUri()
     {
-        ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
+        ClipboardManager clipboardManager = Managers.getClipboardManager();
         ClipData clipData = clipboardManager.getPrimaryClip();
         if(clipData != null && clipData.getItemCount() > 0)
         {
@@ -102,7 +104,7 @@ public class ClipboardTool
      */
     public static void setIntent(Intent intent)
     {
-        ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
+        ClipboardManager clipboardManager = Managers.getClipboardManager();
         clipboardManager.setPrimaryClip(ClipData.newIntent(Intent, intent));
     }
 
@@ -113,7 +115,7 @@ public class ClipboardTool
      */
     public static Intent getIntent()
     {
-        ClipboardManager clipboardManager = Easy.getDefault().getClipboardManager();
+        ClipboardManager clipboardManager = Managers.getClipboardManager();
         ClipData clipData = clipboardManager.getPrimaryClip();
         if(clipData != null && clipData.getItemCount() > 0)
         {

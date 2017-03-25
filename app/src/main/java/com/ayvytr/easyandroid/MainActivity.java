@@ -8,6 +8,7 @@ import android.view.View;
 import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.tools.withcontext.ClipboardTool;
 import com.ayvytr.easyandroidlibrary.tools.withcontext.ResTool;
+import com.ayvytr.easyandroidlibrary.tools.withcontext.Managers;
 import com.ayvytr.easyandroidlibrary.tools.withcontext.ToastTool;
 
 public class MainActivity extends AppCompatActivity
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity
 
     private void init()
     {
+        Managers.getVibrator().vibrate(1000);
     }
 
     public void onGetClipboard(View view)
@@ -42,10 +44,16 @@ public class MainActivity extends AppCompatActivity
     {
         String string = ResTool.getString(R.string.app_name);
         ToastTool.show("获取到Res中APP名称:" + string);
+        findViewById(R.id.btnPerform).performClick();
     }
 
     public void onSeePopupWindow(View view)
     {
         startActivity(new Intent(this, PopupWindowActivity.class));
+    }
+
+    public void onPerformClick(View view)
+    {
+        ToastTool.show("performClick");
     }
 }

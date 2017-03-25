@@ -9,7 +9,6 @@ import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.ayvytr.easyandroidlibrary.Easy;
 import com.ayvytr.easyandroidlibrary.exception.UnsupportedInitializationException;
 
 import static com.ayvytr.easyandroidlibrary.tools.withcontext.ResTool.getConfiguration;
@@ -35,7 +34,7 @@ public class ScreenTool
      */
     public static DisplayMetrics getDisplayMetrics()
     {
-        WindowManager windowManager = Easy.getDefault().getWindowManager();
+        WindowManager windowManager = Managers.getWindowManager();
         // 创建了一张白纸
         DisplayMetrics dm = new DisplayMetrics();
         // 给白纸设置宽高
@@ -201,7 +200,7 @@ public class ScreenTool
      */
     public static boolean isScreenLock()
     {
-        return Easy.getDefault().getKeyguardManager().inKeyguardRestrictedInputMode();
+        return Managers.getKeyguardManager().inKeyguardRestrictedInputMode();
     }
 
 }
