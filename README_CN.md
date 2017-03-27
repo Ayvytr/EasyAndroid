@@ -12,7 +12,7 @@
 
 > ## [English](README.md)
 
-> ## [下载文档](https://github.com/Ayvytr/EasyAndroid/releases/download/doc/EasyAndroidDocs-1.7.2.7z) 
+> ## [下载文档](https://github.com/Ayvytr/EasyAndroid/releases/download/1.7.3/EasyAndroidDocs.7z) 
 
 > ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
