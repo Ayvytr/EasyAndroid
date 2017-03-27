@@ -13,7 +13,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 
 > ## [Chinese](README_CN.md)
 
-> ## [Download Docs](https://github.com/Ayvytr/EasyAndroid/releases/download/doc/EasyAndroidDocs-1.7.2.7z) 
+> ## [Download Docs](https://github.com/Ayvytr/EasyAndroid/releases/download/doc/EasyAndroidDocs.7z) 
 
 > ## Use
     (About Context classes: You need call 'Easy.getDefault().init(this);' 
