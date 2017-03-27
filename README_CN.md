@@ -3,10 +3,7 @@
 [![jCenter](https://img.shields.io/badge/jCenter-1.7.3-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-<a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Methods count-core: 732 | deps: 19163-e91e63.svg"/></a>
-<a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Size-75 KB-e91e63.svg"/></a>
-
-<a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Methods and size-core: 732 | deps: 19163 | 75 KB-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=com.ayvytr:EasyAndroid:1.7.3"><img src="https://img.shields.io/badge/Methods and size-780 | 81 KB-e91e63.svg"/></a>
 
 # EasyAndroid 库
 
