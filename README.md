@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.2-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.3-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 <a href="http://www.methodscount.com/?lib=com.github.Ayvytr%3AEasyAndroid%3A1.7.0"><img src="https://img.shields.io/badge/Methods count-core: 732 | deps: 19163-e91e63.svg"/></a>
@@ -25,7 +25,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.2'
+	compile 'com.ayvytr:EasyAndroid:1.7.3'
 
 ## JitPack
 
@@ -43,7 +43,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 #### 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.2'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.3'
 	}
 
 
@@ -349,6 +349,52 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		makeLong
 		show
 		showLong
+
+	Managers	Get Android Manager classes instance.
+		getAccessibilityManager
+		getAccountManager
+		getActivityManager
+		getAlarmManager
+		getAppOpsManager
+		getAppWidgetManager
+		getAudioManager
+		getBatteryManager
+		getBluetoothManager
+		getCameraManager
+		getCaptioningManager
+		getCarrierConfigManager
+		getClipboardManager
+		getConsumerIrManager
+		getDisplayManagerCompat
+		getDownloadManager
+		getFingerprintManager
+		getHardwarePropertiesManager
+		getInputMethodManager
+		getJobScheduler
+		getKeyguardManager
+		getLauncherApps
+		getLayoutInflater
+		getLocationManager
+		getMediaRouter
+		getMediaSessionManager
+		getMidiManager
+		getNfcManager
+		getNotificationManager
+		getNsdManager
+		getPackageManager
+		getPowerManager
+		getPrintManager
+		getRestrictionsManager
+		getSensorManager
+		getStorageManage
+		getTelecomManager
+		getTelephonyManager
+		getTextServicesManager
+		getUiModeManager
+		getUserManager
+		getVibrator
+		getWallpaperManager
+		getWindowManager
 		    
 > ## Test Classes for library classes
 	ConvertTest

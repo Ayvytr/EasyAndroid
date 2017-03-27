@@ -275,7 +275,7 @@ public class IntentTool
      * 获取可以响应intent的Activity列表.<br>
      * {@code null} 没有可以相应这个intent的Activity.
      *
-     * @param intent
+     * @param intent Intent
      * @return 可以响应intent的Activity列表
      */
     public static List<ResolveInfo> queryIntentActivities(Intent intent)
