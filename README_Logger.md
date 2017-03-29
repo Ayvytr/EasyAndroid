@@ -93,7 +93,7 @@ L.t(1).d("hello");
 
 ![](photos/logger/log5.png)
 
-#### 更改方法栈偏移(方法调用信息将会前移数量，和前边一张图片比较一下)
+#### 更改方法栈偏移(方法调用信息将会前移这个数量，和前边一张图片比较一下，聪明的你是不是又发现了什么？)
 To integrate logger with other libraries, you can set the offset in order to avoid that library's methods.
 ```java
 L.getSettings().methodOffset(10);
@@ -142,6 +142,7 @@ L
 }
 
 ```
+
 ## 你的无(bian)理(tai)要求我都能满足
 
 #### 默认的样子
@@ -197,6 +198,7 @@ L.getSettings().justShowMessage(true);
 L.d();
 L.w();   
 ```
+
 ![](photos/logger/log11.png)
 
 #### 我要屏蔽日志（试试看能不能打印出来？）
@@ -210,13 +212,13 @@ class CustomLogAdapter Implement LogAdapter {}
 settings.logAdapter(new CustomLogAdapter())
 ```
 
-### Notes
+> # Notes
 - 使用日志筛选，格式更整齐
 
-![](photos/logger/filter.png)
+> ![](photos/logger/filter.png)
 
-- 确认关掉日志换行选项
+> - 确认关掉日志换行选项
 
-![](photos/logger/wrap-closed.png)
+> ![](photos/logger/wrap-closed.png)
 
-- Release使用LogLevel.NONE不输出任何日志
+> - Release使用LogLevel.NONE不输出任何日志
