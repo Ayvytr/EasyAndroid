@@ -1,6 +1,6 @@
 group = PROJ_GROUP
 version = LOGGER_VERSION
-project.archivesBaseName = PROJ_ARTIFACTID
+project.archivesBaseName = LOGGER_ARTIFACTID
 
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
@@ -28,7 +28,7 @@ javadoc {
         author true
         version true
         links "http://docs.oracle.com/javase/7/docs/api"
-        title PROJ_ARTIFACTID
+        title LOGGER_ARTIFACTID
     }
 }
 
@@ -57,7 +57,7 @@ def pomConfig = {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId PROJ_ARTIFACTID
+            artifactId LOGGER_ARTIFACTID
 
             pom{
                 packaging 'aar'
