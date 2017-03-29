@@ -10,10 +10,10 @@ public class UnInitLibraryException extends RuntimeException
     {
         super(UnInitLibraryException.class.getSimpleName() +
                 ".Before you use, " +
-                "you need call 'Easy.getDefault.init(Context)' " +
+                "you need call 'Easy.getDefault.initTag(Context)' " +
                 "on your method 'Application.onCreate()'" +
-                "(or any other location) to init.\n" +
+                "(or any other location) to initTag.\n" +
                 "未初始化库异常，在使用之前，你需要在'Application.onCreate()'" +
-                "(或者其他位置)中调用'Easy.getDefault().init(Context)初始化。");
+                "(或者其他位置)中调用'Easy.getDefault().initTag(Context)初始化。");
     }
 }

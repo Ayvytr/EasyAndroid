@@ -20,18 +20,19 @@
  * This software contains code derived from the following Android classes:
  * android.util.Log, android.text.TextUtils.
  */
-package com.ayvytr.easyandroidlibrary.logger;
+package com.ayvytr.logger;
 
-public enum LogLevel
+interface LogAdapter
 {
+    void d(String tag, String message);
 
-    /**
-     * Prints all logs
-     */
-    FULL,
+    void e(String tag, String message);
 
-    /**
-     * No log will be printed
-     */
-    NONE
+    void w(String tag, String message);
+
+    void i(String tag, String message);
+
+    void v(String tag, String message);
+
+    void wtf(String tag, String message);
 }

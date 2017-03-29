@@ -10,7 +10,7 @@ import java.lang.ref.SoftReference;
  * 这个库的单例入口类, 使用有关Context的类之前，需要初始化这个类.
  * <p>
  * 提供了获取Context，常用SystemService等方法，在使用 ClipboardTool, DensityTool 等类之前，
- * 需要调用'Easy.getDefault().init(context);' 初始化。
+ * 需要调用'Easy.getDefault().initTag(context);' 初始化。
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.0.0
@@ -57,7 +57,7 @@ public class Easy
     {
         if(context == null)
         {
-            throw new NullPointerException("Context is null on 'init'.");
+            throw new NullPointerException("Context is null on 'initTag'.");
         }
 
         this.contextRef = new SoftReference<>(context);

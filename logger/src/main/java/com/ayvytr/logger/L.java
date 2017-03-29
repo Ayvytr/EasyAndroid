@@ -21,7 +21,8 @@
  * android.util.Log, android.text.TextUtils.
  */
 
-package com.ayvytr.easyandroidlibrary.logger;
+package com.ayvytr.logger;
+
 
 /**
  * L is a wrapper of {@link android.util.Log}
@@ -29,67 +30,28 @@ package com.ayvytr.easyandroidlibrary.logger;
  */
 public final class L
 {
-    public static final int DEBUG = 3;
-    public static final int ERROR = 6;
-    public static final int ASSERT = 7;
-    public static final int INFO = 4;
-    public static final int VERBOSE = 2;
-    public static final int WARN = 5;
+    static final String DEFAULT_TAG = "PRETTYLOGGER";
 
-    private static final String DEFAULT_TAG = "PRETTYLOGGER";
+    private static Settings settings = new Settings();
+    private static Printer printer = new Printer(settings);
 
-    private static LPrinter printer = new LPrinter();
-
-    //no instance
     private L()
     {
+        throw new UnsupportedInitializationException();
     }
 
+    public static IPrinter t(String tag)
+    {
+        return printer.t(tag);
+    }
     /**
      * It is used to get the settings object in order to change settings
      *
      * @return the settings object
      */
-    public static LSettings init()
+    public static Settings getSettings()
     {
-        return init(DEFAULT_TAG);
-    }
-
-    /**
-     * It is used to change the tag
-     *
-     * @param tag is the given string which will be used in L as TAG
-     * @return LSettings
-     */
-    public static LSettings init(String tag)
-    {
-        printer = new LPrinter();
-        return printer.init(tag);
-    }
-
-    public static void resetSettings()
-    {
-        printer.resetSettings();
-    }
-
-    public static Printer t(String tag)
-    {
-        return printer.t(tag, printer.getSettings().getMethodCount());
-    }
-
-    public static Printer t(int methodCount)
-    {
-        return printer.t(null, methodCount);
-    }
-
-    public static Printer t(String tag, int methodCount)
-    {
-        return printer.t(tag, methodCount);
-    }
-
-    public static void log(int priority, String tag, String message, Throwable throwable)
-    {
-        printer.log(priority, tag, message, throwable);
+        return settings;
     }
 
     public static void d(String message, Object... args)
@@ -152,4 +114,64 @@ public final class L
         printer.xml(xml);
     }
 
+
+    public static void v(Object... objects)
+    {
+        printer.v(objects);
+    }
+
+    public static void d(Object... objects)
+    {
+        printer.d(objects);
+    }
+
+    public static void i(Object... objects)
+    {
+        printer.i(objects);
+    }
+
+    public static void w(Object... objects)
+    {
+        printer.w(objects);
+    }
+
+    public static void e(Object... objects)
+    {
+        printer.e(objects);
+    }
+
+    public static void wtf(Object... objects)
+    {
+        printer.wtf(objects);
+    }
+
+    public static void v()
+    {
+        printer.v();
+    }
+
+    public static void d()
+    {
+        printer.d();
+    }
+
+    public static void i()
+    {
+        printer.i();
+    }
+
+    public static void w()
+    {
+        printer.w();
+    }
+
+    public static void e()
+    {
+        printer.e();
+    }
+
+    public static void wtf()
+    {
+        printer.wtf();
+    }
 }

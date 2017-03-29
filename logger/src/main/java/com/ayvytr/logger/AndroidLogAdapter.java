@@ -20,19 +20,46 @@
  * This software contains code derived from the following Android classes:
  * android.util.Log, android.text.TextUtils.
  */
-package com.ayvytr.easyandroidlibrary.logger;
 
-interface LogAdapter
+package com.ayvytr.logger;
+
+import android.util.Log;
+
+class AndroidLogAdapter implements LogAdapter
 {
-    void d(String tag, String message);
+    @Override
+    public void d(String tag, String message)
+    {
+        Log.d(tag, message);
+    }
 
-    void e(String tag, String message);
+    @Override
+    public void e(String tag, String message)
+    {
+        Log.e(tag, message);
+    }
 
-    void w(String tag, String message);
+    @Override
+    public void w(String tag, String message)
+    {
+        Log.w(tag, message);
+    }
 
-    void i(String tag, String message);
+    @Override
+    public void i(String tag, String message)
+    {
+        Log.i(tag, message);
+    }
 
-    void v(String tag, String message);
+    @Override
+    public void v(String tag, String message)
+    {
+        Log.v(tag, message);
+    }
 
-    void wtf(String tag, String message);
+    @Override
+    public void wtf(String tag, String message)
+    {
+        Log.wtf(tag, message);
+    }
 }

@@ -21,20 +21,13 @@
  * android.util.Log, android.text.TextUtils.
  */
 
-package com.ayvytr.easyandroidlibrary.logger;
+package com.ayvytr.logger;
 
-interface Printer
+public interface IPrinter
 {
-
-    Printer t(String tag, int methodCount);
-
-    LSettings init(String tag);
-
-    LSettings getSettings();
+    IPrinter t(String tag);
 
     void d(String message, Object... args);
-
-    void d(Object object);
 
     void e(String message, Object... args);
 
@@ -54,6 +47,20 @@ interface Printer
 
     void log(int priority, String tag, String message, Throwable throwable);
 
-    void resetSettings();
+    //最简Log, 以下几个无参Log使用
+    void prettyLog(int priority, String tag, String message);
 
+    void v();
+    void d();
+    void i();
+    void w();
+    void e();
+    void wtf();
+
+    void v(Object... objects);
+    void d(Object... objects);
+    void i(Object... objects);
+    void w(Object... objects);
+    void e(Object... objects);
+    void wtf(Object... objects);
 }

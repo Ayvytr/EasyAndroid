@@ -20,28 +20,33 @@
  * This software contains code derived from the following Android classes:
  * android.util.Log, android.text.TextUtils.
  */
-package com.ayvytr.easyandroidlibrary.logger;
+package com.ayvytr.logger;
 
-public final class LSettings
+import android.support.annotation.NonNull;
+
+public final class Settings
 {
-
     private int methodCount = 2;
     private boolean showThreadInfo = true;
     private int methodOffset = 0;
+    //是否显示底部Border，默认不显示
+    private boolean showBottomLogBorder;
     private LogAdapter logAdapter;
 
     /**
      * Determines to how logs will be printed
      */
     private LogLevel logLevel = LogLevel.FULL;
+    private String tag = L.DEFAULT_TAG;
+    private boolean justShowMessage;
 
-    public LSettings hideThreadInfo()
+    public Settings hideThreadInfo()
     {
         showThreadInfo = false;
         return this;
     }
 
-    public LSettings methodCount(int methodCount)
+    public Settings methodCount(int methodCount)
     {
         if(methodCount < 0)
         {
@@ -51,21 +56,15 @@ public final class LSettings
         return this;
     }
 
-    public LSettings logLevel(LogLevel logLevel)
+    public Settings logLevel(LogLevel logLevel)
     {
         this.logLevel = logLevel;
         return this;
     }
 
-    public LSettings methodOffset(int offset)
+    public Settings methodOffset(int offset)
     {
         this.methodOffset = offset;
-        return this;
-    }
-
-    public LSettings logAdapter(LogAdapter logAdapter)
-    {
-        this.logAdapter = logAdapter;
         return this;
     }
 
@@ -89,6 +88,12 @@ public final class LSettings
         return methodOffset;
     }
 
+    public Settings logAdapter(LogAdapter logAdapter)
+    {
+        this.logAdapter = logAdapter;
+        return this;
+    }
+
     public LogAdapter getLogAdapter()
     {
         if(logAdapter == null)
@@ -104,5 +109,43 @@ public final class LSettings
         methodOffset = 0;
         showThreadInfo = true;
         logLevel = LogLevel.FULL;
+    }
+
+    public boolean isShowBottomLogBorder()
+    {
+        return showBottomLogBorder;
+    }
+
+    public Settings showBottomBorder(boolean showBottomBorder)
+    {
+        this.showBottomLogBorder = showBottomBorder;
+        return this;
+    }
+
+    public Settings tag(@NonNull String tag)
+    {
+        if(tag == null)
+        {
+            throw new NullPointerException();
+        }
+
+        this.tag = tag;
+        return this;
+    }
+
+    public String getTag()
+    {
+        return tag;
+    }
+
+    public Settings justShowMessage(boolean justShowMessage)
+    {
+        this.justShowMessage = justShowMessage;
+        return this;
+    }
+
+    public boolean isJustShowMessage()
+    {
+        return justShowMessage;
     }
 }
