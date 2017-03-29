@@ -31,4 +31,4 @@ dependencies {
     compile project(':logger')
 }
 
-apply from: '../bintray/EasyAndroid.gradle'
+apply from: '../gradle/EasyAndroid.gradle'
