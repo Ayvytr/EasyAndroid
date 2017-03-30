@@ -1,9 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.3-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.4-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
-
-<a href="http://www.methodscount.com/?lib=com.ayvytr:EasyAndroid:1.7.3"><img src="https://img.shields.io/badge/Methods and size-780 | 81 KB-e91e63.svg"/></a>
 
 # EasyAndroid Library
 Simplify development steps for Android Developers.(为Android开发者提供的简化开发过程的库)
@@ -17,12 +15,12 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 	on your 'Application.onCreate()' first) 
     Then, use directly;
     
-> ### [I want print logger](README_Logger.md)
+> ### [I want print logger](https://github.com/Ayvytr/Logger)
 
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.3'
+	compile 'com.ayvytr:EasyAndroid:1.7.4'
 
 ## JitPack
 
@@ -40,7 +38,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 #### 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.3'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.4'
 	}
 
 
@@ -401,9 +399,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 
 > ### Quote below, thanks for their libraries
 1. https://github.com/Blankj/AndroidUtilCode
-2. https://github.com/Trinea/android-common
-3. https://github.com/wyouflf/xUtils3
-4. https://github.com/jingle1267/android-utils
+
 
 > ### TODO:
 1. Complements Convert class

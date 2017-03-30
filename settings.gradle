@@ -1,1 +1,1 @@
-include ':app', ':easyAndroidLibrary', ':logger'
+include ':app', ':easyAndroidLibrary'

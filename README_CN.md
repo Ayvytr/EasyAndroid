@@ -1,9 +1,7 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.3-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.4-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
-
-<a href="http://www.methodscount.com/?lib=com.ayvytr:EasyAndroid:1.7.3"><img src="https://img.shields.io/badge/Methods and size-780 | 81 KB-e91e63.svg"/></a>
 
 # EasyAndroid 库
 
@@ -15,12 +13,12 @@
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
     直接使用
     
-> ### [我要打印日志](README_Logger.md)
+> ### [我要打印日志](https://github.com/Ayvytr/Logger)
 
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.3'
+	compile 'com.ayvytr:EasyAndroid:1.7.4'
 
 ## JitPack
 
@@ -38,7 +36,7 @@
 #### Step 2. 添加你的仓库
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.3'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.4'
 	}
 	
 
@@ -389,9 +387,6 @@
 
 > ### 借鉴如下，感谢他们的库
 1. https://github.com/Blankj/AndroidUtilCode
-2. https://github.com/Trinea/android-common
-3. https://github.com/wyouflf/xUtils3
-4. https://github.com/jingle1267/android-utils
 
 
 > ### TODO:
