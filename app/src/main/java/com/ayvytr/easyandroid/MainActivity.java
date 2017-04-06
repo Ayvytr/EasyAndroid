@@ -56,4 +56,9 @@ public class MainActivity extends AppCompatActivity
     {
         ToastTool.show("performClick");
     }
+
+    public void onSeePackages(View view)
+    {
+        startActivity(new Intent(this, PackagesActivity.class));
+    }
 }
