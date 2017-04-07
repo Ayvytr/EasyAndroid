@@ -3,10 +3,10 @@ package com.ayvytr.easyandroidlibrary.bean;
 import android.graphics.drawable.Drawable;
 
 /**
- * Desc:
- * Date: 2017/4/6
+ * 包含应用label，package name，icon 等信息的Bean类.
  *
- * @author davidwang
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.7.5
  */
 
 public class AppInfo

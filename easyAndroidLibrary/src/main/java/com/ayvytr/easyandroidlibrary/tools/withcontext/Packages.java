@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Desc:
- * Date: 2017/4/6
+ * 获取安装的应用程序等功能.
  *
- * @author davidwang
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.7.5
  */
 
 public class Packages

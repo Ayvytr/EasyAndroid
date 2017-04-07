@@ -30,4 +30,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-apply from: '../gradle/EasyAndroid.gradle'
+//apply from: '../gradle/EasyAndroid.gradle'
+apply from: '../gradle/upload.gradle'
+
+

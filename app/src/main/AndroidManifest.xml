@@ -21,6 +21,8 @@
         <activity android:name=".PopupWindowActivity"/>
         <activity android:name=".PackagesActivity">
         </activity>
+        <activity android:name=".SystemInfoActivity">
+        </activity>
     </application>
 
 </manifest>

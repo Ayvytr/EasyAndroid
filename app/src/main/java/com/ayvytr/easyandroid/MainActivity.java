@@ -61,4 +61,9 @@ public class MainActivity extends AppCompatActivity
     {
         startActivity(new Intent(this, PackagesActivity.class));
     }
+
+    public void onSystemInfo(View view)
+    {
+        startActivity(new Intent(this, SystemInfoActivity.class));
+    }
 }
