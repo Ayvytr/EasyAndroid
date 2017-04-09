@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroid.tools.withcontext;
+package com.ayvytr.easyandroid.tools;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +8,8 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
+
+import com.ayvytr.easyandroid.tools.withcontext.ResTool;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

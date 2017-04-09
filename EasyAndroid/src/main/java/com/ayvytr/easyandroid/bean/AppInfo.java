@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.ayvytr.easyandroid.tools.withcontext.BitmapTool;
+import com.ayvytr.easyandroid.tools.BitmapTool;
 
 /**
  * 包含应用label，package name，icon 等信息的Bean类.
