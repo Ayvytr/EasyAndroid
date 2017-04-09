@@ -3,6 +3,7 @@ package com.ayvytr.easyandroid.tools.withcontext;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -22,7 +23,7 @@ public class BitmapTool
 {
 
     /**
-     * drawable 转换为 Bitmap
+     * drawable 转换为 Bitmap.
      *
      * @param drawable Drawable
      * @return Bitmap
@@ -34,7 +35,7 @@ public class BitmapTool
     }
 
     /**
-     * drawable 转换为 Bitmap
+     * drawable 转换为 Bitmap.
      *
      * @param drawable Drawable
      * @return Bitmap
@@ -56,7 +57,7 @@ public class BitmapTool
     }
 
     /**
-     * Drawable 转换为Bitmap
+     * Drawable 转换为Bitmap.
      *
      * @param id Drawable id
      * @return Bitmap
@@ -68,7 +69,7 @@ public class BitmapTool
     }
 
     /**
-     * Drawable 转换为Bitmap
+     * Drawable 转换为Bitmap.
      *
      * @param id Drawable id
      * @return Bitmap
@@ -80,7 +81,7 @@ public class BitmapTool
     }
 
     /**
-     * byte[] 转换为 Bitmap
+     * byte[] 转换为 Bitmap.
      *
      * @param bytes byte[]
      * @return Bitmap
@@ -91,7 +92,7 @@ public class BitmapTool
     }
 
     /**
-     * byte[] 转换为 Drawable
+     * byte[] 转换为 Drawable.
      *
      * @param bytes byte[]
      * @return Drawable
@@ -102,7 +103,7 @@ public class BitmapTool
     }
 
     /**
-     * Bitmap 转换为 Drawable
+     * Bitmap 转换为 Drawable.
      *
      * @param bitmap Bitmap
      * @return Drawable
@@ -113,7 +114,7 @@ public class BitmapTool
     }
 
     /**
-     * Drawable 转换为 byte[]
+     * Drawable 转换为 byte[].
      *
      * @param drawable Drawable
      * @return byte[]
@@ -124,7 +125,7 @@ public class BitmapTool
     }
 
     /**
-     * Bitmap 转换为 byte[]
+     * Bitmap 转换为 byte[].
      *
      * @param bitmap Bitmap
      * @return byte[]
@@ -142,5 +143,177 @@ public class BitmapTool
             e.printStackTrace();
         }
         return bytes;
+    }
+
+    /**
+     * 按照指定宽高缩放图片，并返回.
+     *
+     * @param bitmap    图片
+     * @param newWidth  新宽度
+     * @param newHeight 新高度
+     * @return 新图片
+     */
+    public static Bitmap zoom(Bitmap bitmap, int newWidth, int newHeight)
+    {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
+
+    /**
+     * 按照指定宽高缩放图片，并返回.
+     *
+     * @param drawable  图片
+     * @param newWidth  新宽度
+     * @param newHeight 新高度
+     * @return 新图片
+     */
+    public static Bitmap zoom(Drawable drawable, int newWidth, int newHeight)
+    {
+        return zoom(toBitmap(drawable), newWidth, newHeight);
+    }
+
+    /**
+     * 按照指定百分比缩放图片，并返回，内部按照percentage / 100 作为百分比，对图片宽高等比例缩放.
+     *
+     * @param bitmap     图片
+     * @param percentage 缩放百分比 {@code percent = percentage / 100}
+     * @return 新图片
+     */
+    public static Bitmap zoom(Bitmap bitmap, int percentage)
+    {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        float scaleWidth = percentage / 100f;
+        float scaleHeight = percentage / 100f;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
+
+    /**
+     * 按照指定百分比缩放图片，并返回，内部按照percentage / 100 作为百分比，对图片宽高等比例缩放.
+     *
+     * @param drawable   图片
+     * @param percentage 缩放百分比 {@code percent = percentage / 100}
+     * @return 新图片
+     */
+    public static Bitmap zoom(Drawable drawable, int percentage)
+    {
+        return zoom(toBitmap(drawable), percentage);
+    }
+
+    /**
+     * 按照指定宽高缩放图片，并返回.
+     *
+     * @param bitmap    图片
+     * @param newWidth  新宽度
+     * @param newHeight 新高度
+     * @return 新图片
+     */
+    public static Drawable zoom2Drawable(Bitmap bitmap, int newWidth, int newHeight)
+    {
+        return toDrawable(zoom(bitmap, newWidth, newHeight));
+    }
+
+    /**
+     * 按照指定宽高缩放图片，并返回.
+     *
+     * @param drawable  图片
+     * @param newWidth  新宽度
+     * @param newHeight 新高度
+     * @return 新图片
+     */
+    public static Drawable zoom2Drawable(Drawable drawable, int newWidth, int newHeight)
+    {
+        return toDrawable(zoom(toBitmap(drawable), newWidth, newHeight));
+    }
+
+    /**
+     * 按照指定百分比缩放图片，并返回，内部按照percentage / 100 作为百分比，对图片宽高等比例缩放.
+     *
+     * @param bitmap     图片
+     * @param percentage 缩放百分比 {@code percent = percentage / 100}
+     * @return 新图片
+     */
+    public static Drawable zoom2Drawable(Bitmap bitmap, int percentage)
+    {
+        return toDrawable(zoom(bitmap, percentage));
+    }
+
+    /**
+     * 按照指定百分比缩放图片，并返回，内部按照percentage / 100 作为百分比，对图片宽高等比例缩放.
+     *
+     * @param drawable   图片
+     * @param percentage 缩放百分比 {@code percent = percentage / 100}
+     * @return 新图片
+     */
+    public static Drawable zoom2Drawable(Drawable drawable, int percentage)
+    {
+        return toDrawable(zoom(toBitmap(drawable), percentage));
+    }
+
+    /**
+     * 按照指定角度旋转图片，并返回.
+     *
+     * @param bitmap  图片
+     * @param degrees 旋转角度
+     * @return 新图片
+     */
+    public static Bitmap rotate(Bitmap bitmap, int degrees)
+    {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degrees);
+
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
+
+    /**
+     * 按照指定角度旋转图片，并返回.
+     *
+     * @param drawable 图片
+     * @param degrees  旋转角度
+     * @return 新图片
+     */
+    public static Bitmap rotate(Drawable drawable, int degrees)
+    {
+        return rotate(toBitmap(drawable), degrees);
+    }
+
+    /**
+     * 按照指定角度旋转图片，并返回.
+     *
+     * @param bitmap  图片
+     * @param degrees 旋转角度
+     * @return 新图片
+     */
+    public static Drawable rotate2Drawable(Bitmap bitmap, int degrees)
+    {
+        return toDrawable(rotate(bitmap, degrees));
+    }
+
+    /**
+     * 按照指定角度旋转图片，并返回.
+     *
+     * @param drawable 图片
+     * @param degrees  旋转角度
+     * @return 新图片
+     */
+    public static Drawable rotate2Drawable(Drawable drawable, int degrees)
+    {
+        return toDrawable(rotate(toBitmap(drawable), degrees));
     }
 }

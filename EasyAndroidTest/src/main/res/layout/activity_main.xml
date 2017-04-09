@@ -31,6 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:text="Bitmap"
+            android:onClick="onBitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <TextView
             style="@style/MatchParent_WrapContent"
             android:text="aaaa"/>

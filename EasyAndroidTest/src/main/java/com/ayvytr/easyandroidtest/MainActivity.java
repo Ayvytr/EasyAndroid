@@ -66,4 +66,9 @@ public class MainActivity extends AppCompatActivity
     {
         startActivity(new Intent(this, SystemInfoActivity.class));
     }
+
+    public void onBitmap(View view)
+    {
+        startActivity(new Intent(this, BitmapActivity.class));
+    }
 }

@@ -1,9 +1,10 @@
 package com.ayvytr.easyandroid.exception;
 
 /**
- * Created by davidwang on 2017/3/15.
- * <p>
- * 不支持构造函数初始化操作。在不需要创建类实例的类的私有无参构造中使用
+ * 不支持构造函数初始化操作异常类, 在不需要创建类实例的类的私有无参构造中使用.
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.0.0
  */
 
 public class UnsupportedInitializationException extends RuntimeException
