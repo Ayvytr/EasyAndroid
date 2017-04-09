@@ -1,6 +1,7 @@
 package com.ayvytr.easyandroid.tools.withcontext;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
@@ -111,5 +112,14 @@ public class ResTool
     public static Configuration getConfiguration()
     {
         return Easy.getContext().getResources().getConfiguration();
+    }
+
+    /**
+     * 获取 Resources
+     * @return Resources
+     */
+    public static Resources getResources()
+    {
+        return Easy.getContext().getResources();
     }
 }

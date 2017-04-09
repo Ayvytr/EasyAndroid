@@ -16,7 +16,40 @@ version = PROJ_VERSION
 logger.info("EasyAndroid using version=$project.version")
 
 // Create source/javadoc artifacts for publishing
-apply from: "$rootDir/gradle/artifacts.gradle"
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    // Exclude generated files
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+    source = android.sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title PROJ_ARTIFACTID
+    }
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
 
 // Configure android-maven-gradle-plugin
 install {

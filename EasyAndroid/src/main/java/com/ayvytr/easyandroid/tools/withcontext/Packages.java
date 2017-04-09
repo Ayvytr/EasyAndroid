@@ -14,7 +14,7 @@ import java.util.List;
  * 获取安装的应用程序等功能.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 1.7.5
+ * @since 1.7.6
  */
 
 public class Packages

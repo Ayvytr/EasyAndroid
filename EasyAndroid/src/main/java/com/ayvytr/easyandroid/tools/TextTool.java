@@ -37,12 +37,8 @@ public class TextTool
      */
     public static boolean isDigit(String str)
     {
-        if(isEmpty(str))
-        {
-            return false;
-        }
+        return !isEmpty(str) && TextUtils.isDigitsOnly(str);
 
-        return TextUtils.isDigitsOnly(str);
     }
 
     /**
@@ -129,11 +125,7 @@ public class TextTool
      */
     public static boolean isBlank(String str)
     {
-        if(isEmpty(str))
-        {
-            return true;
-        }
+        return isEmpty(str) || isEmpty(str.trim());
 
-        return isEmpty(str.trim());
     }
 }

@@ -165,7 +165,7 @@ public class PackagesActivity extends AppCompatActivity
             {
                 AppInfo appInfo = list.get(position);
                 tvTitle.setText(appInfo.label);
-                iv.setImageDrawable(appInfo.icon);
+                iv.setImageBitmap(appInfo.icon);
                 tvPackageName.setText(appInfo.packageName);
             }
         }

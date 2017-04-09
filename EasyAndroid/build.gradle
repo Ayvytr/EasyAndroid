@@ -4,9 +4,6 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
-    //资源前缀
-    resourcePrefix "easy_"
-
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 25
@@ -33,7 +30,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-apply from: '../gradle/EasyAndroid.gradle'
-//apply from: '../gradle/upload.gradle'
+//apply from: '../gradle/EasyAndroid.gradle'
+apply from: '../gradle/upload.gradle'
 
 

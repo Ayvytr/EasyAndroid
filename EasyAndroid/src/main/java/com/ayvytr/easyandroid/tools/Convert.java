@@ -1,5 +1,7 @@
 package com.ayvytr.easyandroid.tools;
 
+import java.util.Arrays;
+
 /**
  * 类型转换类，包含从大部分基本类型到 boolean, int , byte的转换等.
  * <p>
@@ -182,12 +184,8 @@ public class Convert
      */
     public static boolean isZero(String value)
     {
-        if(TextTool.isEmpty(value))
-        {
-            return false;
-        }
+        return !TextTool.isEmpty(value) && value.equals("0");
 
-        return value.equals("0");
     }
 
     /**
@@ -394,6 +392,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(char value)
@@ -404,6 +403,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(short value)
@@ -414,6 +414,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(byte value)
@@ -424,6 +425,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(int value)
@@ -434,6 +436,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(long value)
@@ -444,6 +447,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(float value)
@@ -454,6 +458,7 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(double value)
@@ -464,10 +469,100 @@ public class Convert
     /**
      * value转换返回String
      *
+     * @param value 目标值
      * @return String
      */
     public static String toString(boolean value)
     {
         return Boolean.toString(value);
     }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(char[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(short[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(byte[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(int[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(long[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(float[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(double[] value)
+    {
+        return Arrays.toString(value);
+    }
+
+    /**
+     * value转换返回String
+     *
+     * @param value 目标值
+     * @return String
+     */
+    public static String toString(boolean[] value)
+    {
+        return Arrays.toString(value);
+    }
+
 }
