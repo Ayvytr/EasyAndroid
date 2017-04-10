@@ -1897,16 +1897,13 @@ public class FileTool
     public static List<String> getNamesExtensionsList(String[] extensions)
     {
         List<String> list = new ArrayList<>();
-        String s;
-        for(String extension : extensions)
+        for(String e : extensions)
         {
-            s = extension;
-            while(s.startsWith("."))
+            if(e.lastIndexOf(".") == e.length() - 1)
             {
-                s = s.substring(1);
+                continue;
             }
-
-            list.add(s.toLowerCase());
+            list.add(e.substring(e.lastIndexOf(".") + 1).toLowerCase());
         }
 
         return list;
