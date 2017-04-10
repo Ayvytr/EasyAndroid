@@ -1,13 +1,11 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.4-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.6-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid 库
 
 > ## [English](README.md)
-
-> ## [下载文档](https://github.com/Ayvytr/EasyAndroid/releases/download/1.7.3/EasyAndroidDocs.7z) 
 
 > ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
@@ -15,10 +13,15 @@
     
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
 
+## 1.7.6 加入了新成员！
+1. Packages类和AppInfo Bean类，获取所有安装的应用更方便！ 
+2. BitmapTool类，提供了转换，缩放，旋转Bitmap和Drawable的众多方法！
+3. 修正了bintrayUpload过程中的某些错误.
+
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.4'
+	compile 'com.ayvytr:EasyAndroid:1.7.6'
 
 ## JitPack
 
@@ -36,14 +39,14 @@
 #### Step 2. 添加你的仓库
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.4'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.6'
 	}
 	
 
 ## 包含 
 
 ### 资源
-	从 0-100 dp 和 sp 资源
+	从 -100~300 dp 和 sp 资源
 	有关TextView等View的Style
 
 
@@ -62,6 +65,17 @@
 	TopPopupWindow
 
 ### Tool classes with out Context
+	BitmapTool		转换，缩放，旋转Bitmap和Drawable
+		toBitmap
+		toBitmap2
+		toDrawable
+		toDrawable
+		toByteArray
+		zoom
+		zoom2Drawable
+		rotate
+		rotate2Drawable
+
 	Convert		类型转换类，仿照了C#的Convert类（对这个类情(zhen)有(de)独(hao)钟(yong)）
 				提供了大部分基本类型到bool，int，byte的转换，以及isZero方法
 		toBool

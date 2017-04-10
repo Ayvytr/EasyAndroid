@@ -1,14 +1,12 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.4-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.6-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
 Simplify development steps for Android Developers.(为Android开发者提供的简化开发过程的库)
 
 > ## [Chinese](README_CN.md)
-
-> ## [Download Docs](https://github.com/Ayvytr/EasyAndroid/releases/download/1.7.3/EasyAndroidDocs.7z) 
 
 > ## Use
     (About Context classes: You need call 'Easy.getDefault().init(this);' 
@@ -17,10 +15,15 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
+## 1.7.6 New members joined!
+1. Packages and AppInfo classes, get all applications more simpler.
+2. BitmapTool class, to convert, zoom or rotate Bitmap and Drawable.
+3. Fixed some bintrayUpload problems.
+
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.4'
+	compile 'com.ayvytr:EasyAndroid:1.7.6'
 
 ## JitPack
 
@@ -38,14 +41,14 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 #### 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.4'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.6'
 	}
 
 
 ## Contains 
 
 ### Resource
-	Dp and sp from 0 to 100
+	Dp and sp from -100 to 300
 	Some styles about TextView, etc.
 
 
@@ -64,6 +67,17 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 	TopPopupWindow
 
 ### Tool classes with out Context
+	BitmapTool		Convert, rotate and zoom Bitmap or Drawable.  
+		toBitmap
+		toBitmap2
+		toDrawable
+		toDrawable
+		toByteArray
+		zoom
+		zoom2Drawable
+		rotate
+		rotate2Drawable
+
 	Convert 	Type conversion class, modeled on the C# Convert class (for this 
 			kind of love have alone bell)
 			Provides most of the basic types to bool, int, byte conversion, and isZero methods
@@ -71,6 +85,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		izZero
 		toInt
 		toByte
+		toString
 
 	EncodeTool 	Encoding and decoding related operation class
 		urlEncode
@@ -283,6 +298,17 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		showNotificationBar
 		hideNotificationBar
 		invokePanels
+
+	BitmapTool		Convert, rotate and zoom Bitmap or Drawable  
+		toBitmap
+		toBitmap2
+		toDrawable
+		toDrawable
+		toByteArray
+		zoom
+		zoom2Drawable
+		rotate
+		rotate2Drawable
 
 	ClipboardTool	Clipboard operation class
 		setText

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_16">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.ayvytr.easyandroidtest.MainActivity">
+
+        <Button
+            android:text="我要看PopupWindow"
+            android:onClick="onSeePopupWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="packages"
+            android:onClick="onSeePackages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="系统信息"
+            android:onClick="onSystemInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="Bitmap"
+            android:onClick="onBitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            style="@style/MatchParent_WrapContent"
+            android:text="aaaa"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aaa"/>
+
+        <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Center Gravity tv"/>
+
+        <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:text="Left Center Gravity tv"/>
+
+        <com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:text="Right Center Gravity tv"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="onGetClipboard"
+                android:text="获取剪贴板"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="onSetClipboard"
+                android:text="设置剪贴板"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onGetAppName"
+            android:text="获取APP名称"/>
+
+        <Button
+            android:onClick="onPerformClick"
+            android:id="@+id/btnPerform"
+            android:text="performClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50">
+
+            <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="SeekBarPressure"/>
+
+            <com.ayvytr.easyandroid.view.custom.SeekBarPressure
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

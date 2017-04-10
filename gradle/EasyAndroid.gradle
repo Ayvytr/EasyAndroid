@@ -22,7 +22,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 javadoc {
-    options{
+    options {
         encoding "UTF-8"
         charSet 'UTF-8'
         author true
@@ -59,7 +59,7 @@ publishing {
         mavenJava(MavenPublication) {
             artifactId PROJ_ARTIFACTID
 
-            pom{
+            pom {
                 packaging 'aar'
             }
             pom.withXml {
@@ -91,5 +91,10 @@ bintray {
         vcsUrl = PROJ_VCSURL
         licenses = ['Apache-2.0']
         publicDownloadNumbers = true
+        version {
+            gpg {
+                sign = true
+            }
+        }
     }
 }
