@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.ayvytr.easyandroid.Easy;
+import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.withcontext.ClipboardTool;
 import com.ayvytr.easyandroid.tools.withcontext.Managers;
 import com.ayvytr.easyandroid.tools.withcontext.ResTool;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     private void init()
     {
         Managers.getVibrator().vibrate(1000);
+        findViewById(R.id.tv).setBackgroundColor(Colors.PINK);
     }
 
     public void onGetClipboard(View view)

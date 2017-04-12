@@ -17,6 +17,10 @@ allprojects {
     repositories {
         jcenter()
     }
+
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
 }
 
 task clean(type: Delete) {

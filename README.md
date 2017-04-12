@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.6-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.7.7-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
@@ -15,15 +15,18 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
+## 1.7.7 <font color=red>Colors</font> class comes!
+* <font color=red>Colors</font> class, provides more than a thousand colors for you, and these colors still provides in color resource too.
+
 ## 1.7.6 New members joined!
-1. Packages and AppInfo classes, get all applications more simpler.
-2. BitmapTool class, to convert, zoom or rotate Bitmap and Drawable.
+1. <font color=red>Packages</font> and <font color=red>AppInfo</font> classes, get all applications more simpler.
+2. <font color=red>BitmapTool</font> class, to convert, zoom or rotate Bitmap and Drawable.
 3. Fixed some bintrayUpload problems.
 
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.6'
+	compile 'com.ayvytr:EasyAndroid:1.7.7'
 
 ## JitPack
 
@@ -41,7 +44,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 #### 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.6'
+	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.7'
 	}
 
 
@@ -67,7 +70,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 	TopPopupWindow
 
 ### Tool classes with out Context
-	BitmapTool		Convert, rotate and zoom Bitmap or Drawable.  
+	BitmapTool		Convert, rotate and zoom Bitmap or Drawable.  		
 		toBitmap
 		toBitmap2
 		toDrawable
@@ -77,6 +80,14 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 		zoom2Drawable
 		rotate
 		rotate2Drawable
+
+	Colors 		provides more than a thousand colors and  methods red, green, blue color, etc.
+		alpha
+		argb
+		b
+		g
+		r
+		rgb
 
 	Convert 	Type conversion class, modeled on the C# Convert class (for this 
 			kind of love have alone bell)
