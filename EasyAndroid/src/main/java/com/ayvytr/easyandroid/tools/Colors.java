@@ -12,6 +12,8 @@ import android.support.annotation.ColorInt;
 public class Colors
 {
     @ColorInt
+    public static final int TRANSPARENT = 0;
+    @ColorInt
     public static final int ACID_GREEN = 0XFFA8BB19;
     @ColorInt
     public static final int AERO = 0XFF7CB9E8;
