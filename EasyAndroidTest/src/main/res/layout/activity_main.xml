@@ -13,11 +13,6 @@
         android:orientation="vertical"
         tools:context="com.ayvytr.easyandroidtest.MainActivity">
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
         <Button
             android:text="我要看PopupWindow"
             android:onClick="onSeePopupWindow"
@@ -57,16 +52,19 @@
             android:text="aaa"/>
 
         <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
+            android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Center Gravity tv"/>
 
         <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+            android:id="@+id/tv2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="Left Center Gravity tv"/>
 
         <com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView
+            android:id="@+id/tv3"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_50"
             android:text="Right Center Gravity tv"/>

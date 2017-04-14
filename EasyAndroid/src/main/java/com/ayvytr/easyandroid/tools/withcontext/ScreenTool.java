@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Surface;
@@ -73,6 +74,26 @@ public class ScreenTool
     public static int getScreenHeight()
     {
         return getDisplayMetrics().heightPixels;
+    }
+
+    /**
+     * 获取屏幕的宽度（单位：px）
+     *
+     * @return 屏幕宽度
+     */
+    public static int getWidth()
+    {
+        return getScreenWidth();
+    }
+
+    /**
+     * 获取屏幕的高度（单位：px）
+     *
+     * @return 屏幕高度
+     */
+    public static int getHeight()
+    {
+        return getScreenHeight();
     }
 
     /**
@@ -222,25 +243,79 @@ public class ScreenTool
      * @param activity     AppCompatActivity
      * @param toFullScreen {@code true} 切换到全屏 {@code false} 退出全屏
      */
-    public static void switchFullScreen(AppCompatActivity activity, boolean toFullScreen)
+    public static void switchFullScreen(Activity activity, boolean toFullScreen)
     {
         Window window = activity.getWindow();
         WindowManager.LayoutParams attrs = window.getAttributes();
-        if(!toFullScreen)
+        if(toFullScreen)
         {
             attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-            window.setAttributes(attrs);
-            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
-            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            activity.getSupportActionBar().hide();
         }
         else
         {
             attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
-            window.setAttributes(attrs);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            activity.getSupportActionBar().show();
+        }
+        window.setAttributes(attrs);
+    }
+
+    /**
+     * 切换Activity到全屏状态，同时显示或者隐藏ActionBar，如果是AppCompatActivity，切换到全屏，如果
+     * ActionBar没隐藏，请检查是否调用过 {@link AppCompatActivity#setSupportActionBar };
+     *
+     *
+     * @param activity     AppCompatActivity
+     * @param toFullScreen {@code true} 切换到全屏 {@code false} 退出全屏
+     */
+    public static void switchFullScreenWithActionBar(Activity activity, boolean toFullScreen)
+    {
+        Window window = activity.getWindow();
+        WindowManager.LayoutParams attrs = window.getAttributes();
+
+        if(toFullScreen)
+        {
+            attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        }
+        else
+        {
+            attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        }
+        window.setAttributes(attrs);
+
+        if(activity instanceof AppCompatActivity)
+        {
+            ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
+            try
+            {
+                if(toFullScreen)
+                {
+                    actionBar.hide();
+                }
+                else
+                {
+                    actionBar.show();
+                }
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            android.app.ActionBar actionBar = activity.getActionBar();
+            try
+            {
+                if(toFullScreen)
+                {
+                    actionBar.hide();
+                }
+                else
+                {
+                    actionBar.show();
+                }
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

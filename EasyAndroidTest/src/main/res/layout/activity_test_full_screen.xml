@@ -25,8 +25,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <Button
             android:layout_width="match_parent"
@@ -38,6 +38,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onExitFullScreen"
-            android:text="退出到全屏"/>
+            android:text="退出全屏"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onEnterFullScreenWithActionBar"
+            android:text="切换到全屏和ActionBar"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onExitFullScreenWithActionBar"
+            android:text="退出全屏和ActionBar"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/acid_green"
+            android:onClick="onTestActivityFullScreen"
+            android:text="测试Activity"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -25,8 +25,15 @@
         </activity>
         <activity android:name=".BitmapActivity">
         </activity>
-        <activity android:name=".TestFullScreenActivity"
+        <activity
+            android:name=".TestFullScreenActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/NoActionBar">
+        </activity>
+        <activity
+            android:name=".TestFullScreenActivity2"
+            android:parentActivityName=".TestFullScreenActivity"
+            android:theme="@style/Base.Widget.AppCompat.Light.ActionBar">
         </activity>
     </application>
 
