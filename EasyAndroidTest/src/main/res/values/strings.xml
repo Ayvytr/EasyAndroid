@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EasyAndroid</string>
+    <string name="this_is_appcompatactivity">这是AppCompatActivity的效果</string>
 </resources>

@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Surface;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
@@ -40,6 +45,14 @@ public class ScreenTool
         // 给白纸设置宽高
         windowManager.getDefaultDisplay().getMetrics(dm);
         return dm;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB_MR2)
+    public static Point getPoint()
+    {
+        Point point = new Point();
+        Managers.getWindowManager().getDefaultDisplay().getSize(point);
+        return point;
     }
 
     /**
@@ -203,4 +216,31 @@ public class ScreenTool
         return Managers.getKeyguardManager().inKeyguardRestrictedInputMode();
     }
 
+    /**
+     * 切换Activity到全屏状态
+     *
+     * @param activity     AppCompatActivity
+     * @param toFullScreen {@code true} 切换到全屏 {@code false} 退出全屏
+     */
+    public static void switchFullScreen(AppCompatActivity activity, boolean toFullScreen)
+    {
+        Window window = activity.getWindow();
+        WindowManager.LayoutParams attrs = window.getAttributes();
+        if(!toFullScreen)
+        {
+            attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+            window.setAttributes(attrs);
+            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            activity.getSupportActionBar().hide();
+        }
+        else
+        {
+            attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+            window.setAttributes(attrs);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            activity.getSupportActionBar().show();
+        }
+    }
 }

@@ -73,4 +73,9 @@ public class MainActivity extends AppCompatActivity
     {
         startActivity(new Intent(this, BitmapActivity.class));
     }
+
+    public void onTestFullScreen(View view)
+    {
+        startActivity(new Intent(this, TestFullScreenActivity.class));
+    }
 }
