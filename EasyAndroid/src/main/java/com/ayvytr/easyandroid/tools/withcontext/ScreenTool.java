@@ -262,31 +262,29 @@ public class ScreenTool
      * 切换Activity到全屏状态，同时显示或者隐藏ActionBar，如果是AppCompatActivity，切换到全屏，如果
      * ActionBar没隐藏，请检查是否调用过 {@link AppCompatActivity#setSupportActionBar };
      *
-     *
      * @param activity     AppCompatActivity
      * @param toFullScreen {@code true} 切换到全屏 {@code false} 退出全屏
      */
     public static void switchFullScreenWithActionBar(Activity activity, boolean toFullScreen)
     {
-        Window window = activity.getWindow();
-        WindowManager.LayoutParams attrs = window.getAttributes();
+        switchFullScreen(activity, toFullScreen);
+        showActionBar(activity, toFullScreen);
+    }
 
-        if(toFullScreen)
-        {
-            attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        }
-        else
-        {
-            attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        }
-        window.setAttributes(attrs);
-
+    /**
+     * 显示或隐藏ActionBar
+     *
+     * @param activity 目标Activity
+     * @param isShow   {@code true} 显示ActionBar {@code false} 隐藏ActionBar
+     */
+    private static void showActionBar(Activity activity, boolean isShow)
+    {
         if(activity instanceof AppCompatActivity)
         {
             ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
             try
             {
-                if(toFullScreen)
+                if(isShow)
                 {
                     actionBar.hide();
                 }
@@ -294,7 +292,7 @@ public class ScreenTool
                 {
                     actionBar.show();
                 }
-            } catch(Exception e)
+            } catch(NullPointerException e)
             {
                 e.printStackTrace();
             }
@@ -304,7 +302,7 @@ public class ScreenTool
             android.app.ActionBar actionBar = activity.getActionBar();
             try
             {
-                if(toFullScreen)
+                if(isShow)
                 {
                     actionBar.hide();
                 }
@@ -312,7 +310,7 @@ public class ScreenTool
                 {
                     actionBar.show();
                 }
-            } catch(Exception e)
+            } catch(NullPointerException e)
             {
                 e.printStackTrace();
             }
