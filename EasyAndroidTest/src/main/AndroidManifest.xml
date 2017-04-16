@@ -35,6 +35,17 @@
             android:parentActivityName=".TestFullScreenActivity"
             android:theme="@style/Base.Widget.AppCompat.Light.ActionBar">
         </activity>
+        <activity
+            android:name=".stickyheader.StickyHeaderActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".stickyheader.BasicStickyHeaderActivity"
+            android:parentActivityName=".stickyheader.StickyHeaderActivity">
+        </activity>
+        <activity
+            android:name=".stickyheader.TestStickyActivity1"
+            android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
     </application>
 
 </manifest>

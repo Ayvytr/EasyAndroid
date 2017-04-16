@@ -16,6 +16,7 @@ import com.ayvytr.easyandroid.tools.withcontext.ScreenTool;
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView;
+import com.ayvytr.easyandroidtest.stickyheader.StickyHeaderActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -103,5 +104,10 @@ public class MainActivity extends AppCompatActivity
     public void onTestFullScreen(View view)
     {
         startActivity(new Intent(this, TestFullScreenActivity.class));
+    }
+
+    public void onStickyHeader(View view)
+    {
+        startActivity(new Intent(this, StickyHeaderActivity.class));
     }
 }

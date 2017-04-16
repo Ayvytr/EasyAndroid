@@ -57,7 +57,7 @@ public class Easy
     {
         if(context == null)
         {
-            throw new NullPointerException("Context is null on 'initTag'.");
+            throw new NullPointerException("Argument Context is null(参数Context是null).");
         }
 
         this.contextRef = new SoftReference<>(context);

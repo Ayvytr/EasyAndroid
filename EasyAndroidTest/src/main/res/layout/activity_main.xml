@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dp_16">
+    android:padding="@dimen/_10dp">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,34 +14,42 @@
         tools:context="com.ayvytr.easyandroidtest.MainActivity">
 
         <Button
-            android:text="我要看PopupWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onSeePopupWindow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="我要看PopupWindow"/>
 
         <Button
-            android:text="packages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onSeePackages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="packages"/>
 
         <Button
-            android:text="系统信息"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onSystemInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="系统信息"/>
 
         <Button
-            android:text="Bitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="onBitmap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="Bitmap"/>
 
         <Button
-            android:onClick="onTestFullScreen"
-            android:text="测试全屏"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:onClick="onTestFullScreen"
+            android:text="测试全屏"/>
+
+        <Button
+            android:text="StickyHeaderRecyclerView"
+            android:onClick="onStickyHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_bg_selector"/>
+
         <TextView
             style="@style/MatchParent_WrapContent"
             android:text="aaaa"/>
@@ -95,11 +103,11 @@
             android:text="获取APP名称"/>
 
         <Button
-            android:onClick="onPerformClick"
             android:id="@+id/btnPerform"
-            android:text="performClick"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:onClick="onPerformClick"
+            android:text="performClick"/>
 
         <LinearLayout
             android:layout_width="match_parent"
