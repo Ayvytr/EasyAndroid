@@ -7,14 +7,23 @@
 
     <Button
         android:layout_width="match_parent"
-        android:onClick="onBasic"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg_selector"
+        android:onClick="onBasic"
         android:text="标准StickyHeader"/>
+
     <Button
         android:layout_width="match_parent"
-        android:onClick="onCustom1"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg_selector"
+        android:onClick="onCustom1"
         android:text="自定义1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_1dp"
+        android:background="@drawable/btn_bg_selector"
+        android:onClick="onCustom2"
+        android:text="自定义2"/>
 </LinearLayout>

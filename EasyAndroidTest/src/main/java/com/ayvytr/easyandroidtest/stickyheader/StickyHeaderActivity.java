@@ -29,4 +29,9 @@ public class StickyHeaderActivity extends AppCompatActivity
     {
         startActivity(new Intent(this, TestStickyActivity1.class));
     }
+
+    public void onCustom2(View view)
+    {
+        startActivity(new Intent(this, TestStickyActivity2.class));
+    }
 }

@@ -46,6 +46,9 @@
         <activity
             android:name=".stickyheader.TestStickyActivity1"
             android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
+        <activity
+            android:name=".stickyheader.TestStickyActivity2"
+            android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
     </application>
 
 </manifest>
