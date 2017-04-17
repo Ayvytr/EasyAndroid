@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            keyAlias 'Alias'
+            keyAlias 'Ayvytr'
             keyPassword '123456'
             storePassword '123456'
-            storeFile file('defaultKey.jks')
+            storeFile file('ayvytrDebug.jks')
         }
     }
     compileSdkVersion 25
