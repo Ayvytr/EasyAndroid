@@ -48,9 +48,12 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             int position = parent.getChildAdapterPosition(childView);
             Rect rect = new Rect();
             parent.getDecoratedBoundsWithMargins(childView, rect);
-            c.translate(0, rect.top);
-            getHeaderView(parent, position).draw(c);
-            c.translate(0, -rect.top);
+            if(hasHeader(position))
+            {
+                c.translate(0, rect.top);
+                getHeaderView(parent, position).draw(c);
+                c.translate(0, -rect.top);
+            }
         }
     }
 
@@ -62,19 +65,28 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
         int position = parent.getChildAdapterPosition(view);
         try
         {
-            int height = getHeaderView(parent, position).getHeight();
-            outRect.set(0, height, 0, 0);
+            if(hasHeader(position))
+            {
+                int height = getHeaderView(parent, position).getHeight();
+                outRect.set(0, height, 0, 0);
+            }
         } catch(Exception e)
         {
             e.printStackTrace();
         }
     }
 
+    private boolean hasHeader(int position)
+    {
+        return headerAdapter.getId(position) == position;
+    }
+
     /**
      * 获取HeaderView
      *
      * @param parent
-     * @param position
+     * @param position RecyclerView当前Item的position，需要用 {@link RecyclerView#getChildAdapterPosition(View)}
+     *                 获得真实position，不然显示的数据有误
      * @return Header view
      */
     public View getHeaderView(RecyclerView parent, int position)

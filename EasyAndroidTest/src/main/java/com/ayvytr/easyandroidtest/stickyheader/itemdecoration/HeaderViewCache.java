@@ -34,7 +34,8 @@ public class HeaderViewCache
             adapter.onBindHeaderViewHolder(viewHolder, position);
             header = viewHolder.itemView;
             //测量view的宽高，相当于onMeasure
-            if(header.getLayoutParams() == null)
+            ViewGroup.LayoutParams lp = header.getLayoutParams();
+            if(lp == null)
             {
                 header.setLayoutParams(new ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -46,11 +47,9 @@ public class HeaderViewCache
             heightSpec = View.MeasureSpec
                     .makeMeasureSpec(parent.getHeight(), View.MeasureSpec.UNSPECIFIED);
             //获取view的宽高，可以考虑padding，这里宽度我实现的效果不能考虑padding，如果需要，可以参考高度的实现
-            int childWidth = ViewGroup.getChildMeasureSpec(widthSpec,
-                    0, header.getLayoutParams().width);
+            int childWidth = ViewGroup.getChildMeasureSpec(widthSpec, 0, lp.width);
             int childHeight = ViewGroup.getChildMeasureSpec(heightSpec,
-                    parent.getPaddingTop() + parent.getPaddingBottom(),
-                    header.getLayoutParams().height);
+                    parent.getPaddingTop() + parent.getPaddingBottom(), lp.height);
             header.measure(childWidth, childHeight);
             header.layout(0, 0, header.getMeasuredWidth(), header.getMeasuredHeight());
             mHeaderViews.put(headerId, header);

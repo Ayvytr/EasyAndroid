@@ -81,7 +81,12 @@ public class TestStickyActivity2 extends BaseEasyActivity
         @Override
         public int getId(int position)
         {
-            return position;
+            if(position < list.size() / 2)
+            {
+                return position;
+            }
+
+            return -1;
         }
 
         @Override
