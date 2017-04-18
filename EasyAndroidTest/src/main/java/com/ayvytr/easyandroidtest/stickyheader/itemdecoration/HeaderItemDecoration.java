@@ -50,9 +50,9 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             parent.getDecoratedBoundsWithMargins(childView, rect);
             if(hasHeader(position))
             {
-                c.translate(0, rect.top);
+                c.translate(parent.getPaddingLeft(), rect.top);
                 getHeaderView(parent, position).draw(c);
-                c.translate(0, -rect.top);
+                c.translate(-parent.getPaddingLeft(), -rect.top);
             }
         }
     }
