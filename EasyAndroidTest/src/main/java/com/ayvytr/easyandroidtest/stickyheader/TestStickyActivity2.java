@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
+import com.ayvytr.easyandroid.view.recyclerview.PrettyItemDecoration;
 import com.ayvytr.easyandroidtest.R;
+import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.HeaderItemDecoration;
+import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyItemHeaderAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,9 @@ public class TestStickyActivity2 extends BaseEasyActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         basicAdapter = new BasicAdapter();
         recyclerView.setAdapter(basicAdapter);
-//        recyclerView.addItemDecoration(new Custom2ItemDecoration());
+        recyclerView.addItemDecoration(new PrettyItemDecoration(PrettyItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new PrettyItemDecoration());
+        recyclerView.addItemDecoration(new HeaderItemDecoration(basicAdapter));
     }
 
     @Override
@@ -41,6 +46,7 @@ public class TestStickyActivity2 extends BaseEasyActivity
     }
 
     public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.Vh>
+            implements StickyItemHeaderAdapter<BasicAdapter.HeaderVh>
     {
         List<String> list = new ArrayList<>();
 
@@ -72,16 +78,40 @@ public class TestStickyActivity2 extends BaseEasyActivity
             return list.size();
         }
 
+        @Override
+        public boolean isHeader(int position)
+        {
+            return true;
+        }
+
+        @Override
+        public int getId(int position)
+        {
+            return 0;
+        }
+
+        @Override
+        public HeaderVh onCreateHeaderViewHolder(RecyclerView parent)
+        {
+            return new HeaderVh(LayoutInflater.from(parent.getContext())
+                                              .inflate(R.layout.item_sticky_test2_header, parent,
+                                                      false));
+        }
+
+        @Override
+        public void onBindHeaderViewHolder(HeaderVh holder, int position)
+        {
+            holder.bind(position);
+        }
+
         public class Vh extends RecyclerView.ViewHolder
         {
             @BindView(R.id.tv)
             CenterGravityTextView tv;
-            private View view;
 
             public Vh(View view)
             {
                 super(view);
-                this.view = view;
                 ButterKnife.bind(this, view);
             }
 
@@ -91,5 +121,21 @@ public class TestStickyActivity2 extends BaseEasyActivity
             }
         }
 
+        public class HeaderVh extends RecyclerView.ViewHolder
+        {
+            @BindView(R.id.tv)
+            CenterGravityTextView tv;
+
+            public HeaderVh(View view)
+            {
+                super(view);
+                ButterKnife.bind(this, view);
+            }
+
+            public void bind(int position)
+            {
+                tv.setText(list.get(position));
+            }
+        }
     }
 }
