@@ -79,15 +79,9 @@ public class TestStickyActivity2 extends BaseEasyActivity
         }
 
         @Override
-        public boolean isHeader(int position)
-        {
-            return true;
-        }
-
-        @Override
         public int getId(int position)
         {
-            return 0;
+            return position;
         }
 
         @Override
