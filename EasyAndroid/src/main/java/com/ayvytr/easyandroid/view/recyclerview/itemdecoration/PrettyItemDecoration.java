@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroid.view.recyclerview;
+package com.ayvytr.easyandroid.view.recyclerview.itemdecoration;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;

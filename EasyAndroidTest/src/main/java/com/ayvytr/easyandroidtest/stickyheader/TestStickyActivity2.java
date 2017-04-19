@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
-import com.ayvytr.easyandroid.view.recyclerview.PrettyItemDecoration;
+import com.ayvytr.easyandroid.view.recyclerview.itemdecoration.PrettyItemDecoration;
 import com.ayvytr.easyandroidtest.R;
 import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.HeaderItemDecoration;
 import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyItemHeaderAdapter;
