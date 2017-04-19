@@ -78,7 +78,14 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 
     private boolean hasHeader(int position)
     {
-        return headerAdapter.getId(position) == position;
+        int id = headerAdapter.getId(position);
+        if(position == 0)
+        {
+            return id >= 0;
+        }
+
+        int preId = headerAdapter.getId(position - 1);
+        return id >= 0 && id != preId;
     }
 
     /**

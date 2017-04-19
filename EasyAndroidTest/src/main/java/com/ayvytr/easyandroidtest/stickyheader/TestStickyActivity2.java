@@ -83,10 +83,13 @@ public class TestStickyActivity2 extends BaseEasyActivity
         {
             if(position < list.size() / 2)
             {
-                return position;
+                return 0;
+            }
+            else
+            {
+                return 1;
             }
 
-            return -1;
         }
 
         @Override
