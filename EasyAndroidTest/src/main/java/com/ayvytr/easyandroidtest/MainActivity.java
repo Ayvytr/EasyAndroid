@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity
 
     private void init()
     {
-        Managers.getVibrator().vibrate(1000);
         findViewById(R.id.tv).setBackgroundColor(Colors.PINK);
 
         tv2.append(":");
@@ -71,6 +70,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onGetAppName(View view)
     {
+        Managers.getVibrator().vibrate(1000);
         String string = ResTool.getString(R.string.app_name);
         ToastTool.show("获取到Res中APP名称:" + string);
         findViewById(R.id.btnPerform).performClick();

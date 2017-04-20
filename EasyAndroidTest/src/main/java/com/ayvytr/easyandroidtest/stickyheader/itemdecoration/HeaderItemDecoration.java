@@ -5,6 +5,8 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.ayvytr.logger.L;
+
 /**
  * Desc:
  * Date: 2017/4/17
@@ -16,6 +18,10 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 {
     private StickyItemHeaderAdapter headerAdapter;
     private HeaderViewCache headerViewCache;
+    private boolean isStick = true;
+
+    private static final int NO_POSITION = RecyclerView.NO_POSITION;
+    private Rect rect;
 
     public HeaderItemDecoration(StickyItemHeaderAdapter headerAdapter)
     {
@@ -30,6 +36,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
                         headerViewCache.invalidate();
                     }
                 });
+        rect = new Rect();
     }
 
     @Override
@@ -43,65 +50,61 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
     {
         int childCount = parent.getChildCount();
 
-        int left = 0;
-        int right = parent.getWidth();//如果要考虑padding，则应减去左右padding
-        int preGroupId = -1;
-        int groupId = -1;
-        int headHeight = 0;
+        int top = parent.getPaddingTop();
+        int groupId = NO_POSITION;
+        int preGroupId;
+        int x = parent.getPaddingLeft();
+        int y;
         for(int i = 0; i < childCount; i++)
         {
-//            View childView = parent.getChildAt(i);
-//            int position = parent.getChildAdapterPosition(childView);
-//            Rect rect = new Rect();
-//            parent.getDecoratedBoundsWithMargins(childView, rect);
-//            if(hasHeader(position))
-//            {
-//                c.translate(parent.getPaddingLeft(), rect.top);
-//                getHeaderView(parent, position).draw(c);
-//                c.translate(-parent.getPaddingLeft(), -rect.top);
-//            }
             View itemView = parent.getChildAt(i);
             int position = parent.getChildAdapterPosition(itemView);
-            if(position == RecyclerView.NO_POSITION)
+            parent.getDecoratedBoundsWithMargins(itemView, rect);
+
+            //只有各组第一个 并且 groupId!=-1 才绘制头部view
+            preGroupId = groupId;
+            groupId = getHeaderId(position);
+            if(groupId <= NO_POSITION || groupId == preGroupId)
             {
                 continue;
             }
-            //只有各组第一个 并且 groupId!=-1 才绘制头部view
-            preGroupId = groupId;
-            groupId = headerAdapter.getId(position);
-            if(groupId == -1 || groupId == preGroupId) continue;
-            View header = headerViewCache.getHeader(parent, position);
-            //获取缓存的头部view的位置信息，如果没有则新创建
-            //获取头部view的top、bottom位置信息
-            float textY = itemView.getTop();
-            headHeight = header.getHeight();
-            if(true)
+
+            View header = getHeaderView(parent, position);
+
+            y = rect.top;
+            if(isStick)
             {
-                textY = Math.max(headHeight, itemView.getTop());
-                int nextPosition = getNextGroupId(i, groupId, childCount, parent);
-                if(nextPosition != -1)
+                y = Math.max(header.getBottom(), itemView.getTop());
+                L.e("isStick", y);
+                int nextPosition = getNextHeadPosition(i, groupId, childCount, parent);
+                if(nextPosition != NO_POSITION)
                 {
-                    View itemView1 = parent.getChildAt(nextPosition);
+                    View nextView = parent.getChildAt(nextPosition);
                     //判断下一个头部view是否到了与上一个头部view接触的临界值
                     //如果满足条件则把上一个头部view推上去
-                    if(itemView1.getTop() <= headHeight + header.getHeight())
+                    if(nextView.getTop() <= header.getBottom())
                     {
-                        textY = itemView1.getTop() - header.getHeight();
+                        L.e("推", header.getBottom(), y);
+                        y = nextView.getTop() - header.getBottom();
                     }
                 }
             }
-            //绘制头部view
-            Rect rect = new Rect();
-            rect.set(left, (int) textY - headHeight, right, (int) textY);
-            c.translate(left, textY - headHeight);
-//            drawHeader(c, header, headerOffset);
-            itemView.draw(c);
+
+            c.translate(x, y);
+            header.draw(c);
+            c.translate(-x, -y);
         }
     }
 
-    private int getNextGroupId(int id, int groupId, int childCount, RecyclerView parent)
+    /**
+     * 获取下一个节点，如果没有则返回-1
+     *
+     * @param count
+     * @return
+     */
+    private int getNextHeadPosition(int id, int groupId, int count, RecyclerView parent)
     {
-        for(int i = id; i < childCount; i++)
+        for(int i = id; i < count; i++)
         {
             if(headerAdapter.getId(parent.getChildAdapterPosition(parent.getChildAt(i))) != groupId)
             {
@@ -111,26 +114,44 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
         return -1;
     }
 
+    private boolean canDraw(int position)
+    {
+        int headerId = getHeaderId(position);
+        int preHeaderId = getPreHeaderId(position);
+
+        return headerId >= 0 && headerId != preHeaderId;
+    }
+
+    private int getPreHeaderId(int position)
+    {
+        if(position < 1)
+        {
+            return -1;
+        }
+
+        return headerAdapter.getId(position - 1);
+    }
+
+
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
                                RecyclerView.State state)
     {
         super.getItemOffsets(outRect, view, parent, state);
+        setItemOffsets(outRect, view, parent);
+    }
+
+    private void setItemOffsets(Rect outRect, View view, RecyclerView parent)
+    {
         int position = parent.getChildAdapterPosition(view);
-        try
+        if(hasItemOffset(position))
         {
-            if(hasHeader(position))
-            {
-                int height = getHeaderView(parent, position).getHeight();
-                outRect.set(0, height, 0, 0);
-            }
-        } catch(Exception e)
-        {
-            e.printStackTrace();
+            int height = getHeaderView(parent, position).getHeight();
+            outRect.set(0, height, 0, 0);
         }
     }
 
-    private boolean hasHeader(int position)
+    private boolean hasItemOffset(int position)
     {
         int id = headerAdapter.getId(position);
         if(position == 0)
@@ -140,6 +161,30 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 
         int preId = headerAdapter.getId(position - 1);
         return id >= 0 && id != preId;
+    }
+
+    private int getHeaderId(int position)
+    {
+        try
+        {
+            return headerAdapter.getId(position);
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    private boolean hasHeader(int position)
+    {
+        int id = getHeaderId(position);
+        if(position == 0)
+        {
+            return id > NO_POSITION;
+        }
+
+        int preId = getHeaderId(position - 1);
+        return id > NO_POSITION && id != preId;
     }
 
     /**

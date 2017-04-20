@@ -81,15 +81,22 @@ public class TestStickyActivity2 extends BaseEasyActivity
         @Override
         public int getId(int position)
         {
-            if(position < list.size() / 2)
+            if(position < 6)
             {
                 return 0;
             }
-            else
+
+            if(position < 13)
             {
                 return 1;
             }
 
+            if(position < 19)
+            {
+                return 2;
+            }
+
+            return 3;
         }
 
         @Override
