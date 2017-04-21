@@ -36,7 +36,7 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
     @ColorInt
     private int color;
     private Rect rect = new Rect();
-    private float dividerOffset;
+    private int dividerOffset;
 
     public PrettyItemDecoration()
     {
@@ -59,7 +59,7 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         this.color = color;
         this.dividerWidth = dividerWidth;
         initPaint();
-        dividerOffset = dividerWidth / 2f;
+        dividerOffset = (int) (dividerWidth / 2f);
     }
 
     private void initPaint()
@@ -209,11 +209,11 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         super.getItemOffsets(outRect, view, parent, state);
         if(orientation == OrientationHelper.HORIZONTAL)
         {
-            outRect.set(0, 0, 0, dividerWidth);
+            outRect.set(0, dividerOffset, 0, -dividerOffset);
         }
         else
         {
-            outRect.set(0, 0, dividerWidth, 0);
+            outRect.set(dividerOffset, 0, -dividerOffset, 0);
         }
     }
 }
