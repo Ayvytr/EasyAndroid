@@ -32,9 +32,11 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
     //Divider宽度，像素
     private int dividerWidth = 1;
     //Divider方向
-    private int orientation = DEFAULT_WIDTH;
+    private int orientation = HORIZONTAL;
     @ColorInt
     private int color;
+    private Rect rect = new Rect();
+    private float dividerOffset;
 
     public PrettyItemDecoration()
     {
@@ -57,6 +59,7 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         this.color = color;
         this.dividerWidth = dividerWidth;
         initPaint();
+        dividerOffset = dividerWidth / 2f;
     }
 
     private void initPaint()
@@ -90,18 +93,16 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
     {
         if(parent.getClipToPadding())
         {
-            float suitableDividerWidth = getDividerOffset();
-            c.clipRect(parent.getPaddingLeft() - suitableDividerWidth,
-                    parent.getPaddingTop() - suitableDividerWidth,
-                    parent.getWidth() - parent.getPaddingRight() + suitableDividerWidth,
-                    parent.getHeight() - parent.getPaddingBottom() + suitableDividerWidth);
+            c.clipRect(parent.getPaddingLeft() - dividerOffset,
+                    parent.getPaddingTop() - dividerOffset,
+                    parent.getWidth() - parent.getPaddingRight() + dividerOffset,
+                    parent.getHeight() - parent.getPaddingBottom() + dividerOffset);
         }
 
         int childCount = parent.getChildCount();
         for(int i = 0; i < childCount; i++)
         {
             View view = parent.getChildAt(i);
-            Rect rect = new Rect();
             parent.getDecoratedBoundsWithMargins(view, rect);
             c.drawLine(rect.left, rect.top, rect.left, rect.bottom, paint);
         }
@@ -114,15 +115,13 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
             for(int i = spanCount - 1; i < childCount; i += spanCount)
             {
                 View view = parent.getChildAt(i);
-                Rect rect = new Rect();
                 parent.getDecoratedBoundsWithMargins(view, rect);
                 int left = rect.left + itemDividerWidth;
                 c.drawLine(left, rect.top, left, rect.bottom, paint);
             }
         }
 
-        View view = parent.getChildAt(parent.getChildCount() - 1);
-        Rect rect = new Rect();
+        View view = parent.getChildAt(childCount - 1);
         parent.getDecoratedBoundsWithMargins(view, rect);
         int left = rect.left + itemDividerWidth;
         c.drawLine(left, rect.top, left, rect.bottom, paint);
@@ -156,11 +155,10 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
     {
         if(parent.getClipToPadding())
         {
-            float suitableDividerWidth = getDividerOffset();
-            c.clipRect(parent.getPaddingLeft() - suitableDividerWidth,
-                    parent.getPaddingTop() - suitableDividerWidth,
-                    parent.getWidth() - parent.getPaddingRight() + suitableDividerWidth,
-                    parent.getHeight() - parent.getPaddingBottom() + suitableDividerWidth);
+            c.clipRect(parent.getPaddingLeft() - dividerOffset,
+                    parent.getPaddingTop() - dividerOffset,
+                    parent.getWidth() - parent.getPaddingRight() + dividerOffset,
+                    parent.getHeight() - parent.getPaddingBottom() + dividerOffset);
         }
 
         int itemDividerWidth = getItemDividerWidth(parent);
@@ -168,7 +166,6 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         for(int i = 0; i < childCount; i++)
         {
             View view = parent.getChildAt(i);
-            Rect rect = new Rect();
             parent.getDecoratedBoundsWithMargins(view, rect);
             int right = rect.left + itemDividerWidth;
             c.drawLine(rect.left, rect.top, right, rect.top, paint);
@@ -180,17 +177,11 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
             for(int i = childCount - spanCount; i < childCount; i++)
             {
                 View view = parent.getChildAt(i);
-                Rect rect = new Rect();
                 parent.getDecoratedBoundsWithMargins(view, rect);
                 int right = rect.left + itemDividerWidth;
                 c.drawLine(rect.left, rect.bottom, right, rect.bottom, paint);
             }
         }
-    }
-
-    private float getDividerOffset()
-    {
-        return dividerWidth / 2f;
     }
 
     private int getItemDividerWidth(RecyclerView parent)

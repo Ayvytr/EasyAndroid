@@ -19,11 +19,26 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
     private boolean isStick = true;
 
     private static final int NO_POSITION = RecyclerView.NO_POSITION;
-    private Rect rect;
+
+    /**
+     * 设置顶部吸附效果
+     *
+     * @param isStick {@code true} 吸附 {@code false} 不吸附
+     */
+    private void setStick(boolean isStick)
+    {
+        this.isStick = isStick;
+    }
 
     public HeaderItemDecoration(StickyItemHeaderAdapter headerAdapter)
     {
+        this(headerAdapter, true);
+    }
+
+    public HeaderItemDecoration(StickyItemHeaderAdapter headerAdapter, boolean isStick)
+    {
         this.headerAdapter = headerAdapter;
+        this.isStick = isStick;
         headerViewCache = new HeaderViewCache(headerAdapter);
         ((RecyclerView.Adapter) headerAdapter)
                 .registerAdapterDataObserver(new RecyclerView.AdapterDataObserver()
@@ -34,7 +49,6 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
                         headerViewCache.invalidate();
                     }
                 });
-        rect = new Rect();
     }
 
     @Override
@@ -50,17 +64,14 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 
         int top = parent.getPaddingTop();
         int headerId = NO_POSITION;
-        int preHeaderId;
         int x = parent.getPaddingLeft();
-        int y;
         for(int i = 0; i < childCount; i++)
         {
             View itemView = parent.getChildAt(i);
             int position = parent.getChildAdapterPosition(itemView);
-            parent.getDecoratedBoundsWithMargins(itemView, rect);
 
             //只有各组第一个 并且 headerId!=-1 才绘制头部view
-            preHeaderId = headerId;
+            int preHeaderId = headerId;
             headerId = getHeaderId(position);
             if(headerId <= NO_POSITION || headerId == preHeaderId)
             {
@@ -69,11 +80,9 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 
             View header = getHeaderView(parent, position);
 
-            y = rect.top;
-            int headerTop = header.getHeight() + top;
+            int y = Math.max(header.getHeight() + top, itemView.getTop());
             if(isStick)
             {
-                y = Math.max(headerTop, itemView.getTop());
                 int nextPosition = getNextHeadPosition(i, headerId, childCount, parent);
                 if(nextPosition != NO_POSITION)
                 {
@@ -87,24 +96,26 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
                 }
             }
 
+            //这个时候，y是header底部位置，需要减去它的高度，修正定位
             y -= header.getHeight();
             c.translate(x, y);
             header.draw(c);
+            //修正回来
             c.translate(-x, -y);
         }
     }
 
     /**
-     * 获取下一个节点，如果没有则返回-1
+     * 获取下一个节点，如果没有则返回 {@link #NO_POSITION}
      *
-     * @param count
-     * @return
+     * @param count Item数量
+     * @return Position
      */
     private int getNextHeadPosition(int id, int groupId, int count, RecyclerView parent)
     {
         for(int i = id; i < count; i++)
         {
-            if(headerAdapter.getId(parent.getChildAdapterPosition(parent.getChildAt(i))) != groupId)
+            if(getHeaderId(parent.getChildAdapterPosition(parent.getChildAt(i))) != groupId)
             {
                 return i;
             }
@@ -133,14 +144,9 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 
     private boolean hasItemOffset(int position)
     {
-        int id = headerAdapter.getId(position);
-        if(position == 0)
-        {
-            return id >= 0;
-        }
-
-        int preId = headerAdapter.getId(position - 1);
-        return id >= 0 && id != preId;
+        int id = getHeaderId(position);
+        int preId = getHeaderId(position - 1);
+        return id > NO_POSITION && id != preId;
     }
 
     private int getHeaderId(int position)
@@ -150,15 +156,14 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             return headerAdapter.getId(position);
         } catch(Exception e)
         {
-            e.printStackTrace();
-            return -1;
+            return NO_POSITION;
         }
     }
 
     /**
      * 获取HeaderView
      *
-     * @param parent
+     * @param parent   RecyclerView
      * @param position RecyclerView当前Item的position，需要用 {@link RecyclerView#getChildAdapterPosition(View)}
      *                 获得真实position，不然显示的数据有误
      * @return Header view

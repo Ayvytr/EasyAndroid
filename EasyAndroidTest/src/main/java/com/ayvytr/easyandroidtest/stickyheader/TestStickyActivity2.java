@@ -12,7 +12,6 @@ import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
 import com.ayvytr.easyandroid.view.recyclerview.itemdecoration.PrettyItemDecoration;
 import com.ayvytr.easyandroidtest.R;
-import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.HeaderItemDecoration;
 import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyItemHeaderAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class TestStickyActivity2 extends BaseEasyActivity
         recyclerView.setAdapter(basicAdapter);
         recyclerView.addItemDecoration(new PrettyItemDecoration(PrettyItemDecoration.VERTICAL));
         recyclerView.addItemDecoration(new PrettyItemDecoration());
-        recyclerView.addItemDecoration(new HeaderItemDecoration(basicAdapter));
+//        recyclerView.addItemDecoration(new HeaderItemDecoration(basicAdapter, false));
     }
 
     @Override
