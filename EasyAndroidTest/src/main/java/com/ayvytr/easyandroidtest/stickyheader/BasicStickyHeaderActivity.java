@@ -13,8 +13,8 @@ import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
 import com.ayvytr.easyandroidtest.R;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyHeaderItemDecoration;
+import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyHeaderAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class BasicStickyHeaderActivity extends BaseEasyActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         basicAdapter = new BasicAdapter();
         recyclerView.setAdapter(basicAdapter);
-        recyclerView.addItemDecoration(new StickyRecyclerHeadersDecoration(basicAdapter));
+        recyclerView.addItemDecoration(new StickyHeaderItemDecoration(basicAdapter));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class BasicStickyHeaderActivity extends BaseEasyActivity
     }
 
     public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.Vh>
-            implements StickyRecyclerHeadersAdapter<BasicAdapter.Vh>
+            implements StickyHeaderAdapter<BasicAdapter.Vh>
     {
         List<String> list = new ArrayList<>();
 
@@ -95,13 +95,13 @@ public class BasicStickyHeaderActivity extends BaseEasyActivity
         }
 
         @Override
-        public long getHeaderId(int position)
+        public int getId(int position)
         {
             return position;
         }
 
         @Override
-        public Vh onCreateHeaderViewHolder(ViewGroup parent)
+        public Vh onCreateHeaderViewHolder(RecyclerView parent)
         {
             return new Vh(LayoutInflater.from(parent.getContext())
                                         .inflate(R.layout.item_basic_sticky_header, parent, false));

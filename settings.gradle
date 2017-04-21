@@ -1,1 +1,1 @@
-include ':EasyAndroidTest', ':EasyAndroid', ':StickyHeader'
+include ':EasyAndroidTest', ':EasyAndroid'

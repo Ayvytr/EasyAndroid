@@ -2,7 +2,7 @@ package com.ayvytr.easyandroidtest.stickyheader.itemdecoration;
 
 import android.support.v7.widget.RecyclerView;
 
-public interface StickyItemHeaderAdapter<VH extends RecyclerView.ViewHolder>
+public interface StickyHeaderAdapter<VH extends RecyclerView.ViewHolder>
 {
     int getId(int position);
 

@@ -1,5 +1,6 @@
 package com.ayvytr.easyandroidtest.stickyheader.itemdecoration;
 
+import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
@@ -12,13 +13,14 @@ import android.view.View;
  * @author davidwang
  */
 
-public class HeaderItemDecoration extends RecyclerView.ItemDecoration
+public class StickyHeaderItemDecoration extends RecyclerView.ItemDecoration
 {
-    private StickyItemHeaderAdapter headerAdapter;
+    private StickyHeaderAdapter headerAdapter;
     private HeaderViewCache headerViewCache;
     private boolean isStick = true;
 
     private static final int NO_POSITION = RecyclerView.NO_POSITION;
+    private Rect rect = new Rect();
 
     /**
      * 设置顶部吸附效果
@@ -30,12 +32,12 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
         this.isStick = isStick;
     }
 
-    public HeaderItemDecoration(StickyItemHeaderAdapter headerAdapter)
+    public StickyHeaderItemDecoration(StickyHeaderAdapter headerAdapter)
     {
         this(headerAdapter, true);
     }
 
-    public HeaderItemDecoration(StickyItemHeaderAdapter headerAdapter, boolean isStick)
+    public StickyHeaderItemDecoration(StickyHeaderAdapter headerAdapter, boolean isStick)
     {
         this.headerAdapter = headerAdapter;
         this.isStick = isStick;
@@ -58,11 +60,20 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
         draw(c, parent);
     }
 
+    @SuppressLint("NewApi")
     private void draw(Canvas c, RecyclerView parent)
     {
         int childCount = parent.getChildCount();
 
+        if(parent.getClipToPadding())
+        {
+            c.clipRect(parent.getPaddingLeft(), parent.getPaddingTop(),
+                    parent.getWidth() - parent.getPaddingRight(),
+                    parent.getHeight() - parent.getPaddingBottom());
+        }
+
         int top = parent.getPaddingTop();
+        int preHeaderId;
         int headerId = NO_POSITION;
         int x = parent.getPaddingLeft();
         for(int i = 0; i < childCount; i++)
@@ -71,7 +82,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             int position = parent.getChildAdapterPosition(itemView);
 
             //只有各组第一个 并且 headerId!=-1 才绘制头部view
-            int preHeaderId = headerId;
+            preHeaderId = headerId;
             headerId = getHeaderId(position);
             if(headerId <= NO_POSITION || headerId == preHeaderId)
             {
@@ -80,18 +91,23 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
 
             View header = getHeaderView(parent, position);
 
-            int y = Math.max(header.getHeight() + top, itemView.getTop());
+            int heightWithPadding = header.getHeight() + top;
+            int y = Math.max(heightWithPadding, itemView.getTop());
             if(isStick)
             {
                 int nextPosition = getNextHeadPosition(i, headerId, childCount, parent);
                 if(nextPosition != NO_POSITION)
                 {
                     View nextView = parent.getChildAt(nextPosition);
+                    //获得真实位置后再进行判断
+                    parent.getDecoratedBoundsWithMargins(nextView, rect);
                     //判断下一个头部view是否到了与上一个头部view接触的临界值
                     //如果满足条件则把上一个头部view推上去
-                    if(nextView.getTop() <= header.getBottom())
+                    if(rect.top <= heightWithPadding)
                     {
-                        y = nextView.getHeight() - header.getBottom();
+                        //这里使用nextView.getTop 直接减掉 header.getHeight()，如果减去heightWithPadding,
+                        //会出现移动时的间距
+                        y = nextView.getTop() - header.getHeight();
                     }
                 }
             }

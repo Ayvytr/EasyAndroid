@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 
 class HeaderViewCache
 {
-    private final StickyItemHeaderAdapter adapter;
+    private final StickyHeaderAdapter adapter;
     private final SparseArray<View> mHeaderViews = new SparseArray<>();//缓存头部View
 
-    public HeaderViewCache(StickyItemHeaderAdapter adapter)
+    public HeaderViewCache(StickyHeaderAdapter adapter)
     {
         this.adapter = adapter;
     }

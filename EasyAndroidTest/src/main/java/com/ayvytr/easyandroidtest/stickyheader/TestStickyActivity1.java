@@ -1,7 +1,7 @@
 package com.ayvytr.easyandroidtest.stickyheader;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,10 +30,10 @@ public class TestStickyActivity1 extends BaseEasyActivity
     protected void initView(Bundle savedInstanceState)
     {
         ButterKnife.bind(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setLayoutManager(
 //                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 //        recyclerView.setLayoutManager(
 //                new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         basicAdapter = new BasicAdapter();
