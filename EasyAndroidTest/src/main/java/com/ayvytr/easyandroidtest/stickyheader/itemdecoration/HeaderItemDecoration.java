@@ -5,8 +5,6 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.ayvytr.logger.L;
-
 /**
  * Desc:
  * Date: 2017/4/17
@@ -51,8 +49,8 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
         int childCount = parent.getChildCount();
 
         int top = parent.getPaddingTop();
-        int groupId = NO_POSITION;
-        int preGroupId;
+        int headerId = NO_POSITION;
+        int preHeaderId;
         int x = parent.getPaddingLeft();
         int y;
         for(int i = 0; i < childCount; i++)
@@ -61,10 +59,10 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             int position = parent.getChildAdapterPosition(itemView);
             parent.getDecoratedBoundsWithMargins(itemView, rect);
 
-            //只有各组第一个 并且 groupId!=-1 才绘制头部view
-            preGroupId = groupId;
-            groupId = getHeaderId(position);
-            if(groupId <= NO_POSITION || groupId == preGroupId)
+            //只有各组第一个 并且 headerId!=-1 才绘制头部view
+            preHeaderId = headerId;
+            headerId = getHeaderId(position);
+            if(headerId <= NO_POSITION || headerId == preHeaderId)
             {
                 continue;
             }
@@ -72,11 +70,11 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             View header = getHeaderView(parent, position);
 
             y = rect.top;
+            int headerTop = header.getHeight() + top;
             if(isStick)
             {
-                y = Math.max(header.getBottom(), itemView.getTop());
-                L.e("isStick", y);
-                int nextPosition = getNextHeadPosition(i, groupId, childCount, parent);
+                y = Math.max(headerTop, itemView.getTop());
+                int nextPosition = getNextHeadPosition(i, headerId, childCount, parent);
                 if(nextPosition != NO_POSITION)
                 {
                     View nextView = parent.getChildAt(nextPosition);
@@ -84,12 +82,12 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
                     //如果满足条件则把上一个头部view推上去
                     if(nextView.getTop() <= header.getBottom())
                     {
-                        L.e("推", header.getBottom(), y);
-                        y = nextView.getTop() - header.getBottom();
+                        y = nextView.getHeight() - header.getBottom();
                     }
                 }
             }
 
+            y -= header.getHeight();
             c.translate(x, y);
             header.draw(c);
             c.translate(-x, -y);
@@ -111,25 +109,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
                 return i;
             }
         }
-        return -1;
-    }
-
-    private boolean canDraw(int position)
-    {
-        int headerId = getHeaderId(position);
-        int preHeaderId = getPreHeaderId(position);
-
-        return headerId >= 0 && headerId != preHeaderId;
-    }
-
-    private int getPreHeaderId(int position)
-    {
-        if(position < 1)
-        {
-            return -1;
-        }
-
-        return headerAdapter.getId(position - 1);
+        return NO_POSITION;
     }
 
 
@@ -173,18 +153,6 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration
             e.printStackTrace();
             return -1;
         }
-    }
-
-    private boolean hasHeader(int position)
-    {
-        int id = getHeaderId(position);
-        if(position == 0)
-        {
-            return id > NO_POSITION;
-        }
-
-        int preId = getHeaderId(position - 1);
-        return id > NO_POSITION && id != preId;
     }
 
     /**

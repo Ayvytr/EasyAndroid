@@ -30,6 +30,15 @@ public class TestFullScreenActivity extends AppCompatActivity
     {
         setSupportActionBar(toolbar);
         setTitle("测试AppCompatActivity");
+        toolbar.setNavigationIcon(android.R.drawable.arrow_up_float);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+            }
+        });
         toolbar.setTitle(R.string.this_is_appcompatactivity);
     }
 

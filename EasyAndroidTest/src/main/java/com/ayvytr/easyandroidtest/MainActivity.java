@@ -17,6 +17,7 @@ import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView;
 import com.ayvytr.easyandroidtest.stickyheader.StickyHeaderActivity;
+import com.ayvytr.logger.L;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Easy.getDefault().init(getApplicationContext());
+        L.getSettings().justShowMessage(true);
         init();
     }
 

@@ -45,6 +45,15 @@ public class TestStickyActivity2 extends BaseEasyActivity
         return R.layout.activity_test_sticky2;
     }
 
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        recyclerView.setAdapter(null);
+        recyclerView.setLayoutManager(null);
+        basicAdapter = null;
+    }
+
     public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.Vh>
             implements StickyItemHeaderAdapter<BasicAdapter.HeaderVh>
     {
