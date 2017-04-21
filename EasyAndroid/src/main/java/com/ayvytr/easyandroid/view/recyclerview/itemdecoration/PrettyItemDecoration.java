@@ -30,13 +30,16 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
 
     private Paint paint;
     //Divider宽度，像素
-    private int dividerWidth = 1;
+    private int dividerWidth;
     //Divider方向
-    private int orientation = HORIZONTAL;
+    private int orientation;
     @ColorInt
     private int color;
     private Rect rect = new Rect();
     private int dividerOffset;
+
+    //仅供内部使用的View
+    private View v;
 
     public PrettyItemDecoration()
     {
@@ -69,16 +72,26 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         paint.setStrokeWidth(this.dividerWidth);
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state)
     {
         super.onDrawOver(c, parent, state);
+
         if(parent.getLayoutManager() == null)
         {
             return;
         }
 
-        if(orientation == OrientationHelper.HORIZONTAL)
+        if(parent.getClipToPadding())
+        {
+            c.clipRect(parent.getPaddingLeft() - dividerOffset,
+                    parent.getPaddingTop() - dividerOffset,
+                    parent.getWidth() - parent.getPaddingRight() + dividerOffset,
+                    parent.getHeight() - parent.getPaddingBottom() + dividerOffset);
+        }
+
+        if(orientation == HORIZONTAL)
         {
             drawHorizontal(c, parent);
         }
@@ -91,19 +104,11 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
     @SuppressLint("NewApi")
     private void drawVertical(Canvas c, RecyclerView parent)
     {
-        if(parent.getClipToPadding())
-        {
-            c.clipRect(parent.getPaddingLeft() - dividerOffset,
-                    parent.getPaddingTop() - dividerOffset,
-                    parent.getWidth() - parent.getPaddingRight() + dividerOffset,
-                    parent.getHeight() - parent.getPaddingBottom() + dividerOffset);
-        }
-
         int childCount = parent.getChildCount();
         for(int i = 0; i < childCount; i++)
         {
-            View view = parent.getChildAt(i);
-            parent.getDecoratedBoundsWithMargins(view, rect);
+            v = parent.getChildAt(i);
+            parent.getDecoratedBoundsWithMargins(v, rect);
             c.drawLine(rect.left, rect.top, rect.left, rect.bottom, paint);
         }
 
@@ -114,15 +119,15 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         {
             for(int i = spanCount - 1; i < childCount; i += spanCount)
             {
-                View view = parent.getChildAt(i);
-                parent.getDecoratedBoundsWithMargins(view, rect);
+                v = parent.getChildAt(i);
+                parent.getDecoratedBoundsWithMargins(v, rect);
                 int left = rect.left + itemDividerWidth;
                 c.drawLine(left, rect.top, left, rect.bottom, paint);
             }
         }
 
-        View view = parent.getChildAt(childCount - 1);
-        parent.getDecoratedBoundsWithMargins(view, rect);
+        v = parent.getChildAt(childCount - 1);
+        parent.getDecoratedBoundsWithMargins(v, rect);
         int left = rect.left + itemDividerWidth;
         c.drawLine(left, rect.top, left, rect.bottom, paint);
     }
@@ -153,20 +158,12 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
     @SuppressLint("NewApi")
     private void drawHorizontal(Canvas c, RecyclerView parent)
     {
-        if(parent.getClipToPadding())
-        {
-            c.clipRect(parent.getPaddingLeft() - dividerOffset,
-                    parent.getPaddingTop() - dividerOffset,
-                    parent.getWidth() - parent.getPaddingRight() + dividerOffset,
-                    parent.getHeight() - parent.getPaddingBottom() + dividerOffset);
-        }
-
         int itemDividerWidth = getItemDividerWidth(parent);
         int childCount = parent.getChildCount();
         for(int i = 0; i < childCount; i++)
         {
-            View view = parent.getChildAt(i);
-            parent.getDecoratedBoundsWithMargins(view, rect);
+            v = parent.getChildAt(i);
+            parent.getDecoratedBoundsWithMargins(v, rect);
             int right = rect.left + itemDividerWidth;
             c.drawLine(rect.left, rect.top, right, rect.top, paint);
         }
@@ -176,8 +173,8 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
         {
             for(int i = childCount - spanCount; i < childCount; i++)
             {
-                View view = parent.getChildAt(i);
-                parent.getDecoratedBoundsWithMargins(view, rect);
+                v = parent.getChildAt(i);
+                parent.getDecoratedBoundsWithMargins(v, rect);
                 int right = rect.left + itemDividerWidth;
                 c.drawLine(rect.left, rect.bottom, right, rect.bottom, paint);
             }
@@ -207,7 +204,7 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
                                RecyclerView.State state)
     {
         super.getItemOffsets(outRect, view, parent, state);
-        if(orientation == OrientationHelper.HORIZONTAL)
+        if(orientation == HORIZONTAL)
         {
             outRect.set(0, dividerOffset, 0, -dividerOffset);
         }
