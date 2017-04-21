@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroid.view.recyclerview.itemdecoration;
+package com.ayvytr.easyandroidtest.stickyheader.itemdecoration;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;

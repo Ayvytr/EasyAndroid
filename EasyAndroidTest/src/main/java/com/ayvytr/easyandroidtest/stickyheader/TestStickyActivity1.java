@@ -11,8 +11,8 @@ import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
-import com.ayvytr.easyandroid.view.recyclerview.itemdecoration.PrettyItemDecoration;
 import com.ayvytr.easyandroidtest.R;
+import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.PrettyItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
