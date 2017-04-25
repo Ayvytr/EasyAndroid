@@ -13,15 +13,15 @@ import com.ayvytr.easyandroid.Easy;
 import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 /**
- * 获取资源中的Drawable，String，dimension，color, Configuration.
+ * 获取资源中的Drawable，String，dimension，color, Configuration(简化ResTool类名为Res，调用更方便).
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
- * @since 1.0.0
+ * @since 1.7.9
  */
 
-public class ResTool
+public class Res
 {
-    private ResTool()
+    private Res()
     {
         throw new UnsupportedInitializationException();
     }
