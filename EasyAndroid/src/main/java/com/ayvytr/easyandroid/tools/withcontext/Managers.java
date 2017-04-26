@@ -29,6 +29,7 @@ import android.media.session.MediaSessionManager;
 import android.net.nsd.NsdManager;
 import android.nfc.NfcManager;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.HardwarePropertiesManager;
 import android.os.PowerManager;
 import android.os.UserManager;
@@ -45,6 +46,8 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.CaptioningManager;
 import android.view.inputmethod.InputMethodManager;
 import android.view.textservice.TextServicesManager;
+
+import com.ayvytr.easyandroid.exception.ClipboardUnsupportedException;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -168,6 +171,10 @@ public class Managers
 
     public static ClipboardManager getClipboardManager()
     {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
+        {
+            throw new ClipboardUnsupportedException();
+        }
         return (ClipboardManager) get(CLIPBOARD_SERVICE);
     }
 

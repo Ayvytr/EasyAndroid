@@ -1,9 +1,11 @@
 package com.ayvytr.easyandroid.tools.withcontext;
 
+import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 
 import com.ayvytr.easyandroid.Easy;
 import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
@@ -35,6 +37,7 @@ public class ClipboardTool
      *
      * @param text 文本
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void setText(CharSequence text)
     {
         ClipboardManager clipboardManager = getClipboardManager();
@@ -57,6 +60,7 @@ public class ClipboardTool
      * @param textIfNull 剪贴板文本如果为空，返回这个字符串
      * @return 剪贴板文本
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static String getText(String textIfNull)
     {
         ClipboardManager clipboardManager = getClipboardManager();
@@ -74,6 +78,7 @@ public class ClipboardTool
      *
      * @param uri uri
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void setUri(Uri uri)
     {
         ClipboardManager clipboardManager = Managers.getClipboardManager();
@@ -86,6 +91,7 @@ public class ClipboardTool
      *
      * @return 剪贴板的uri
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static Uri getUri()
     {
         ClipboardManager clipboardManager = Managers.getClipboardManager();
@@ -102,6 +108,7 @@ public class ClipboardTool
      *
      * @param intent 意图
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void setIntent(Intent intent)
     {
         ClipboardManager clipboardManager = Managers.getClipboardManager();
@@ -113,6 +120,7 @@ public class ClipboardTool
      *
      * @return 剪贴板的意图
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static Intent getIntent()
     {
         ClipboardManager clipboardManager = Managers.getClipboardManager();
