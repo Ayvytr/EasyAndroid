@@ -71,4 +71,29 @@ public class AppInfo implements Parcelable
             return new AppInfo[size];
         }
     };
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(this == obj)
+        {
+            return true;
+        }
+
+        if(!(obj instanceof AppInfo))
+        {
+            return false;
+        }
+
+        AppInfo ai = (AppInfo) obj;
+        if(!ai.label.equals(label) ||
+                !this.packageName.equals(ai.packageName) ||
+                this.isSystemApp != ai.isSystemApp ||
+                !this.className.equals(ai.className))
+        {
+            return false;
+        }
+
+        return true;
+    }
 }
