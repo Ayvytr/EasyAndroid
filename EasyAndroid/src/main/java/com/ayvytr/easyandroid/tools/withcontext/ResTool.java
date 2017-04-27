@@ -21,7 +21,7 @@ import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 public class ResTool
 {
-    private ResTool()
+    ResTool()
     {
         throw new UnsupportedInitializationException();
     }
