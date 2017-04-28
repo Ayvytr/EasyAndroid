@@ -6,6 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.ayvytr.easyandroid.tools.BitmapTool;
+import com.ayvytr.easyandroid.tools.TextTool;
 
 /**
  * 包含应用label，package name，icon 等信息的Bean类.
@@ -86,10 +87,10 @@ public class AppInfo implements Parcelable
         }
 
         AppInfo ai = (AppInfo) obj;
-        if(!ai.label.equals(label) ||
-                !this.packageName.equals(ai.packageName) ||
-                this.isSystemApp != ai.isSystemApp ||
-                !this.className.equals(ai.className))
+        if(TextTool.notEquals(className, ai.className) ||
+                TextTool.notEquals(label, ai.label) ||
+                TextTool.notEquals(packageName, ai.packageName) ||
+                isSystemApp != ai.isSystemApp)
         {
             return false;
         }

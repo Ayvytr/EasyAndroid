@@ -128,4 +128,56 @@ public class TextTool
         return isEmpty(str) || isEmpty(str.trim());
 
     }
+
+    /**
+     * 比较2个字符串是否相等.
+     *
+     * @param str  字符串1
+     * @param str2 字符串2
+     * @return {@code true }相等 {@code false }不相等
+     */
+    public static boolean equals(String str, String str2)
+    {
+        return str == null && str2 == null || str.equals(str2);
+    }
+
+    /**
+     * 比较2个字符串是否相等，忽略大小写.
+     *
+     * @param str  字符串1
+     * @param str2 字符串2
+     * @return {@code true }相等 {@code false }不相等
+     */
+    public static boolean equalsIgnoreCase(String str, String str2)
+    {
+        return str == null && str2 == null || str.equalsIgnoreCase(str2);
+    }
+
+    /**
+     * 比较2个字符串是否不相等.
+     * <p>
+     * {@link #equals(String, String)}
+     *
+     * @param str  字符串1
+     * @param str2 字符串2
+     * @return {@code true }相等 {@code false }不相等
+     */
+    public static boolean notEquals(String str, String str2)
+    {
+        return !equals(str, str2);
+    }
+
+    /**
+     * 比较2个字符串是否不相等，忽略大小写.
+     * <p>
+     * {@link #equalsIgnoreCase(String, String)}
+     *
+     * @param str  字符串1
+     * @param str2 字符串2
+     * @return {@code true }相等 {@code false }不相等
+     */
+    public static boolean notEqualsIgnoreCase(String str, String str2)
+    {
+        return !equalsIgnoreCase(str, str2);
+    }
 }
