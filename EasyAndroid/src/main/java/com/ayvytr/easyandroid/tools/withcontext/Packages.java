@@ -36,8 +36,6 @@ public class Packages
         List<PackageInfo> packages = getInstalledPackages();
         for(PackageInfo p : packages)
         {
-            p.applicationInfo.loadIcon(pm);
-            p.applicationInfo.loadLabel(pm);
             list.add(new AppInfo(p.applicationInfo.loadLabel(pm).toString(),
                     p.applicationInfo.packageName,
                     p.applicationInfo.loadIcon(pm),
