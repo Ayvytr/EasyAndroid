@@ -30,7 +30,7 @@ public class BitmapTool
      * @param drawable Drawable
      * @return Bitmap
      */
-    public static Bitmap toBitmap(Drawable drawable)
+    private static Bitmap toBitmap1(Drawable drawable)
     {
         BitmapDrawable bd = (BitmapDrawable) drawable;
         return bd.getBitmap();
@@ -42,7 +42,7 @@ public class BitmapTool
      * @param drawable Drawable
      * @return Bitmap
      */
-    public static Bitmap toBitmap2(Drawable drawable)
+    private static Bitmap toBitmap2(Drawable drawable)
     {
         Bitmap bitmap;
         int w = drawable.getIntrinsicWidth();
@@ -59,6 +59,29 @@ public class BitmapTool
     }
 
     /**
+     * Drawable 转换返回 Bitmap.
+     *
+     * @param drawable Drawable
+     * @return Bitmap
+     */
+    public static Bitmap toBitmap(Drawable drawable)
+    {
+        try
+        {
+            /*
+             直接强转BitmapDrawable有时报错：
+             java.lang.ClassCastException: android.graphics.drawable.VectorDrawable
+             cannot be cast to android.graphics.drawable.BitmapDrawable
+             */
+            return toBitmap1(drawable);
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            return toBitmap2(drawable);
+        }
+    }
+
+    /**
      * Drawable 转换为Bitmap.
      *
      * @param id Drawable id
@@ -68,18 +91,6 @@ public class BitmapTool
     {
         Drawable drawable = ResTool.getDrawable(id);
         return toBitmap(drawable);
-    }
-
-    /**
-     * Drawable 转换为Bitmap.
-     *
-     * @param id Drawable id
-     * @return Bitmap
-     */
-    public static Bitmap toBitmap2(@DrawableRes int id)
-    {
-        Drawable drawable = ResTool.getDrawable(id);
-        return toBitmap2(drawable);
     }
 
     /**
