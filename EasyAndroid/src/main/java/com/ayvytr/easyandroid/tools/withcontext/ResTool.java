@@ -3,6 +3,7 @@ package com.ayvytr.easyandroid.tools.withcontext;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ArrayRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
@@ -80,7 +81,7 @@ public class ResTool
      */
     public static float getDimenFloat(@DimenRes int id)
     {
-        return Easy.getContext().getResources().getDimension(id);
+        return getResources().getDimension(id);
     }
 
     /**
@@ -123,7 +124,7 @@ public class ResTool
      */
     public static Configuration getConfiguration()
     {
-        return Easy.getContext().getResources().getConfiguration();
+        return getResources().getConfiguration();
     }
 
     /**
@@ -134,5 +135,38 @@ public class ResTool
     public static Resources getResources()
     {
         return Easy.getContext().getResources();
+    }
+
+    /**
+     * 获取返回String array.
+     *
+     * @param id resource id
+     * @return String array
+     */
+    public String[] getStringArray(@ArrayRes int id)
+    {
+        return getResources().getStringArray(id);
+    }
+
+    /**
+     * 获取返回int array.
+     *
+     * @param id resource id
+     * @return int array
+     */
+    public int[] getIntArray(@ArrayRes int id)
+    {
+        return getResources().getIntArray(id);
+    }
+
+    /**
+     * 获取返回text id.
+     *
+     * @param id resource id
+     * @return text array
+     */
+    public CharSequence[] getTextArray(@ArrayRes int id)
+    {
+        return getResources().getTextArray(id);
     }
 }
