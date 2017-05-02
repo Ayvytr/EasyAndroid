@@ -14,6 +14,7 @@
         tools:context="com.ayvytr.easyandroidtest.MainActivity">
 
         <Button
+            android:id="@+id/btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onSeePopupWindow"
@@ -44,11 +45,11 @@
             android:text="测试全屏"/>
 
         <Button
-            android:text="StickyHeaderRecyclerView"
-            android:onClick="onStickyHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg_selector"/>
+            android:background="@drawable/btn_bg_selector"
+            android:onClick="onStickyHeader"
+            android:text="StickyHeaderRecyclerView"/>
 
         <TextView
             style="@style/MatchParent_WrapContent"
@@ -124,6 +125,16 @@
                 android:layout_weight="1"/>
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100dp"/>
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100dp"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

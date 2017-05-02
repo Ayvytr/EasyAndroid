@@ -2,15 +2,19 @@ package com.ayvytr.easyandroidtest;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.ayvytr.easyandroid.Easy;
 import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.tools.withcontext.ClipboardTool;
 import com.ayvytr.easyandroid.tools.withcontext.Managers;
+import com.ayvytr.easyandroid.tools.withcontext.Res;
 import com.ayvytr.easyandroid.tools.withcontext.ResTool;
 import com.ayvytr.easyandroid.tools.withcontext.ScreenTool;
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
@@ -29,6 +33,12 @@ public class MainActivity extends AppCompatActivity
     LeftCenterGravityTextView tv2;
     @BindView(R.id.tv3)
     RightCenterGravityTextView tv3;
+    @BindView(R.id.btn)
+    Button btn;
+    @BindView(R.id.iv)
+    ImageView iv;
+    @BindView(R.id.iv2)
+    ImageView iv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,6 +66,11 @@ public class MainActivity extends AppCompatActivity
         tv3.append(",");
         tv3.append(Convert.toString(ScreenTool.getScreenHeight()));
         tv3.append(")");
+
+        Drawable[] drawableArray = Res.getDrawableArray(R.array.testArray);
+        iv.setImageDrawable(drawableArray[0]);
+        int[] drawableIdArray = Res.getDrawableIdArray(R.array.testArray);
+        iv2.setImageResource(drawableIdArray[0]);
     }
 
     public void onGetClipboard(View view)
