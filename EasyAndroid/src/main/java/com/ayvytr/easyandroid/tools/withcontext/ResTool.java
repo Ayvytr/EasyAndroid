@@ -143,7 +143,7 @@ public class ResTool
      * @param id resource id
      * @return String array
      */
-    public String[] getStringArray(@ArrayRes int id)
+    public static String[] getStringArray(@ArrayRes int id)
     {
         return getResources().getStringArray(id);
     }
@@ -154,7 +154,7 @@ public class ResTool
      * @param id resource id
      * @return int array
      */
-    public int[] getIntArray(@ArrayRes int id)
+    public static int[] getIntArray(@ArrayRes int id)
     {
         return getResources().getIntArray(id);
     }
@@ -165,7 +165,7 @@ public class ResTool
      * @param id resource id
      * @return text array
      */
-    public CharSequence[] getTextArray(@ArrayRes int id)
+    public static CharSequence[] getTextArray(@ArrayRes int id)
     {
         return getResources().getTextArray(id);
     }
