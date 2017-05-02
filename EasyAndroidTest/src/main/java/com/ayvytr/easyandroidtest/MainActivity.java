@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +17,7 @@ import com.ayvytr.easyandroid.tools.withcontext.Res;
 import com.ayvytr.easyandroid.tools.withcontext.ResTool;
 import com.ayvytr.easyandroid.tools.withcontext.ScreenTool;
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
+import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView;
 import com.ayvytr.easyandroidtest.stickyheader.StickyHeaderActivity;
@@ -26,7 +26,7 @@ import com.ayvytr.logger.L;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
 {
 
     @BindView(R.id.tv2)
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Easy.getDefault().init(getApplicationContext());
+        Easy.getDefault().init(getContext());
         L.getSettings().justShowMessage(true);
         init();
     }
