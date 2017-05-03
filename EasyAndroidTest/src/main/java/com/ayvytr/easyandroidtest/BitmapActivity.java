@@ -47,7 +47,7 @@ public class BitmapActivity extends AppCompatActivity
         Drawable drawable = ResTool.getDrawable(R.mipmap.ic_launcher);
         iv1.setImageDrawable(drawable);
         iv2.setImageBitmap(BitmapTool.toBitmap(R.mipmap.ic_launcher));
-        iv3.setImageBitmap(BitmapTool.toBitmap2(drawable));
+        iv3.setImageBitmap(BitmapTool.toBitmap(drawable));
 
         iv4.setImageBitmap(BitmapTool.zoom(drawable, 20, 30));
         iv5.setImageBitmap(BitmapTool.zoom(BitmapTool.toBitmap(drawable), 50, 30));

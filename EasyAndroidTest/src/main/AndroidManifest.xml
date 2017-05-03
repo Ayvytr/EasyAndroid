@@ -49,6 +49,8 @@
         <activity
             android:name=".stickyheader.TestStickyActivity2"
             android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
+        <activity android:name=".FlowLayoutActivity">
+        </activity>
     </application>
 
 </manifest>
