@@ -3,4 +3,7 @@
     <integer-array name="testArray">
         <item>@mipmap/ic_launcher</item>
     </integer-array>
+    <string-array name="custom_views">
+        <item>AuthEditText</item>
+    </string-array>
 </resources>

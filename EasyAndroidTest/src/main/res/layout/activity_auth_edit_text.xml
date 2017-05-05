@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ayvytr.easyandroid.view.custom.AuthEditText
+        android:id="@+id/authEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10dp"/>
+
+    <com.ayvytr.easyandroid.view.custom.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onTextColor"
+            android:text="修改字体颜色"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onFrameColor"
+            android:text="修改边框颜色"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onTextSize"
+            android:text="修改字体大小"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onChangeSize"
+            android:text="修改大小"/>
+
+        <Button
+            android:text="清除内容"
+            android:onClick="onClearText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </com.ayvytr.easyandroid.view.custom.FlowLayout>
+</LinearLayout>

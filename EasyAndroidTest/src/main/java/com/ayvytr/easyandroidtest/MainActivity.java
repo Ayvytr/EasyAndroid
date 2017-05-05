@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.ayvytr.easyandroid.Easy;
 import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
@@ -130,6 +131,29 @@ public class MainActivity extends BaseActivity
 
     public void onCustomView(View view)
     {
-        startActivity(new Intent(getContext(), CustomViewActivity.class));
+        new MaterialDialog.Builder(getActivity())
+                .title("选择自定义控件")
+                .items(R.array.custom_views)
+                .alwaysCallInputCallback()
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View itemView, int which,
+                                               CharSequence text)
+                    {
+                        Intent intent = null;
+                        switch(which)
+                        {
+                            case 0:
+                                intent = new Intent(getContext(), AuthEditTextActivity.class);
+                                break;
+                        }
+
+                        if(intent != null)
+                        {
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                }).show();
     }
 }

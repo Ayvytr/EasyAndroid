@@ -6,13 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Px;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 import com.ayvytr.easyandroid.R;
 import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
-import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
 import com.ayvytr.easyandroid.tools.withcontext.ResCompat;
 
 import java.util.ArrayList;
@@ -52,9 +52,14 @@ public class AuthEditText extends RelativeLayout
 
     private int textFrameColor = Colors.BLACK;
 
-    private int bgStrokeWidth = 2;
+    private int strokeWidth = 2;
+
     private ShapeDrawable drawable;
-    private TextWatcher textWatcher;
+
+    private OnInputFinishedListener onInputFinishedListener;
+
+    private int textSize = 18;
+    private String string;
 
     public void setTextViewBackground(Drawable drawable)
     {
@@ -77,7 +82,6 @@ public class AuthEditText extends RelativeLayout
     {
         super(context, attrs, defStyleAttr);
         this.context = context;
-//        inflate(context, R.layout.layout_auth_edit_text, this);
         init();
     }
 
@@ -95,8 +99,6 @@ public class AuthEditText extends RelativeLayout
 
         etInput.setTextColor(Colors.TRANSPARENT);
 
-        etInput.setText("");
-
         initShapeDrawable();
 
         setTextViewBackground(drawable);
@@ -105,76 +107,10 @@ public class AuthEditText extends RelativeLayout
 
     private void createView()
     {
-//        etInput = (EditText) findViewById(R.id.etInput);
-//        llTv = (LinearLayout) findViewById(R.id.llTv);
         etInput = new EditText(context);
         etInput.setCursorVisible(false);
         etInput.setBackgroundDrawable(null);
-
-        llTv = new LinearLayout(context);
-
-        LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        addView(etInput, lp);
-        addView(llTv, lp);
-    }
-
-    private void onTextChange(String s)
-    {
-        for(int i = 0; i < s.length(); i++)
-        {
-            list.get(i).setText(Convert.toString(s.charAt(i)));
-        }
-
-        for(int i = s.length(); i < textLength; i++)
-        {
-            list.get(i).setText("");
-        }
-    }
-
-    private void initShapeDrawable()
-    {
-        drawable = new ShapeDrawable(new RectShape());
-        Paint paint = drawable.getPaint();
-        paint.setColor(textFrameColor);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(DensityTool.dp2px(context, bgStrokeWidth));
-    }
-
-    public void setTextFrameColor(@ColorInt int color)
-    {
-        this.textFrameColor = color;
-    }
-
-    public void setTextLength(int textLength)
-    {
-        if(textLength <= 0)
-        {
-            return;
-        }
-
-        this.textLength = textLength;
-
-        while(list.size() > this.textLength)
-        {
-            list.remove(list.size() - 1);
-        }
-
-        while(list.size() < this.textLength)
-        {
-            list.add(getDefaultTextView());
-        }
-
-        reviseTextBorderLocation();
-
-        llTv.removeAllViews();
-        for(TextView tv : list)
-        {
-            llTv.addView(tv);
-        }
-
-        etInput.setFilters(new InputFilter[]{new InputFilter.LengthFilter(textLength)});
-        textWatcher = new TextWatcher()
+        TextWatcher textWatcher = new TextWatcher()
         {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after)
@@ -189,11 +125,137 @@ public class AuthEditText extends RelativeLayout
             @Override
             public void afterTextChanged(Editable s)
             {
-                onTextChange(s.toString());
+                string = s.toString();
+                onTextChange(string);
             }
         };
-        etInput.removeTextChangedListener(textWatcher);
         etInput.addTextChangedListener(textWatcher);
+
+        llTv = new LinearLayout(context);
+
+        addView(etInput);
+        addView(llTv);
+    }
+
+    private void onTextChange(String s)
+    {
+        for(int i = 0; i < s.length(); i++)
+        {
+            list.get(i).setText(Convert.toString(s.charAt(i)));
+        }
+
+        for(int i = s.length(); i < textLength; i++)
+        {
+            list.get(i).setText("");
+        }
+
+        if(s.length() == textLength && onInputFinishedListener != null)
+        {
+            onInputFinishedListener.onFinish(this, s);
+        }
+    }
+
+    private void initShapeDrawable()
+    {
+        drawable = new ShapeDrawable(new RectShape());
+        Paint paint = drawable.getPaint();
+        paint.setColor(textFrameColor);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(strokeWidth);
+    }
+
+    public void setFrameColor(@ColorInt int color)
+    {
+        this.textFrameColor = color;
+        changeFrameColor();
+    }
+
+    private void changeFrameColor()
+    {
+        initShapeDrawable();
+        for(TextView tv : list)
+        {
+            tv.setBackgroundDrawable(drawable);
+        }
+    }
+
+    public void setTextColor(@ColorInt int color)
+    {
+        this.textColor = color;
+        for(TextView tv : list)
+        {
+            tv.setTextColor(color);
+        }
+    }
+
+    public void setTextSize(@Px int size)
+    {
+        if(size <= 0)
+        {
+            return;
+        }
+
+        this.textSize = size;
+        for(TextView tv : list)
+        {
+            tv.setTextSize(textSize);
+        }
+    }
+
+    public void setAuthType(AuthType authType)
+    {
+        int inputType = InputType.TYPE_NULL;
+        switch(authType)
+        {
+            case NUMBER:
+                inputType = InputType.TYPE_CLASS_NUMBER;
+                break;
+            case PASSWORD:
+                inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD;
+                break;
+            case VISIBLE_PASSWORD:
+                inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
+                break;
+            case NUMBER_PASSWORD:
+                inputType = InputType.TYPE_NUMBER_VARIATION_PASSWORD;
+                break;
+            case DEFAULT:
+                inputType = InputType.TYPE_NULL;
+                break;
+        }
+        etInput.setInputType(inputType);
+        for(TextView tv : list)
+        {
+            tv.setInputType(inputType);
+        }
+    }
+
+
+    public void setTextLength(int textLength)
+    {
+        if(textLength <= 0)
+        {
+            return;
+        }
+
+        this.textLength = textLength;
+
+        while(list.size() > this.textLength)
+        {
+            TextView view = list.remove(list.size() - 1);
+            llTv.removeView(view);
+        }
+
+        while(list.size() < this.textLength)
+        {
+            TextView view = getDefaultTextView();
+            list.add(view);
+            llTv.addView(view);
+        }
+
+        reviseTextBorderLocation();
+
+        etInput.setFilters(new InputFilter[]{new InputFilter.LengthFilter(textLength)});
     }
 
     private void reviseTextBorderLocation()
@@ -207,11 +269,7 @@ public class AuthEditText extends RelativeLayout
     {
         TextView tv = new TextView(context);
         tv.setGravity(Gravity.CENTER);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0,
-                ViewGroup.LayoutParams.MATCH_PARENT, 1);
-        int margin = -DensityTool.dp2px(context, bgStrokeWidth / 2);
-        lp.rightMargin = margin;
-        tv.setLayoutParams(lp);
+        tv.setTextSize(textSize);
         tv.setTextColor(textColor);
         tv.setBackgroundDrawable(tvBg);
 
@@ -253,13 +311,70 @@ public class AuthEditText extends RelativeLayout
         setMeasuredDimension(width, height);
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh)
+    {
+        super.onSizeChanged(w, h, oldw, oldh);
+        LayoutParams lp = (LayoutParams) etInput.getLayoutParams();
+        lp.width = w;
+        lp.height = h;
+        llTv.setLayoutParams(lp);
+
+        LinearLayout.LayoutParams llp = (LinearLayout.LayoutParams) list.get(0).getLayoutParams();
+        int margin =  strokeWidth / 2;
+        llp.leftMargin = margin;
+        llp.rightMargin = 0;
+        llp.width = 0;
+        llp.height = h;
+        llp.weight = 1;
+        for(int i = 1; i < list.size(); i++)
+        {
+            TextView tv = list.get(i);
+            tv.setLayoutParams(llp);
+            tv.setBackgroundDrawable(drawable);
+        }
+
+        llp = (LinearLayout.LayoutParams) list.get(0).getLayoutParams();
+        llp.leftMargin = 0;
+
+        llTv.invalidate();
+    }
+
     public int getDefaultWidth()
     {
-        return ResCompat.getDimen(R.dimen._160dp);
+        return ResCompat.getDimen(R.dimen._240dp);
     }
 
     public int getDefaultHeight()
     {
         return ResCompat.getDimen(R.dimen._60dp);
+    }
+
+    public void setOnInputFinishedListener(OnInputFinishedListener l)
+    {
+        onInputFinishedListener = l;
+    }
+
+    public void clearText()
+    {
+        etInput.setText("");
+        for(TextView tv : list)
+        {
+            tv.setText("");
+        }
+    }
+
+    public interface OnInputFinishedListener
+    {
+        void onFinish(AuthEditText authEditText, String s);
+    }
+
+    public enum AuthType
+    {
+        NUMBER,
+        PASSWORD,
+        VISIBLE_PASSWORD,
+        NUMBER_PASSWORD,
+        DEFAULT,
     }
 }
