@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/_60dp"
+    android:minWidth="@dimen/_200dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:cursorVisible="false"
+        android:gravity="center"
+        android:text="验证码输入"/>
+
+    <LinearLayout
+        android:id="@+id/llTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_30dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</RelativeLayout>

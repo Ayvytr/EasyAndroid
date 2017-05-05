@@ -13,43 +13,58 @@
         android:orientation="vertical"
         tools:context="com.ayvytr.easyandroidtest.MainActivity">
 
-        <Button
-            android:id="@+id/btn"
+        <com.ayvytr.easyandroid.view.custom.FlowLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSeePopupWindow"
-            android:text="我要看PopupWindow"/>
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSeePackages"
-            android:text="packages"/>
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSeePopupWindow"
+                android:text="我要看PopupWindow"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSystemInfo"
-            android:text="系统信息"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSeePackages"
+                android:text="packages"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onBitmap"
-            android:text="Bitmap"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSystemInfo"
+                android:text="系统信息"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onTestFullScreen"
-            android:text="测试全屏"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onBitmap"
+                android:text="Bitmap"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg_selector"
-            android:onClick="onStickyHeader"
-            android:text="StickyHeaderRecyclerView"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onTestFullScreen"
+                android:text="测试全屏"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg_selector"
+                android:onClick="onStickyHeader"
+                android:text="StickyHeaderRecyclerView"/>
+
+            <Button
+                android:onClick="onCustomView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/blue_crayola"
+                android:text="自定义View"
+                android:textColor="@color/pink"/>
+
+
+        </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
         <TextView
             style="@style/MatchParent_WrapContent"

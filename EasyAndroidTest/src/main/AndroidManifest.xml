@@ -51,6 +51,8 @@
             android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
         <activity android:name=".FlowLayoutActivity">
         </activity>
+        <activity android:name=".CustomViewActivity">
+        </activity>
     </application>
 
 </manifest>

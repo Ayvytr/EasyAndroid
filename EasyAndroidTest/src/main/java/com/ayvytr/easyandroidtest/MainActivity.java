@@ -127,4 +127,9 @@ public class MainActivity extends BaseActivity
     {
         startActivity(new Intent(this, StickyHeaderActivity.class));
     }
+
+    public void onCustomView(View view)
+    {
+        startActivity(new Intent(getContext(), CustomViewActivity.class));
+    }
 }
