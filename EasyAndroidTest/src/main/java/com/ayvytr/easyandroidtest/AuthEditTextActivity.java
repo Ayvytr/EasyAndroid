@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.ayvytr.easyandroid.tools.Convert;
+import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.AuthEditText;
 
@@ -30,6 +33,20 @@ public class AuthEditTextActivity extends BaseEasyActivity
     {
         ButterKnife.bind(this);
         random = new Random();
+        authEditText.setOnInputFinishedListener(new AuthEditText.OnInputFinishedListener() {
+            @Override
+            public void onFinish(AuthEditText authEditText, String s)
+            {
+                ToastTool.show(s);
+            }
+        });
+        authEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                authEditText.requestEditTextFocus();
+            }
+        });
     }
 
     public void onTextColor(View view)
@@ -65,5 +82,66 @@ public class AuthEditTextActivity extends BaseEasyActivity
     public void onClearText(View view)
     {
         authEditText.clearText();
+    }
+
+    public void onChangeTextLength(View view)
+    {
+        new MaterialDialog.Builder(getContext())
+                .items(R.array.auth_edit_text_length)
+                .alwaysCallInputCallback()
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View itemView, int which,
+                                               CharSequence text)
+                    {
+                        authEditText.setTextLength(Convert.toInt(text.toString()));
+                        return true;
+                    }
+                }).show();
+    }
+
+    public void onAuthType(View view)
+    {
+        new MaterialDialog.Builder(getContext())
+                .items(R.array.auth_edit_text_auth_type)
+                .alwaysCallInputCallback()
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View itemView, int which,
+                                               CharSequence text)
+                    {
+                        AuthEditText.AuthType type = AuthEditText.AuthType.NUMBER;
+                        switch(which)
+                        {
+                            case 0:
+                                type = AuthEditText.AuthType.NUMBER;
+                                break;
+                            case 1:
+                                type = AuthEditText.AuthType.PASSWORD;
+                                break;
+                            case 2:
+                                type = AuthEditText.AuthType.VISIBLE_PASSWORD;
+                                break;
+                            case 3:
+                                type = AuthEditText.AuthType.NUMBER_PASSWORD;
+                                break;
+                            case 4:
+                                type = AuthEditText.AuthType.DEFAULT;
+                                break;
+                        }
+                        authEditText.setAuthType(type);
+                        return true;
+                    }
+                }).show();
+    }
+
+    public void onChangeBackground(View view)
+    {
+        authEditText.setTextViewDrawableRes(R.mipmap.ic_launcher);
+    }
+
+    public void onPasswordStr(View view)
+    {
+        authEditText.setPasswordStr("*");
     }
 }

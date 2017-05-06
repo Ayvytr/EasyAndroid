@@ -6,4 +6,23 @@
     <string-array name="custom_views">
         <item>AuthEditText</item>
     </string-array>
+    <string-array name="auth_edit_text_length">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="auth_edit_text_auth_type">
+        <item>数字</item>
+        <item>密码</item>
+        <item>明文密码</item>
+        <item>数字密码</item>
+        <item>默认（不限制输入类型）</item>
+    </string-array>
 </resources>

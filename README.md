@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.7-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.1-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
@@ -15,6 +15,10 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
+## 1.8.1 <font color=red>AuthEditText</font>, like Zhifubao's payment View
+
+## 1.8.0 <font color=red>FlowLayout</font>
+
 ## 1.7.7 <font color=red>Colors</font> class comes!
 * <font color=red>Colors</font> class, provides more than a thousand colors for you, and these colors still provides in color resource too.
 
@@ -26,7 +30,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.7'
+	compile 'com.ayvytr:EasyAndroid:1.8.1'
 
 ## JitPack
 
@@ -62,6 +66,10 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 	RightCenterGravityTextView
 
 	SeekBarPressure: double Thumb SeekBar
+
+	FlowLayout
+	
+	AuthEditText
 
 ### PopupWindows  [See Readme->](README_PopupWindow.md)
 	AlphaPopupWindow 

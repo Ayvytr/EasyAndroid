@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
 [![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.7.7-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.1-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid 库
@@ -12,6 +12,10 @@
     直接使用
     
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
+
+## 1.8.1 <font color=red>AuthEditText</font>, 类似支付宝支付时的输入密码控件
+
+## 1.8.0 <font color=red>FlowLayout</font> 流式布局
 
 ## 1.7.7 <font color=red>Colors</font> 类来啦!
 * <font color=red>Colors</font> 类，提供了超过1000种颜色，资源中同时也提供了这些颜色，太(henhao)多(hen)啦(qiangda)！
@@ -25,7 +29,7 @@
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.7.7'
+	compile 'com.ayvytr:EasyAndroid:1.8.1'
 
 ## JitPack
 
@@ -61,6 +65,10 @@
 	RightCenterGravityTextView
 
 	SeekBarPressure: 双Thumb的SeekBar
+
+	FlowLayout
+	
+	AuthEditText
 
 ### PopupWindows  [浏览 Readme->](README_PopupWindow.md)
 	AlphaPopupWindow 

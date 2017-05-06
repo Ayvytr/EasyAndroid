@@ -40,10 +40,68 @@
             android:text="修改大小"/>
 
         <Button
-            android:text="清除内容"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:onClick="onClearText"
+            android:text="清除内容"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onChangeTextLength"
+            android:text="修改text长度"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:text="修改背景"
+            android:onClick="onChangeBackground"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="修改PasswordStr"
+            android:onClick="onPasswordStr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+    </com.ayvytr.easyandroid.view.custom.FlowLayout>
+
+    <com.ayvytr.easyandroid.view.custom.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onAuthType"
+            android:text="选择验证类型"/>
+    </com.ayvytr.easyandroid.view.custom.FlowLayout>
+
+    <com.ayvytr.easyandroid.view.custom.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="密码"
+            android:inputType="textPassword"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="数字密码"
+            android:inputType="numberPassword"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="数字"
+            android:inputType="number"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="无限制"/>
 
     </com.ayvytr.easyandroid.view.custom.FlowLayout>
 </LinearLayout>
