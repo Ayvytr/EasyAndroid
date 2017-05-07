@@ -1,15 +1,17 @@
 package com.ayvytr.easyandroid.bean;
 
-import android.graphics.Bitmap;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
-import com.ayvytr.easyandroid.tools.BitmapTool;
 import com.ayvytr.easyandroid.tools.TextTool;
+import com.ayvytr.easyandroid.tools.withcontext.Managers;
 
 /**
- * 包含应用label，package name，icon 等信息的Bean类.
+ * 包含应用label，package name，isSystemApp等信息的Bean类(由于获取Drawable转Bitmap费时过长，icon不再存储，
+ * 现在可通过 {@link #getIcon()} 获取Icon，或者 {@link #loadIconInto(ImageView)} 加载进 ImageView).
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.7.6
@@ -19,16 +21,13 @@ public class AppInfo implements Parcelable
 {
     public String label;
     public String packageName;
-    public Bitmap icon;
     public String className;
     public boolean isSystemApp;
 
-    public AppInfo(String label, String packageName, Drawable icon, String className,
-                   boolean isSystemApp)
+    public AppInfo(String label, String packageName, String className, boolean isSystemApp)
     {
         this.label = label;
         this.packageName = packageName;
-        this.icon = BitmapTool.toBitmap(icon);
         this.className = className;
         this.isSystemApp = isSystemApp;
     }
@@ -44,7 +43,6 @@ public class AppInfo implements Parcelable
     {
         dest.writeString(this.label);
         dest.writeString(this.packageName);
-        dest.writeParcelable(this.icon, flags);
         dest.writeString(this.className);
         dest.writeByte(this.isSystemApp ? (byte) 1 : (byte) 0);
     }
@@ -53,7 +51,6 @@ public class AppInfo implements Parcelable
     {
         this.label = in.readString();
         this.packageName = in.readString();
-        this.icon = in.readParcelable(Bitmap.class.getClassLoader());
         this.className = in.readString();
         this.isSystemApp = in.readByte() != 0;
     }
@@ -96,5 +93,39 @@ public class AppInfo implements Parcelable
         }
 
         return true;
+    }
+
+    /**
+     * 获取 {@link #packageName} 的应用图标
+     *
+     * @return
+     */
+    public Drawable getIcon()
+    {
+        PackageManager packageManager = Managers.getPackageManager();
+        try
+        {
+            return packageManager.getPackageInfo(packageName, 0).applicationInfo
+                    .loadIcon(packageManager);
+        } catch(PackageManager.NameNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * 加载应用图标到iv中.
+     *
+     * @param iv 目标 ImageView
+     */
+    public void loadIconInto(ImageView iv)
+    {
+        Drawable icon = getIcon();
+        if(icon != null)
+        {
+            iv.setImageDrawable(icon);
+        }
     }
 }

@@ -1,9 +1,11 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.other;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.ayvytr.easyandroidtest.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.other;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.ayvytr.easyandroid.bean.AppInfo;
 import com.ayvytr.easyandroid.tools.withcontext.Packages;
+import com.ayvytr.easyandroidtest.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,7 +166,7 @@ public class PackagesActivity extends AppCompatActivity
             {
                 AppInfo appInfo = list.get(position);
                 tvTitle.setText(appInfo.label);
-                iv.setImageBitmap(appInfo.icon);
+                appInfo.loadIconInto(iv);
                 tvPackageName.setText(appInfo.packageName);
             }
         }

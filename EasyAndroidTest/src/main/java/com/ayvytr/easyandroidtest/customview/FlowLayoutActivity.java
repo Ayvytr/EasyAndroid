@@ -1,8 +1,9 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.customview;
 
 import android.os.Bundle;
 
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
+import com.ayvytr.easyandroidtest.R;
 
 import butterknife.ButterKnife;
 

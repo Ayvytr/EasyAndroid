@@ -19,16 +19,27 @@ import java.util.List;
 
 public class Packages
 {
+    /**
+     * 获取系统中安装的应用
+     */
     public static List<PackageInfo> getInstalledPackages()
     {
         return Easy.getContext().getPackageManager().getInstalledPackages(0);
     }
 
+    /**
+     * 获取系统中安装的应用
+     */
     public static List<ApplicationInfo> getInstalledApplications()
     {
         return Easy.getContext().getPackageManager().getInstalledApplications(0);
     }
 
+    /**
+     * 获取返回安装的应用, 详情见{@link AppInfo}.
+     *
+     * @return {@link AppInfo} 列表
+     */
     public static List<AppInfo> getInstalledAppsInfo()
     {
         PackageManager pm = Easy.getContext().getPackageManager();
@@ -38,7 +49,6 @@ public class Packages
         {
             list.add(new AppInfo(p.applicationInfo.loadLabel(pm).toString(),
                     p.applicationInfo.packageName,
-                    p.applicationInfo.loadIcon(pm),
                     p.applicationInfo.className,
                     (p.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0));
         }

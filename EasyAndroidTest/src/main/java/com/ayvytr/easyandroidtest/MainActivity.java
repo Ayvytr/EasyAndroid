@@ -21,6 +21,12 @@ import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView;
+import com.ayvytr.easyandroidtest.customview.AuthEditTextActivity;
+import com.ayvytr.easyandroidtest.fullscreen.TestFullScreenActivity;
+import com.ayvytr.easyandroidtest.other.BitmapActivity;
+import com.ayvytr.easyandroidtest.other.PackagesActivity;
+import com.ayvytr.easyandroidtest.other.PopupWindowActivity;
+import com.ayvytr.easyandroidtest.other.SystemInfoActivity;
 import com.ayvytr.easyandroidtest.stickyheader.StickyHeaderActivity;
 import com.ayvytr.logger.L;
 
@@ -54,7 +60,7 @@ public class MainActivity extends BaseActivity
 
     private void init()
     {
-        findViewById(R.id.tv).setBackgroundColor(Colors.PINK);
+        tv2.setBackgroundColor(Colors.PINK);
 
         tv2.append(":");
         Point point = ScreenTool.getPoint();
@@ -155,5 +161,10 @@ public class MainActivity extends BaseActivity
                         return true;
                     }
                 }).show();
+    }
+
+    public void onTestPackages(View view)
+    {
+        startActivity(new Intent(getContext(), PackagesActivity.class));
     }
 }

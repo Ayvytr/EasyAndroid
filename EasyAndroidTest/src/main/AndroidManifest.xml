@@ -18,21 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".PopupWindowActivity"/>
-        <activity android:name=".PackagesActivity">
+        <activity android:name=".other.PopupWindowActivity"/>
+        <activity android:name=".other.PackagesActivity">
         </activity>
-        <activity android:name=".SystemInfoActivity">
+        <activity android:name=".other.SystemInfoActivity">
         </activity>
-        <activity android:name=".BitmapActivity">
+        <activity android:name=".other.BitmapActivity">
         </activity>
         <activity
-            android:name=".TestFullScreenActivity"
+            android:name=".fullscreen.TestFullScreenActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/NoActionBar">
         </activity>
         <activity
-            android:name=".TestFullScreenActivity2"
-            android:parentActivityName=".TestFullScreenActivity"
+            android:name=".fullscreen.TestFullScreenActivity2"
+            android:parentActivityName=".fullscreen.TestFullScreenActivity"
             android:theme="@style/Base.Widget.AppCompat.Light.ActionBar">
         </activity>
         <activity
@@ -49,9 +49,9 @@
         <activity
             android:name=".stickyheader.TestStickyActivity2"
             android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
-        <activity android:name=".FlowLayoutActivity">
+        <activity android:name=".customview.FlowLayoutActivity">
         </activity>
-        <activity android:name=".AuthEditTextActivity">
+        <activity android:name=".customview.AuthEditTextActivity">
         </activity>
     </application>
 

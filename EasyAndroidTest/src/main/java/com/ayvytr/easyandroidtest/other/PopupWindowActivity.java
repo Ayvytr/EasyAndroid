@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.other;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import com.ayvytr.easyandroid.tools.withcontext.ResTool;
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.popwindow.AlphaPopupWindow;
 import com.ayvytr.easyandroid.view.popwindow.TopPopupWindow;
+import com.ayvytr.easyandroidtest.R;
 
 public class PopupWindowActivity extends AppCompatActivity
 {

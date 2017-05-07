@@ -56,74 +56,78 @@
                 android:text="StickyHeaderRecyclerView"/>
 
             <Button
-                android:onClick="onCustomView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/blue_crayola"
+                android:onClick="onCustomView"
                 android:text="自定义View"
                 android:textColor="@color/pink"/>
 
-
         </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
-        <TextView
-            style="@style/MatchParent_WrapContent"
-            android:text="aaaa"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
+        <com.ayvytr.easyandroid.view.custom.FlowLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="aaa"/>
+            android:layout_marginTop="@dimen/_10dp">
 
-        <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Center Gravity tv"/>
-
-        <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
-            android:id="@+id/tv2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="Left Center Gravity tv"/>
-
-        <com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView
-            android:id="@+id/tv3"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="Right Center Gravity tv"/>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50">
+            <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pink"
+                android:text="测试专区"
+                android:textStyle="bold"/>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onTestPackages"
+                android:text="测试Packages类"/>
+
+        </com.ayvytr.easyandroid.view.custom.FlowLayout>
+
+        <com.ayvytr.easyandroid.view.custom.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp">
+
+            <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_50"
+                android:text="Left Center Gravity tv"/>
+
+            <com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_50"
+                android:text="Right Center Gravity tv"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="onGetClipboard"
                 android:text="获取剪贴板"/>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:onClick="onSetClipboard"
                 android:text="设置剪贴板"/>
 
-        </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onGetAppName"
+                android:text="获取APP名称"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onGetAppName"
-            android:text="获取APP名称"/>
+            <Button
+                android:id="@+id/btnPerform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onPerformClick"
+                android:text="performClick"/>
 
-        <Button
-            android:id="@+id/btnPerform"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onPerformClick"
-            android:text="performClick"/>
+        </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

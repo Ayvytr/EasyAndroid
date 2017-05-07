@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.fullscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.ayvytr.easyandroid.tools.withcontext.ScreenTool;
+import com.ayvytr.easyandroidtest.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

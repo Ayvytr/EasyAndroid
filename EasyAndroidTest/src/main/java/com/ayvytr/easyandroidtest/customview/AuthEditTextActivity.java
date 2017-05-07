@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.customview;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
 import com.ayvytr.easyandroid.view.custom.AuthEditText;
+import com.ayvytr.easyandroidtest.R;
 
 import java.util.Random;
 

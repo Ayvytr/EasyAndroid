@@ -1,4 +1,4 @@
-package com.ayvytr.easyandroidtest;
+package com.ayvytr.easyandroidtest.other;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.ayvytr.easyandroid.tools.BitmapTool;
 import com.ayvytr.easyandroid.tools.withcontext.ResTool;
+import com.ayvytr.easyandroidtest.R;
 
 /**
  * 图片测试Activity，测试图片缩放，旋转，以及转换
