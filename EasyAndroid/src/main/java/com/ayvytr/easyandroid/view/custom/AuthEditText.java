@@ -709,6 +709,12 @@ public class AuthEditText extends RelativeLayout
          */
         void onFinish(AuthEditText authEditText, String s);
 
+        /**
+         * 当文本变化时会回调此方法（在切换验证模式时，从密码到数字会清空文本。关于这个的判断暂时不加）.
+         *
+         * @param isFinished 文本输入是否完成.
+         * @param s          当前已输入的字符串.
+         */
         void onTextChanged(boolean isFinished, String s);
     }
 
