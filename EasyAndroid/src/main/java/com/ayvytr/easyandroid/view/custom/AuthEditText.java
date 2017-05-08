@@ -37,8 +37,8 @@ import java.util.List;
 
 public class AuthEditText extends RelativeLayout
 {
-    private static final int DEFAULT_TEXT_LENGTH = 6;
-    private static final int MIN_TEXT_LENGTH = 4;
+    public static final int DEFAULT_TEXT_LENGTH = 6;
+    public static final int MIN_TEXT_LENGTH = 4;
 
     EditText etInput;
     LinearLayout llTv;
@@ -241,9 +241,14 @@ public class AuthEditText extends RelativeLayout
             list.get(i).setText("");
         }
 
-        if(s.length() == textLength && onInputFinishedListener != null)
+        if(onInputFinishedListener != null)
         {
-            onInputFinishedListener.onFinish(this, string);
+            if(s.length() == textLength)
+            {
+                onInputFinishedListener.onFinish(this, string);
+            }
+
+            onInputFinishedListener.onTextChanged(string.length() == textLength, string);
         }
     }
 
@@ -600,6 +605,100 @@ public class AuthEditText extends RelativeLayout
     }
 
     /**
+     * 获取当前文本长度
+     *
+     * @return {@link #textLength}
+     */
+    public int getTextLength()
+    {
+        return textLength;
+    }
+
+    /**
+     * 获取文本颜色
+     *
+     * @return {@link #textColor}
+     */
+    public int getTextColor()
+    {
+        return textColor;
+    }
+
+    /**
+     * 获取文本边框颜色
+     *
+     * @return {@link #frameColor}
+     */
+    public int getFrameColor()
+    {
+        return frameColor;
+    }
+
+    /**
+     * 获取默认 ShapeDrawable.
+     *
+     * @return {@link #defaultDrawable}
+     */
+    public ShapeDrawable getDefaultDrawable()
+    {
+        return defaultDrawable;
+    }
+
+    /**
+     * 获取文本边框宽度px.
+     *
+     * @return {@link #strokeWidth}
+     */
+    public int getStrokeWidth()
+    {
+        return strokeWidth;
+    }
+
+    /**
+     * 设置文本边框宽度px
+     *
+     * @param strokeWidth 要设置的文本宽度
+     */
+    public void setStrokeWidth(int strokeWidth)
+    {
+        if(strokeWidth > 0)
+        {
+            this.strokeWidth = strokeWidth;
+        }
+    }
+
+    /**
+     * 获取文本边框Drawable
+     *
+     * @return {@link #frameDrawable {@link #frameDrawable {@link #frameDrawable {@link #frameDrawable}}}}
+     */
+    public Drawable getFrameDrawable()
+    {
+        return frameDrawable;
+    }
+
+    /**
+     * 获取文本尺寸
+     *
+     * @return {@link #textSize}
+     */
+    public int getTextSize()
+    {
+        return textSize;
+    }
+
+    /**
+     * 获取当前输入的文本
+     *
+     * @return {@link #string}
+     */
+    public String getString()
+    {
+        return string;
+    }
+
+
+    /**
      * 输入文本到最大长度时触发的接口
      */
     public interface OnInputFinishedListener
@@ -611,6 +710,8 @@ public class AuthEditText extends RelativeLayout
          * @param s            输入的字符串 {@link #string}
          */
         void onFinish(AuthEditText authEditText, String s);
+
+        void onTextChanged(boolean isFinished, String s);
     }
 
     //验证类型枚举类
