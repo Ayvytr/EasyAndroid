@@ -142,8 +142,6 @@ public class AuthEditText extends RelativeLayout
 
     /**
      * 获取EditText，{@link #etInput}
-     *
-     * @return
      */
     public EditText getEditText()
     {
