@@ -3,6 +3,7 @@
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -52,6 +53,8 @@
         <activity android:name=".customview.FlowLayoutActivity">
         </activity>
         <activity android:name=".customview.AuthEditTextActivity">
+        </activity>
+        <activity android:name=".network.NetworkActivity">
         </activity>
     </application>
 

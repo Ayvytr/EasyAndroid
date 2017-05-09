@@ -23,6 +23,7 @@ import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView;
 import com.ayvytr.easyandroidtest.customview.AuthEditTextActivity;
 import com.ayvytr.easyandroidtest.fullscreen.TestFullScreenActivity;
+import com.ayvytr.easyandroidtest.network.NetworkActivity;
 import com.ayvytr.easyandroidtest.other.BitmapActivity;
 import com.ayvytr.easyandroidtest.other.PackagesActivity;
 import com.ayvytr.easyandroidtest.other.PopupWindowActivity;
@@ -166,5 +167,10 @@ public class MainActivity extends BaseActivity
     public void onTestPackages(View view)
     {
         startActivity(new Intent(getContext(), PackagesActivity.class));
+    }
+
+    public void onNetWork(View view)
+    {
+        startActivity(new Intent(getContext(), NetworkActivity.class));
     }
 }

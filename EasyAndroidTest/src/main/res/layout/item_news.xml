@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50dp">
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="@dimen/_50dp"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:layout_weight="1"/>
+
+        <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+            android:id="@+id/tvDigest"
+            android:ellipsize="end"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

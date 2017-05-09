@@ -63,6 +63,12 @@
                 android:text="自定义View"
                 android:textColor="@color/pink"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:text="网络测试"
+                android:onClick="onNetWork"
+                android:layout_height="wrap_content"/>
+
         </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
         <com.ayvytr.easyandroid.view.custom.FlowLayout
