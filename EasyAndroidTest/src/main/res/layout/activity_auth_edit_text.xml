@@ -103,5 +103,9 @@
             android:layout_height="wrap_content"
             android:hint="无限制"/>
 
+        <com.ayvytr.easyandroid.view.custom.AuthEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100dp"/>
+
     </com.ayvytr.easyandroid.view.custom.FlowLayout>
 </LinearLayout>

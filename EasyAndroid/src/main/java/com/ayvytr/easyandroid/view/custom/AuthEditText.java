@@ -571,12 +571,12 @@ public class AuthEditText extends RelativeLayout
 
     public int getDefaultWidth()
     {
-        return ResCompat.getDimen(R.dimen._240dp);
+        return ResCompat.getDimen(R.dimen._160dp);
     }
 
     public int getDefaultHeight()
     {
-        return ResCompat.getDimen(R.dimen._50dp);
+        return ResCompat.getDimen(R.dimen._30dp);
     }
 
     /**

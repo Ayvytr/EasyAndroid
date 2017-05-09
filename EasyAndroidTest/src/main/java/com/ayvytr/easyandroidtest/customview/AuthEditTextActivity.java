@@ -34,14 +34,22 @@ public class AuthEditTextActivity extends BaseEasyActivity
     {
         ButterKnife.bind(this);
         random = new Random();
-        authEditText.setOnInputFinishedListener(new AuthEditText.OnInputFinishedListener() {
+        authEditText.setOnInputFinishedListener(new AuthEditText.OnInputFinishedListener()
+        {
             @Override
             public void onFinish(AuthEditText authEditText, String s)
             {
                 ToastTool.show(s);
             }
+
+            @Override
+            public void onTextChanged(boolean isFinished, String s)
+            {
+
+            }
         });
-        authEditText.setOnClickListener(new View.OnClickListener() {
+        authEditText.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v)
             {
@@ -90,7 +98,8 @@ public class AuthEditTextActivity extends BaseEasyActivity
         new MaterialDialog.Builder(getContext())
                 .items(R.array.auth_edit_text_length)
                 .alwaysCallInputCallback()
-                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice()
+                {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View itemView, int which,
                                                CharSequence text)
@@ -106,7 +115,8 @@ public class AuthEditTextActivity extends BaseEasyActivity
         new MaterialDialog.Builder(getContext())
                 .items(R.array.auth_edit_text_auth_type)
                 .alwaysCallInputCallback()
-                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice()
+                {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View itemView, int which,
                                                CharSequence text)
