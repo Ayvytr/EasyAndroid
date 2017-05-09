@@ -129,7 +129,7 @@ public class ViewTool
      * @param et   {@link EditText}
      * @param text 文本
      */
-    public void setEtText(EditText et, CharSequence text)
+    public static void setEtText(EditText et, CharSequence text)
     {
         et.setText(text);
         et.setSelection(text.length());
@@ -143,7 +143,7 @@ public class ViewTool
      * @param start 光标开始位置
      * @param stop  光标结束位置
      */
-    public void setEtText(EditText et, CharSequence text, int start, int stop)
+    public static void setEtText(EditText et, CharSequence text, int start, int stop)
     {
         et.setText(text);
         et.setSelection(start, stop);
@@ -156,7 +156,7 @@ public class ViewTool
      * @param text  文本
      * @param index 光标位置
      */
-    public void setEtText(EditText et, CharSequence text, int index)
+    public static void setEtText(EditText et, CharSequence text, int index)
     {
         et.setText(text);
         et.setSelection(index);
