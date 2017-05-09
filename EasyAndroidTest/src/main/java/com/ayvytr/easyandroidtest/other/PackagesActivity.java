@@ -22,13 +22,19 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Predicate;
+import io.reactivex.schedulers.Schedulers;
 
 public class PackagesActivity extends AppCompatActivity
 {
     private RecyclerView recyclerView;
     private PackageAdapter packageAdapter;
+
+    private int filterType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,15 +66,16 @@ public class PackagesActivity extends AppCompatActivity
         switch(item.getItemId())
         {
             case R.id.menu_id_all:
-                packageAdapter.update();
-                return true;
+                filterType = 0;
+                break;
             case R.id.menu_id_system:
-                packageAdapter.updateSystem();
-                return true;
+                filterType = 1;
+                break;
             case R.id.menu_id_user:
-                packageAdapter.updateUser();
-                return true;
+                filterType = 2;
+                break;
         }
+        packageAdapter.update();
         return super.onOptionsItemSelected(item);
     }
 
@@ -97,54 +104,48 @@ public class PackagesActivity extends AppCompatActivity
 
         public void update()
         {
-            list.clear();
-            list.addAll(Packages.getInstalledAppsInfo());
-            notifyDataSetChanged();
-        }
-
-        public void updateSystem()
-        {
-            List<AppInfo> appInfo = Packages.getInstalledAppsInfo();
-            Observable.fromIterable(appInfo).filter(new Predicate<AppInfo>()
-            {
-                @Override
-                public boolean test(AppInfo appInfo) throws Exception
-                {
-                    return appInfo.isSystemApp;
-                }
-            }).buffer(appInfo.size()).subscribe(new Consumer<List<AppInfo>>()
-            {
-                @Override
-                public void accept(List<AppInfo> appInfos) throws Exception
-                {
-                    list.clear();
-                    list.addAll(appInfos);
-                    notifyDataSetChanged();
-                }
-            });
-
-        }
-
-        public void updateUser()
-        {
-            List<AppInfo> appInfo = Packages.getInstalledAppsInfo();
-            Observable.fromIterable(appInfo).filter(new Predicate<AppInfo>()
-            {
-                @Override
-                public boolean test(AppInfo appInfo) throws Exception
-                {
-                    return !appInfo.isSystemApp;
-                }
-            }).buffer(appInfo.size()).subscribe(new Consumer<List<AppInfo>>()
-            {
-                @Override
-                public void accept(List<AppInfo> appInfos) throws Exception
-                {
-                    list.clear();
-                    list.addAll(appInfos);
-                    notifyDataSetChanged();
-                }
-            });
+            Observable
+                    .create(new ObservableOnSubscribe<AppInfo>()
+                    {
+                        @Override
+                        public void subscribe(ObservableEmitter<AppInfo> e) throws Exception
+                        {
+                            List<AppInfo> appInfo = Packages.getInstalledAppsInfo();
+                            for(AppInfo a : appInfo)
+                            {
+                                e.onNext(a);
+                            }
+                            e.onComplete();
+                        }
+                    })
+                    .subscribeOn(Schedulers.io())
+                    .filter(new Predicate<AppInfo>()
+                    {
+                        @Override
+                        public boolean test(AppInfo appInfo) throws Exception
+                        {
+                            switch(filterType)
+                            {
+                                case 1:
+                                    return appInfo.isSystemApp;
+                                case 2:
+                                    return !appInfo.isSystemApp;
+                                default:
+                                    return true;
+                            }
+                        }
+                    })
+                    .toSortedList()
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<List<AppInfo>>()
+                    {
+                        @Override
+                        public void accept(List<AppInfo> appInfos) throws Exception
+                        {
+                            list = appInfos;
+                            notifyDataSetChanged();
+                        }
+                    });
         }
 
         public class Vh extends RecyclerView.ViewHolder
