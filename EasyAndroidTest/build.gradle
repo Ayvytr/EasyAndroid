@@ -1,5 +1,16 @@
 apply plugin: 'com.android.application'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.typ0520:fastdex-gradle:0.1.6'
+    }
+}
+
+apply plugin: 'com.github.typ0520.fastdex'
+
 android {
     signingConfigs {
         debug {
