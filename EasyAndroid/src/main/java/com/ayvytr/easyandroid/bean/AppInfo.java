@@ -4,6 +4,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.ayvytr.easyandroid.tools.TextTool;
@@ -17,7 +18,7 @@ import com.ayvytr.easyandroid.tools.withcontext.Managers;
  * @since 1.7.6
  */
 
-public class AppInfo implements Parcelable
+public class AppInfo implements Parcelable, Comparable<AppInfo>
 {
     public String label;
     public String packageName;
@@ -127,5 +128,31 @@ public class AppInfo implements Parcelable
         {
             iv.setImageDrawable(icon);
         }
+    }
+
+    @Override
+    public int compareTo(@NonNull AppInfo o)
+    {
+        if(this == o)
+        {
+            return 0;
+        }
+
+        if(TextTool.isNotEmpty(packageName) && TextTool.notEmpty(o.packageName))
+        {
+            return packageName.compareTo(o.packageName);
+        }
+
+        if(TextTool.isNotEmpty(className) && TextTool.notEmpty(o.className))
+        {
+            return className.compareTo(o.className);
+        }
+
+        if(TextTool.isNotEmpty(label) && TextTool.notEmpty(o.label))
+        {
+            return label.compareTo(o.label);
+        }
+
+        return 0;
     }
 }
