@@ -24,9 +24,31 @@ public class TextTool
      * @param str 字符串
      * @return {@code true} 是空字符串<br>
      */
-    public static boolean isEmpty(String str)
+    public static boolean isEmpty(CharSequence str)
     {
-        return str == null || str.isEmpty();
+        return str == null || str.length() == 0;
+    }
+
+    /**
+     * 判断字符串是不是空值.
+     *
+     * @param s 目标字符串
+     * @return {@code true} 不是空字符串
+     */
+    public static boolean isNotEmpty(CharSequence s)
+    {
+        return !isEmpty(s);
+    }
+
+    /**
+     * 判断字符串是不是空值.
+     *
+     * @param s 目标字符串
+     * @return {@code true} 不是空字符串
+     */
+    public static boolean notEmpty(CharSequence s)
+    {
+        return !isEmpty(s);
     }
 
     /**
@@ -35,7 +57,7 @@ public class TextTool
      * @param str 字符串
      * @return {@code true} 是纯数字字符串
      */
-    public static boolean isDigit(String str)
+    public static boolean isDigit(CharSequence str)
     {
         return !isEmpty(str) && TextUtils.isDigitsOnly(str);
 
@@ -47,7 +69,7 @@ public class TextTool
      * @param str 字符串
      * @return {@code true} 是纯数字字符串
      */
-    public static boolean isNumber(String str)
+    public static boolean isNumber(CharSequence str)
     {
         return isDigit(str);
     }
@@ -55,24 +77,24 @@ public class TextTool
     /**
      * 字符串反转，如果字符串为空，返回空字符串
      *
-     * @param str 字符串
+     * @param s 字符串
      * @return 反转后的字符串
      */
-    public static String reverse(String str)
+    public static String reverse(CharSequence s)
     {
-        if(isEmpty(str))
+        if(isEmpty(s))
         {
             return emptyString();
         }
 
-        int length = str.length();
+        int length = s.length();
         if(length <= 1)
         {
-            return str;
+            return s.toString();
         }
 
         int mid = length >> 1;
-        char[] chars = str.toCharArray();
+        char[] chars = s.toString().toCharArray();
         char c;
         for(int i = 0; i < mid; ++i)
         {
