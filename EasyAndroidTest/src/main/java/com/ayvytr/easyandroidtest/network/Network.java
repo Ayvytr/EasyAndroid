@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Cache;
@@ -18,6 +18,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by Do on 2017/5/9.
@@ -29,7 +30,7 @@ public class Network
     private static Cache cache = new Cache(new File("/storage/emulated/0/cache"), 10 * 1024 * 1024);
     private static OkHttpClient okHttpClient = new OkHttpClient();
 
-    private static final String API_SERVER = "http://c.3g.163.com/nc/article/";
+    private static final String API_SERVER = "http://wthrcdn.etouch.cn/";
     private static Retrofit mRetrofit;
     private static final NetService service;
 
@@ -58,6 +59,9 @@ public class Network
     {
         @GET("headline/T1348647853363/0-100.html")
         Observable<News> getNews();
+
+        @GET("weather_mini")
+        Observable<Weather> getWeather(@Query("city") String name);
     }
 
     public static void getNews(SingleObserver<List<News.ContentBean>> observer)
@@ -78,11 +82,11 @@ public class Network
                .subscribe(observer);
     }
 
-    public static <T> void setSubscribe(Observable<T> observable, Observer<T> observer)
+    public static void getWeather(String city, Consumer<Weather> consumer)
     {
-        observable.subscribeOn(Schedulers.newThread())//子线程访问网络
-                  .observeOn(AndroidSchedulers.mainThread())//回调到主线程
-                  .subscribe(observer);
+        service.getWeather(city)
+               .subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribe(consumer);
     }
-
 }
