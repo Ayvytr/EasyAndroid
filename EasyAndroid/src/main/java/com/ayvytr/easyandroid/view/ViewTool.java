@@ -1,5 +1,6 @@
 package com.ayvytr.easyandroid.view;
 
+import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,13 @@ import android.widget.EditText;
 
 import com.ayvytr.easyandroid.Easy;
 import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 /**
  * View布局操作类，包括设置可见/隐藏，获取/取消焦点，调用 {@link LayoutInflater#inflate(int, ViewGroup, boolean)}
@@ -31,7 +39,7 @@ public class ViewTool
      */
     public static void show(View view)
     {
-        view.setVisibility(View.VISIBLE);
+        view.setVisibility(VISIBLE);
     }
 
     /**
@@ -41,7 +49,7 @@ public class ViewTool
      */
     public static void hide(View view)
     {
-        view.setVisibility(View.GONE);
+        view.setVisibility(GONE);
     }
 
     /**
@@ -51,7 +59,7 @@ public class ViewTool
      */
     public static void invisible(View view)
     {
-        view.setVisibility(View.INVISIBLE);
+        view.setVisibility(INVISIBLE);
     }
 
     /**
@@ -160,5 +168,152 @@ public class ViewTool
     {
         et.setText(text);
         et.setSelection(index);
+    }
+
+    /**
+     * 判断View是不是可用
+     *
+     * @param v View
+     * @return {@code true} enabled
+     */
+    public static boolean isEnabled(View v)
+    {
+        return v.isEnabled();
+    }
+
+    /**
+     * 判断View是不是可用
+     *
+     * @param v {@link View}
+     * @return {@code true} disabled
+     */
+    public static boolean isNotEnabled(View v)
+    {
+        return !isEnabled(v);
+    }
+
+    /**
+     * 判断View是不是可用
+     *
+     * @param v {@link View}
+     * @return {@code true} 不可用
+     */
+    public static boolean isDisabled(View v)
+    {
+        return !isEnabled(v);
+    }
+
+    /**
+     * 判断View是不是可用
+     *
+     * @param v {@link View}
+     * @return {@code true} 可用
+     */
+    public static boolean isNotDisabled(View v)
+    {
+        return isEnabled(v);
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 可见({@link View#getVisibility()} == {@link View#VISIBLE})
+     */
+    public static boolean isVisible(View v)
+    {
+        return v.getVisibility() == VISIBLE;
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 可见({@link View#getVisibility()} == {@link View#VISIBLE})
+     */
+    public static boolean isShowing(View v)
+    {
+        return isVisible(v);
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 不可见({@link View#getVisibility()} != {@link View#VISIBLE})
+     */
+    public static boolean isNotVisible(View v)
+    {
+        return !isVisible(v);
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 可见({@link View#getVisibility()} == {@link View#INVISIBLE})
+     */
+    public static boolean isInvisible(View v)
+    {
+        return v.getVisibility() == INVISIBLE;
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 可见({@link View#getVisibility()} != {@link View#INVISIBLE})
+     */
+    public static boolean isNotInvisible(View v)
+    {
+        return !isInvisible(v);
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 可见({@link View#getVisibility()} == {@link View#GONE})
+     */
+    public static boolean isGone(View v)
+    {
+        return v.getVisibility() == GONE;
+    }
+
+    /**
+     * 判断View是不是可见
+     *
+     * @param v {@link View}
+     * @return {@code true} 可见({@link View#getVisibility()} != {@link View#GONE})
+     */
+    public static boolean isNotGone(View v)
+    {
+        return !isGone(v);
+    }
+
+    /**
+     * 切换View可见/不可见
+     *
+     * @param v      {@link View}
+     * @param isShow {@code true} 可见 {@code false} 不可见
+     */
+    public static void switchShow(View v, boolean isShow)
+    {
+        v.setVisibility(isShow ? VISIBLE : GONE);
+    }
+
+    @IntDef({VISIBLE, INVISIBLE, GONE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Visibility {}
+
+    /**
+     * 设置View可见性
+     *
+     * @param v          {@link View}
+     * @param visibility 可见性，见 {@link View#setVisibility(int)}
+     */
+    public static void setVisibility(View v, @Visibility int visibility)
+    {
+        v.setVisibility(visibility);
     }
 }
