@@ -60,7 +60,6 @@ public class TextTool
     public static boolean isDigit(CharSequence str)
     {
         return !isEmpty(str) && TextUtils.isDigitsOnly(str);
-
     }
 
     /**

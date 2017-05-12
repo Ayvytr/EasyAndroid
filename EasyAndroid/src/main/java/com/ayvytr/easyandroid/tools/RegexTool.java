@@ -2,6 +2,7 @@ package com.ayvytr.easyandroid.tools;
 
 
 import com.ayvytr.easyandroid.consts.RegexConstant;
+import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.regex.Pattern;
  * <p>
  * blog  : http://blankj.com
  * </p>
+ *
  * @author Blankj
  */
 public class RegexTool
@@ -20,7 +22,7 @@ public class RegexTool
 
     private RegexTool()
     {
-        throw new UnsupportedOperationException("u can't instantiate me...");
+        throw new UnsupportedInitializationException();
     }
 
     /**
@@ -28,18 +30,32 @@ public class RegexTool
      */
 
     /**
-     * 验证手机号（简单）
+     * 验证手机号
      *
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     * @deprecated 判断不准确
      */
+    @Deprecated
     public static boolean isMobileSimple(CharSequence input)
     {
         return isMatch(RegexConstant.REGEX_MOBILE_SIMPLE, input);
     }
 
     /**
-     * 验证手机号（精确）
+     * 验证手机号
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     * @deprecated 判断不准确
+     */
+    public static boolean isMobile(CharSequence input)
+    {
+        return isMobileExact(input);
+    }
+
+    /**
+     * 验证手机号
      *
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
@@ -50,7 +66,7 @@ public class RegexTool
     }
 
     /**
-     * 验证电话号码
+     * 验证电话号码（注意：是固定电话）
      *
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
