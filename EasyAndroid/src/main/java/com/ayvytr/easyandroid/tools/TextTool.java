@@ -145,10 +145,9 @@ public class TextTool
      * @param str 字符串
      * @return {@code true} 是空白字符串
      */
-    public static boolean isBlank(String str)
+    public static boolean isBlank(CharSequence str)
     {
-        return isEmpty(str) || isEmpty(str.trim());
-
+        return isEmpty(str) || isEmpty(str.toString().trim());
     }
 
     /**
@@ -158,9 +157,9 @@ public class TextTool
      * @param str2 字符串2
      * @return {@code true }相等 {@code false }不相等
      */
-    public static boolean equals(String str, String str2)
+    public static boolean equals(CharSequence str, CharSequence str2)
     {
-        return str == null && str2 == null || str.equals(str2);
+        return str == null && str2 == null || str.toString().equals(str2.toString());
     }
 
     /**
@@ -170,21 +169,21 @@ public class TextTool
      * @param str2 字符串2
      * @return {@code true }相等 {@code false }不相等
      */
-    public static boolean equalsIgnoreCase(String str, String str2)
+    public static boolean equalsIgnoreCase(CharSequence str, CharSequence str2)
     {
-        return str == null && str2 == null || str.equalsIgnoreCase(str2);
+        return str == null && str2 == null || str.toString().equalsIgnoreCase(str2.toString());
     }
 
     /**
      * 比较2个字符串是否不相等.
      * <p>
-     * {@link #equals(String, String)}
+     * {@link #equals(CharSequence, CharSequence)}
      *
      * @param str  字符串1
      * @param str2 字符串2
      * @return {@code true }相等 {@code false }不相等
      */
-    public static boolean notEquals(String str, String str2)
+    public static boolean notEquals(CharSequence str, CharSequence str2)
     {
         return !equals(str, str2);
     }
@@ -192,13 +191,13 @@ public class TextTool
     /**
      * 比较2个字符串是否不相等，忽略大小写.
      * <p>
-     * {@link #equalsIgnoreCase(String, String)}
+     * {@link #equalsIgnoreCase(CharSequence, CharSequence)}
      *
      * @param str  字符串1
      * @param str2 字符串2
      * @return {@code true }相等 {@code false }不相等
      */
-    public static boolean notEqualsIgnoreCase(String str, String str2)
+    public static boolean notEqualsIgnoreCase(CharSequence str, CharSequence str2)
     {
         return !equalsIgnoreCase(str, str2);
     }
