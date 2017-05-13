@@ -154,21 +154,36 @@ public class Managers
     @Retention(RetentionPolicy.SOURCE)
     private @interface ServiceName {}
 
-    private static Object get(@ServiceName String serviceName)
+    /**
+     * 内部方法，根据名称获取各种Manager类.
+     *
+     * @param serviceName 服务名称
+     * @return {@link android.content.Context#getSystemService(String)}
+     */
+    protected static Object get(@ServiceName String serviceName)
     {
         return getContext().getSystemService(serviceName);
     }
 
+    /**
+     * 返回 {@link AccountManager}
+     */
     public static AccountManager getAccountManager()
     {
         return (AccountManager) get(ACCOUNT_SERVICE);
     }
 
+    /**
+     * 返回 {@link PackageManager}
+     */
     public static PackageManager getPackageManager()
     {
         return getContext().getPackageManager();
     }
 
+    /**
+     * 返回 {@link ClipboardManager}
+     */
     public static ClipboardManager getClipboardManager()
     {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
@@ -178,206 +193,329 @@ public class Managers
         return (ClipboardManager) get(CLIPBOARD_SERVICE);
     }
 
+    /**
+     * 返回 {@link WindowManager}
+     */
     public static WindowManager getWindowManager()
     {
         return (WindowManager) get(WINDOW_SERVICE);
     }
 
+    /**
+     * 返回 {@link KeyguardManager}
+     */
     public static KeyguardManager getKeyguardManager()
     {
         return (KeyguardManager) get(KEYGUARD_SERVICE);
     }
 
+    /**
+     * 返回 {@link PowerManager}
+     */
     public static PowerManager getPowerManager()
     {
         return (PowerManager) get(POWER_SERVICE);
     }
 
+    /**
+     * 返回 {@link LayoutInflater}
+     */
     public static LayoutInflater getLayoutInflater()
     {
         return (LayoutInflater) get(LAYOUT_INFLATER_SERVICE);
     }
 
+    /**
+     * 返回 {@link ActivityManager}
+     */
     public static ActivityManager getActivityManager()
     {
         return (ActivityManager) get(ACTIVITY_SERVICE);
     }
 
+    /**
+     * 返回 {@link AlarmManager}
+     */
     public static AlarmManager getAlarmManager()
     {
         return (AlarmManager) get(ALARM_SERVICE);
     }
 
+    /**
+     * 返回 {@link NotificationManager}
+     */
     public static NotificationManager getNotificationManager()
     {
         return (NotificationManager) get(NOTIFICATION_SERVICE);
     }
 
+    /**
+     * 返回 {@link AccessibilityManager}
+     */
     public static AccessibilityManager getAccessibilityManager()
     {
         return (AccessibilityManager) get(ACCESSIBILITY_SERVICE);
     }
 
+    /**
+     * 返回 {@link CaptioningManager}
+     */
     public static CaptioningManager getCaptioningManager()
     {
         return (CaptioningManager) getContext().getSystemService(CAPTIONING_SERVICE);
     }
 
+    /**
+     * 返回 {@link LocationManager}
+     */
     public static LocationManager getLocationManager()
     {
         return (LocationManager) get(LOCATION_SERVICE);
     }
 
+    /**
+     * 返回 {@link SensorManager}
+     */
     public static SensorManager getSensorManager()
     {
         return (SensorManager) get(SENSOR_SERVICE);
     }
 
+    /**
+     * 返回 {@link StorageManager}
+     */
     public static StorageManager getStorageManage()
     {
         return (StorageManager) get(STORAGE_SERVICE);
     }
 
+    /**
+     * 返回 {@link WallpaperManager}
+     */
     public static WallpaperManager getWallpaperManager()
     {
         return (WallpaperManager) get(WALLPAPER_SERVICE);
     }
 
+    /**
+     * 返回 {@link Vibrator}
+     */
     public static Vibrator getVibrator()
     {
         return (Vibrator) get(VIBRATOR_SERVICE);
     }
 
+    /**
+     * 返回 {@link NsdManager}
+     */
     public static NsdManager getNsdManager()
     {
         return (NsdManager) get(NSD_SERVICE);
     }
 
+    /**
+     * 返回 {@link AudioManager}
+     */
     public static AudioManager getAudioManager()
     {
         return (AudioManager) get(AUDIO_SERVICE);
     }
 
+    /**
+     * 返回 {@link FingerprintManager}
+     */
     public static FingerprintManager getFingerprintManager()
     {
         return (FingerprintManager) get(FINGERPRINT_SERVICE);
     }
 
+    /**
+     * 返回 {@link MediaRouter}
+     */
     public static MediaRouter getMediaRouter()
     {
         return (MediaRouter) get(MEDIA_ROUTER_SERVICE);
     }
 
+    /**
+     * 返回 {@link TelecomManager}
+     */
     public static TelephonyManager getTelephonyManager()
     {
         return (TelephonyManager) get(TELEPHONY_SERVICE);
     }
 
+    /**
+     * 返回 {@link CarrierConfigManager}
+     */
     public static CarrierConfigManager getCarrierConfigManager()
     {
         return (CarrierConfigManager) get(CARRIER_CONFIG_SERVICE);
     }
 
+    /**
+     * 返回 {@link TelecomManager}
+     */
     public static TelecomManager getTelecomManager()
     {
         return (TelecomManager) get(TELECOM_SERVICE);
     }
 
+    /**
+     * 返回 {@link InputMethodManager}
+     */
     public static InputMethodManager getInputMethodManager()
     {
         return (InputMethodManager) get(INPUT_METHOD_SERVICE);
     }
 
+    /**
+     * 返回 {@link TextServicesManager}
+     */
     public static TextServicesManager getTextServicesManager()
     {
         return (TextServicesManager) get(TEXT_SERVICES_MANAGER_SERVICE);
     }
 
+    /**
+     * 返回 {@link AppWidgetManager}
+     */
     public static AppWidgetManager getAppWidgetManager()
     {
         return (AppWidgetManager) get(APPWIDGET_SERVICE);
     }
 
+    /**
+     * 返回 {@link UiModeManager}
+     */
     public static UiModeManager getUiModeManager()
     {
         return (UiModeManager) get(UI_MODE_SERVICE);
     }
 
+    /**
+     * 返回 {@link DownloadManager}
+     */
     public static DownloadManager getDownloadManager()
     {
         return (DownloadManager) get(DOWNLOAD_SERVICE);
     }
 
+    /**
+     * 返回 {@link NfcManager}
+     */
     public static NfcManager getNfcManager()
     {
         return (NfcManager) get(NFC_SERVICE);
     }
 
+    /**
+     * 返回 {@link BluetoothManager}
+     */
     public static BluetoothManager getBluetoothManager()
     {
         return (BluetoothManager) get(BLUETOOTH_SERVICE);
     }
 
+    /**
+     * 返回 {@link LauncherApps}
+     */
     public static LauncherApps getLauncherApps()
     {
         return (LauncherApps) get(LAUNCHER_APPS_SERVICE);
     }
 
+    /**
+     * 返回 {@link DisplayManager}
+     */
     public static DisplayManager getDisplayManagerCompat()
     {
         return (DisplayManager) get(DISPLAY_SERVICE);
     }
 
+    /**
+     * 返回 {@link UserManager}
+     */
     public static UserManager getUserManager()
     {
         return (UserManager) get(USER_SERVICE);
     }
 
+    /**
+     * 返回 {@link RestrictionsManager}
+     */
     public static RestrictionsManager getRestrictionsManager()
     {
         return (RestrictionsManager) get(RESTRICTIONS_SERVICE);
     }
 
+    /**
+     * 返回 {@link AppOpsManager}
+     */
     public static AppOpsManager getAppOpsManager()
     {
         return (AppOpsManager) get(APP_OPS_SERVICE);
     }
 
+    /**
+     * 返回 {@link CameraManager}
+     */
     public static CameraManager getCameraManager()
     {
         return (CameraManager) get(CAMERA_SERVICE);
     }
 
+    /**
+     * 返回 {@link PrintManager}
+     */
     public static PrintManager getPrintManager()
     {
         return (PrintManager) get(PRINT_SERVICE);
     }
 
+    /**
+     * 返回 {@link ConsumerIrManager}
+     */
     public static ConsumerIrManager getConsumerIrManager()
     {
         return (ConsumerIrManager) get(CONSUMER_IR_SERVICE);
     }
 
+    /**
+     * 返回 {@link MediaSessionManager}
+     */
     public static MediaSessionManager getMediaSessionManager()
     {
         return (MediaSessionManager) get(MEDIA_SESSION_SERVICE);
     }
 
+    /**
+     * 返回 {@link BatteryManager}
+     */
     public static BatteryManager getBatteryManager()
     {
         return (BatteryManager) get(BATTERY_SERVICE);
     }
 
+    /**
+     * 返回 {@link JobScheduler}
+     */
     public static JobScheduler getJobScheduler()
     {
         return (JobScheduler) get(JOB_SCHEDULER_SERVICE);
     }
 
+    /**
+     * 返回 {@link MidiManager}
+     */
     public static MidiManager getMidiManager()
     {
         return (MidiManager) get(MIDI_SERVICE);
     }
 
+    /**
+     * 返回 {@link HardwarePropertiesManager}
+     */
     public static HardwarePropertiesManager getHardwarePropertiesManager()
     {
         return (HardwarePropertiesManager) get(HARDWARE_PROPERTIES_SERVICE);
