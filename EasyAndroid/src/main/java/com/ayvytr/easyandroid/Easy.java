@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.ayvytr.easyandroid.exception.UnInitLibraryException;
 
-import java.lang.ref.SoftReference;
-
 /**
  * 这个库的单例入口类, 使用有关Context的类之前，需要初始化这个类.
  * <p>
@@ -19,7 +17,7 @@ import java.lang.ref.SoftReference;
 public class Easy
 {
     private static Easy easy = new Easy();
-    private static SoftReference<Context> contextRef;
+    private static Context context;
 
     /**
      * 返回 {@link Context}
@@ -29,7 +27,7 @@ public class Easy
     public static Context getContext()
     {
         checkInitState();
-        return contextRef.get();
+        return context;
     }
 
     /**
@@ -38,7 +36,7 @@ public class Easy
      */
     private static void checkInitState()
     {
-        if(contextRef == null)
+        if(context == null)
         {
             throw new UnInitLibraryException();
         }
@@ -70,7 +68,7 @@ public class Easy
             throw new NullPointerException("Argument Context is null(参数Context是null).");
         }
 
-        this.contextRef = new SoftReference<>(context);
+        this.context = context;
     }
 
     /**
@@ -78,7 +76,7 @@ public class Easy
      */
     public void release()
     {
-        contextRef = null;
+        context = null;
         easy = null;
     }
 
