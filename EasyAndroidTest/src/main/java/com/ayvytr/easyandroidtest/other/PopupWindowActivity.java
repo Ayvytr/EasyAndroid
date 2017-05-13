@@ -1,5 +1,6 @@
 package com.ayvytr.easyandroidtest.other;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
 import com.ayvytr.easyandroid.tools.withcontext.ResTool;
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.popwindow.AlphaPopupWindow;
+import com.ayvytr.easyandroid.view.popwindow.ToggleSoftInputPopupWindow;
 import com.ayvytr.easyandroid.view.popwindow.TopPopupWindow;
 import com.ayvytr.easyandroidtest.R;
 
@@ -17,6 +19,7 @@ public class PopupWindowActivity extends AppCompatActivity
 
     private AlphaPopupWindow alphaPopupWindow;
     private TopPopupWindow topPopupWindow;
+    private ToggleSoftInputPopupWindow tip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +56,15 @@ public class PopupWindowActivity extends AppCompatActivity
                         ToastTool.showLong("popupWindow显示啦！");
                     }
                 });
+        tip = new ToggleSoftInputPopupWindow(this, R.layout.pw_input, Color.WHITE, R.style.defPwAnimStyle);
+        tip.getContentView().findViewById(R.id.btnClose).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                tip.show();
+            }
+        });
     }
 
     public void onClickShowPopupWindow(View view)
@@ -63,5 +75,10 @@ public class PopupWindowActivity extends AppCompatActivity
     public void onClickShowTopPopupWindow(View view)
     {
         topPopupWindow.showTopRight();
+    }
+
+    public void onInputMethodPopupWindow(View view)
+    {
+        tip.show();
     }
 }

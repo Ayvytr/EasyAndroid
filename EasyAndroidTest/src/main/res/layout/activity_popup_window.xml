@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:orientation="vertical"
     android:id="@+id/activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="@dimen/dp_16"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_16">
 
     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="onClickShowPopupWindow"
-        android:text="显示PopupWindow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="显示PopupWindow"/>
+
     <Button
-        android:onClick="onClickShowTopPopupWindow"
-        android:text="显示顶部PopupWindow"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="onClickShowTopPopupWindow"
+        android:text="显示顶部PopupWindow"/>
+
+    <Button
+        android:onClick="onInputMethodPopupWindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="输入法PopupWindow测试"/>
 </LinearLayout>
