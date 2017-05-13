@@ -21,6 +21,11 @@ public class Easy
     private static Easy easy = new Easy();
     private static SoftReference<Context> contextRef;
 
+    /**
+     * 返回 {@link Context}
+     *
+     * @return {@link Context}
+     */
     public static Context getContext()
     {
         checkInitState();
@@ -29,7 +34,7 @@ public class Easy
 
     /**
      * 检测初始化状态。Easy类暂时定为静态初始化，所以直接检测contextRef是否已初始化，
-     * 未初始化，直接抛出自定义异常
+     * 未初始化，直接抛出异常 {@link UnInitLibraryException}.
      */
     private static void checkInitState()
     {
@@ -43,6 +48,11 @@ public class Easy
     {
     }
 
+    /**
+     * 单例初始化 {@link Easy} 方法，并返回 {@link Easy} 对象
+     *
+     * @return {@link Easy} 对象
+     */
     public static Easy getDefault()
     {
         return easy;
