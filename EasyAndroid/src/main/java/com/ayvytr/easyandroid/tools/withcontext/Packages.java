@@ -2,12 +2,11 @@ package com.ayvytr.easyandroid.tools.withcontext;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 
 import com.ayvytr.easyandroid.Easy;
 import com.ayvytr.easyandroid.bean.AppInfo;
+import com.ayvytr.easyandroid.cache.AppInfoCache;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,17 +41,7 @@ public class Packages
      */
     public static List<AppInfo> getInstalledAppsInfo()
     {
-        PackageManager pm = Easy.getContext().getPackageManager();
-        List<AppInfo> list = new ArrayList<>();
-        List<PackageInfo> packages = getInstalledPackages();
-        for(PackageInfo p : packages)
-        {
-            list.add(new AppInfo(p.applicationInfo.loadLabel(pm).toString(),
-                    p.applicationInfo.packageName,
-                    p.applicationInfo.className,
-                    (p.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0));
-        }
-        return list;
+        return AppInfoCache.getAppsInfo();
     }
 
 }

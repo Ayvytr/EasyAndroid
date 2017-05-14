@@ -1,14 +1,13 @@
 package com.ayvytr.easyandroid.bean;
 
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
+import com.ayvytr.easyandroid.cache.AppInfoCache;
 import com.ayvytr.easyandroid.tools.TextTool;
-import com.ayvytr.easyandroid.tools.withcontext.Managers;
 
 /**
  * 包含应用label，package name，isSystemApp等信息的Bean类(由于获取Drawable转Bitmap费时过长，icon不再存储，
@@ -31,6 +30,11 @@ public class AppInfo implements Parcelable, Comparable<AppInfo>
         this.packageName = packageName;
         this.className = className;
         this.isSystemApp = isSystemApp;
+    }
+
+    public AppInfo()
+    {
+
     }
 
     @Override
@@ -97,23 +101,13 @@ public class AppInfo implements Parcelable, Comparable<AppInfo>
     }
 
     /**
-     * 获取 {@link #packageName} 的应用图标
+     * 获取 {@link #packageName} 的应用图标，使用 {@link AppInfoCache} 缓存，减少内存占用.
      *
-     * @return
+     * @return {@link Drawable}
      */
     public Drawable getIcon()
     {
-        PackageManager packageManager = Managers.getPackageManager();
-        try
-        {
-            return packageManager.getPackageInfo(packageName, 0).applicationInfo
-                    .loadIcon(packageManager);
-        } catch(PackageManager.NameNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
-        return null;
+        return AppInfoCache.getIconDrawable(packageName);
     }
 
     /**
