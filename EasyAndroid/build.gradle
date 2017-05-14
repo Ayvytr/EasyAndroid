@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+//apply plugin: 'maven'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -19,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
@@ -26,7 +32,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     testCompile 'junit:junit:4.12'
 }
 
@@ -34,3 +40,11 @@ dependencies {
 apply from: '../gradle/upload.gradle'
 
 
+//publish {
+//    userOrg = 'ayvytr'
+//    groupId = PROJ_GROUP
+//    artifactId = PROJ_ARTIFACTID
+//    publishVersion = PROJ_VERSION
+//    desc = PROJ_DESCRIPTION
+//    website = PROJ_WEBSITEURL
+//}

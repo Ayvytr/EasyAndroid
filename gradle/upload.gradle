@@ -25,6 +25,7 @@ task javadoc(type: Javadoc) {
     // Exclude generated files
     exclude '**/BuildConfig.java'
     exclude '**/R.java'
+    failOnError false
     source = android.sourceSets.main.java.srcDirs
     classpath += configurations.compile
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -118,11 +119,11 @@ publishing {
             pom{
                 packaging 'aar'
             }
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('description', PROJ_DESCRIPTION)
-                root.children().last() + pomConfig
-            }
+//            pom.withXml {
+//                def root = asNode()
+//                root.appendNode('description', PROJ_DESCRIPTION)
+//                root.children().last() + pomConfig
+//            }
         }
     }
 }
