@@ -26,6 +26,6 @@ public class RightCenterGravityTextView extends AppCompatTextView
     public RightCenterGravityTextView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
-        setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+        setGravity(Gravity.CENTER_VERTICAL | Gravity.END);
     }
 }

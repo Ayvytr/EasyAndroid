@@ -99,7 +99,7 @@ public class BasePopupWindow extends PopupWindow
             else
             {
                 showAtLocation(parent,
-                        (isLeft ? Gravity.LEFT : Gravity.RIGHT) | (isTop ? Gravity.TOP : Gravity.BOTTOM),
+                        (isLeft ? Gravity.START : Gravity.END) | (isTop ? Gravity.TOP : Gravity.BOTTOM),
                         x, y);
             }
         }

@@ -413,7 +413,6 @@ public class AuthEditText extends RelativeLayout
      * 判断是否需要清空文本，在 {@link #setAuthType(AuthType)} 时使用
      *
      * @param authType 将要设置的 {@link AuthType}
-     * @return
      */
     private boolean needClearText(AuthType authType)
     {
@@ -481,7 +480,7 @@ public class AuthEditText extends RelativeLayout
     /**
      * 设置 {@link #etInput} 最大输入长度.
      *
-     * @param textLength
+     * @param textLength 文本输入长度
      */
     private void setEditTextLength(int textLength)
     {

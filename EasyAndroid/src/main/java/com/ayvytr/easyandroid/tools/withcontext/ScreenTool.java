@@ -297,7 +297,7 @@ public class ScreenTool
                 e.printStackTrace();
             }
         }
-        else
+        else if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB)
         {
             android.app.ActionBar actionBar = activity.getActionBar();
             try

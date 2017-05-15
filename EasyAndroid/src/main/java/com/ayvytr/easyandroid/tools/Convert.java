@@ -180,7 +180,7 @@ public class Convert
      * 判断value是不是0
      *
      * @param value String
-     * @return value.equals('0'): true; false
+     * @return {@code value.equals('0')}: true; false
      */
     public static boolean isZero(String value)
     {

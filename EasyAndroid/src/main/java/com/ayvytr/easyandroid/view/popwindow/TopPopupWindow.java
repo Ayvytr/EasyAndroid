@@ -54,7 +54,7 @@ public class TopPopupWindow extends AlphaPopupWindow
             }
             else
             {
-                showAtLocation(view, Gravity.TOP | (isLeft ? Gravity.LEFT : Gravity.RIGHT), 20, y);
+                showAtLocation(view, Gravity.TOP | (isLeft ? Gravity.START : Gravity.END), 20, y);
             }
         }
         else

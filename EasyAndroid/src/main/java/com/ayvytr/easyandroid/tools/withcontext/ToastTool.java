@@ -1,5 +1,6 @@
 package com.ayvytr.easyandroid.tools.withcontext;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class ToastTool
     /**
      * 创建并返回Toast.
      */
+    @SuppressLint("ShowToast")
     private static Toast create(String text, int length)
     {
         if(toast == null)
@@ -101,6 +103,7 @@ public class ToastTool
     /**
      * 创建并返回Toast.
      */
+    @SuppressLint("ShowToast")
     private static Toast create(@StringRes int id, int length)
     {
         if(toast == null)
