@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'maven'
-//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -36,15 +34,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-//apply from: '../gradle/EasyAndroid.gradle'
-apply from: '../gradle/upload.gradle'
+apply from: '../upload.gradle'
 
-
-//publish {
-//    userOrg = 'ayvytr'
-//    groupId = PROJ_GROUP
-//    artifactId = PROJ_ARTIFACTID
-//    publishVersion = PROJ_VERSION
-//    desc = PROJ_DESCRIPTION
-//    website = PROJ_WEBSITEURL
-//}

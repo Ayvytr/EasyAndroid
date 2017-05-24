@@ -85,7 +85,6 @@ install {
     }
 }
 
-
 // Configure gradle-bintray-plugin (for publishing releases)
 bintray {
     Properties properties = new Properties()
@@ -116,14 +115,13 @@ publishing {
         mavenJava(MavenPublication) {
             artifactId PROJ_ARTIFACTID
 
-            pom{
+            pom {
                 packaging 'aar'
             }
-//            pom.withXml {
-//                def root = asNode()
-//                root.appendNode('description', PROJ_DESCRIPTION)
-//                root.children().last() + pomConfig
-//            }
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', PROJ_DESCRIPTION)
+            }
         }
     }
 }
