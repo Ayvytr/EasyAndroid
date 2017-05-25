@@ -35,17 +35,6 @@ public class FileTool
     }
 
     /**
-     * return File from pathname(根据文件路径返回文件).
-     *
-     * @param pathname 文件路径
-     * @return File
-     */
-    public static File fromName(String pathname)
-    {
-        return new File(pathname);
-    }
-
-    /**
      * 根据文件名打开文件并返回
      *
      * @param pathname 文件名
@@ -54,6 +43,18 @@ public class FileTool
     public static File open(String pathname)
     {
         return new File(pathname);
+    }
+
+    /**
+     * 根据目录名和文件名打开路径
+     *
+     * @param parent 目录名
+     * @param child  文件名
+     * @return File
+     */
+    public static File open(String parent, String child)
+    {
+        return new File(parent, child);
     }
 
     /**
@@ -68,6 +69,18 @@ public class FileTool
     }
 
     /**
+     * 根据目录名和文件名打开文件并返回，{@link File#File(String, String)}
+     *
+     * @param parent 目录
+     * @param child  文件名
+     * @return File
+     */
+    public static File of(String parent, String child)
+    {
+        return new File(parent, child);
+    }
+
+    /**
      * 判断文件是否存在
      *
      * @param filePath 文件路径
@@ -75,7 +88,7 @@ public class FileTool
      */
     public static boolean isExists(String filePath)
     {
-        return isExists(fromName(filePath));
+        return isExists(of(filePath));
     }
 
     /**
@@ -98,7 +111,7 @@ public class FileTool
      */
     public static boolean rename(String filePath, String newName)
     {
-        return rename(fromName(filePath), newName);
+        return rename(of(filePath), newName);
     }
 
     /**
@@ -139,7 +152,7 @@ public class FileTool
      */
     public static boolean isDir(String dirPath)
     {
-        return isDir(fromName(dirPath));
+        return isDir(of(dirPath));
     }
 
     /**
@@ -162,7 +175,7 @@ public class FileTool
      */
     public static boolean isFile(String filePath)
     {
-        return isFile(fromName(filePath));
+        return isFile(of(filePath));
     }
 
     /**
@@ -183,7 +196,7 @@ public class FileTool
      */
     public static void createDir(String pathname)
     {
-        createDir(fromName(pathname));
+        createDir(of(pathname));
     }
 
     /**
@@ -206,7 +219,7 @@ public class FileTool
      */
     public static void createFile(String pathname)
     {
-        createFile(fromName(pathname));
+        createFile(of(pathname));
     }
 
     /**
@@ -259,7 +272,7 @@ public class FileTool
      */
     public static void writeFile(String filepath, String content, boolean isAppend)
     {
-        writeFile(fromName(filepath), content, isAppend);
+        writeFile(of(filepath), content, isAppend);
     }
 
     /**
@@ -355,7 +368,7 @@ public class FileTool
      */
     public static String readFile(String pathname)
     {
-        return readFile(fromName(pathname));
+        return readFile(of(pathname));
     }
 
     /**
@@ -431,7 +444,7 @@ public class FileTool
      */
     public static long getLastModified(String filePath)
     {
-        return getLastModified(fromName(filePath));
+        return getLastModified(of(filePath));
     }
 
     /**
@@ -454,7 +467,7 @@ public class FileTool
      */
     public static String getName(String pathname)
     {
-        return getName(fromName(pathname));
+        return getName(of(pathname));
     }
 
     /**
@@ -499,7 +512,7 @@ public class FileTool
      */
     public static String getTitle(String pathname)
     {
-        return getTitle(fromName(pathname));
+        return getTitle(of(pathname));
     }
 
     /**
@@ -527,7 +540,7 @@ public class FileTool
      */
     public static String getExtension(String pathname)
     {
-        return getExtension(fromName(pathname));
+        return getExtension(of(pathname));
     }
 
     /**
@@ -555,7 +568,7 @@ public class FileTool
      */
     public static boolean hasExtension(String pathname)
     {
-        return hasExtension(fromName(pathname));
+        return hasExtension(of(pathname));
     }
 
     /**
@@ -602,7 +615,7 @@ public class FileTool
      */
     public static boolean isTyped(String pathname)
     {
-        return isTyped(fromName(pathname));
+        return isTyped(of(pathname));
     }
 
     /**
@@ -624,7 +637,7 @@ public class FileTool
      */
     public static File[] listFiles(String pathname)
     {
-        return listFiles(fromName(pathname));
+        return listFiles(of(pathname));
     }
 
     /**
@@ -647,7 +660,7 @@ public class FileTool
      */
     public static File[] listFiles(String pathname, boolean isAllFiles)
     {
-        return listFiles(fromName(pathname), isAllFiles);
+        return listFiles(of(pathname), isAllFiles);
     }
 
     /**
@@ -699,7 +712,7 @@ public class FileTool
      */
     public static String[] listFilesNames(String pathname)
     {
-        return listFilesNames(fromName(pathname));
+        return listFilesNames(of(pathname));
     }
 
     /**
@@ -722,7 +735,7 @@ public class FileTool
      */
     public static String[] listFilesNames(String pathname, boolean isAllFiles)
     {
-        return listFilesNames(fromName(pathname), isAllFiles);
+        return listFilesNames(of(pathname), isAllFiles);
     }
 
     /**
@@ -791,7 +804,7 @@ public class FileTool
      */
     public static String[] listFilesPaths(String pathname)
     {
-        return listFilesPaths(fromName(pathname));
+        return listFilesPaths(of(pathname));
     }
 
     /**
@@ -814,7 +827,7 @@ public class FileTool
      */
     public static String[] listFilesPaths(String pathname, boolean isAllFiles)
     {
-        return listFilesPaths(fromName(pathname), isAllFiles);
+        return listFilesPaths(of(pathname), isAllFiles);
     }
 
     /**
@@ -856,7 +869,7 @@ public class FileTool
      */
     public static File[] listFiles(String pathname, FileFilter fileFilter)
     {
-        return listFiles(fromName(pathname), fileFilter);
+        return listFiles(of(pathname), fileFilter);
     }
 
     /**
@@ -881,7 +894,7 @@ public class FileTool
      */
     public static File[] listFiles(String pathname, FileFilter fileFilter, boolean isAllFiles)
     {
-        return listFiles(fromName(pathname), fileFilter, isAllFiles);
+        return listFiles(of(pathname), fileFilter, isAllFiles);
     }
 
     /**
@@ -936,7 +949,7 @@ public class FileTool
      */
     public static File[] listFiles(String pathname, FilenameFilter filenameFilter)
     {
-        return listFiles(fromName(pathname), filenameFilter);
+        return listFiles(of(pathname), filenameFilter);
     }
 
     /**
@@ -962,7 +975,7 @@ public class FileTool
     public static File[] listFiles(String pathname, FilenameFilter filenameFilter,
                                    boolean isAllFiles)
     {
-        return listFiles(fromName(pathname), filenameFilter, isAllFiles);
+        return listFiles(of(pathname), filenameFilter, isAllFiles);
     }
 
     /**
@@ -1017,7 +1030,7 @@ public class FileTool
      */
     public static File[] listFilesWithNames(String pathname, String... names)
     {
-        return listFilesWithNames(fromName(pathname), names);
+        return listFilesWithNames(of(pathname), names);
     }
 
     /**
@@ -1050,7 +1063,7 @@ public class FileTool
      */
     public static File[] listFilesWithNames(String pathname, boolean isAllFiles, String... names)
     {
-        return listFilesWithNames(fromName(pathname), isAllFiles, names);
+        return listFilesWithNames(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1105,7 +1118,7 @@ public class FileTool
      */
     public static File[] listFilesWithNamesNoCase(String pathname, String... names)
     {
-        return listFilesWithNamesNoCase(fromName(pathname), names);
+        return listFilesWithNamesNoCase(of(pathname), names);
     }
 
     /**
@@ -1144,7 +1157,7 @@ public class FileTool
     public static File[] listFilesWithNamesNoCase(String pathname, boolean isAllFiles,
                                                   String... names)
     {
-        return listFilesWithNamesNoCase(fromName(pathname), isAllFiles, names);
+        return listFilesWithNamesNoCase(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1199,7 +1212,7 @@ public class FileTool
      */
     public static File[] listFilesWithoutNames(String pathname, String... names)
     {
-        return listFilesWithoutNames(fromName(pathname), names);
+        return listFilesWithoutNames(of(pathname), names);
     }
 
     /**
@@ -1232,7 +1245,7 @@ public class FileTool
      */
     public static File[] listFilesWithoutNames(String pathname, boolean isAllFiles, String... names)
     {
-        return listFilesWithoutNames(fromName(pathname), isAllFiles, names);
+        return listFilesWithoutNames(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1287,7 +1300,7 @@ public class FileTool
      */
     public static File[] listFilesWithoutNamesNoCase(String pathname, String... names)
     {
-        return listFilesWithoutNamesNoCase(fromName(pathname), names);
+        return listFilesWithoutNamesNoCase(of(pathname), names);
     }
 
     /**
@@ -1326,7 +1339,7 @@ public class FileTool
     public static File[] listFilesWithoutNamesNoCase(String pathname, boolean isAllFiles,
                                                      String... names)
     {
-        return listFilesWithoutNamesNoCase(fromName(pathname), isAllFiles, names);
+        return listFilesWithoutNamesNoCase(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1381,7 +1394,7 @@ public class FileTool
      */
     public static File[] listFilesLikeNames(String pathname, String... names)
     {
-        return listFilesLikeNames(fromName(pathname), names);
+        return listFilesLikeNames(of(pathname), names);
     }
 
     /**
@@ -1422,7 +1435,7 @@ public class FileTool
      */
     public static File[] listFilesLikeNames(String pathname, boolean isAllFiles, String... names)
     {
-        return listFilesLikeNames(fromName(pathname), isAllFiles, names);
+        return listFilesLikeNames(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1477,7 +1490,7 @@ public class FileTool
      */
     public static File[] listFilesLikeNamesNoCase(String pathname, String... names)
     {
-        return listFilesLikeNamesNoCase(fromName(pathname), names);
+        return listFilesLikeNamesNoCase(of(pathname), names);
     }
 
     /**
@@ -1521,7 +1534,7 @@ public class FileTool
     public static File[] listFilesLikeNamesNoCase(String pathname, boolean isAllFiles,
                                                   String... names)
     {
-        return listFilesLikeNamesNoCase(fromName(pathname), isAllFiles, names);
+        return listFilesLikeNamesNoCase(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1610,7 +1623,7 @@ public class FileTool
      */
     public static File[] listFilesDislikeNames(String pathname, String... names)
     {
-        return listFilesDislikeNames(fromName(pathname), names);
+        return listFilesDislikeNames(of(pathname), names);
     }
 
     /**
@@ -1652,7 +1665,7 @@ public class FileTool
      */
     public static File[] listFilesDislikeNames(String pathname, boolean isAllFiles, String... names)
     {
-        return listFilesDislikeNames(fromName(pathname), isAllFiles, names);
+        return listFilesDislikeNames(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1706,7 +1719,7 @@ public class FileTool
      */
     public static File[] listFilesDislikeNamesNoCase(String pathname, String... names)
     {
-        return listFilesDislikeNamesNoCase(fromName(pathname), names);
+        return listFilesDislikeNamesNoCase(of(pathname), names);
     }
 
     /**
@@ -1749,7 +1762,7 @@ public class FileTool
     public static File[] listFilesDislikeNamesNoCase(String pathname, boolean isAllFiles,
                                                      String... names)
     {
-        return listFilesDislikeNamesNoCase(fromName(pathname), isAllFiles, names);
+        return listFilesDislikeNamesNoCase(of(pathname), isAllFiles, names);
     }
 
     /**
@@ -1804,7 +1817,7 @@ public class FileTool
      */
     public static File[] listFilesWithExtension(String pathname, String... extensions)
     {
-        return listFilesWithExtension(fromName(pathname), extensions);
+        return listFilesWithExtension(of(pathname), extensions);
     }
 
     /**
@@ -1842,7 +1855,7 @@ public class FileTool
     public static File[] listFilesWithExtension(String pathname, boolean isAllFiles,
                                                 String... extensions)
     {
-        return listFilesWithExtension(fromName(pathname), isAllFiles, extensions);
+        return listFilesWithExtension(of(pathname), isAllFiles, extensions);
     }
 
     /**
@@ -1918,7 +1931,7 @@ public class FileTool
      */
     public static File[] listFilesWithoutExtension(String pathname, String... extensions)
     {
-        return listFilesWithoutExtension(fromName(pathname), extensions);
+        return listFilesWithoutExtension(of(pathname), extensions);
     }
 
     /**
@@ -1956,7 +1969,7 @@ public class FileTool
     public static File[] listFilesWithoutExtension(String pathname, boolean isAllFiles,
                                                    String... extensions)
     {
-        return listFilesWithoutExtension(fromName(pathname), isAllFiles, extensions);
+        return listFilesWithoutExtension(of(pathname), isAllFiles, extensions);
     }
 
     /**
