@@ -124,9 +124,9 @@ public class TextTool
      */
     public static String[] split(String str, String regex)
     {
-        if(regex == null)
+        if(str == null || regex == null)
         {
-            throw new NullPointerException();
+            return new String[0];
         }
 
         String s = str;
@@ -158,7 +158,19 @@ public class TextTool
      */
     public static boolean equals(CharSequence str, CharSequence str2)
     {
-        return str == null && str2 == null || str.toString().equals(str2.toString());
+        if(str == str2)
+        {
+            return true;
+        }
+
+        try
+        {
+            return str.toString().equals(str2.toString());
+        } catch(NullPointerException e)
+        {
+        }
+
+        return false;
     }
 
     /**
@@ -170,7 +182,19 @@ public class TextTool
      */
     public static boolean equalsIgnoreCase(CharSequence str, CharSequence str2)
     {
-        return str == null && str2 == null || str.toString().equalsIgnoreCase(str2.toString());
+        if(str == str2)
+        {
+            return true;
+        }
+
+        try
+        {
+            return str.toString().equalsIgnoreCase(str2.toString());
+        } catch(NullPointerException e)
+        {
+        }
+
+        return false;
     }
 
     /**

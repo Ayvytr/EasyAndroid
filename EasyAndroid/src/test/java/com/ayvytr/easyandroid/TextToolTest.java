@@ -69,12 +69,70 @@ public class TextToolTest
     }
 
     @Test
-    public void isBlock()
+    public void isBlank()
     {
         String str = null;
         assertEquals(TextTool.isBlank(str), true);
         str = "";
         assertEquals(TextTool.isBlank(str), true);
         str = "            ";
+        assertEquals(TextTool.isBlank(str), true);
+    }
+
+    @Test
+    public void equals()
+    {
+        CharSequence str = null;
+        CharSequence str1 = null;
+        boolean equals = TextTool.equals(str, str1);
+        assertEquals(equals, true);
+        str = "";
+        equals = TextTool.equals(str, str1);
+        assertEquals(equals, false);
+        str = null;
+        str1 = "";
+        equals = TextTool.equals(str, str1);
+        assertEquals(equals, false);
+
+        str = "1";
+        str1 = "1";
+        equals = TextTool.equals(str1, str);
+        assertEquals(equals, true);
+
+        str = "1";
+        str1 = str;
+        equals = TextTool.equals(str, str1);
+        assertEquals(equals, true);
+    }
+
+    @Test
+    public void equalsIgnoreCase()
+    {
+        CharSequence str = null;
+        CharSequence str1 = null;
+        boolean equals = TextTool.equalsIgnoreCase(str, str1);
+        assertEquals(equals, true);
+        str = "";
+        equals = TextTool.equalsIgnoreCase(str, str1);
+        assertEquals(equals, false);
+        str = null;
+        str1 = "";
+        equals = TextTool.equalsIgnoreCase(str, str1);
+        assertEquals(equals, false);
+
+        str = "1";
+        str1 = "1";
+        equals = TextTool.equalsIgnoreCase(str1, str);
+        assertEquals(equals, true);
+
+        str = "1";
+        str1 = str;
+        equals = TextTool.equalsIgnoreCase(str, str1);
+        assertEquals(equals, true);
+
+        str1 = "AAAAbbb";
+        str = "aaaaBBB";
+        equals = TextTool.equalsIgnoreCase(str, str1);
+        assertEquals(equals, true);
     }
 }
