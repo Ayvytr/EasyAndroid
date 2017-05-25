@@ -44,7 +44,7 @@ public class IntentTool
      */
     public static Intent getInstallAppIntent(String filePath)
     {
-        return getInstallAppIntent(FileTool.fromName(filePath));
+        return getInstallAppIntent(FileTool.of(filePath));
     }
 
     /**
@@ -139,7 +139,7 @@ public class IntentTool
      */
     public static Intent getShareImageIntent(String content, String imagePath)
     {
-        return getShareImageIntent(content, FileTool.fromName(imagePath));
+        return getShareImageIntent(content, FileTool.of(imagePath));
     }
 
     /**

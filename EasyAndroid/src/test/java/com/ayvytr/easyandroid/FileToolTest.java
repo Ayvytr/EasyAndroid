@@ -54,7 +54,7 @@ public class FileToolTest
     @Test
     public void testFile()
     {
-        File file = FileTool.fromName(fileName);
+        File file = FileTool.of(fileName);
         System.out.println(file.getName());
         System.out.println(file.getPath());
         System.out.println(file.getAbsolutePath());
