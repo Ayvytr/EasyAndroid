@@ -41,4 +41,13 @@ public class PackagesTest
         long duration = System.currentTimeMillis() - l;
         System.out.println(duration);
     }
+
+    @Test
+    public void test2()
+    {
+        long l = System.currentTimeMillis();
+        List<AppInfo> installedAppsInfo = Packages.getInstalledAppsInfo();
+        long duration = System.currentTimeMillis() - l;
+        System.out.println(l);
+    }
 }
