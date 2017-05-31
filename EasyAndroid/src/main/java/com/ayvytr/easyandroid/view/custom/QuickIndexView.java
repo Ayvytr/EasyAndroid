@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,7 +33,7 @@ public class QuickIndexView extends View
 {
     private static final int DEFAULT_TEXT_SIZE = 18;
     private static final int DEFAULT_QUICK_TEXT_SIZE = 40;
-    private static final int DEFAULT_SPACE = 50;
+    private static final int DEFAULT_WIDTH_DP = 50;
 
     private Paint paint;
     private Paint toastPaint;
@@ -138,7 +139,7 @@ public class QuickIndexView extends View
         int width = MeasureSpec.getSize(widthMeasureSpec);
         if(widthMode == MeasureSpec.AT_MOST)
         {
-            width = DensityTool.dp2px(context, 50);
+            width = DensityTool.dp2px(context, DEFAULT_WIDTH_DP);
         }
 
         int height = MeasureSpec.getSize(heightMeasureSpec);
@@ -156,16 +157,27 @@ public class QuickIndexView extends View
 
         int letterLength = getLetterLength();
         paint.setTextSize(letterLength);
+
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
         int y = getPaddingTop();
-        int x = getWidth() / 2;
+        int yOffset = Math.abs((int) (letterLength - (fontMetrics.bottom - fontMetrics.top)));
+        Log.e(getClass().getSimpleName(), String.format("{onDraw} => %d", yOffset));
+        yOffset = yOffset * letterList.size() >> 2 >> 1;
+        Log.e(getClass().getSimpleName(), String.format("{onDraw} => %d", yOffset));
+        if(yOffset > 0)
+        {
+            y += yOffset;
+        }
+
+        int x = getWidth() >> 1;
+        int halfLetterLength = letterLength >> 1;
 
         if(topBitmap != null)
         {
             bitmapRect.bottom = topBitmap.getHeight();
             bitmapRect.right = topBitmap.getWidth();
-            outRect.left = x - letterLength / 2;
-            outRect.right = x + letterLength / 2;
+            outRect.left = x - halfLetterLength;
+            outRect.right = x + halfLetterLength;
             outRect.top = y;
             outRect.bottom = y + letterLength;
             canvas.drawBitmap(topBitmap, bitmapRect, outRect, null);
@@ -173,7 +185,7 @@ public class QuickIndexView extends View
 
         y += letterLength;
 
-        int fontY = (int) (letterLength / 2 - fontMetrics.top / 2 - fontMetrics.bottom / 2);
+        int fontY = (int) (halfLetterLength - fontMetrics.top / 2 - fontMetrics.bottom / 2);
         for(int i = 0; i < letterList.size(); i++)
         {
             y += fontY;
@@ -184,14 +196,19 @@ public class QuickIndexView extends View
         {
             bitmapRect.bottom = bottomBitmap.getHeight();
             bitmapRect.right = bottomBitmap.getWidth();
-            outRect.left = x - letterLength / 2;
-            outRect.right = x + letterLength / 2;
+            outRect.left = x - halfLetterLength;
+            outRect.right = x + halfLetterLength;
             outRect.top = y;
             outRect.bottom = y + letterLength;
             canvas.drawBitmap(bottomBitmap, bitmapRect, outRect, null);
         }
     }
 
+    /**
+     * 返回实际绘制的每个Letter文字高度，因为动态设置时，如果设置的文字高度太大，绘制出来也没有意义.
+     *
+     * @return 实际每个Letter文字高度
+     */
     private int getLetterLength()
     {
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
