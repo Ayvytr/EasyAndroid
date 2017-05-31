@@ -150,13 +150,26 @@ public class QuickIndexView extends View
         int letterLength = getLetterLength();
         paint.setTextSize(letterLength);
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
-        int y;
+        int y = getPaddingTop();
         int x = getWidth() / 2;
+
+        if(topBitmap != null)
+        {
+            canvas.drawBitmap(topBitmap, 0, y, null);
+        }
+
+        y += letterLength;
+
         int fontY = (int) (letterLength / 2 - fontMetrics.top / 2 - fontMetrics.bottom / 2);
         for(int i = 0; i < letterList.size(); i++)
         {
-            y = getPaddingTop() + letterLength * i + fontY;
+            y += fontY;
             canvas.drawText(letterList.get(i), x, y, paint);
+        }
+
+        if(bottomBitmap != null)
+        {
+            canvas.drawBitmap(bottomBitmap, 0, y, null);
         }
     }
 
