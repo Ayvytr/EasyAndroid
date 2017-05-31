@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -49,6 +50,9 @@ public class QuickIndexView extends View
     private int quickTextSize;
     private Context context;
     private OnLetterChangeListener onLetterChangeListener;
+
+    private Rect bitmapRect;
+    private Rect outRect;
 
     public QuickIndexView(Context context)
     {
@@ -113,6 +117,9 @@ public class QuickIndexView extends View
         }
 
         typedArray.recycle();
+
+        bitmapRect = new Rect();
+        outRect = new Rect();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -155,7 +162,13 @@ public class QuickIndexView extends View
 
         if(topBitmap != null)
         {
-            canvas.drawBitmap(topBitmap, 0, y, null);
+            bitmapRect.bottom = topBitmap.getHeight();
+            bitmapRect.right = topBitmap.getWidth();
+            outRect.left = x - letterLength / 2;
+            outRect.right = x + letterLength / 2;
+            outRect.top = y;
+            outRect.bottom = y + letterLength;
+            canvas.drawBitmap(topBitmap, bitmapRect, outRect, null);
         }
 
         y += letterLength;
@@ -169,7 +182,13 @@ public class QuickIndexView extends View
 
         if(bottomBitmap != null)
         {
-            canvas.drawBitmap(bottomBitmap, 0, y, null);
+            bitmapRect.bottom = bottomBitmap.getHeight();
+            bitmapRect.right = bottomBitmap.getWidth();
+            outRect.left = x - letterLength / 2;
+            outRect.right = x + letterLength / 2;
+            outRect.top = y;
+            outRect.bottom = y + letterLength;
+            canvas.drawBitmap(bottomBitmap, bitmapRect, outRect, null);
         }
     }
 
@@ -192,6 +211,12 @@ public class QuickIndexView extends View
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+        //点击顶部或者底部Padding时，不响应事件
+        if(event.getY() < getPaddingTop() || event.getY() > (getHeight() - getPaddingBottom()))
+        {
+            return true;
+        }
+
         switch(event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
