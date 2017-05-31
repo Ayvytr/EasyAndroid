@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QuickIndexView">
+        <attr name="topDrawable" format="reference"/>
+        <attr name="bottomDrawable" format="reference"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="quickTextColor" format="color"/>
+        <attr name="quickTextSize" format="dimension"/>
+        <attr name="quickLetters" format="reference"/>
+        <attr name="showToast" format="boolean"/>
+    </declare-styleable>
+</resources>

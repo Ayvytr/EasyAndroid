@@ -5,6 +5,7 @@
     </integer-array>
     <string-array name="custom_views">
         <item>AuthEditText</item>
+        <item>QuickIndexView</item>
     </string-array>
     <string-array name="auth_edit_text_length">
         <item>1</item>
@@ -24,5 +25,33 @@
         <item>明文密码</item>
         <item>数字密码</item>
         <item>默认（不限制输入类型）</item>
+    </string-array>
+    <string-array name="defaultQuickIndexItems">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>C</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
     </string-array>
 </resources>

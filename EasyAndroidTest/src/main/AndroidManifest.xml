@@ -56,6 +56,10 @@
         </activity>
         <activity android:name=".network.NetworkActivity">
         </activity>
+        <activity
+            android:name=".customview.QuickIndexViewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
