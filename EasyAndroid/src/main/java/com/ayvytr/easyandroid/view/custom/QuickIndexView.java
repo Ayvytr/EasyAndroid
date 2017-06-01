@@ -564,6 +564,7 @@ public class QuickIndexView extends View
                 {
                     letter = letterList.get(index);
 
+                    toastTextView.setTextColor(quickTextColor);
                     toastTextView.setBackgroundDrawable(null);
                 }
 
