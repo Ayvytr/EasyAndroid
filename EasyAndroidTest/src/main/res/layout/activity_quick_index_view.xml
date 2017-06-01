@@ -38,6 +38,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="更改底部图片"/>
+
+        <Button
+            android:id="@+id/btnBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="修改背景色"/>
+
+        <Button
+            android:id="@+id/btnShowToast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="是否显示Toast"/>
+
+        <Button
+            android:id="@+id/btnToastTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast字体颜色"/>
+
+        <Button
+            android:id="@+id/btnToastBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast背景"/>
+
+        <Button
+            android:id="@+id/btnToastWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast宽度"/>
+
+        <Button
+            android:id="@+id/btnToastHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改Toast高度"/>
     </com.ayvytr.easyandroid.view.custom.FlowLayout>
 </RelativeLayout>
 
