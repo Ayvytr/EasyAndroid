@@ -1,21 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fitsSystemWindows="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fitsSystemWindows="true">
 
     <com.ayvytr.easyandroid.view.custom.QuickIndexView
         android:id="@+id/quickIndexView"
-        android:background="@color/gray"
         android:layout_width="wrap_content"
-        app:textColor="@color/aero"
-        app:quickLetters="@array/defaultQuickIndexItems"
-        app:topDrawable="@android:drawable/ic_menu_search"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         app:bottomDrawable="@android:drawable/ic_menu_add"
         app:quickBackground="@color/alizarin_crimson"
-        android:layout_height="wrap_content"/>
+        app:quickLetters="@array/defaultQuickIndexItems"
+        app:textColor="@color/aero"
+        app:topDrawable="@android:drawable/ic_menu_search"/>
 
-</LinearLayout>
+    <com.ayvytr.easyandroid.view.custom.FlowLayout
+        android:layout_width="@dimen/_200dp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改字体颜色"/>
+
+        <Button
+            android:id="@+id/btnTopDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改顶部图片"/>
+
+        <Button
+            android:id="@+id/btnBottomDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更改底部图片"/>
+    </com.ayvytr.easyandroid.view.custom.FlowLayout>
+</RelativeLayout>
 
