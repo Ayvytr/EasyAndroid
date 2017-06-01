@@ -15,6 +15,7 @@
         app:quickLetters="@array/defaultQuickIndexItems"
         app:topDrawable="@android:drawable/ic_menu_search"
         app:bottomDrawable="@android:drawable/ic_menu_add"
+        app:quickBackground="@color/alizarin_crimson"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

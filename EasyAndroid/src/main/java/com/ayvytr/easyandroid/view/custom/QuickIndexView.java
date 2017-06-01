@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +55,30 @@ public class QuickIndexView extends View
 
     private Rect bitmapRect;
     private Rect outRect;
-    private TextView toastView;
+
+    /**
+     * {@link #toast} 显示的View，{@link Toast#setView(View)}
+     */
+    private RelativeLayout toastView;
+    /**
+     * {@link #toastView} 包含的 TextView，绘制文字，直接使用TextView会有问题，宽高不能限定成指定值，所以使用2个View配合.
+     */
+    private TextView toastTextView;
+
+    /**
+     * {@link #toast} 的背景
+     */
+    private Drawable quickBackground;
+
+    /**
+     * {@link #toast} 的宽度
+     */
+    private int quickWidth;
+
+    /**
+     * {@link #toast} 的高度
+     */
+    private int quickHeight;
 
     public QuickIndexView(Context context)
     {
@@ -83,17 +106,21 @@ public class QuickIndexView extends View
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
 
-        toastView = new TextView(context);
+        toastView = new RelativeLayout(context);
         toastView.setGravity(Gravity.CENTER);
         toast.setView(toastView);
 
+        toastTextView = new TextView(context);
+        toastTextView.setGravity(Gravity.CENTER);
+        toastView.addView(toastTextView);
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickIndexView);
         textColor = typedArray.getColor(R.styleable.QuickIndexView_textColor, Colors.BLACK);
-        textSize = typedArray
-                .getDimensionPixelSize(R.styleable.QuickIndexView_textSize, DensityTool.dp2px(DEFAULT_TEXT_SIZE_DP));
+        textSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_textSize,
+                DensityTool.dp2px(context, DEFAULT_TEXT_SIZE_DP));
         quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.BLACK);
         quickTextSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickTextSize,
-                DensityTool.dp2px(DEFAULT_QUICK_TEXT_SIZE_DP));
+                DensityTool.dp2px(context, DEFAULT_QUICK_TEXT_SIZE_DP));
         Drawable topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
         if(topDrawable != null)
         {
@@ -106,9 +133,13 @@ public class QuickIndexView extends View
         }
 
         showToast = typedArray.getBoolean(R.styleable.QuickIndexView_showToast, true);
+        quickBackground = typedArray.getDrawable(R.styleable.QuickIndexView_quickBackground);
+        quickWidth = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickWidth,
+                DensityTool.dp2px(context, DEFAULT_WIDTH_DP));
+        quickHeight = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickHeight,
+                DensityTool.dp2px(context, DEFAULT_WIDTH_DP));
 
-        toastView.setTextColor(quickTextColor);
-        toastView.setTextSize(quickTextSize);
+        changeToastViewSize();
 
         CharSequence[] textArray = typedArray.getTextArray(R.styleable.QuickIndexView_quickLetters);
         if(textArray != null)
@@ -124,6 +155,25 @@ public class QuickIndexView extends View
 
         bitmapRect = new Rect();
         outRect = new Rect();
+    }
+
+    /**
+     * 设置 {@link #toastView} 和它包含的 {@link #toastTextView} 的宽高.
+     * <p>
+     * {@link #toastTextView} 宽高设置为 {@link #toastView} 的 0.8倍尺寸.
+     * {@link #toastTextView} 文字高度定为 {@link #quickWidth} 和 {@link #quickHeight} 中最小值的 0.2倍数值。这个尺寸比较合理.
+     */
+    private void changeToastViewSize()
+    {
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(quickWidth, quickHeight);
+        toastView.setLayoutParams(lp);
+        toastView.setBackgroundDrawable(quickBackground);
+
+        lp = new RelativeLayout.LayoutParams((int) (quickWidth * .8f), (int) (quickHeight * .8f));
+        toastTextView.setLayoutParams(lp);
+
+        float textSize = Math.min(quickWidth, quickHeight) * .2f;
+        toastTextView.setTextSize(textSize);
     }
 
     public QuickIndexView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
@@ -259,30 +309,30 @@ public class QuickIndexView extends View
                     index--;
                 }
 
+                toastView.setBackgroundDrawable(quickBackground);
+
                 if(index == NO_POSITION)
                 {
                     index = 0;
                     letter = "";
 
-                    ImageView view = new ImageView(context);
-                    view.setImageBitmap(topBitmap);
-                    toast.setView(view);
+                    toastTextView.setBackgroundDrawable(BitmapTool.toDrawable(topBitmap));
                 }
                 else if(index >= letterList.size())
                 {
                     index = letterList.size() - 1;
                     letter = "";
-                    ImageView view = new ImageView(context);
-                    view.setImageBitmap(bottomBitmap);
-                    toast.setView(view);
+
+                    toastTextView.setBackgroundDrawable(BitmapTool.toDrawable(topBitmap));
                 }
                 else
                 {
                     letter = letterList.get(index);
-                    String text = letterList.get(topBitmap == null ? index : index - 1);
-                    toastView.setText(text);
-                    toast.setView(toastView);
+
+                    toastTextView.setBackgroundDrawable(null);
                 }
+
+                toastTextView.setText(letter);
 
                 if(showToast)
                 {

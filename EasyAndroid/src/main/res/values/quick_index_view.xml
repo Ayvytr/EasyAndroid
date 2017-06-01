@@ -9,5 +9,8 @@
         <attr name="quickTextSize" format="dimension"/>
         <attr name="quickLetters" format="reference"/>
         <attr name="showToast" format="boolean"/>
+        <attr name="quickBackground" format="reference"/>
+        <attr name="quickWidth" format="dimension"/>
+        <attr name="quickHeight" format="dimension"/>
     </declare-styleable>
 </resources>
