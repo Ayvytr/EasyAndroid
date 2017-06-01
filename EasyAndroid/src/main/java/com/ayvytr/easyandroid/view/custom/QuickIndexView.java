@@ -14,6 +14,8 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ayvytr.easyandroid.R;
@@ -30,8 +32,8 @@ import java.util.List;
 
 public class QuickIndexView extends View
 {
-    private static final int DEFAULT_TEXT_SIZE = 18;
-    private static final int DEFAULT_QUICK_TEXT_SIZE = 40;
+    private static final int DEFAULT_TEXT_SIZE_DP = 18;
+    private static final int DEFAULT_QUICK_TEXT_SIZE_DP = 40;
     private static final int DEFAULT_WIDTH_DP = 50;
 
     private Paint paint;
@@ -53,6 +55,7 @@ public class QuickIndexView extends View
 
     private Rect bitmapRect;
     private Rect outRect;
+    private TextView toastView;
 
     public QuickIndexView(Context context)
     {
@@ -80,20 +83,18 @@ public class QuickIndexView extends View
         toast = new Toast(context);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
-        CenterGravityTextView view = new CenterGravityTextView(context);
-        view.setText("A");
-        view.setTextColor(Colors.BLACK);
-        view.setTextSize(50);
-        toast.setView(view);
+
+        toastView = new TextView(context);
+        toastView.setGravity(Gravity.CENTER);
+        toast.setView(toastView);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickIndexView);
         textColor = typedArray.getColor(R.styleable.QuickIndexView_textColor, Colors.BLACK);
         textSize = typedArray
-                .getDimensionPixelSize(R.styleable.QuickIndexView_textSize, DensityTool.dp2px(DEFAULT_TEXT_SIZE));
-        quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.WHITE);
-        quickTextSize = typedArray
-                .getDimensionPixelSize(R.styleable.QuickIndexView_quickTextSize,
-                        DensityTool.dp2px(DEFAULT_QUICK_TEXT_SIZE));
+                .getDimensionPixelSize(R.styleable.QuickIndexView_textSize, DensityTool.dp2px(DEFAULT_TEXT_SIZE_DP));
+        quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.BLACK);
+        quickTextSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickTextSize,
+                DensityTool.dp2px(DEFAULT_QUICK_TEXT_SIZE_DP));
         Drawable topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
         if(topDrawable != null)
         {
@@ -106,6 +107,9 @@ public class QuickIndexView extends View
         }
 
         showToast = typedArray.getBoolean(R.styleable.QuickIndexView_showToast, true);
+
+        toastView.setTextColor(quickTextColor);
+        toastView.setTextSize(quickTextSize);
 
         CharSequence[] textArray = typedArray.getTextArray(R.styleable.QuickIndexView_quickLetters);
         if(textArray != null)
@@ -204,6 +208,13 @@ public class QuickIndexView extends View
     private int getLetterLength()
     {
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
+        int letterCount = getLetterCount();
+
+        return Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / letterCount);
+    }
+
+    private int getLetterCount()
+    {
         int itemCount = letterList.size();
         if(topBitmap != null)
         {
@@ -213,8 +224,7 @@ public class QuickIndexView extends View
         {
             itemCount++;
         }
-
-        return Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / itemCount);
+        return itemCount;
     }
 
     @Override
@@ -230,6 +240,37 @@ public class QuickIndexView extends View
         {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
+            {
+                int letterCount = getLetterCount();
+                int letterLength = getLetterLength();
+                int index = 0;
+                for(int i = 0; i < letterCount; i++)
+                {
+                    int y = getPaddingTop() + letterLength * i;
+                    if(event.getY() > y && event.getY() < y + letterLength)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                if(topBitmap != null && index == 0)
+                {
+                    ImageView view = new ImageView(context);
+                    view.setImageBitmap(topBitmap);
+                    toast.setView(view);
+                }
+                else if(bottomBitmap != null && index >= letterList.size())
+                {
+                    ImageView view = new ImageView(context);
+                    view.setImageBitmap(bottomBitmap);
+                    toast.setView(view);
+                }
+                else
+                {
+                    toastView.setText(letterList.get(topBitmap == null ? index : index - 1));
+                    toast.setView(toastView);
+                }
+
                 if(showToast)
                 {
                     toast.show();
@@ -238,7 +279,8 @@ public class QuickIndexView extends View
                 {
                     onLetterChangeListener.onLetterChange(0, "A", this);
                 }
-                break;
+            }
+            break;
             case MotionEvent.ACTION_UP:
                 if(showToast)
                 {
