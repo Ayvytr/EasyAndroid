@@ -58,7 +58,7 @@
         </activity>
         <activity
             android:name=".customview.QuickIndexViewActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/NoActionBar">
         </activity>
     </application>
 
