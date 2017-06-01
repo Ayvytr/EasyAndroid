@@ -30,14 +30,11 @@ import java.util.List;
 
 public class QuickIndexView extends View
 {
-    private static final int DEFAULT_TEXT_SIZE_DP = 18;
-    private static final int DEFAULT_QUICK_TEXT_SIZE_DP = 40;
     private static final int DEFAULT_WIDTH_DP = 50;
 
     private static final int NO_POSITION = -1;
 
     private Paint paint;
-    private Paint toastPaint;
 
     private Toast toast;
     private boolean showToast;
@@ -54,9 +51,7 @@ public class QuickIndexView extends View
 
     private List<String> letterList;
     private int textColor;
-    private int textSize;
     private int quickTextColor;
-    private int quickTextSize;
     private Context context;
     private OnLetterChangeListener onLetterChangeListener;
 
@@ -110,11 +105,6 @@ public class QuickIndexView extends View
         paint.setAntiAlias(true);
         paint.setTextAlign(Paint.Align.CENTER);
 
-        toastPaint = new Paint();
-        toastPaint.setAntiAlias(true);
-        toastPaint.setColor(quickTextColor);
-        toastPaint.setTextSize(quickTextSize);
-
         toast = new Toast(context);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
@@ -129,11 +119,7 @@ public class QuickIndexView extends View
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickIndexView);
         textColor = typedArray.getColor(R.styleable.QuickIndexView_textColor, Colors.BLACK);
-        textSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_textSize,
-                DensityTool.dp2px(context, DEFAULT_TEXT_SIZE_DP));
         quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.BLACK);
-        quickTextSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickTextSize,
-                DensityTool.dp2px(context, DEFAULT_QUICK_TEXT_SIZE_DP));
         topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
         bottomDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_bottomDrawable);
 
@@ -204,7 +190,6 @@ public class QuickIndexView extends View
         super.onDraw(canvas);
 
         paint.setColor(textColor);
-        paint.setTextSize(textSize);
 
         int letterLength = getLetterLength();
         paint.setTextSize(letterLength);
