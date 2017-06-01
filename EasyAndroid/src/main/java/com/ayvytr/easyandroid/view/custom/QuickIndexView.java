@@ -558,7 +558,7 @@ public class QuickIndexView extends View
                     index = letterList.size() - 1;
                     letter = "";
 
-                    toastTextView.setBackgroundDrawable(topDrawable);
+                    toastTextView.setBackgroundDrawable(bottomDrawable);
                 }
                 else
                 {

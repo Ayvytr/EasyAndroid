@@ -49,7 +49,7 @@
             android:id="@+id/btnShowToast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="是否显示Toast"/>
+            android:text="是否显示Toast(Toast显示完再测)"/>
 
         <Button
             android:id="@+id/btnToastTextColor"
