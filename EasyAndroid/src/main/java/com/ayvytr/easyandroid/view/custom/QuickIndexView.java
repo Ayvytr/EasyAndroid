@@ -180,7 +180,8 @@ public class QuickIndexView extends View
         }
 
         int fontY = (int) (halfLetterLength - fontMetrics.top / 2 - fontMetrics.bottom / 2);
-        for(int i = 0; i < letterList.size(); i++)
+        int size = letterList.size();
+        for(int i = 0; i < size; i++)
         {
             canvas.drawText(letterList.get(i), x, y + fontY, paint);
             y += letterLength;
@@ -310,8 +311,19 @@ public class QuickIndexView extends View
         this.onLetterChangeListener = onLetterChangeListener;
     }
 
+    /**
+     * 字母索引变化监听器
+     */
     public interface OnLetterChangeListener
     {
+        /**
+         * {@link #onTouchEvent(MotionEvent)} 触发时，调用此字母索引变化方法
+         *
+         * @param position       当前position.<br>如果指向 {@link #topBitmap}, {@code position=0}<br>
+         *                       如果指向 {@link #bottomBitmap}, {@code position=} {@link #letterList} {@code .size()}.
+         * @param text           当前指向的文本.<br>如果指向 {@link #topBitmap} 或者 {@link #bottomBitmap}，{@code text=""}.
+         * @param quickIndexView {@link QuickIndexView}
+         */
         void onLetterChange(int position, String text, QuickIndexView quickIndexView);
     }
 }
