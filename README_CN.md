@@ -1,6 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
-[![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.1-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.3-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid 库
@@ -12,6 +10,9 @@
     直接使用
     
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
+
+
+## 1.8.3 <font color=red>QuickIndexView</font>, 类似微信的联系人字母索引控件，但是功能更多，可以加入顶部，底部图片，设置弹出Toast的效果，更改索引字体颜色和Toast字体颜色等方法
 
 ## 1.8.1 <font color=red>AuthEditText</font>, 类似支付宝支付时的输入密码控件
 
@@ -29,27 +30,7 @@
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.1'
-
-## JitPack
-
-### Step 1. 添加JitPack依赖
-
-#### 在你的Project目录的build.gradle文件添加如下依赖：
-
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-	
-#### Step 2. 添加你的仓库
-
-	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.7'
-	}
-	
+	compile 'com.ayvytr:EasyAndroid:1.8.3'
 
 ## 包含 
 

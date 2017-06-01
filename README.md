@@ -1,6 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/Ayvytr/EasyAndroid.svg)](https://github.com/Ayvytr/EasyAndroid/releases)
-[![](https://jitpack.io/v/Ayvytr/EasyAndroid.svg)](https://jitpack.io/#Ayvytr/EasyAndroid)
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.1-green.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.3-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
@@ -14,6 +12,8 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     Then, use directly;
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
+
+## 1.8.3 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
 
 ## 1.8.1 <font color=red>AuthEditText</font>, like Zhifubao's payment View
 
@@ -30,26 +30,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.1'
-
-## JitPack
-
-### 1. Add the JitPack repository to your build file
-
-#### Add it in your root build.gradle at the end of repositories:
-
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-	
-#### 2. Add the dependency
-
-	dependencies {
-	        compile 'com.github.Ayvytr:AndroidEasyDeveloper:1.7.7'
-	}
+	compile 'com.ayvytr:EasyAndroid:1.8.3'
 
 
 ## Contains 
