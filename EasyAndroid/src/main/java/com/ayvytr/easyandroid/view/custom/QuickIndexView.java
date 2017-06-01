@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -22,21 +24,37 @@ import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Do on 2017/5/31.
+ * 字母索引控件，和微信联系人右侧字母索引效果相似，可以在屏幕中心显示Toast，以及字母索引顶部和底部的图片
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 1.8.3
  */
 
 public class QuickIndexView extends View
 {
+    /**
+     * 默认字母索引宽高
+     */
     private static final int DEFAULT_WIDTH_DP = 50;
 
     private static final int NO_POSITION = -1;
 
+    private Context context;
+
     private Paint paint;
 
+    /**
+     * 触摸事件时，显示的索引提示Toast
+     */
     private Toast toast;
+
+    /**
+     * 是否显示 toast
+     */
     private boolean showToast;
 
     /**
@@ -52,9 +70,15 @@ public class QuickIndexView extends View
     private List<String> letterList;
     private int textColor;
     private int quickTextColor;
-    private Context context;
+
+    /**
+     * {@link OnLetterChangeListener}
+     */
     private OnLetterChangeListener onLetterChangeListener;
 
+    /**
+     * {@link #bitmapRect} 和 {@link #outRect} 是 Drawable 转 Bitmap 时需要的临时变量.
+     */
     private Rect bitmapRect;
     private Rect outRect;
 
@@ -82,6 +106,219 @@ public class QuickIndexView extends View
      */
     private int quickHeight;
 
+    /**
+     * 返回 {@link #toast}
+     */
+    public Toast getToast()
+    {
+        return toast;
+    }
+
+    /**
+     * 设置 {@link #toast}
+     *
+     * @param toast {@link #toast}
+     */
+    public void setToast(@NonNull Toast toast)
+    {
+        this.toast = toast;
+    }
+
+    /**
+     * 返回 {@link #showToast}
+     */
+    public boolean isShowToast()
+    {
+        return showToast;
+    }
+
+    /**
+     * 设置 {@link #showToast}
+     */
+    public void setShowToast(boolean showToast)
+    {
+        this.showToast = showToast;
+    }
+
+    /**
+     * 获取 {@link #topDrawable}
+     */
+    public Drawable getTopDrawable()
+    {
+        return topDrawable;
+    }
+
+    /**
+     * 设置 {@link #topDrawable}
+     */
+    public void setTopDrawable(@Nullable Drawable topDrawable)
+    {
+        this.topDrawable = topDrawable;
+        invalidate();
+    }
+
+    /**
+     * 获取 {@link #bottomDrawable}
+     */
+    public Drawable getBottomDrawable()
+    {
+        return bottomDrawable;
+    }
+
+    /**
+     * 设置 {@link #bottomDrawable}
+     */
+    public void setBottomDrawable(@Nullable Drawable bottomDrawable)
+    {
+        this.bottomDrawable = bottomDrawable;
+        invalidate();
+    }
+
+    /**
+     * 获取 {@link #letterList}
+     */
+    public List<String> getLetterList()
+    {
+        return letterList;
+    }
+
+    /**
+     * 设置 {@link #letterList}
+     *
+     * @param letterList 要设置的字母索引列表
+     */
+    public void setLetterList(List<String> letterList)
+    {
+        this.letterList = letterList;
+        invalidate();
+    }
+
+    /**
+     * 设置 {@link #letterList}
+     *
+     * @param letterArray 要设置的字母索引数组
+     */
+    public void setLetterList(String[] letterArray)
+    {
+        this.letterList = Arrays.asList(letterArray);
+        invalidate();
+    }
+
+    /**
+     * 获取字体颜色 {@link #textColor}
+     */
+    public int getTextColor()
+    {
+        return textColor;
+    }
+
+    /**
+     * 设置字体颜色 {@link #textColor}
+     */
+    public void setTextColor(@ColorInt int textColor)
+    {
+        this.textColor = textColor;
+        invalidate();
+    }
+
+    /**
+     * 获取 {@link #quickTextColor}
+     */
+    public int getQuickTextColor()
+    {
+        return quickTextColor;
+    }
+
+    /**
+     * 设置 {@link #quickTextColor}
+     */
+    public void setQuickTextColor(@ColorInt int quickTextColor)
+    {
+        this.quickTextColor = quickTextColor;
+    }
+
+    /**
+     * 获取 {@link #toastView}
+     */
+    public RelativeLayout getToastView()
+    {
+        return toastView;
+    }
+
+    /**
+     * 设置 {@link #toastView}
+     */
+    public void setToastView(@NonNull RelativeLayout toastView)
+    {
+        this.toastView = toastView;
+    }
+
+    /**
+     * 获取 {@link #toastTextView}
+     */
+    public TextView getToastTextView()
+    {
+        return toastTextView;
+    }
+
+    /**
+     * 设置 {@link #toastTextView}
+     */
+    public void setToastTextView(@NonNull TextView toastTextView)
+    {
+        this.toastTextView = toastTextView;
+    }
+
+    /**
+     * 获取 {@link #quickBackground}
+     */
+    public Drawable getQuickBackground()
+    {
+        return quickBackground;
+    }
+
+    /**
+     * 设置 {@link #quickBackground}
+     */
+    public void setQuickBackground(@Nullable Drawable quickBackground)
+    {
+        this.quickBackground = quickBackground;
+    }
+
+    /**
+     * 获取 {@link #quickWidth}
+     */
+    public int getQuickWidth()
+    {
+        return quickWidth;
+    }
+
+    /**
+     * 设置 {@link #quickWidth}
+     */
+    public void setQuickWidth(int quickWidth)
+    {
+        this.quickWidth = quickWidth;
+        changeToastViewSize();
+    }
+
+    /**
+     * 获取 {@link #quickHeight}
+     */
+    public int getQuickHeight()
+    {
+        return quickHeight;
+    }
+
+    /**
+     * 设置 {@link #quickHeight}
+     */
+    public void setQuickHeight(int quickHeight)
+    {
+        this.quickHeight = quickHeight;
+        changeToastViewSize();
+    }
+
     public QuickIndexView(Context context)
     {
         this(context, null);
@@ -99,6 +336,11 @@ public class QuickIndexView extends View
         init(attrs);
     }
 
+    /**
+     * 初始化，包括必要的 {@link #paint} 等变量初始化，xml属性获取等.
+     *
+     * @param attrs {@link AttributeSet}
+     */
     private void init(AttributeSet attrs)
     {
         paint = new Paint();
@@ -167,6 +409,9 @@ public class QuickIndexView extends View
         toastTextView.setTextSize(textSize);
     }
 
+    /**
+     * 只对宽度进行限制，高度默认为 {@link android.view.ViewGroup.LayoutParams#MATCH_PARENT}
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
@@ -247,6 +492,11 @@ public class QuickIndexView extends View
         return Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / letterCount);
     }
 
+    /**
+     * 获取Letter数量，包含顶部和底部图片.
+     *
+     * @return Letter数量
+     */
     private int getLetterCount()
     {
         int itemCount = letterList.size();
@@ -341,6 +591,11 @@ public class QuickIndexView extends View
         return true;
     }
 
+    /**
+     * 设置字母索引变化监听器
+     *
+     * @param onLetterChangeListener {@link OnLetterChangeListener}
+     */
     public void setOnLetterChangeListener(OnLetterChangeListener onLetterChangeListener)
     {
         this.onLetterChangeListener = onLetterChangeListener;
