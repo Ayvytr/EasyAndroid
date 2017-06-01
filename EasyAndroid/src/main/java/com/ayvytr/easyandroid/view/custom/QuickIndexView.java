@@ -42,8 +42,15 @@ public class QuickIndexView extends View
     private Toast toast;
     private boolean showToast;
 
-    private Bitmap topBitmap;
-    private Bitmap bottomBitmap;
+    /**
+     * 索引顶部图片
+     */
+    private Drawable topDrawable;
+
+    /**
+     * 索引底部图片
+     */
+    private Drawable bottomDrawable;
 
     private List<String> letterList;
     private int textColor;
@@ -121,16 +128,8 @@ public class QuickIndexView extends View
         quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.BLACK);
         quickTextSize = typedArray.getDimensionPixelSize(R.styleable.QuickIndexView_quickTextSize,
                 DensityTool.dp2px(context, DEFAULT_QUICK_TEXT_SIZE_DP));
-        Drawable topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
-        if(topDrawable != null)
-        {
-            topBitmap = BitmapTool.toBitmap(topDrawable);
-        }
-        Drawable bottomDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_bottomDrawable);
-        if(bottomDrawable != null)
-        {
-            bottomBitmap = BitmapTool.toBitmap(bottomDrawable);
-        }
+        topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
+        bottomDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_bottomDrawable);
 
         showToast = typedArray.getBoolean(R.styleable.QuickIndexView_showToast, true);
         quickBackground = typedArray.getDrawable(R.styleable.QuickIndexView_quickBackground);
@@ -217,8 +216,9 @@ public class QuickIndexView extends View
         int x = getWidth() >> 1;
         int halfLetterLength = letterLength >> 1;
 
-        if(topBitmap != null)
+        if(topDrawable != null)
         {
+            Bitmap topBitmap = BitmapTool.toBitmap(topDrawable);
             bitmapRect.bottom = topBitmap.getHeight();
             bitmapRect.right = topBitmap.getWidth();
             outRect.left = x - halfLetterLength;
@@ -237,8 +237,9 @@ public class QuickIndexView extends View
             y += letterLength;
         }
 
-        if(bottomBitmap != null)
+        if(bottomDrawable != null)
         {
+            Bitmap bottomBitmap = BitmapTool.toBitmap(bottomDrawable);
             bitmapRect.bottom = bottomBitmap.getHeight();
             bitmapRect.right = bottomBitmap.getWidth();
             outRect.left = x - halfLetterLength;
@@ -265,11 +266,11 @@ public class QuickIndexView extends View
     private int getLetterCount()
     {
         int itemCount = letterList.size();
-        if(topBitmap != null)
+        if(topDrawable != null)
         {
             itemCount++;
         }
-        if(bottomBitmap != null)
+        if(bottomDrawable != null)
         {
             itemCount++;
         }
@@ -304,7 +305,7 @@ public class QuickIndexView extends View
                 }
 
                 String letter;
-                if(topBitmap != null)
+                if(topDrawable != null)
                 {
                     index--;
                 }
@@ -316,14 +317,14 @@ public class QuickIndexView extends View
                     index = 0;
                     letter = "";
 
-                    toastTextView.setBackgroundDrawable(BitmapTool.toDrawable(topBitmap));
+                    toastTextView.setBackgroundDrawable(topDrawable);
                 }
                 else if(index >= letterList.size())
                 {
                     index = letterList.size() - 1;
                     letter = "";
 
-                    toastTextView.setBackgroundDrawable(BitmapTool.toDrawable(topBitmap));
+                    toastTextView.setBackgroundDrawable(topDrawable);
                 }
                 else
                 {
@@ -369,9 +370,9 @@ public class QuickIndexView extends View
         /**
          * {@link #onTouchEvent(MotionEvent)} 触发时，调用此字母索引变化方法
          *
-         * @param position       当前position.<br>如果指向 {@link #topBitmap}, {@code position=0}<br>
-         *                       如果指向 {@link #bottomBitmap}, {@code position=} {@link #letterList} {@code .size()}.
-         * @param text           当前指向的文本.<br>如果指向 {@link #topBitmap} 或者 {@link #bottomBitmap}，{@code text=""}.
+         * @param position       当前position.<br>如果指向 {@link #topDrawable}, {@code position=0}<br>
+         *                       如果指向 {@link #bottomDrawable}, {@code position=} {@link #letterList} {@code .size()}.
+         * @param text           当前指向的文本.<br>如果指向 {@link #topDrawable} 或者 {@link #bottomDrawable}，{@code text=""}.
          * @param quickIndexView {@link QuickIndexView}
          */
         void onLetterChange(int position, String text, QuickIndexView quickIndexView);
