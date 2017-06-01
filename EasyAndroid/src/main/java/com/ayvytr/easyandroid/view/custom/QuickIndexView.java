@@ -95,6 +95,12 @@ public class QuickIndexView extends View
     public QuickIndexView(Context context, @Nullable AttributeSet attrs)
     {
         this(context, attrs, 0);
+    }
+
+    public QuickIndexView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
+    {
+        super(context, attrs, defStyleAttr);
+        this.context = context;
         init(attrs);
     }
 
@@ -173,13 +179,6 @@ public class QuickIndexView extends View
 
         float textSize = Math.min(quickWidth, quickHeight) * .2f;
         toastTextView.setTextSize(textSize);
-    }
-
-    public QuickIndexView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
-    {
-        super(context, attrs, defStyleAttr);
-        this.context = context;
-        init(attrs);
     }
 
     @Override
