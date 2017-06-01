@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.ayvytr.easyandroid.view.custom.QuickIndexView
+        android:id="@+id/quickIndexView"
         android:background="@color/gray"
         android:layout_width="wrap_content"
         app:textColor="@color/aero"

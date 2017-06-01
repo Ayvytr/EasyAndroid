@@ -1,6 +1,5 @@
 package com.ayvytr.easyandroid.view.custom;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -8,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -35,6 +33,8 @@ public class QuickIndexView extends View
     private static final int DEFAULT_TEXT_SIZE_DP = 18;
     private static final int DEFAULT_QUICK_TEXT_SIZE_DP = 40;
     private static final int DEFAULT_WIDTH_DP = 50;
+
+    private static final int NO_POSITION = -1;
 
     private Paint paint;
     private Paint toastPaint;
@@ -64,8 +64,7 @@ public class QuickIndexView extends View
 
     public QuickIndexView(Context context, @Nullable AttributeSet attrs)
     {
-        super(context, attrs);
-        this.context = context;
+        this(context, attrs, 0);
         init(attrs);
     }
 
@@ -127,10 +126,10 @@ public class QuickIndexView extends View
         outRect = new Rect();
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public QuickIndexView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
+        this.context = context;
         init(attrs);
     }
 
@@ -177,9 +176,8 @@ public class QuickIndexView extends View
             outRect.top = y;
             outRect.bottom = y + letterLength;
             canvas.drawBitmap(topBitmap, bitmapRect, outRect, null);
+            y += letterLength;
         }
-
-        y += letterLength;
 
         int fontY = (int) (halfLetterLength - fontMetrics.top / 2 - fontMetrics.bottom / 2);
         for(int i = 0; i < letterList.size(); i++)
@@ -253,21 +251,35 @@ public class QuickIndexView extends View
                         break;
                     }
                 }
-                if(topBitmap != null && index == 0)
+
+                String letter;
+                if(topBitmap != null)
                 {
+                    index--;
+                }
+
+                if(index == NO_POSITION)
+                {
+                    index = 0;
+                    letter = "";
+
                     ImageView view = new ImageView(context);
                     view.setImageBitmap(topBitmap);
                     toast.setView(view);
                 }
-                else if(bottomBitmap != null && index >= letterList.size())
+                else if(index >= letterList.size())
                 {
+                    index = letterList.size() - 1;
+                    letter = "";
                     ImageView view = new ImageView(context);
                     view.setImageBitmap(bottomBitmap);
                     toast.setView(view);
                 }
                 else
                 {
-                    toastView.setText(letterList.get(topBitmap == null ? index : index - 1));
+                    letter = letterList.get(index);
+                    String text = letterList.get(topBitmap == null ? index : index - 1);
+                    toastView.setText(text);
                     toast.setView(toastView);
                 }
 
@@ -275,9 +287,10 @@ public class QuickIndexView extends View
                 {
                     toast.show();
                 }
+
                 if(onLetterChangeListener != null)
                 {
-                    onLetterChangeListener.onLetterChange(0, "A", this);
+                    onLetterChangeListener.onLetterChange(index, letter, this);
                 }
             }
             break;
