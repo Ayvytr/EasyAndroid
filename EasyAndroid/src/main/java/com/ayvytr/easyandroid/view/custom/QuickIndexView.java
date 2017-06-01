@@ -11,7 +11,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -89,11 +88,12 @@ public class QuickIndexView extends View
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickIndexView);
         textColor = typedArray.getColor(R.styleable.QuickIndexView_textColor, Colors.BLACK);
-        textSize = (int) typedArray
-                .getDimension(R.styleable.QuickIndexView_textSize, DensityTool.dp2px(DEFAULT_TEXT_SIZE));
+        textSize = typedArray
+                .getDimensionPixelSize(R.styleable.QuickIndexView_textSize, DensityTool.dp2px(DEFAULT_TEXT_SIZE));
         quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.WHITE);
-        quickTextSize = (int) typedArray
-                .getDimension(R.styleable.QuickIndexView_quickTextSize, DensityTool.dp2px(DEFAULT_QUICK_TEXT_SIZE));
+        quickTextSize = typedArray
+                .getDimensionPixelSize(R.styleable.QuickIndexView_quickTextSize,
+                        DensityTool.dp2px(DEFAULT_QUICK_TEXT_SIZE));
         Drawable topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
         if(topDrawable != null)
         {
@@ -160,14 +160,6 @@ public class QuickIndexView extends View
 
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
         int y = getPaddingTop();
-        int yOffset = Math.abs((int) (letterLength - (fontMetrics.bottom - fontMetrics.top)));
-        Log.e(getClass().getSimpleName(), String.format("{onDraw} => %d", yOffset));
-        yOffset = yOffset * letterList.size() >> 2 >> 1;
-        Log.e(getClass().getSimpleName(), String.format("{onDraw} => %d", yOffset));
-        if(yOffset > 0)
-        {
-            y += yOffset;
-        }
 
         int x = getWidth() >> 1;
         int halfLetterLength = letterLength >> 1;
@@ -188,8 +180,8 @@ public class QuickIndexView extends View
         int fontY = (int) (halfLetterLength - fontMetrics.top / 2 - fontMetrics.bottom / 2);
         for(int i = 0; i < letterList.size(); i++)
         {
-            y += fontY;
-            canvas.drawText(letterList.get(i), x, y, paint);
+            canvas.drawText(letterList.get(i), x, y + fontY, paint);
+            y += letterLength;
         }
 
         if(bottomBitmap != null)
