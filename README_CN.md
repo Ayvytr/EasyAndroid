@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.3-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.4-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid 库
@@ -12,7 +12,7 @@
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
 
 
-## 1.8.3 <font color=red>QuickIndexView</font>, 类似微信的联系人字母索引控件，但是功能更多，可以加入顶部，底部图片，设置弹出Toast的效果，更改索引字体颜色和Toast字体颜色等方法
+## 1.8.4 <font color=red>QuickIndexView</font>, 类似微信的联系人字母索引控件，但是功能更多，可以加入顶部，底部图片，设置弹出Toast的效果，更改索引字体颜色和Toast字体颜色等方法
 
 ## 1.8.1 <font color=red>AuthEditText</font>, 类似支付宝支付时的输入密码控件
 
@@ -30,7 +30,7 @@
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.3'
+	compile 'com.ayvytr:EasyAndroid:1.8.4'
 
 ## 包含 
 

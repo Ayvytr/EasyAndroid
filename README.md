@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.3-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.4-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
@@ -13,7 +13,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
-## 1.8.3 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
+## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
 
 ## 1.8.1 <font color=red>AuthEditText</font>, like Zhifubao's payment View
 
@@ -30,7 +30,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.3'
+	compile 'com.ayvytr:EasyAndroid:1.8.4'
 
 
 ## Contains 
