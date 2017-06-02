@@ -13,7 +13,7 @@
         android:layout_alignParentRight="true"
         app:bottomDrawable="@android:drawable/ic_menu_add"
         app:quickBackground="@color/alizarin_crimson"
-        app:quickLetters="@array/defaultQuickIndexItems"
+        app:quickLetters="@array/defaultQuickIndexViewLetters"
         app:textColor="@color/aero"
         app:topDrawable="@android:drawable/ic_menu_search"/>
 

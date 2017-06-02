@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -22,6 +23,7 @@ import com.ayvytr.easyandroid.R;
 import com.ayvytr.easyandroid.tools.BitmapTool;
 import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
+import com.ayvytr.easyandroid.tools.withcontext.ResCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -158,6 +160,16 @@ public class QuickIndexView extends View
     }
 
     /**
+     * 设置 {@link #topDrawable}
+     *
+     * @param topDrawableId Drawable id
+     */
+    public void setTopDrawable(@DrawableRes int topDrawableId)
+    {
+        setTopDrawable(ResCompat.getDrawable(context, topDrawableId));
+    }
+
+    /**
      * 获取 {@link #bottomDrawable}
      */
     public Drawable getBottomDrawable()
@@ -172,6 +184,16 @@ public class QuickIndexView extends View
     {
         this.bottomDrawable = bottomDrawable;
         invalidate();
+    }
+
+    /**
+     * 设置 {@link #bottomDrawable}
+     *
+     * @param bottomDrawableId Drawable id
+     */
+    public void setBottomDrawable(@DrawableRes int bottomDrawableId)
+    {
+        setBottomDrawable(ResCompat.getDrawable(context, bottomDrawableId));
     }
 
     /**
@@ -286,6 +308,14 @@ public class QuickIndexView extends View
     }
 
     /**
+     * 设置 {@link #quickBackground}
+     */
+    public void setQuickBackground(@DrawableRes int quickBackgroundId)
+    {
+        setQuickBackground(ResCompat.getDrawable(context, quickBackgroundId));
+    }
+
+    /**
      * 获取 {@link #quickWidth}
      */
     public int getQuickWidth()
@@ -382,6 +412,10 @@ public class QuickIndexView extends View
             {
                 letterList.add(charSequence.toString());
             }
+        }
+        else
+        {
+            setLetterList(ResCompat.getStringArray(context, R.array.defaultQuickIndexViewLetters));
         }
 
         typedArray.recycle();
