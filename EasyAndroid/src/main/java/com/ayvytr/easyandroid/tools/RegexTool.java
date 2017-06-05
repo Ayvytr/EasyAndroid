@@ -26,52 +26,34 @@ public class RegexTool
     }
 
     /**
-     * If u want more please visit http://toutiao.com/i6231678548520731137/
-     */
-
-    /**
      * 验证手机号
      *
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
-     * @deprecated 判断不准确
-     */
-    @Deprecated
-    public static boolean isMobileSimple(CharSequence input)
-    {
-        return isMatch(RegexConstant.REGEX_MOBILE_SIMPLE, input);
-    }
-
-    /**
-     * 验证手机号
-     *
-     * @param input 待验证文本
-     * @return {@code true}: 匹配<br>{@code false}: 不匹配
-     * @deprecated 判断不准确
      */
     public static boolean isMobile(CharSequence input)
     {
-        return isMobileExact(input);
+        return isMatch(RegexConstant.REGEX_MOBILE, input);
     }
 
     /**
-     * 验证手机号
-     *
-     * @param input 待验证文本
-     * @return {@code true}: 匹配<br>{@code false}: 不匹配
-     */
-    public static boolean isMobileExact(CharSequence input)
-    {
-        return isMatch(RegexConstant.REGEX_MOBILE_EXACT, input);
-    }
-
-    /**
-     * 验证电话号码（注意：是固定电话）
+     * 验证座机号码（注意：是固定电话）
      *
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
      */
     public static boolean isTel(CharSequence input)
+    {
+        return isMatch(RegexConstant.REGEX_TEL, input);
+    }
+
+    /**
+     * 验证座机号码（注意：是固定电话）
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     */
+    public static boolean isTelephone(CharSequence input)
     {
         return isMatch(RegexConstant.REGEX_TEL, input);
     }
