@@ -3,6 +3,9 @@ package com.ayvytr.easyandroid.view.custom;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.support.annotation.ColorInt;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -18,7 +21,6 @@ import android.widget.TextView;
 import com.ayvytr.easyandroid.R;
 import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
-import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
 
 import java.util.ArrayList;
 
@@ -47,6 +49,8 @@ public class AuthEditText2 extends RelativeLayout
     private int textColor;
     @ColorInt
     private int frameColor;
+
+    private ShapeDrawable frameDrawableBg;
 
     private int frameWidth;
 
@@ -181,7 +185,7 @@ public class AuthEditText2 extends RelativeLayout
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1);
             if(list.size() != 0)
             {
-                lp.leftMargin = -DensityTool.dp2px(context, 1);
+                lp.leftMargin = -frameWidth;
             }
             list.add(tv);
             llTvContent.addView(tv, lp);
@@ -218,11 +222,29 @@ public class AuthEditText2 extends RelativeLayout
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(textColor);
         tv.setTextSize(textSize);
-        tv.setBackgroundResource(R.drawable.auth_tv_bg);
+        tv.setBackgroundDrawable(createFrameDrawableBg());
         return tv;
     }
 
-    @Override
+    private ShapeDrawable createFrameDrawableBg()
+    {
+        ShapeDrawable shape = new ShapeDrawable(new RectShape());
+        Paint paint = shape.getPaint();
+        paint.setColor(frameColor);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(frameWidth);
+        return shape;
+    }
+
+    public void setFrameColor(int frameColor)
+    {
+        this.frameColor = frameColor;
+        for(TextView tv : list)
+        {
+            tv.setBackgroundDrawable(createFrameDrawableBg());
+        }
+    }
+
     protected void onLayout(boolean changed, int l, int t, int r, int b)
     {
         super.onLayout(changed, l, t, r, b);
