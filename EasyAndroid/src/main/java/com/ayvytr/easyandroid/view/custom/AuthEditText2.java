@@ -98,6 +98,7 @@ public class AuthEditText2 extends RelativeLayout
         et = new EditText(context);
         et.setBackgroundDrawable(null);
         et.setCursorVisible(false);
+        et.setTextColor(Colors.TRANSPARENT);
         addDefaultTextChangeListener();
 
         llTvContent = new LinearLayout(context);
@@ -239,6 +240,20 @@ public class AuthEditText2 extends RelativeLayout
     public void setFrameColor(int frameColor)
     {
         this.frameColor = frameColor;
+        for(TextView tv : list)
+        {
+            tv.setBackgroundDrawable(createFrameDrawableBg());
+        }
+    }
+
+    public void setFrameWidth(int frameWidth)
+    {
+        this.frameWidth = frameWidth;
+        for(int i = 1; i < list.size(); i++)
+        {
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) list.get(i).getLayoutParams();
+            lp.leftMargin = -frameWidth;
+        }
         for(TextView tv : list)
         {
             tv.setBackgroundDrawable(createFrameDrawableBg());

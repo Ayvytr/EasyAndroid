@@ -28,6 +28,7 @@ class AuthEditTextActivity2 : AppCompatActivity()
         btnTextColor.setOnClickListener { authEditText?.setTextColor(randomColor) }
         btnTextSize.setOnClickListener { authEditText.setTextSize(random.nextInt(30)) }
         btnFrameColor.setOnClickListener { authEditText.setFrameColor(randomColor) }
+        btnFrameWidth.setOnClickListener { authEditText.setFrameWidth(random.nextInt(20)) }
     }
 
     private val randomMaxLength: Int
@@ -45,7 +46,7 @@ class AuthEditTextActivity2 : AppCompatActivity()
     private val randomLp: LinearLayout.LayoutParams
         get()
         {
-            return LinearLayout.LayoutParams(random.nextInt(400), random.nextInt(300))
+            return LinearLayout.LayoutParams(random.nextInt(500), random.nextInt(400))
         }
 
     private val randomColor: Int
