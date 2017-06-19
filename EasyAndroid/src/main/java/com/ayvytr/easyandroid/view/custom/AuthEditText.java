@@ -726,6 +726,23 @@ public class AuthEditText extends RelativeLayout
         NUMBER_PASSWORD,
         DEFAULT,
         //这个没有实际作用
-        NONE,
+        NONE,;
+
+        public static AuthType valueOf(int i)
+        {
+            switch(i)
+            {
+                case 1:
+                    return NUMBER;
+                case 2:
+                    return PASSWORD;
+                case 3:
+                    return VISIBLE_PASSWORD;
+                case 4:
+                    return NUMBER_PASSWORD;
+                default:
+                    return DEFAULT;
+            }
+        }
     }
 }

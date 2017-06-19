@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AuthEditText">
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColor"/>
+        <attr name="frameColor" format="color"/>
+        <attr name="frameWidth" format="dimension"/>
+        <attr name="maxLength" format="integer"/>
+        <attr name="passwordString" format="string"/>
+        <attr name="inputType" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="number" value="1"/>
+            <enum name="password" value="2"/>
+            <enum name="visiblePassword" value="3"/>
+            <enum name="numberPassword" value="4"/>
+        </attr>
+    </declare-styleable>
+</resources>

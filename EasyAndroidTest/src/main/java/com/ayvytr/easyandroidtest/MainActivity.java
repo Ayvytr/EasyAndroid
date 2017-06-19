@@ -22,6 +22,7 @@ import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroid.view.custom.RightCenterGravityTextView;
 import com.ayvytr.easyandroidtest.customview.AuthEditTextActivity;
+import com.ayvytr.easyandroidtest.customview.AuthEditTextActivity2;
 import com.ayvytr.easyandroidtest.customview.QuickIndexViewActivity;
 import com.ayvytr.easyandroidtest.fullscreen.TestFullScreenActivity;
 import com.ayvytr.easyandroidtest.network.NetworkActivity;
@@ -155,7 +156,11 @@ public class MainActivity extends BaseActivity
                                 intent = new Intent(getContext(), AuthEditTextActivity.class);
                                 break;
                             case 1:
+                                intent = new Intent(getContext(), AuthEditTextActivity2.class);
+                                break;
+                            case 2:
                                 intent = new Intent(getContext(), QuickIndexViewActivity.class);
+                                break;
                         }
 
                         if(intent != null)

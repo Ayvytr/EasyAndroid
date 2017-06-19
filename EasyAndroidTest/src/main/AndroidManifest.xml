@@ -60,6 +60,8 @@
             android:name=".customview.QuickIndexViewActivity"
             android:theme="@style/NoActionBar">
         </activity>
+        <activity android:name=".customview.AuthEditTextActivity2">
+        </activity>
     </application>
 
 </manifest>
