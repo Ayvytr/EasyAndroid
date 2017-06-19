@@ -81,18 +81,18 @@ public class AuthEditText2 extends RelativeLayout
 
     private void init(AttributeSet attrs)
     {
-        TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.AuthEditText);
+        TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.AuthEditText2);
 
-        textSize = t.getDimensionPixelSize(R.styleable.AuthEditText_textSize, 18);
-        textColor = t.getColor(R.styleable.AuthEditText_textColor, 0xff888888);
+        textSize = t.getDimensionPixelSize(R.styleable.AuthEditText2_textSize, 18);
+        textColor = t.getColor(R.styleable.AuthEditText2_textColor, 0xff888888);
 
-        frameColor = t.getColor(R.styleable.AuthEditText_frameColor, Colors.BLACK);
+        frameColor = t.getColor(R.styleable.AuthEditText2_frameColor, Colors.BLACK);
 
-        frameWidth = t.getDimensionPixelOffset(R.styleable.AuthEditText_frameWidth, 1);
+        frameWidth = t.getDimensionPixelOffset(R.styleable.AuthEditText2_frameWidth, 1);
 
-        inputType = AuthEditText.AuthType.valueOf(t.getInt(R.styleable.AuthEditText_inputType, 0));
+        inputType = AuthEditText.AuthType.valueOf(t.getInt(R.styleable.AuthEditText2_inputType, 0));
 
-        passwordString = t.getString(R.styleable.AuthEditText_passwordString);
+        passwordString = t.getString(R.styleable.AuthEditText2_passwordString);
 
         list = new ArrayList<>(maxLength);
         et = new EditText(context);
@@ -105,7 +105,7 @@ public class AuthEditText2 extends RelativeLayout
         addView(et, MATCH_PARENT, MATCH_PARENT);
         addView(llTvContent, MATCH_PARENT, MATCH_PARENT);
 
-        int maxLength = t.getInt(R.styleable.AuthEditText_maxLength, 6);
+        int maxLength = t.getInt(R.styleable.AuthEditText2_maxLength, 6);
         setMaxLength(maxLength);
 
         t.recycle();
