@@ -140,7 +140,8 @@ public class ViewTool
     public static void setEtText(EditText et, CharSequence text)
     {
         et.setText(text);
-        et.setSelection(text.length());
+        //这里进行修改，通过text.length() 设置的 Selection 有错误
+        et.setSelection(et.getText().length());
     }
 
     /**
