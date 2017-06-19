@@ -21,6 +21,16 @@
             android:id="@+id/btnSize"
             style="@style/btnAuth2Style"/>
 
+        <Button
+            android:text="修改文字颜色"
+            android:id="@+id/btnTextColor"
+            style="@style/btnAuth2Style"/>
+
+        <Button
+            android:text="修改文字大小"
+            android:id="@+id/btnTextSize"
+            style="@style/btnAuth2Style"/>
+
     </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
     <LinearLayout

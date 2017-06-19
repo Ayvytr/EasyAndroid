@@ -3,6 +3,7 @@ package com.ayvytr.easyandroidtest.customview
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
+import com.ayvytr.easyandroid.tools.Colors
 import com.ayvytr.easyandroid.view.custom.AuthEditText2
 import com.ayvytr.easyandroidtest.R
 import kotlinx.android.synthetic.main.activity_auth_edit_text2.*
@@ -24,6 +25,8 @@ class AuthEditTextActivity2 : AppCompatActivity()
     {
         btnMaxLength?.setOnClickListener { authEditText?.setMaxLength(randomMaxLength) }
         btnSize?.setOnClickListener { authEditText?.layoutParams = randomLp }
+        btnTextColor.setOnClickListener { authEditText?.setTextColor(randomColor) }
+        btnTextSize.setOnClickListener { authEditText.setTextSize(random.nextInt(30)) }
     }
 
     private val randomMaxLength: Int
@@ -44,4 +47,9 @@ class AuthEditTextActivity2 : AppCompatActivity()
             return LinearLayout.LayoutParams(random.nextInt(400), random.nextInt(300))
         }
 
+    private val randomColor: Int
+        get()
+        {
+            return Colors.rgb(random.nextInt(0xff), random.nextInt(0xff), random.nextInt(0xff))
+        }
 }

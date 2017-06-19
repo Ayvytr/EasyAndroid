@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.support.annotation.ColorInt;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 
 import com.ayvytr.easyandroid.R;
 import com.ayvytr.easyandroid.tools.Colors;
+import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
 
 import java.util.ArrayList;
@@ -51,6 +55,7 @@ public class AuthEditText2 extends RelativeLayout
     private AuthEditText.AuthType inputType;
 
     private String passwordString;
+    private String string = "";
 
 
     public AuthEditText2(Context context)
@@ -89,6 +94,7 @@ public class AuthEditText2 extends RelativeLayout
         et = new EditText(context);
         et.setBackgroundDrawable(null);
         et.setCursorVisible(false);
+        addDefaultTextChangeListener();
 
         llTvContent = new LinearLayout(context);
         addView(et, MATCH_PARENT, MATCH_PARENT);
@@ -98,6 +104,57 @@ public class AuthEditText2 extends RelativeLayout
         setMaxLength(maxLength);
 
         t.recycle();
+    }
+
+    private void addDefaultTextChangeListener()
+    {
+        et.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                onTextChange(s);
+            }
+        });
+    }
+
+    private void onTextChange(Editable s)
+    {
+        string = s.toString();
+        for(int i = 0; i < s.length() && i < maxLength; i++)
+        {
+            fillTextByIndex(i);
+        }
+
+        for(int i = s.length(); i < maxLength; i++)
+        {
+            list.get(i).setText("");
+        }
+
+        //        if(onInputFinishedListener != null)
+        //        {
+        //            if(s.length() == textLength)
+        //            {
+        //                onInputFinishedListener.onFinish(this, string);
+        //            }
+        //
+        //            onInputFinishedListener.onTextChanged(string.length() == textLength, string);
+        //        }
+    }
+
+    private void fillTextByIndex(int i)
+    {
+        list.get(i).setText(Convert.toString(string.charAt(i)));
     }
 
     public void setMaxLength(int maxLength)
@@ -112,6 +169,11 @@ public class AuthEditText2 extends RelativeLayout
             return;
         }
         this.maxLength = maxLength;
+        et.setFilters(new InputFilter[]{new InputFilter.LengthFilter(this.maxLength)});
+        if(string.length() > maxLength)
+        {
+            string = string.substring(0, maxLength);
+        }
 
         while(list.size() < maxLength)
         {
@@ -129,6 +191,24 @@ public class AuthEditText2 extends RelativeLayout
         {
             TextView tv = list.remove(list.size() - 1);
             llTvContent.removeView(tv);
+        }
+    }
+
+    public void setTextColor(int textColor)
+    {
+        this.textColor = textColor;
+        for(TextView tv : list)
+        {
+            tv.setTextColor(this.textColor);
+        }
+    }
+
+    public void setTextSize(int textSize)
+    {
+        this.textSize = textSize;
+        for(TextView tv : list)
+        {
+            tv.setTextSize(this.textSize);
         }
     }
 
