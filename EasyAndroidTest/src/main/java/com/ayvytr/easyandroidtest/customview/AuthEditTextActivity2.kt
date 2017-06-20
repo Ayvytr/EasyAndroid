@@ -20,6 +20,7 @@ class AuthEditTextActivity2 : AppCompatActivity()
         initView(savedInstanceState)
     }
 
+
     fun initView(savedInstanceState: Bundle?)
     {
         btnMaxLength?.setOnClickListener { authEditText?.setMaxLength(randomMaxLength) }
@@ -29,6 +30,7 @@ class AuthEditTextActivity2 : AppCompatActivity()
         btnFrameColor.setOnClickListener { authEditText.setFrameColor(randomColor) }
         btnFrameWidth.setOnClickListener { authEditText.setFrameWidth(random.nextInt(20)) }
         btnInputType.setOnClickListener { authEditText.setInputType(randomInputType) }
+        btnPasswordString.setOnClickListener { authEditText.setPasswordString(randomPasswordString) }
     }
 
     private val randomMaxLength: Int
@@ -57,4 +59,18 @@ class AuthEditTextActivity2 : AppCompatActivity()
 
     private val randomInputType: AuthEditText2.InputType
         get() = AuthEditText2.InputType.valueOf(random.nextInt(5))
+
+    private val randomPasswordString: String
+        get()
+        {
+            val i = random.nextInt(6)
+            when (i)
+            {
+                0    -> return "·"
+                1    -> return "*"
+                2    -> return "CCcccccccc"
+                4    -> return ""
+                else -> return "aaa"
+            }
+        }
 }
