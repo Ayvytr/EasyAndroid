@@ -2,12 +2,12 @@ package com.ayvytr.easyandroid.view.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -48,24 +48,34 @@ public class NewAuthEditText extends RelativeLayout
     private EditText et;
     private LinearLayout llTvContent;
 
+    // TextView 文本大小
     private int textSize;
+    // 最大输入长度
     private int maxLength;
 
+    // TextView 列表
     private ArrayList<TextView> textViewList;
 
+    // TextView 字体颜色
     @ColorInt
     private int textColor;
+    // TextView 边框颜色
     @ColorInt
     private int frameColor;
 
+    // TextView 边框宽度
     private int frameWidth;
 
+    //输入类型
     private InputType inputType;
 
+    //密码显示字符串，输入类型为密码时，显示的字符串
     private String passwordString;
 
+    //当前输入的字符串
     private String text = "";
 
+    //输入变化监听器
     private OnInputChangeListener onInputChangeListener;
 
     public NewAuthEditText(Context context)
@@ -125,6 +135,9 @@ public class NewAuthEditText extends RelativeLayout
         t.recycle();
     }
 
+    /**
+     * 添加默认的文本监听器
+     */
     private void addDefaultTextChangeListener()
     {
         et.addTextChangedListener(new TextWatcher()
@@ -147,6 +160,9 @@ public class NewAuthEditText extends RelativeLayout
         });
     }
 
+    /**
+     * 文本变化处理
+     */
     private void onTextChange(Editable s)
     {
         text = s.toString();
@@ -163,6 +179,9 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
+    /**
+     * 填充TextView文字
+     */
     private void fillText()
     {
         for(int i = 0; i < maxLength; i++)
@@ -173,11 +192,16 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
+    /**
+     * 设置最大长度，支持 {@link #MIN_LENGTH} ~ {@link #MAX_LENGTH}.
+     *
+     * @param maxLength 最大长度
+     */
     public void setMaxLength(int maxLength)
     {
         if(maxLength < MIN_LENGTH || maxLength > MAX_LENGTH)
         {
-            throw new RuntimeException("只支持长度为4-12的文本");
+            throw new RuntimeException(String.format("只支持长度为%d~%d的最大长度", MIN_LENGTH, MAX_LENGTH));
         }
 
         if(this.maxLength == maxLength)
@@ -210,7 +234,12 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
-    public void setTextColor(int textColor)
+    /**
+     * 设置 TextView文本颜色
+     *
+     * @param textColor 文本颜色
+     */
+    public void setTextColor(@ColorInt int textColor)
     {
         this.textColor = textColor;
         for(TextView tv : textViewList)
@@ -219,6 +248,11 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
+    /**
+     * 设置 TextView 文本尺寸，像素
+     *
+     * @param textSize 文本尺寸
+     */
     public void setTextSize(int textSize)
     {
         this.textSize = textSize;
@@ -228,6 +262,11 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
+    /**
+     * 创建 TextView 并返回
+     *
+     * @return {@link TextView}
+     */
     private TextView createTextView()
     {
         TextView tv = new TextView(context);
@@ -240,6 +279,11 @@ public class NewAuthEditText extends RelativeLayout
         return tv;
     }
 
+    /**
+     * 创建 TextView 背景 {@link android.graphics.drawable.Drawable}
+     *
+     * @return {@link ShapeDrawable}
+     */
     private ShapeDrawable createFrameDrawableBg()
     {
         ShapeDrawable shape = new ShapeDrawable(new RectShape());
@@ -250,7 +294,12 @@ public class NewAuthEditText extends RelativeLayout
         return shape;
     }
 
-    public void setFrameColor(int frameColor)
+    /**
+     * 设置 TextView边框颜色
+     *
+     * @param frameColor 边框颜色
+     */
+    public void setFrameColor(@ColorInt int frameColor)
     {
         this.frameColor = frameColor;
         for(TextView tv : textViewList)
@@ -259,6 +308,11 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
+    /**
+     * 设置 TextView边框宽度，单位为像素
+     *
+     * @param frameWidth 边框宽度
+     */
     public void setFrameWidth(int frameWidth)
     {
         this.frameWidth = frameWidth;
@@ -273,17 +327,11 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
-    protected void onLayout(boolean changed, int l, int t, int r, int b)
-    {
-        super.onLayout(changed, l, t, r, b);
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas)
-    {
-        super.onDraw(canvas);
-    }
-
+    /**
+     * 设置输入类型
+     *
+     * @param newInputType 新的输入类型，见{@link InputType}
+     */
     public void setInputType(InputType newInputType)
     {
         if(this.inputType.needClearText(newInputType))
@@ -292,18 +340,26 @@ public class NewAuthEditText extends RelativeLayout
         }
         this.inputType = newInputType;
 
-        et.setInputType(inputType.toInputType());
+        et.setInputType(inputType.toTextInputType());
         setPasswordString(passwordString);
     }
 
-    private void clearText()
+    /**
+     * 清空当前文本
+     */
+    public void clearText()
     {
         this.text = "";
         et.setText(text);
         fillText();
     }
 
-    public void setPasswordString(String passwordString)
+    /**
+     * 设置密码字符串，在输入类型为密码时，在TextView上显示的文本.
+     *
+     * @param passwordString 密码字符串
+     */
+    public void setPasswordString(@Nullable String passwordString)
     {
         if(TextUtils.isEmpty(passwordString))
         {
@@ -317,71 +373,121 @@ public class NewAuthEditText extends RelativeLayout
         fillText();
     }
 
+    /**
+     * 获取 EditText
+     *
+     * @return {@link #et}
+     */
     public EditText getEditText()
     {
         return et;
     }
 
+    /**
+     * 获取文本尺寸
+     *
+     * @return {@link #textSize}
+     */
     public int getTextSize()
     {
         return textSize;
     }
 
+    /**
+     * 获取文本输入最大值
+     *
+     * @return {@link #maxLength}
+     */
     public int getMaxLength()
     {
         return maxLength;
     }
 
+    /**
+     * 获取 TextView列表.
+     *
+     * @return {@link #textViewList}
+     */
     public ArrayList<TextView> getTextViewList()
     {
         return textViewList;
     }
 
+    /**
+     * 获取 TextView 文本颜色.
+     *
+     * @return {@link #textColor}
+     */
     public int getTextColor()
     {
         return textColor;
     }
 
+    /**
+     * 获取 TextView 边框颜色.
+     *
+     * @return {@link #frameColor}
+     */
     public int getFrameColor()
     {
         return frameColor;
     }
 
+    /**
+     * 获取 TextView 边框宽度
+     *
+     * @return {@link #frameWidth}
+     */
     public int getFrameWidth()
     {
         return frameWidth;
     }
 
+    /**
+     * 获取输入类型
+     *
+     * @return {@link #inputType}
+     */
     public InputType getInputType()
     {
         return inputType;
     }
 
+    /**
+     * 获取密码字符串
+     *
+     * @return {@link #passwordString}
+     */
     public String getPasswordString()
     {
         return passwordString;
     }
 
+    /**
+     * 获取当前输入的文本.
+     *
+     * @return {@link #text}
+     */
     public String getText()
     {
         return text;
     }
 
-    public void setText(String text)
-    {
-        this.text = text;
-    }
-
-    public OnInputChangeListener getOnInputChangeListener()
-    {
-        return onInputChangeListener;
-    }
-
+    /**
+     * 设置输入文本变化监听器
+     *
+     * @param onInputChangeListener {@link OnInputChangeListener}
+     */
     public void setOnInputChangeListener(OnInputChangeListener onInputChangeListener)
     {
         this.onInputChangeListener = onInputChangeListener;
     }
 
+
+    /**
+     * 输入类型枚举类，通过设置 {@link #et} 输入类型，实现动态输入类型变化，在输入类型从大范围设置为小范围时，已输入的文本会自动
+     * 清除.
+     */
     public enum InputType
     {
         NUMBER,
@@ -391,6 +497,12 @@ public class NewAuthEditText extends RelativeLayout
         TEXT,
         TEXT_PASSWORD;
 
+        /**
+         * 根据 i 返回输入类型，读取自定义属性时用到，{@link #init(AttributeSet)}
+         *
+         * @param i 输入类型整形值
+         * @return {@link InputType}
+         */
         public static InputType valueOf(int i)
         {
             switch(i)
@@ -412,7 +524,12 @@ public class NewAuthEditText extends RelativeLayout
             }
         }
 
-        public int toInputType()
+        /**
+         * 把输入类型转化为 {@link android.text.InputType}，默认输入类型为 {@link android.text.InputType#TYPE_CLASS_NUMBER}.
+         *
+         * @return 文本输入类型整形值
+         */
+        public int toTextInputType()
         {
             switch(this)
             {
@@ -440,6 +557,11 @@ public class NewAuthEditText extends RelativeLayout
             return android.text.InputType.TYPE_CLASS_NUMBER;
         }
 
+        /**
+         * 判断输入类型是不是密码类型
+         *
+         * @return {@link true} 是密码类型.
+         */
         public boolean isPassword()
         {
             switch(this)
@@ -476,6 +598,9 @@ public class NewAuthEditText extends RelativeLayout
         }
     }
 
+    /**
+     * 文本变化监听器，提供给外部的监听器，可以在文本变化或者输入完成后自定义处理.
+     */
     public interface OnInputChangeListener
     {
         /**
