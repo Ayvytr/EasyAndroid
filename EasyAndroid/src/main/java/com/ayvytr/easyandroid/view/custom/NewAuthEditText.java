@@ -41,6 +41,7 @@ public class NewAuthEditText extends RelativeLayout
 
     public static final int MIN_LENGTH = 4;
     public static final int MAX_LENGTH = 12;
+    private static final int DEFAULT_MAX_LENGTH = 6;
 
     private Context context;
 
@@ -114,6 +115,11 @@ public class NewAuthEditText extends RelativeLayout
         addView(llTvContent, MATCH_PARENT, MATCH_PARENT);
 
         int maxLength = t.getInt(R.styleable.NewAuthEditText_maxLength, 6);
+        //初始化时，需要做限制
+        if(maxLength < MIN_LENGTH || maxLength > MAX_LENGTH)
+        {
+            maxLength = DEFAULT_MAX_LENGTH;
+        }
         setMaxLength(maxLength);
 
         t.recycle();

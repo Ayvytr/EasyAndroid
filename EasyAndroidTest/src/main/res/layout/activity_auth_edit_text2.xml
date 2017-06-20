@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ayvytr.easyandroidtest.customview.AuthEditTextActivity2">
 
     <com.ayvytr.easyandroid.view.custom.FlowLayout
@@ -13,44 +13,44 @@
         android:layout_weight="2">
 
         <Button
-            android:text="修改文本最大值"
             android:id="@+id/btnMaxLength"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改文本最大值"/>
 
         <Button
-            android:text="修改尺寸"
             android:id="@+id/btnSize"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改尺寸"/>
 
         <Button
-            android:text="修改文字颜色"
             android:id="@+id/btnTextColor"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改文字颜色"/>
 
         <Button
-            android:text="修改文字大小"
             android:id="@+id/btnTextSize"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改文字大小"/>
 
         <Button
-            android:text="修改边框颜色"
             android:id="@+id/btnFrameColor"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改边框颜色"/>
 
         <Button
-            android:text="修改边框宽度"
             android:id="@+id/btnFrameWidth"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改边框宽度"/>
 
         <Button
-            android:text="修改验证类型"
             android:id="@+id/btnInputType"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改验证类型"/>
 
         <Button
-            android:text="修改密码字符串"
             android:id="@+id/btnPasswordString"
-            style="@style/btnAuth2Style"/>
+            style="@style/btnAuth2Style"
+            android:text="修改密码字符串"/>
 
     </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
@@ -69,13 +69,36 @@
     <LinearLayout
         android:layout_width="@dimen/_0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:orientation="vertical">
 
         <com.ayvytr.easyandroid.view.custom.NewAuthEditText
-            app:frameColor="@color/aero"
             android:id="@+id/authEditText"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100dp"/>
+            android:layout_height="@dimen/_100dp"
+            android:layout_marginBottom="@dimen/_10dp"
+            app:frameColor="@color/aero"/>
+
+        <com.ayvytr.easyandroid.view.custom.NewAuthEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            app:frameColor="@color/red"
+            app:frameWidth="2dp"
+            app:inputType="password"
+            app:maxLength="3"
+            app:textColor="@color/yellow"
+            app:textSize="@dimen/_15sp"/>
+
+        <com.ayvytr.easyandroid.view.custom.NewAuthEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_10dp"
+            app:frameColor="@color/red"
+            app:frameWidth="2dp"
+            app:inputType="password"
+            app:maxLength="4"
+            app:textColor="@color/yellow"
+            app:textSize="@dimen/_15sp"/>
     </LinearLayout>
 
 </LinearLayout>
