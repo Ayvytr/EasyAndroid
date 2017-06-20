@@ -8,11 +8,12 @@
         <attr name="maxLength" format="integer"/>
         <attr name="passwordString" format="string"/>
         <attr name="inputType" format="enum">
-            <enum name="visible" value="0"/>
-            <enum name="number" value="1"/>
-            <enum name="password" value="2"/>
-            <enum name="visiblePassword" value="3"/>
-            <enum name="numberPassword" value="4"/>
+            <enum name="number" value="0"/>
+            <enum name="password" value="1"/>
+            <enum name="visiblePassword" value="2"/>
+            <enum name="numberPassword" value="3"/>
+            <enum name="text" value="4"/>
+            <enum name="textPassword" value="5"/>
         </attr>
     </declare-styleable>
 </resources>

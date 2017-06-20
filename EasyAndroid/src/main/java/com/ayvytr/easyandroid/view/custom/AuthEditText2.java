@@ -6,9 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -56,11 +58,13 @@ public class AuthEditText2 extends RelativeLayout
 
     private String input = "";
 
-    private AuthEditText.AuthType inputType;
+    private InputType inputType;
 
     private String passwordString;
-    private String string = "";
 
+    private String text = "";
+
+    private OnInputChangeListener onInputChangeListener;
 
     public AuthEditText2(Context context)
     {
@@ -79,6 +83,7 @@ public class AuthEditText2 extends RelativeLayout
         init(attrs);
     }
 
+
     private void init(AttributeSet attrs)
     {
         TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.AuthEditText2);
@@ -90,16 +95,19 @@ public class AuthEditText2 extends RelativeLayout
 
         frameWidth = t.getDimensionPixelOffset(R.styleable.AuthEditText2_frameWidth, 1);
 
-        inputType = AuthEditText.AuthType.valueOf(t.getInt(R.styleable.AuthEditText2_inputType, 0));
+        list = new ArrayList<>(maxLength);
 
         passwordString = t.getString(R.styleable.AuthEditText2_passwordString);
+        setPasswordString(null);
 
-        list = new ArrayList<>(maxLength);
         et = new EditText(context);
         et.setBackgroundDrawable(null);
         et.setCursorVisible(false);
         et.setTextColor(Colors.TRANSPARENT);
         addDefaultTextChangeListener();
+
+        inputType = InputType.valueOf(t.getInt(R.styleable.AuthEditText2_inputType, 0));
+        setInputType(inputType);
 
         llTvContent = new LinearLayout(context);
         addView(et, MATCH_PARENT, MATCH_PARENT);
@@ -135,31 +143,28 @@ public class AuthEditText2 extends RelativeLayout
 
     private void onTextChange(Editable s)
     {
-        string = s.toString();
-        for(int i = 0; i < s.length() && i < maxLength; i++)
-        {
-            fillTextByIndex(i);
-        }
+        text = s.toString();
+        fillText();
 
-        for(int i = s.length(); i < maxLength; i++)
+        if(onInputChangeListener != null)
         {
-            list.get(i).setText("");
-        }
+            if(s.length() == maxLength)
+            {
+                onInputChangeListener.onFinished(this, text);
+            }
 
-        //        if(onInputFinishedListener != null)
-        //        {
-        //            if(s.length() == textLength)
-        //            {
-        //                onInputFinishedListener.onFinish(this, string);
-        //            }
-        //
-        //            onInputFinishedListener.onTextChanged(string.length() == textLength, string);
-        //        }
+            onInputChangeListener.onTextChanged(text.length() == maxLength, text);
+        }
     }
 
-    private void fillTextByIndex(int i)
+    private void fillText()
     {
-        list.get(i).setText(Convert.toString(string.charAt(i)));
+        for(int i = 0; i < maxLength; i++)
+        {
+            String s = i >= text.length() ? "" : (inputType.isPassword() ? passwordString : Convert
+                    .toString(text.charAt(i)));
+            list.get(i).setText(s);
+        }
     }
 
     public void setMaxLength(int maxLength)
@@ -175,9 +180,9 @@ public class AuthEditText2 extends RelativeLayout
         }
         this.maxLength = maxLength;
         et.setFilters(new InputFilter[]{new InputFilter.LengthFilter(this.maxLength)});
-        if(string.length() > maxLength)
+        if(text.length() > maxLength)
         {
-            string = string.substring(0, maxLength);
+            text = text.substring(0, maxLength);
         }
 
         while(list.size() < maxLength)
@@ -223,6 +228,8 @@ public class AuthEditText2 extends RelativeLayout
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(textColor);
         tv.setTextSize(textSize);
+        tv.setMaxLines(1);
+        tv.setEllipsize(TextUtils.TruncateAt.END);
         tv.setBackgroundDrawable(createFrameDrawableBg());
         return tv;
     }
@@ -269,5 +276,151 @@ public class AuthEditText2 extends RelativeLayout
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
+    }
+
+    public void setInputType(InputType newInputType)
+    {
+        if(this.inputType.needClearText(newInputType))
+        {
+            clearText();
+        }
+        this.inputType = newInputType;
+
+        et.setInputType(inputType.toInputType());
+        setPasswordString(passwordString);
+    }
+
+    private void clearText()
+    {
+        this.text = "";
+        et.setText(text);
+        fillText();
+    }
+
+    public void setPasswordString(String passwordString)
+    {
+        if(TextUtils.isEmpty(passwordString))
+        {
+            this.passwordString = "●";
+        }
+        else
+        {
+            this.passwordString = passwordString;
+        }
+
+        fillText();
+    }
+
+    public enum InputType
+    {
+        NUMBER,
+        PASSWORD,
+        VISIBLE_PASSWORD,
+        NUMBER_PASSWORD,
+        TEXT,
+        TEXT_PASSWORD;
+
+        public static InputType valueOf(int i)
+        {
+            switch(i)
+            {
+                case 0:
+                    return NUMBER;
+                case 1:
+                    return PASSWORD;
+                case 2:
+                    return VISIBLE_PASSWORD;
+                case 3:
+                    return NUMBER_PASSWORD;
+                case 4:
+                    return TEXT;
+                case 5:
+                    return TEXT_PASSWORD;
+                default:
+                    return NUMBER;
+            }
+        }
+
+        public int toInputType()
+        {
+            switch(this)
+            {
+                case NUMBER:
+                    return android.text.InputType.TYPE_CLASS_NUMBER;
+                case PASSWORD:
+                    return android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
+                case VISIBLE_PASSWORD:
+                    return android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
+                case NUMBER_PASSWORD:
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+                    {
+                        return android.text.InputType.TYPE_NUMBER_VARIATION_PASSWORD;
+                    }
+                    break;
+                case TEXT:
+                case TEXT_PASSWORD:
+                    /**
+                     * 这里的 InputType 不设置为 {@link android.text.InputType.TYPE_NULL},是因为设置这个后，
+                     * {@link AuthEditText} 的点击事件失效
+                     */
+                    return android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
+            }
+
+            return android.text.InputType.TYPE_CLASS_NUMBER;
+        }
+
+        public boolean isPassword()
+        {
+            switch(this)
+            {
+                case PASSWORD:
+                case NUMBER_PASSWORD:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        /**
+         * 是否需要清空文本（当前所做判断可能不严谨，可以调用 {@link #clearText()}） 直接清空文本
+         * 当前为文本，输入类型为数字或密码
+         * 当前为密码，输入类型为数字
+         *
+         * @param newInputType 新的输入类型
+         * @return {@code true }需要清空文本
+         */
+        public boolean needClearText(InputType newInputType)
+        {
+            if((this == TEXT || this == TEXT_PASSWORD) && newInputType != TEXT && newInputType != TEXT_PASSWORD)
+            {
+                return true;
+            }
+
+            if((this == PASSWORD || this == VISIBLE_PASSWORD) && this != newInputType)
+            {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    public interface OnInputChangeListener
+    {
+        /**
+         * 当输入完成时
+         *
+         * @param authEditText {@link AuthEditText2}
+         * @param s            输入的字符串 {@link #text}
+         */
+        void onFinished(AuthEditText2 authEditText, String s);
+
+        /**
+         * 当文本变化时会回调此方法（在切换验证模式时，从密码到数字会清空文本。关于这个的判断暂时不加）.
+         *
+         * @param isFinished 文本输入是否完成.
+         * @param s          当前已输入的字符串.
+         */
+        void onTextChanged(boolean isFinished, String s);
     }
 }

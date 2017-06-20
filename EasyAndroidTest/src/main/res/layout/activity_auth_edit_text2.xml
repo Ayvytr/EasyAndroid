@@ -42,6 +42,16 @@
             android:id="@+id/btnFrameWidth"
             style="@style/btnAuth2Style"/>
 
+        <Button
+            android:text="修改验证类型"
+            android:id="@+id/btnInputType"
+            style="@style/btnAuth2Style"/>
+
+        <Button
+            android:text="修改密码字符串"
+            android:id="@+id/btnPasswordString"
+            style="@style/btnAuth2Style"/>
+
     </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
     <LinearLayout
