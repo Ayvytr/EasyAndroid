@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import com.ayvytr.easyandroid.tools.Colors
+import com.ayvytr.easyandroid.tools.withcontext.ToastTool
 import com.ayvytr.easyandroid.view.custom.NewAuthEditText
 import com.ayvytr.easyandroidtest.R
 import kotlinx.android.synthetic.main.activity_auth_edit_text2.*
@@ -16,21 +17,33 @@ class AuthEditTextActivity2 : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth_edit_text2);
+        setContentView(R.layout.activity_auth_edit_text2)
         initView(savedInstanceState)
     }
 
 
     fun initView(savedInstanceState: Bundle?)
     {
-        btnMaxLength?.setOnClickListener { authEditText?.setMaxLength(randomMaxLength) }
+        btnMaxLength?.setOnClickListener { authEditText?.maxLength = randomMaxLength }
         btnSize?.setOnClickListener { authEditText?.layoutParams = randomLp }
-        btnTextColor.setOnClickListener { authEditText?.setTextColor(randomColor) }
-        btnTextSize.setOnClickListener { authEditText.setTextSize(random.nextInt(30)) }
-        btnFrameColor.setOnClickListener { authEditText.setFrameColor(randomColor) }
-        btnFrameWidth.setOnClickListener { authEditText.setFrameWidth(random.nextInt(20)) }
-        btnInputType.setOnClickListener { authEditText.setInputType(randomInputType) }
-        btnPasswordString.setOnClickListener { authEditText.setPasswordString(randomPasswordString) }
+        btnTextColor.setOnClickListener { authEditText?.textColor = randomColor }
+        btnTextSize.setOnClickListener { authEditText.textSize = random.nextInt(30) }
+        btnFrameColor.setOnClickListener { authEditText.frameColor = randomColor }
+        btnFrameWidth.setOnClickListener { authEditText.frameWidth = random.nextInt(20) }
+        btnInputType.setOnClickListener { authEditText.inputType = randomInputType }
+        btnPasswordString.setOnClickListener { authEditText.passwordString = randomPasswordString }
+        authEditText.setOnInputChangeListener(object : NewAuthEditText.OnInputChangeListener
+                                              {
+                                                  override fun onFinished(authEditText: NewAuthEditText, s: String)
+                                                  {
+                                                  }
+
+                                                  override fun onTextChanged(isFinished: Boolean, s: String)
+                                                  {
+                                                      ToastTool.show(s)
+                                                  }
+                                              })
+
     }
 
     private val randomMaxLength: Int
