@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import com.ayvytr.easyandroid.tools.Colors
-import com.ayvytr.easyandroid.view.custom.AuthEditText2
+import com.ayvytr.easyandroid.view.custom.NewAuthEditText
 import com.ayvytr.easyandroidtest.R
 import kotlinx.android.synthetic.main.activity_auth_edit_text2.*
 import java.util.*
@@ -36,10 +36,10 @@ class AuthEditTextActivity2 : AppCompatActivity()
     private val randomMaxLength: Int
         get()
         {
-            var i = random.nextInt(AuthEditText2.MAX_LENGTH)
-            while (i < AuthEditText2.MIN_LENGTH)
+            var i = random.nextInt(NewAuthEditText.MAX_LENGTH)
+            while (i < NewAuthEditText.MIN_LENGTH)
             {
-                i = random.nextInt(AuthEditText2.MAX_LENGTH)
+                i = random.nextInt(NewAuthEditText.MAX_LENGTH)
             }
 
             return i
@@ -57,8 +57,8 @@ class AuthEditTextActivity2 : AppCompatActivity()
             return Colors.rgb(random.nextInt(0xff), random.nextInt(0xff), random.nextInt(0xff))
         }
 
-    private val randomInputType: AuthEditText2.InputType
-        get() = AuthEditText2.InputType.valueOf(random.nextInt(5))
+    private val randomInputType: NewAuthEditText.InputType
+        get() = NewAuthEditText.InputType.valueOf(random.nextInt(5))
 
     private val randomPasswordString: String
         get()

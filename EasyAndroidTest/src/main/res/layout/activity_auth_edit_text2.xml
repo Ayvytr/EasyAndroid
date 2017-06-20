@@ -71,7 +71,7 @@
         android:layout_height="match_parent"
         android:layout_weight="3">
 
-        <com.ayvytr.easyandroid.view.custom.AuthEditText2
+        <com.ayvytr.easyandroid.view.custom.NewAuthEditText
             app:frameColor="@color/aero"
             android:id="@+id/authEditText"
             android:layout_width="match_parent"
