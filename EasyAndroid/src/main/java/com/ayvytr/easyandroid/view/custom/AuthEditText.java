@@ -33,8 +33,10 @@ import java.util.List;
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.8.1
+ * @deprecated 从 1.8.5开始弃用，使用 {@link NewAuthEditText} 代替.
  */
 
+@Deprecated
 public class AuthEditText extends RelativeLayout
 {
     public static final int DEFAULT_TEXT_LENGTH = 6;
