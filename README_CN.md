@@ -1,7 +1,12 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.4-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.5-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid 库
+
+# 编译
+
+## JCenter
+	compile 'com.ayvytr:EasyAndroid:1.8.5'
 
 > ## [English](README.md)
 
@@ -11,10 +16,12 @@
     
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
 
+## 1.8.5 <font color=red>NewAuthEditText</font>, 类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
+重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)
 
 ## 1.8.4 <font color=red>QuickIndexView</font>, 类似微信的联系人字母索引控件，但是功能更多，可以加入顶部，底部图片，设置弹出Toast的效果，更改索引字体颜色和Toast字体颜色等方法
 
-## 1.8.1 <font color=red>AuthEditText</font>, 类似支付宝支付时的输入密码控件
+## 1.8.1 <font color=red>AuthEditText</font>, 类似支付宝支付时的输入密码控件，从1.8.5开始弃用.
 
 ## 1.8.0 <font color=red>FlowLayout</font> 流式布局
 
@@ -27,10 +34,6 @@
 2. BitmapTool类，提供了转换，缩放，旋转Bitmap和Drawable的众多方法！
 3. 修正了bintrayUpload过程中的某些错误.
 
-# 编译
-
-## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.4'
 
 ## 包含 
 

@@ -1,8 +1,15 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.4-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-1.8.5-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
 Simplify development steps for Android Developers.(为Android开发者提供的简化开发过程的库)
+
+
+# Build
+
+## JCenter
+	compile 'com.ayvytr:EasyAndroid:1.8.5'
+
 
 > ## [Chinese](README_CN.md)
 
@@ -13,9 +20,16 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
+## 1.8.5 <font color=red>NewAuthEditText</font>, like Zhifubao's payment View，instead <font color=red>AuthEditText</font>
+{类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
+重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)}
+
+
 ## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
 
-## 1.8.1 <font color=red>AuthEditText</font>, like Zhifubao's payment View
+## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
+
+## 1.8.1 <font color=red>AuthEditText</font>, like Zhifubao's payment View，Start version 1.8.5, it deprecated.
 
 ## 1.8.0 <font color=red>FlowLayout</font>
 
@@ -26,11 +40,6 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 1. <font color=red>Packages</font> and <font color=red>AppInfo</font> classes, get all applications more simpler.
 2. <font color=red>BitmapTool</font> class, to convert, zoom or rotate Bitmap and Drawable.
 3. Fixed some bintrayUpload problems.
-
-# Build
-
-## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.4'
 
 
 ## Contains 
