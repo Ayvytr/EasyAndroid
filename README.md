@@ -10,6 +10,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 ## JCenter
 	compile 'com.ayvytr:EasyAndroid:1.8.5'
 
+## ~~JitPack (Deprecated)~~
 
 > ## [Chinese](README_CN.md)
 
@@ -24,8 +25,6 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 {类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
 重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)}
 
-
-## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
 
 ## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
 
@@ -45,7 +44,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 ## Contains 
 
 ### Resource
-	Dp and sp from -100 to 300
+	Dp and sp from -300 to 300
 	Some styles about TextView, etc.
 
 

@@ -7,6 +7,8 @@
 
 ## JCenter
 	compile 'com.ayvytr:EasyAndroid:1.8.5'
+	
+## ~~JitPack (已弃用)~~
 
 > ## [English](README.md)
 
@@ -38,7 +40,7 @@
 ## 包含 
 
 ### 资源
-	从 -100~300 dp 和 sp 资源
+	从 -300~300 dp 和 sp 资源
 	有关TextView等View的Style
 
 
