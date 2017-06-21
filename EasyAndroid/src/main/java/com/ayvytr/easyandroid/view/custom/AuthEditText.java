@@ -331,7 +331,8 @@ public class AuthEditText extends RelativeLayout
     }
 
     /**
-     * 设置文本大小
+     * 设置文本大小,像素
+     * @param size 文本大小
      */
     public void setTextSize(@Px int size)
     {
@@ -448,6 +449,8 @@ public class AuthEditText extends RelativeLayout
 
     /**
      * 设置文本输入长度
+     *
+     * @param textLength 文本长度
      */
     public void setTextLength(int textLength)
     {

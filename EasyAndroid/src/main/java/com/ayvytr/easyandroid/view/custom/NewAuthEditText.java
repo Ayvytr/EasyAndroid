@@ -560,7 +560,7 @@ public class NewAuthEditText extends RelativeLayout
         /**
          * 判断输入类型是不是密码类型
          *
-         * @return {@link true} 是密码类型.
+         * @return {@code true} 是密码类型.
          */
         public boolean isPassword()
         {
