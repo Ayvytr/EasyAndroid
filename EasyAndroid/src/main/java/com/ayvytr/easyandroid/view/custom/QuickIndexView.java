@@ -220,7 +220,7 @@ public class QuickIndexView extends View
      *
      * @param letterArray 要设置的字母索引数组
      */
-    public void setLetterList(String[] letterArray)
+    public void setLetterArray(String[] letterArray)
     {
         this.letterList = Arrays.asList(letterArray);
         invalidate();
@@ -415,7 +415,7 @@ public class QuickIndexView extends View
         }
         else
         {
-            setLetterList(ResCompat.getStringArray(context, R.array.defaultQuickIndexViewLetters));
+            setLetterArray(ResCompat.getStringArray(context, R.array.defaultQuickIndexViewLetters));
         }
 
         typedArray.recycle();
@@ -471,6 +471,11 @@ public class QuickIndexView extends View
         paint.setColor(textColor);
 
         int letterLength = getLetterLength();
+        if(letterLength == 0)
+        {
+            return;
+        }
+
         paint.setTextSize(letterLength);
 
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
@@ -522,6 +527,10 @@ public class QuickIndexView extends View
     {
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
         int letterCount = getLetterCount();
+        if(letterCount == 0)
+        {
+            return 0;
+        }
 
         return Math.min(width, (getHeight() - getPaddingTop() - getPaddingBottom()) / letterCount);
     }
@@ -533,6 +542,11 @@ public class QuickIndexView extends View
      */
     private int getLetterCount()
     {
+        if(letterList == null)
+        {
+            return 0;
+        }
+
         int itemCount = letterList.size();
         if(topDrawable != null)
         {

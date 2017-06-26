@@ -72,6 +72,16 @@ class QuickIndexViewActivity : AppCompatActivity()
         btnToastHeight.setOnClickListener {
             quickIndexView.quickHeight = randomToastPx
         }
+        btnNullData.setOnClickListener {
+            quickIndexView.bottomDrawable = null
+            quickIndexView.topDrawable = null
+            quickIndexView.letterList = null
+        }
+        btnRestoreData.setOnClickListener {
+            quickIndexView.setTopDrawable(android.R.drawable.ic_menu_search)
+            quickIndexView.setBottomDrawable(android.R.drawable.dark_header)
+            quickIndexView.letterList = arrayListOf("a", "B", "c")
+        }
     }
 
     private val randomColor: Int
