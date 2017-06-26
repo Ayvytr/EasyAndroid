@@ -31,6 +31,17 @@ public class RegexTool
      * @param input 待验证文本
      * @return {@code true}: 匹配<br>{@code false}: 不匹配
      */
+    public static boolean isMobileExact(CharSequence input)
+    {
+        return isMobile(input);
+    }
+
+    /**
+     * 验证手机号
+     *
+     * @param input 待验证文本
+     * @return {@code true}: 匹配<br>{@code false}: 不匹配
+     */
     public static boolean isMobile(CharSequence input)
     {
         return isMatch(RegexConstant.REGEX_MOBILE, input);
