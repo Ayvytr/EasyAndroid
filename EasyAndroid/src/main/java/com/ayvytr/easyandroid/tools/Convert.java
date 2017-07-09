@@ -69,17 +69,17 @@ public class Convert
     /**
      * value转boolean
      *
-     * @param value String
+     * @param value CharSequence
      * @return value.equals(true) ?  true : false
      */
-    public static boolean toBool(String value)
+    public static boolean toBool(CharSequence value)
     {
         if(TextTool.isEmpty(value))
         {
             return false;
         }
 
-        if(value.equalsIgnoreCase("true"))
+        if(value.toString().equalsIgnoreCase("true"))
         {
             return true;
         }
@@ -179,10 +179,10 @@ public class Convert
     /**
      * 判断value是不是0
      *
-     * @param value String
+     * @param value CharSequence
      * @return {@code value.equals('0')}: true; false
      */
-    public static boolean isZero(String value)
+    public static boolean isZero(CharSequence value)
     {
         return !TextTool.isEmpty(value) && value.equals("0");
 
@@ -293,12 +293,12 @@ public class Convert
     /**
      * value转换返回为int
      *
-     * @param value String
+     * @param value CharSequence
      * @return int
      */
-    public static int toInt(String value)
+    public static int toInt(CharSequence value)
     {
-        return Integer.valueOf(value);
+        return Integer.valueOf(value.toString());
     }
 
     /**
@@ -381,12 +381,12 @@ public class Convert
     /**
      * value转换返回byte, value需要能先被转换成int
      *
-     * @param value String
+     * @param value CharSequence
      * @return byte
      */
-    public static byte toByte(String value)
+    public static byte toByte(CharSequence value)
     {
-        return (byte) (int) Integer.valueOf(value);
+        return (byte) (int) Integer.valueOf(value.toString());
     }
 
     /**
