@@ -90,7 +90,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 	ToggleSoftInputPopupWindow
 	TopPopupWindow
 
-### Tool classes with out Context
+### 不需要Context的类
 	BitmapTool		转换，缩放，旋转Bitmap和Drawable等操作。
 		toBitmap
 		toBitmap2
@@ -278,7 +278,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		split
 		isBlank
 
-### Tool classes with Context
+### 需要Context的类
 	Easy	这个库的单例入口类, 使用有关Context的类之前，需要初始化这个类
 		getContext
 		checkInitState
