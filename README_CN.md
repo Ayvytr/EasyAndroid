@@ -21,8 +21,8 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
-## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>，SpManager管理Sp，Sp封装了SharedPreference各种
-操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
+## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>
+SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
 
 ## 1.8.5 <font color=red>NewAuthEditText</font>, like Zhifubao's payment View，instead <font color=red>AuthEditText</font>
 {类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(

@@ -18,8 +18,8 @@
     
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
 
-## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>，SpManager管理Sp，Sp封装了SharedPreference各种
-操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
+## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>
+SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
 
 ## 1.8.5 <font color=red>NewAuthEditText</font>, 类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
 重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)
