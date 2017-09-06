@@ -1,69 +1,101 @@
-[![jCenter](https://img.shields.io/badge/jCenter-1.8.5-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.1.0-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-# EasyAndroid 库
+# EasyAndroid Library
+Simplify development steps for Android Developers.(为Android开发者提供的简化开发过程的库)
 
-# 编译
+
+# Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:1.8.5'
-	
-## ~~JitPack (已弃用)~~
+	compile 'com.ayvytr:EasyAndroid:2.1.0'
 
-> ## [English](README.md)
+## ~~JitPack (Deprecated)~~
 
-> ## 使用
-    (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
-    直接使用
+> ## [Chinese](README_CN.md)
+
+> ## Use
+    (About Context classes: You need call 'Easy.getDefault().init(this);' 
+	on your 'Application.onCreate()' first) 
+    Then, use directly;
     
-> ### [我要打印日志](https://github.com/Ayvytr/Logger)
+> ### [I want print logger](https://github.com/Ayvytr/Logger)
 
-## 1.8.5 <font color=red>NewAuthEditText</font>, 类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
-重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)
+## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>，SpManager管理Sp，Sp封装了SharedPreference各种
+操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
 
-## 1.8.4 <font color=red>QuickIndexView</font>, 类似微信的联系人字母索引控件，但是功能更多，可以加入顶部，底部图片，设置弹出Toast的效果，更改索引字体颜色和Toast字体颜色等方法
-
-## 1.8.1 <font color=red>AuthEditText</font>, 类似支付宝支付时的输入密码控件，从1.8.5开始弃用.
-
-## 1.8.0 <font color=red>FlowLayout</font> 流式布局
-
-## 1.7.7 <font color=red>Colors</font> 类来啦!
-* <font color=red>Colors</font> 类，提供了超过1000种颜色，资源中同时也提供了这些颜色，太(henhao)多(hen)啦(qiangda)！
+## 1.8.5 <font color=red>NewAuthEditText</font>, like Zhifubao's payment View，instead <font color=red>AuthEditText</font>
+{类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
+重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)}
 
 
-## 1.7.6 加入了新成员！
-1. Packages类和AppInfo Bean类，获取所有安装的应用更方便！ 
-2. BitmapTool类，提供了转换，缩放，旋转Bitmap和Drawable的众多方法！
-3. 修正了bintrayUpload过程中的某些错误.
+## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
+
+## 1.8.1 <font color=red>AuthEditText</font>, like Zhifubao's payment View，Start version 1.8.5, it deprecated.
+
+## 1.8.0 <font color=red>FlowLayout</font>
+
+## 1.7.7 <font color=red>Colors</font> class comes!
+* <font color=red>Colors</font> class, provides more than a thousand colors for you, and these colors still provides in color resource too.
+
+## 1.7.6 New members joined!
+1. <font color=red>Packages</font> and <font color=red>AppInfo</font> classes, get all applications more simpler.
+2. <font color=red>BitmapTool</font> class, to convert, zoom or rotate Bitmap and Drawable.
+3. Fixed some bintrayUpload problems.
 
 
-## 包含 
+## Contains 
 
-### 资源
-	从 -300~300 dp 和 sp 资源
-	有关TextView等View的Style
+### SpManager Sp
+    SpManager管理Sp，Sp封装了SharedPreferences操作，可以直接使用Sp管理SharedPreference实例，不过依然推荐使用SpManager来
+    产生Sp实例（已在SpTest类中进行了测试，应该没bug了）
+    
+    用法：
+        //获取默认的Sp实例
+        Sp defaultSp = SpManager.getDefault(context).getSp();
+        //获取指定名称的Sp实例
+        Sp yourSp = SpManager.getDefault(context).getSp("your_sp_name");
+
+        //使用 获取值
+        int i = yourSp.getInt("key");
+        i = yourSp.getInt("key", 10);
+        //设置值
+        yourSp.putInt("key", 111).putInt("key2", 222);
+        //获取所有值
+        Map<String, ?> all = yourSp.getAll();
+        //删除值
+        yourSp.remove("key");
+
+        //删除默认的sp文件
+        SpManager.getDefault(context).deleteSp();
+        //删除指定名称的sp文件
+        SpManager.getDefault(context).deleteSp("your_sp_name");
+        
+### Resource
+	Dp and sp from -300 to 300
+	Some styles about TextView, etc.
 
 
-### 自定义View (有关TextView的类可能作用不大)
+### Custom View (About TextView aren't very useful)
 
 	CenterGravityTextView
 	LeftCenterGravityTextView
 	RightCenterGravityTextView
 
-	SeekBarPressure: 双Thumb的SeekBar
+	SeekBarPressure: double Thumb SeekBar
 
 	FlowLayout
 	
 	AuthEditText
 
-### PopupWindows  [浏览 Readme->](README_PopupWindow.md)
+### PopupWindows  [See Readme->](README_PopupWindow.md)
 	AlphaPopupWindow 
 	BasePopupWindow
 	ToggleSoftInputPopupWindow
 	TopPopupWindow
 
 ### Tool classes with out Context
-	BitmapTool		转换，缩放，旋转Bitmap和Drawable等操作。
+	BitmapTool		Convert, rotate and zoom Bitmap or Drawable.  		
 		toBitmap
 		toBitmap2
 		toDrawable
@@ -74,7 +106,7 @@
 		rotate
 		rotate2Drawable
 
-	Colors 		提供了超过1000种颜色，以及获取红绿蓝等方法。
+	Colors 		provides more than a thousand colors and  methods red, green, blue color, etc.
 		alpha
 		argb
 		b
@@ -82,14 +114,16 @@
 		r
 		rgb
 
-	Convert		类型转换类，仿照了C#的Convert类（对这个类情(zhen)有(de)独(hao)钟(yong)）
-				提供了大部分基本类型到bool，int，byte的转换，以及isZero方法
+	Convert 	Type conversion class, modeled on the C# Convert class (for this 
+			kind of love have alone bell)
+			Provides most of the basic types to bool, int, byte conversion, and isZero methods
 		toBool
 		izZero
 		toInt
 		toByte
+		toString
 
-	EncodeTool 	编码解码相关操作类
+	EncodeTool 	Encoding and decoding related operation class
 		urlEncode
 		urlDecode
 		base64Encode
@@ -98,7 +132,7 @@
 		htmlEncode
 		htmlDecode
 
-	EncryptTool	加密解密相关操作类
+	EncryptTool	Encryption and decryption related operations
 		encryptMD2ToString
 		encryptMD2
 		encryptMD5ToString
@@ -152,8 +186,10 @@
 		base64Encode
 		base64Decode
 
-	FileTool	文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出文件/目录，
-				获取文件名/文件标题（不包含扩展名), 有没有扩展名，读/写文件等方法
+	FileTool	File operation class, judgment is not a file / directory, is it present, 
+				rename, create file / directory, list file/directory, get file name / file
+				title (not including extension), there is no extension, 
+				read / write Documents and other methods
 		createDir
         createFile
         fromName
@@ -223,7 +259,8 @@
         write
         writeFile
 
-	RegexTool	正则工具类，包括验证手机号，邮箱，身份证号码等
+	RegexTool	Regular tool classes, including verification of mobile phone number, 
+				mailbox, ID number and so on
 		isMobileSimple
 		isMobileExact
 		isTel
@@ -241,7 +278,9 @@
 		getReplaceFirst
 		getReplaceAll
 
-	TextTool	提供了众多的字符串操作功能，包括判空，是不是字符串，分割字符串（会去掉末尾的regex）等功能
+	TextTool	Provides a number of string manipulation functions, including sentenced, 
+				is not a string, segmentation string (will remove the end of the regex) 
+				and other functions
 		isEmpty
 		isDigit
 		isNumber
@@ -251,7 +290,8 @@
 		isBlank
 
 ### Tool classes with Context
-	Easy	这个库的单例入口类, 使用有关Context的类之前，需要初始化这个类
+	Easy	The library of the single case of the import class,  to use the Context 
+			classes, you need to initialize this class
 		getContext
 		checkInitState
 		getDefault
@@ -261,8 +301,8 @@
 		getWindowManager
 		getKeyguardManager
 
-	BarTool	StatusBar, ActionBar操作工具类		
-		setColor
+	BarTool		About StatusBar, ActionBar peration tool class
+		setColor	
 		setColorForSwipeBack
 		setColorNoTranslucent
 		setColorDiff
@@ -295,7 +335,18 @@
 		hideNotificationBar
 		invokePanels
 
-	ClipboardTool	剪贴板操作类
+	BitmapTool		Convert, rotate and zoom Bitmap or Drawable  
+		toBitmap
+		toBitmap2
+		toDrawable
+		toDrawable
+		toByteArray
+		zoom
+		zoom2Drawable
+		rotate
+		rotate2Drawable
+
+	ClipboardTool	Clipboard operation class
 		setText
 		getText
 		getText
@@ -304,11 +355,13 @@
 		setIntent
 		getIntent
 
-	DensityTool	Dp - Px 相互转化类，提供了int，float，double 3种类型的重载方法，尽可能减少外部强制类型转换.
+	DensityTool		The Dp - Px transformation class provides three types of 
+					overloaded methods, int, float, and double, that minimize 
+					external casts.
 		px2dp
 		dp2px
 
-	IntentTool	获取常用的Intent
+	IntentTool	Get the usual Intent.
 		getInstallAppIntent
 		getUninstallAppIntent
 		getLaunchAppIntent
@@ -322,7 +375,7 @@
 		getSendSmsIntent
 		getCaptureIntent
 
-	ResTool		获取资源中Drawable，String，dimension，color, Configuration.
+	ResTool		Get the Drawable, String, dimension, color, Configuration in the resource.
 		getDrawable
 		getString
 		getDimen
@@ -332,7 +385,9 @@
 		getColor
 		getConfiguration
 
-	ScreenTool	提供了获取屏幕尺寸，宽高，屏幕旋转方向，设置为竖屏，是不是横屏/竖屏，获取屏幕截图（包含/不包含状态栏)， 判断是不是锁屏的功能.
+	ScreenTool		Provides the screen size, width, screen rotation direction, set to 
+					vertical screen, is not horizontal / vertical screen, get 
+					screenshots (include StatusBar or not), screen is locked or not.
 		getDisplayMetrics
 		getScreenWidth
 		getScreenHeight
@@ -346,13 +401,13 @@
 		captureWithoutStatusBar
 		isScreenLock
 
-	ToastTool 	Toast工具类，提供简便的Toast创建和输出功能
+	ToastTool 	The Toast tool class provides easy Toast creation and output capabilities.
     	make
 		makeLong
 		show
 		showLong
 
-	Managers	获取Android管理类实例``
+	Managers	Get Android Manager classes instance.
 		getAccessibilityManager
 		getAccountManager
 		getActivityManager
@@ -398,20 +453,13 @@
 		getWallpaperManager
 		getWindowManager
 		    
-> ## 库的测试类
+> ## Test Classes for library classes
 	ConvertTest
 	FileToolTest
 	TextToolTest
 	DensityToolTest
 
-
-> ### 借鉴如下，感谢他们的库
+> ### Quote below, thanks for their libraries
 1. https://github.com/Blankj/AndroidUtilCode
 
 
-> ### TODO:
-1. 完善Convert类
-2. 开发我自己的视频播放器 PrettyVideoPlayer
-3. 完善这个库，添加更多实用的功能
-4. 个人网站
-5. 分离Android和Java代码，打包成不同的库

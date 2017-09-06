@@ -50,11 +50,11 @@ public class SpManager
     }
 
     /**
-     * 获取默认的 {@link Sp}，默认名称为 {@link Context#getPackageName()}
+     * 获取默认的 {@link Sp}，默认名称为当前app的包名 {@link Context#getPackageName()}
      *
      * @return {@link Sp}
      */
-    public Sp getDefault()
+    public Sp getSp()
     {
         Sp sp = map.get(context.getPackageName());
         if(sp == null)
@@ -101,9 +101,9 @@ public class SpManager
     }
 
     /**
-     * 删除默认的 {@link android.content.SharedPreferences} 文件，默认文件名称为 {@link Context#getPackageName()}
+     * 删除默认的 {@link android.content.SharedPreferences} 文件，默认文件名称为当前app包名 {@link Context#getPackageName()}
      */
-    public void deleteDefault()
+    public void deleteSp()
     {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
         {

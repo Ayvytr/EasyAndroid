@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import static junit.framework.Assert.assertEquals;
@@ -31,9 +32,9 @@ public class SpTest
     public void testSp()
     {
         Context context = InstrumentationRegistry.getTargetContext();
-        Sp sp = SpManager.getDefault(context).getDefault();
+        Sp sp = SpManager.getDefault(context).getSp();
         assertNotNull(sp);
-        SpManager.getDefault(context).deleteDefault();
+        SpManager.getDefault(context).deleteSp();
 
         //String
         String str = sp.getString("k");
@@ -135,5 +136,30 @@ public class SpTest
         }
 
         return isEqual;
+    }
+
+    //用法
+    private void testUse()
+    {
+        Context context = InstrumentationRegistry.getTargetContext();
+        //获取默认的Sp实例
+        Sp defaultSp = SpManager.getDefault(context).getSp();
+        //获取指定名称的Sp实例
+        Sp yourSp = SpManager.getDefault(context).getSp("your_sp_name");
+
+        //使用 获取值
+        int i = yourSp.getInt("key");
+        i = yourSp.getInt("key", 10);
+        //设置值
+        yourSp.putInt("key", 111).putInt("key2", 222);
+        //获取所有值
+        Map<String, ?> all = yourSp.getAll();
+        //删除值
+        yourSp.remove("key");
+
+        //删除默认的sp文件
+        SpManager.getDefault(context).deleteSp();
+        //删除指定名称的sp文件
+        SpManager.getDefault(context).deleteSp("your_sp_name");
     }
 }
