@@ -12,7 +12,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 
 ## ~~JitPack (Deprecated)~~
 
-> ## [Chinese](README_CN.md)
+> ## [Chinese](README.md)
 
 > ## Use
     (About Context classes: You need call 'Easy.getDefault().init(this);' 

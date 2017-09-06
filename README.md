@@ -10,7 +10,7 @@
 	
 ## ~~JitPack (已弃用)~~
 
-> ## [English](README.md)
+> ## [English](README_EN.md)
 
 > ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
