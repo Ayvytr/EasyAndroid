@@ -184,8 +184,8 @@ public class Sp
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      * @return {@link Sp}
      * @see SharedPreferences.Editor#putString(String, String)
      */
@@ -196,8 +196,8 @@ public class Sp
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      * @return {@link Sp}
      * @see SharedPreferences.Editor#putInt(String, int)
      */
@@ -208,8 +208,8 @@ public class Sp
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      * @return {@link Sp}
      * @see SharedPreferences.Editor#putLong(String, long)
      */
@@ -220,8 +220,8 @@ public class Sp
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      * @return {@link Sp}
      * @see SharedPreferences.Editor#putBoolean(String, boolean)
      */
@@ -232,8 +232,8 @@ public class Sp
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      * @return {@link Sp}
      * @see SharedPreferences.Editor#putFloat(String, float)
      */
@@ -244,8 +244,8 @@ public class Sp
     }
 
     /**
-     * @param key
-     * @param value
+     * @param key key
+     * @param value value
      * @return {@link Sp}
      * @see SharedPreferences.Editor#putStringSet(String, Set)
      */

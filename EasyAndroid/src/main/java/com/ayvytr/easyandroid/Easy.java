@@ -68,7 +68,7 @@ public class Easy
             throw new NullPointerException("Argument Context is null(参数Context是null).");
         }
 
-        this.context = context;
+        Easy.context = context;
     }
 
     /**

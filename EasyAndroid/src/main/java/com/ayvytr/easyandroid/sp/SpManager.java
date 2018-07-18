@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Set;
 
 /**
  * {@link SpManager}, 是 {@link Sp} 的管理类，同时也是 {@link android.content.SharedPreferences} 的操作类，以单例模式统一管理
@@ -89,11 +88,7 @@ public class SpManager
      */
     public void close()
     {
-        Set<String> keySet = map.keySet();
-        for(String s : keySet)
-        {
-            map.remove(s);
-        }
+        map.clear();
 
         map = null;
         context = null;
