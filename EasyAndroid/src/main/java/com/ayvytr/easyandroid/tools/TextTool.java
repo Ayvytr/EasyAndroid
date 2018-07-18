@@ -2,8 +2,6 @@ package com.ayvytr.easyandroid.tools;
 
 import android.text.TextUtils;
 
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
-
 /**
  * 提供了众多的字符串操作功能，包括判空，是不是字符串，分割字符串（会去掉末尾的regex）等功能.
  *
@@ -15,7 +13,7 @@ public class TextTool
 {
     private TextTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

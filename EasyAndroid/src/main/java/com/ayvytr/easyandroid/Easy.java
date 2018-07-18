@@ -2,7 +2,6 @@ package com.ayvytr.easyandroid;
 
 import android.content.Context;
 
-import com.ayvytr.easyandroid.exception.UnInitLibraryException;
 
 /**
  * 这个库的单例入口类, 使用有关Context的类之前，需要初始化这个类.
@@ -32,13 +31,14 @@ public class Easy
 
     /**
      * 检测初始化状态。Easy类暂时定为静态初始化，所以直接检测contextRef是否已初始化，
-     * 未初始化，直接抛出异常 {@link UnInitLibraryException}.
+     * 未初始化，直接抛出异常.
      */
     private static void checkInitState()
     {
         if(context == null)
         {
-            throw new UnInitLibraryException();
+            throw new IllegalStateException("未初始化库异常，在使用之前，你需要在'Application.onCreate()'" +
+                    "(或者其他位置)中调用'Easy.getDefault().initTag(Context)初始化。");
         }
     }
 

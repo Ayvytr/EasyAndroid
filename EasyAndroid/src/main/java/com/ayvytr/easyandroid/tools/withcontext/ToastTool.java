@@ -5,7 +5,6 @@ import android.support.annotation.StringRes;
 import android.widget.Toast;
 
 import com.ayvytr.easyandroid.Easy;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 /**
  * Toast工具类，提供简便的Toast创建和输出功能.
@@ -25,7 +24,7 @@ public class ToastTool
 
     private ToastTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

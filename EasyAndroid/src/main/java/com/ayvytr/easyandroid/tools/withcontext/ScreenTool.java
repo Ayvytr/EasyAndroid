@@ -15,8 +15,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
-
 import static com.ayvytr.easyandroid.tools.withcontext.ResTool.getConfiguration;
 
 /**
@@ -30,7 +28,7 @@ public class ScreenTool
 {
     private ScreenTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

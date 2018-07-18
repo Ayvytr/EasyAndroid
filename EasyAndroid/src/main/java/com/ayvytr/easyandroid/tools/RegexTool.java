@@ -2,7 +2,6 @@ package com.ayvytr.easyandroid.tools;
 
 
 import com.ayvytr.easyandroid.consts.RegexConstant;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class RegexTool
 
     private RegexTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

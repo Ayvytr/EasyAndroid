@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 
 import com.ayvytr.easyandroid.Easy;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 import static com.ayvytr.easyandroid.tools.withcontext.Managers.getClipboardManager;
 
@@ -29,7 +28,7 @@ public class ClipboardTool
 
     private ClipboardTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

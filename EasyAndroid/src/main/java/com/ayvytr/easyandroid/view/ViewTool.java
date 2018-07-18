@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.ayvytr.easyandroid.Easy;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -29,7 +28,7 @@ public class ViewTool
 {
     private ViewTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

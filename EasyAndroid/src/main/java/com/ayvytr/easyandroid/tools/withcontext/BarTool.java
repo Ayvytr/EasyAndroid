@@ -14,8 +14,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
-
 import java.lang.reflect.Method;
 
 /**
@@ -28,7 +26,7 @@ public class BarTool
 
     private BarTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     public static class StatusBarView extends View

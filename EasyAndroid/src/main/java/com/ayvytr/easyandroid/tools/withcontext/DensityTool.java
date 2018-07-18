@@ -3,7 +3,6 @@ package com.ayvytr.easyandroid.tools.withcontext;
 import android.content.Context;
 
 import com.ayvytr.easyandroid.Easy;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 /**
  * Dp - Px 相互转化，提供了int，float，double 3种类型的重载方法，尽可能减少外部强制类型转换，
@@ -17,7 +16,7 @@ public class DensityTool
 {
     private DensityTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

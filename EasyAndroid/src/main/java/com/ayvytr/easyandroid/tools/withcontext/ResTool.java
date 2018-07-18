@@ -12,7 +12,6 @@ import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 
 import com.ayvytr.easyandroid.Easy;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 
 /**
  * 获取资源中的Drawable，String，dimension，color, Configuration.
@@ -25,7 +24,7 @@ public class ResTool
 {
     ResTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

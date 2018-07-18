@@ -47,7 +47,6 @@ import android.view.accessibility.CaptioningManager;
 import android.view.inputmethod.InputMethodManager;
 import android.view.textservice.TextServicesManager;
 
-import com.ayvytr.easyandroid.exception.ClipboardUnsupportedException;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -188,9 +187,13 @@ public class Managers
     {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
         {
-            throw new ClipboardUnsupportedException();
+            throw new UnsupportedOperationException("ClipboardManager can not be used when SDK_INT < 11\n" +
+                    "剪贴板不能在SDK_IND < 11 的版本上使用.");
         }
-        return (ClipboardManager) get(CLIPBOARD_SERVICE);
+        else
+        {
+            return (ClipboardManager) get(CLIPBOARD_SERVICE);
+        }
     }
 
     /**
@@ -262,7 +265,12 @@ public class Managers
      */
     public static CaptioningManager getCaptioningManager()
     {
-        return (CaptioningManager) getContext().getSystemService(CAPTIONING_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            return (CaptioningManager) getContext().getSystemService(CAPTIONING_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -310,7 +318,12 @@ public class Managers
      */
     public static NsdManager getNsdManager()
     {
-        return (NsdManager) get(NSD_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            return (NsdManager) get(NSD_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -326,7 +339,12 @@ public class Managers
      */
     public static FingerprintManager getFingerprintManager()
     {
-        return (FingerprintManager) get(FINGERPRINT_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            return (FingerprintManager) get(FINGERPRINT_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -334,7 +352,12 @@ public class Managers
      */
     public static MediaRouter getMediaRouter()
     {
-        return (MediaRouter) get(MEDIA_ROUTER_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            return (MediaRouter) get(MEDIA_ROUTER_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -350,7 +373,12 @@ public class Managers
      */
     public static CarrierConfigManager getCarrierConfigManager()
     {
-        return (CarrierConfigManager) get(CARRIER_CONFIG_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            return (CarrierConfigManager) get(CARRIER_CONFIG_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -358,7 +386,12 @@ public class Managers
      */
     public static TelecomManager getTelecomManager()
     {
-        return (TelecomManager) get(TELECOM_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return (TelecomManager) get(TELECOM_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -374,7 +407,12 @@ public class Managers
      */
     public static TextServicesManager getTextServicesManager()
     {
-        return (TextServicesManager) get(TEXT_SERVICES_MANAGER_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+        {
+            return (TextServicesManager) get(TEXT_SERVICES_MANAGER_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -406,7 +444,12 @@ public class Managers
      */
     public static NfcManager getNfcManager()
     {
-        return (NfcManager) get(NFC_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1)
+        {
+            return (NfcManager) get(NFC_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -414,7 +457,12 @@ public class Managers
      */
     public static BluetoothManager getBluetoothManager()
     {
-        return (BluetoothManager) get(BLUETOOTH_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+        {
+            return (BluetoothManager) get(BLUETOOTH_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -422,7 +470,12 @@ public class Managers
      */
     public static LauncherApps getLauncherApps()
     {
-        return (LauncherApps) get(LAUNCHER_APPS_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return (LauncherApps) get(LAUNCHER_APPS_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -430,7 +483,12 @@ public class Managers
      */
     public static DisplayManager getDisplayManagerCompat()
     {
-        return (DisplayManager) get(DISPLAY_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+        {
+            return (DisplayManager) get(DISPLAY_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -438,7 +496,12 @@ public class Managers
      */
     public static UserManager getUserManager()
     {
-        return (UserManager) get(USER_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+        {
+            return (UserManager) get(USER_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -446,7 +509,12 @@ public class Managers
      */
     public static RestrictionsManager getRestrictionsManager()
     {
-        return (RestrictionsManager) get(RESTRICTIONS_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return (RestrictionsManager) get(RESTRICTIONS_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -454,7 +522,12 @@ public class Managers
      */
     public static AppOpsManager getAppOpsManager()
     {
-        return (AppOpsManager) get(APP_OPS_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            return (AppOpsManager) get(APP_OPS_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -462,7 +535,12 @@ public class Managers
      */
     public static CameraManager getCameraManager()
     {
-        return (CameraManager) get(CAMERA_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return (CameraManager) get(CAMERA_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -470,7 +548,12 @@ public class Managers
      */
     public static PrintManager getPrintManager()
     {
-        return (PrintManager) get(PRINT_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            return (PrintManager) get(PRINT_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -478,7 +561,12 @@ public class Managers
      */
     public static ConsumerIrManager getConsumerIrManager()
     {
-        return (ConsumerIrManager) get(CONSUMER_IR_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
+            return (ConsumerIrManager) get(CONSUMER_IR_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -486,7 +574,12 @@ public class Managers
      */
     public static MediaSessionManager getMediaSessionManager()
     {
-        return (MediaSessionManager) get(MEDIA_SESSION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return (MediaSessionManager) get(MEDIA_SESSION_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -502,7 +595,12 @@ public class Managers
      */
     public static JobScheduler getJobScheduler()
     {
-        return (JobScheduler) get(JOB_SCHEDULER_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            return (JobScheduler) get(JOB_SCHEDULER_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -510,7 +608,12 @@ public class Managers
      */
     public static MidiManager getMidiManager()
     {
-        return (MidiManager) get(MIDI_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            return (MidiManager) get(MIDI_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -518,6 +621,11 @@ public class Managers
      */
     public static HardwarePropertiesManager getHardwarePropertiesManager()
     {
-        return (HardwarePropertiesManager) get(HARDWARE_PROPERTIES_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        {
+            return (HardwarePropertiesManager) get(HARDWARE_PROPERTIES_SERVICE);
+        }
+
+        throw new UnsupportedOperationException();
     }
 }

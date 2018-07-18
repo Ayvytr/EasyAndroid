@@ -1,7 +1,5 @@
 package com.ayvytr.easyandroid.tools;
 
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -31,7 +29,7 @@ public class FileTool
 
     public FileTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

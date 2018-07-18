@@ -12,7 +12,6 @@ import android.support.v4.content.FileProvider;
 import android.webkit.MimeTypeMap;
 
 import com.ayvytr.easyandroid.Easy;
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
 import com.ayvytr.easyandroid.tools.FileTool;
 
 import java.io.File;
@@ -33,7 +32,7 @@ public class IntentTool
 
     private IntentTool()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 
     /**

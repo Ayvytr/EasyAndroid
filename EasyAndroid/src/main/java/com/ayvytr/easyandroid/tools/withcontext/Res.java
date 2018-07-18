@@ -1,8 +1,6 @@
 package com.ayvytr.easyandroid.tools.withcontext;
 
 
-import com.ayvytr.easyandroid.exception.UnsupportedInitializationException;
-
 /**
  * 继承 {@link ResTool}, 简化ResTool类名为Res，调用更方便.
  *
@@ -14,6 +12,6 @@ public class Res extends ResTool
 {
     Res()
     {
-        throw new UnsupportedInitializationException();
+        throw new UnsupportedOperationException();
     }
 }
