@@ -28,6 +28,7 @@ public class TestStickyActivity2 extends BaseEasyActivity
     RecyclerView recyclerView;
     private BasicAdapter basicAdapter;
 
+    @Override
     protected void initView(Bundle savedInstanceState)
     {
         ButterKnife.bind(this);

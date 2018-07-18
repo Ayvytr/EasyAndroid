@@ -4,8 +4,7 @@
         <item>@mipmap/ic_launcher</item>
     </integer-array>
     <string-array name="custom_views">
-        <item>AuthEditText</item>
-        <item>AuthEditText2</item>
+        <item>NewAuthEditText</item>
         <item>QuickIndexView</item>
     </string-array>
     <string-array name="auth_edit_text_length">

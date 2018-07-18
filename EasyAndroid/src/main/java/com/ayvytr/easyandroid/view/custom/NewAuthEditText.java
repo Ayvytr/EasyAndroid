@@ -27,9 +27,7 @@ import com.ayvytr.easyandroid.tools.Convert;
 import java.util.ArrayList;
 
 /**
- * 输入验证控件，类似淘宝支付时输入密码的控件，提供了多种方法，可以进行高度的自定义，主要用来替换 {@link AuthEditText}，因为
- * {@link AuthEditText} 存在比较多问题，最主要问题是实际使用时，布局中预览不正常；没有自定义属性，定制性不强；重写
- * {@link ViewGroup#onMeasure(int, int)} 等方法时，做了多余的干预等问题，所以最好使用{@link NewAuthEditText}来替代.
+ * 输入验证控件，类似淘宝支付时输入密码的控件，提供了多种方法，可以进行高度的自定义.
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.8.5
@@ -549,7 +547,7 @@ public class NewAuthEditText extends RelativeLayout
                 case TEXT_PASSWORD:
                     /**
                      * 这里的 InputType 不设置为 {@link android.text.InputType.TYPE_NULL},是因为设置这个后，
-                     * {@link AuthEditText} 的点击事件失效
+                     * 点击事件失效
                      */
                     return android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
             }

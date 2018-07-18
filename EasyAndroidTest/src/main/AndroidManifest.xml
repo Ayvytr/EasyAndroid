@@ -52,8 +52,6 @@
             android:parentActivityName=".stickyheader.StickyHeaderActivity"/>
         <activity android:name=".customview.FlowLayoutActivity">
         </activity>
-        <activity android:name=".customview.AuthEditTextActivity">
-        </activity>
         <activity android:name=".network.NetworkActivity">
         </activity>
         <activity
