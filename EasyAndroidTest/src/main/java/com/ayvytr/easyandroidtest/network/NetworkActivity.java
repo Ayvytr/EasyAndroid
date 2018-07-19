@@ -1,10 +1,10 @@
 package com.ayvytr.easyandroidtest.network;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
 import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
-import com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView;
 import com.ayvytr.easyandroidtest.R;
 
 import butterknife.BindView;
@@ -14,9 +14,9 @@ import io.reactivex.functions.Consumer;
 public class NetworkActivity extends BaseEasyActivity
 {
     @BindView(R.id.tv)
-    LeftCenterGravityTextView tv;
+    TextView tv;
     @BindView(R.id.tvContent)
-    LeftCenterGravityTextView tvContent;
+    TextView tvContent;
 
     @Override
     protected int getContentLayoutRes()

@@ -805,7 +805,7 @@ public class BarTool
      */
     public static void showNotificationBar(Context context, boolean isSettingPanel)
     {
-        String methodName = (Build.VERSION.SDK_INT <= 16) ? "expand"
+        String methodName = (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) ? "expand"
                 : (isSettingPanel ? "expandSettingsPanel" : "expandNotificationsPanel");
         invokePanels(context, methodName);
     }
@@ -818,7 +818,7 @@ public class BarTool
      */
     public static void hideNotificationBar(Context context)
     {
-        String methodName = (Build.VERSION.SDK_INT <= 16) ? "collapse" : "collapsePanels";
+        String methodName = (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) ? "collapse" : "collapsePanels";
         invokePanels(context, methodName);
     }
 

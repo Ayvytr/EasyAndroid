@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+    <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+    <TextView
         android:id="@+id/tvContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

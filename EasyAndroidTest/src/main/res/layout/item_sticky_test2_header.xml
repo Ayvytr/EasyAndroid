@@ -6,9 +6,10 @@
     android:background="@color/pale_blue"
     android:orientation="horizontal">
 
-    <com.ayvytr.easyandroid.view.custom.LeftCenterGravityTextView
+    <TextView
         android:layout_width="@dimen/_50dp"
         android:layout_height="match_parent"
+        android:gravity="left|center"
         android:text="header"/>
 
     <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
