@@ -33,7 +33,7 @@ import java.util.ArrayList;
  * @since 1.8.5
  */
 
-public class NewAuthEditText extends RelativeLayout
+public class AuthEditText extends RelativeLayout
 {
     private static final int MATCH_PARENT = ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -76,17 +76,17 @@ public class NewAuthEditText extends RelativeLayout
     //输入变化监听器
     private OnInputChangeListener onInputChangeListener;
 
-    public NewAuthEditText(Context context)
+    public AuthEditText(Context context)
     {
         this(context, null);
     }
 
-    public NewAuthEditText(Context context, AttributeSet attrs)
+    public AuthEditText(Context context, AttributeSet attrs)
     {
         this(context, attrs, 0);
     }
 
-    public NewAuthEditText(Context context, AttributeSet attrs, int defStyleAttr)
+    public AuthEditText(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
         this.context = context;
@@ -95,18 +95,18 @@ public class NewAuthEditText extends RelativeLayout
 
     private void init(AttributeSet attrs)
     {
-        TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.NewAuthEditText);
+        TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.AuthEditText);
 
-        textSize = t.getDimensionPixelSize(R.styleable.NewAuthEditText_textSize, 18);
-        textColor = t.getColor(R.styleable.NewAuthEditText_textColor, 0xff888888);
+        textSize = t.getDimensionPixelSize(R.styleable.AuthEditText_textSize, 18);
+        textColor = t.getColor(R.styleable.AuthEditText_textColor, 0xff888888);
 
-        frameColor = t.getColor(R.styleable.NewAuthEditText_frameColor, Colors.BLACK);
+        frameColor = t.getColor(R.styleable.AuthEditText_frameColor, Colors.BLACK);
 
-        frameWidth = t.getDimensionPixelOffset(R.styleable.NewAuthEditText_frameWidth, 1);
+        frameWidth = t.getDimensionPixelOffset(R.styleable.AuthEditText_frameWidth, 1);
 
         textViewList = new ArrayList<>(maxLength);
 
-        passwordString = t.getString(R.styleable.NewAuthEditText_passwordString);
+        passwordString = t.getString(R.styleable.AuthEditText_passwordString);
         setPasswordString(null);
 
         et = new EditText(context);
@@ -115,14 +115,14 @@ public class NewAuthEditText extends RelativeLayout
         et.setTextColor(Colors.TRANSPARENT);
         addDefaultTextChangeListener();
 
-        inputType = InputType.valueOf(t.getInt(R.styleable.NewAuthEditText_inputType, 0));
+        inputType = InputType.valueOf(t.getInt(R.styleable.AuthEditText_inputType, 0));
         setInputType(inputType);
 
         llTvContent = new LinearLayout(context);
         addView(et, MATCH_PARENT, MATCH_PARENT);
         addView(llTvContent, MATCH_PARENT, MATCH_PARENT);
 
-        int maxLength = t.getInt(R.styleable.NewAuthEditText_maxLength, 6);
+        int maxLength = t.getInt(R.styleable.AuthEditText_maxLength, 6);
         //初始化时，需要做限制
         if(maxLength < MIN_LENGTH || maxLength > MAX_LENGTH)
         {
@@ -314,10 +314,13 @@ public class NewAuthEditText extends RelativeLayout
     public void setFrameWidth(int frameWidth)
     {
         this.frameWidth = frameWidth;
-        for(int i = 1; i < textViewList.size(); i++)
+        for(int i = 0; i < textViewList.size(); i++)
         {
-            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) textViewList.get(i).getLayoutParams();
-            lp.leftMargin = -frameWidth;
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1);
+            if(i != 0)
+            {
+                lp.leftMargin = -frameWidth;
+            }
         }
         for(TextView tv : textViewList)
         {
@@ -604,10 +607,10 @@ public class NewAuthEditText extends RelativeLayout
         /**
          * 当输入完成时
          *
-         * @param authEditText {@link NewAuthEditText}
+         * @param authEditText {@link AuthEditText}
          * @param s            输入的字符串 {@link #text}
          */
-        void onFinished(NewAuthEditText authEditText, String s);
+        void onFinished(AuthEditText authEditText, String s);
 
         /**
          * 当文本变化时会回调此方法（在切换验证模式时，从密码到数字会清空文本。关于这个的判断暂时不加）.

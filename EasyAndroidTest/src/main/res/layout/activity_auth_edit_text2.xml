@@ -72,14 +72,14 @@
         android:layout_weight="3"
         android:orientation="vertical">
 
-        <com.ayvytr.easyandroid.view.custom.NewAuthEditText
+        <com.ayvytr.easyandroid.view.custom.AuthEditText
             android:id="@+id/authEditText"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100dp"
             android:layout_marginBottom="@dimen/_10dp"
             app:frameColor="@color/aero"/>
 
-        <com.ayvytr.easyandroid.view.custom.NewAuthEditText
+        <com.ayvytr.easyandroid.view.custom.AuthEditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50dp"
             app:frameColor="@color/red"
@@ -89,7 +89,7 @@
             app:textColor="@color/yellow"
             app:textSize="@dimen/_15sp"/>
 
-        <com.ayvytr.easyandroid.view.custom.NewAuthEditText
+        <com.ayvytr.easyandroid.view.custom.AuthEditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50dp"
             android:layout_marginTop="@dimen/_10dp"
