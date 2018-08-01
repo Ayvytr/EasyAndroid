@@ -31,10 +31,10 @@ import java.lang.reflect.Field;
  * <p>
  * 2. Activity销毁时，需要调用 {@link ProgressWebView#destroy()}
  * </p>
- *
  * <p>
- *     备注：从我的小米手机上测试，打开1个网页占用内存110兆，退出Activity时，内存占用约70兆。目前已做到了优化的极限，
- *     欢迎大家继续优化.
+ * <p>
+ * 备注：从我的小米手机上测试，打开1个网页占用内存110兆，退出Activity时，内存占用约70兆。目前已做到了优化的极限，
+ * 欢迎大家继续优化.
  * </p>
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
@@ -133,7 +133,7 @@ public class ProgressWebView extends LinearLayout
             }
 
         });
-        webView.setWebChromeClient(new PWWebChromeClient());
+        webView.setWebChromeClient(new PwWebChromeClient());
     }
 
     public void loadUrl(String url)
@@ -212,6 +212,7 @@ public class ProgressWebView extends LinearLayout
 
     /**
      * 设置WebView标题变化监听器
+     *
      * @param l 监听器
      */
     public void setOnTitleChangedListener(OnTitleChangedListener l)
@@ -230,7 +231,10 @@ public class ProgressWebView extends LinearLayout
         void onTitleChanged(ProgressWebView progressWebView, String title);
     }
 
-    public class PWWebChromeClient extends WebChromeClient
+    /**
+     * 继承默认 {@link WebChromeClient} 的自定义WebChromeClient，处理进度变化，进度条显示/隐藏，标题变化监听功能.
+     */
+    public class PwWebChromeClient extends WebChromeClient
     {
         @Override
         public void onProgressChanged(WebView view, int newProgress)
