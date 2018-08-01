@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ayvytr.easyandroid.tools.Convert;
-import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
+import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
 import com.ayvytr.easyandroidtest.R;
-import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyHeaderItemDecoration;
 import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyHeaderAdapter;
+import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.StickyHeaderItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BasicStickyHeaderActivity extends BaseEasyActivity
+public class BasicStickyHeaderActivity extends BaseActivity
 {
 
     @BindView(R.id.recyclerView)
@@ -63,7 +63,7 @@ public class BasicStickyHeaderActivity extends BaseEasyActivity
     }
 
     @Override
-    protected int getContentViewRes()
+    protected int getContentLayoutRes()
     {
         return R.layout.activity_basic_sticky_header;
     }

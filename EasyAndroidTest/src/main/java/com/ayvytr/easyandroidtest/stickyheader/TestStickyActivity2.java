@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ayvytr.easyandroid.tools.Convert;
-import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
+import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
 import com.ayvytr.easyandroidtest.R;
 import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.PrettyItemDecoration;
@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestStickyActivity2 extends BaseEasyActivity
+public class TestStickyActivity2 extends BaseActivity
 {
 
     @BindView(R.id.recyclerView)
@@ -41,7 +41,7 @@ public class TestStickyActivity2 extends BaseEasyActivity
     }
 
     @Override
-    protected int getContentViewRes()
+    protected int getContentLayoutRes()
     {
         return R.layout.activity_test_sticky2;
     }

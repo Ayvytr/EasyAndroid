@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool;
-import com.ayvytr.easyandroid.view.activity.BaseEasyActivity;
+import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroidtest.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.functions.Consumer;
 
-public class NetworkActivity extends BaseEasyActivity
+public class NetworkActivity extends BaseActivity
 {
     @BindView(R.id.tv)
     TextView tv;
@@ -19,7 +19,7 @@ public class NetworkActivity extends BaseEasyActivity
     TextView tvContent;
 
     @Override
-    protected int getContentViewRes()
+    protected int getContentLayoutRes()
     {
         return R.layout.activity_network;
     }

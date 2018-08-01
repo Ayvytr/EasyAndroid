@@ -26,12 +26,22 @@ import java.lang.reflect.Field;
  * <p>
  * 添加了WebView释放的代码.
  * <p>
- * Activity中onBackPressed页面回退功能需要在Activity中添加
+ * 1. Activity中onBackPressed页面回退功能需要在Activity中添加
+ * </p>
+ * <p>
+ * 2. Activity销毁时，需要调用 {@link ProgressWebView#destroy()}
+ * </p>
  *
- * @author wangdunwei
- * @date 2018/7/28
+ * <p>
+ *     备注：从我的小米手机上测试，打开1个网页占用内存110兆，退出Activity时，内存占用约70兆。目前已做到了优化的极限，
+ *     欢迎大家继续优化.
+ * </p>
+ *
+ * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
+ * @since 2.2.0
  */
-public class ProgressWebView extends LinearLayout {
+public class ProgressWebView extends LinearLayout
+{
 
     public static final int PROGRESS_100 = 100;
     private ProgressBar progressBar;
@@ -39,22 +49,26 @@ public class ProgressWebView extends LinearLayout {
 
     private OnTitleChangedListener onTitleChangedListener;
 
-    public ProgressWebView(Context context) {
+    public ProgressWebView(Context context)
+    {
         this(context, null);
     }
 
-    public ProgressWebView(Context context, @Nullable AttributeSet attrs) {
+    public ProgressWebView(Context context, @Nullable AttributeSet attrs)
+    {
         this(context, attrs, 0);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public ProgressWebView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ProgressWebView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
+    {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void initView(Context context) {
+    private void initView(Context context)
+    {
         setOrientation(VERTICAL);
 
         progressBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
@@ -87,93 +101,90 @@ public class ProgressWebView extends LinearLayout {
 
         webView.setWebChromeClient(new WebChromeClient());
         // 防止跳出浏览器
-        webView.setWebViewClient(new WebViewClient() {
+        webView.setWebViewClient(new WebViewClient()
+        {
             // 重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            {
                 view.loadUrl(url);
                 return true;
             }
 
             // 页面加载完成回调
             @Override
-            public void onPageFinished(WebView view, String url) {
+            public void onPageFinished(WebView view, String url)
+            {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
             }
 
             @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
+            {
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
 
             //重写此方法可以让webview处理https请求
             @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error)
+            {
                 handler.proceed();  //接受所有证书
             }
 
         });
-        webView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onProgressChanged(WebView view, int newProgress) {
-                super.onProgressChanged(view, newProgress);
-                if(newProgress == PROGRESS_100) {
-                    progressBar.setVisibility(View.GONE);
-                }
-                else {
-                    progressBar.setProgress(newProgress);
-                    progressBar.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                super.onReceivedTitle(view, title);
-                if(onTitleChangedListener != null) {
-                    onTitleChangedListener.onTitleChanged(ProgressWebView.this, title);
-                }
-            }
-        });
+        webView.setWebChromeClient(new PWWebChromeClient());
     }
 
-    public void loadUrl(String url) {
+    public void loadUrl(String url)
+    {
         webView.loadUrl(url);
     }
 
-    public ProgressBar getProgressBar() {
+    public ProgressBar getProgressBar()
+    {
         return progressBar;
     }
 
-    public WebView getWebView() {
+    public WebView getWebView()
+    {
         return webView;
     }
 
-    public void setWebView(WebView webView) {
+    public void setWebView(WebView webView)
+    {
         this.webView = webView;
     }
 
-    public void releaseAllWebViewCallback() {
-        if(android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-            try {
+    public void releaseAllWebViewCallback()
+    {
+        if(android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        {
+            try
+            {
                 Field field = WebView.class.getDeclaredField("mWebViewCore");
                 field = field.getType().getDeclaredField("mBrowserFrame");
                 field = field.getType().getDeclaredField("sConfigCallback");
                 field.setAccessible(true);
                 field.set(null, null);
-            } catch(Exception e) {
+            } catch(Exception e)
+            {
                 e.printStackTrace();
             }
         }
-        else {
-            try {
+        else
+        {
+            try
+            {
                 Field sConfigCallback = Class.forName("android.webkit.BrowserFrame")
                                              .getDeclaredField("sConfigCallback");
-                if(sConfigCallback != null) {
+                if(sConfigCallback != null)
+                {
                     sConfigCallback.setAccessible(true);
                     sConfigCallback.set(null, null);
                 }
-            } catch(Exception e) {
+            } catch(Exception e)
+            {
                 e.printStackTrace();
             }
         }
@@ -182,9 +193,11 @@ public class ProgressWebView extends LinearLayout {
     /**
      * 销毁这个View的方法，主要是为了释放WebView。请注 {@link Activity#onDestroy()} 方法调用这个方法释放资源。
      */
-    public void destroy() {
+    public void destroy()
+    {
         releaseAllWebViewCallback();
         removeAllViews();
+        webView.setWebChromeClient(null);
         webView.setVisibility(View.GONE);
         webView.stopLoading();
         webView.getSettings().setJavaScriptEnabled(false);
@@ -197,11 +210,17 @@ public class ProgressWebView extends LinearLayout {
         webView = null;
     }
 
-    public void setOnTitleChangedListener(OnTitleChangedListener l) {
+    /**
+     * 设置WebView标题变化监听器
+     * @param l 监听器
+     */
+    public void setOnTitleChangedListener(OnTitleChangedListener l)
+    {
         this.onTitleChangedListener = l;
     }
 
-    public interface OnTitleChangedListener {
+    public interface OnTitleChangedListener
+    {
         /**
          * 标题变化监听器
          *
@@ -209,5 +228,33 @@ public class ProgressWebView extends LinearLayout {
          * @param title           标题
          */
         void onTitleChanged(ProgressWebView progressWebView, String title);
+    }
+
+    public class PWWebChromeClient extends WebChromeClient
+    {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress)
+        {
+            super.onProgressChanged(view, newProgress);
+            if(newProgress == PROGRESS_100)
+            {
+                progressBar.setVisibility(View.GONE);
+            }
+            else
+            {
+                progressBar.setProgress(newProgress);
+                progressBar.setVisibility(View.VISIBLE);
+            }
+        }
+
+        @Override
+        public void onReceivedTitle(WebView view, String title)
+        {
+            super.onReceivedTitle(view, title);
+            if(onTitleChangedListener != null)
+            {
+                onTitleChangedListener.onTitleChanged(ProgressWebView.this, title);
+            }
+        }
     }
 }

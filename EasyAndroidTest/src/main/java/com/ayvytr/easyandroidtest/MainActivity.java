@@ -49,6 +49,18 @@ public class MainActivity extends BaseActivity
         init();
     }
 
+    @Override
+    protected int getContentLayoutRes()
+    {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState)
+    {
+
+    }
+
     private void init()
     {
         Drawable[] drawableArray = Res.getDrawableArray(R.array.testArray);
