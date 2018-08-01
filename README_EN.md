@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.1.0-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.2.0-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
@@ -8,7 +8,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:2.1.0'
+	compile 'com.ayvytr:EasyAndroid:2.2.0'
 
 ## ~~JitPack (Deprecated)~~
 
@@ -21,13 +21,11 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
     
 > ### [I want print logger](https://github.com/Ayvytr/Logger)
 
-## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>
-SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
+## 2.2.0 added <font color=red>ProgressWebView</font>,help you manage WebView, and release WebView.
+
+## 2.1.0 added <font color=red>SpManager</font>和<font color=red>Sp</font>
 
 ## 1.8.5 <font color=red>NewAuthEditText</font>, like Zhifubao's payment View，instead <font color=red>AuthEditText</font>
-{类似支付宝支付时的输入密码控件，代替<font color=red>AuthEditText</font>(
-重构了这个控件，修复了布局文件中看不到预览，没有自定义属性，以及不合理地重写View方法的问题)}
-
 
 ## 1.8.4 <font color=red>QuickIndexView</font>, like WeChat's contact index bar
 

@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.1.0-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.2.0-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid 库
@@ -6,7 +6,7 @@
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:2.1.0'
+	compile 'com.ayvytr:EasyAndroid:2.2.0'
 	
 ## ~~JitPack (已弃用)~~
 
@@ -17,6 +17,8 @@
     直接使用
     
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
+
+## 2.2.0 添加了<font color=red>ProgressWebView</font>，添加了进度条加载功能，并专门帮你搞定WebView资源回收问题；此版本删除了BaseEasyActivity，原BaseEasyActivity功能全部移到BaseActivity，尽可能减少了Activity继承层级，并且添加了是否禁用sp字体随系统缩放的功能
 
 ## 2.1.0 添加了<font color=red>SpManager</font>和<font color=red>Sp</font>
 SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPreferences操作（也有SpTest类进行了测试，保证通过测试才发布呦！）
