@@ -41,7 +41,7 @@ public class TestStickyActivity2 extends BaseEasyActivity
     }
 
     @Override
-    protected int getContentLayoutRes()
+    protected int getContentViewRes()
     {
         return R.layout.activity_test_sticky2;
     }

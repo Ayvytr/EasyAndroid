@@ -63,7 +63,7 @@ public class BasicStickyHeaderActivity extends BaseEasyActivity
     }
 
     @Override
-    protected int getContentLayoutRes()
+    protected int getContentViewRes()
     {
         return R.layout.activity_basic_sticky_header;
     }

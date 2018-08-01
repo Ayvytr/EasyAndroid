@@ -19,7 +19,7 @@ public class NetworkActivity extends BaseEasyActivity
     TextView tvContent;
 
     @Override
-    protected int getContentLayoutRes()
+    protected int getContentViewRes()
     {
         return R.layout.activity_network;
     }

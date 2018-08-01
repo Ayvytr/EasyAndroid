@@ -18,7 +18,7 @@ public class FlowLayoutActivity extends BaseEasyActivity
     }
 
     @Override
-    protected int getContentLayoutRes()
+    protected int getContentViewRes()
     {
         return R.layout.activity_flow_layout;
     }
