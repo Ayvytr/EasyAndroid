@@ -191,7 +191,7 @@ public class ProgressWebView extends LinearLayout
     }
 
     /**
-     * 销毁这个View的方法，主要是为了释放WebView。请注 {@link Activity#onDestroy()} 方法调用这个方法释放资源。
+     * 销毁这个View的方法，主要是为了释放WebView。请在 {@link Activity#onDestroy()} 方法调用这个方法释放资源。
      */
     public void destroy()
     {
