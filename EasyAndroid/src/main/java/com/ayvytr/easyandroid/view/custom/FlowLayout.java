@@ -16,7 +16,6 @@ import java.util.List;
  * @deprecated 因未提供代码中动态设置布局的方法，不建议使用，正在尝试寻找功能相对完善的流式布局
  */
 
-@Deprecated
 class FlowLayout extends FrameLayout
 {
     /**

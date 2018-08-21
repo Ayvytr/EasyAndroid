@@ -39,9 +39,8 @@ import java.lang.reflect.Field;
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 2.2.0
- * @deprecated 在尝试单独提供一个功能完善的WebView库。因为WebView涉及内容太多，且内存泄漏问题严重。不推荐使用系统原生的
+ * 再尝试单独提供一个功能完善的WebView库。因为WebView涉及内容太多，且内存泄漏问题严重。不推荐使用系统原生的
  */
-@Deprecated
 public class ProgressWebView extends LinearLayout
 {
 
@@ -50,6 +49,9 @@ public class ProgressWebView extends LinearLayout
     private WebView webView;
 
     private OnTitleChangedListener onTitleChangedListener;
+
+    //显示或者隐藏对话框，设置为false后，加载中也不会显示对话框
+    private boolean showProgressBar = true;
 
     public ProgressWebView(Context context)
     {
@@ -77,6 +79,7 @@ public class ProgressWebView extends LinearLayout
         progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bg));
         final float scale = context.getResources().getDisplayMetrics().density;
         addView(progressBar, LayoutParams.MATCH_PARENT, (int) (3 * scale + 0.5F));
+        progressBar.setVisibility(View.GONE);
 
         webView = new WebView(getContext());
         LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1);
@@ -111,20 +114,6 @@ public class ProgressWebView extends LinearLayout
             {
                 view.loadUrl(url);
                 return true;
-            }
-
-            // 页面加载完成回调
-            @Override
-            public void onPageFinished(WebView view, String url)
-            {
-                super.onPageFinished(view, url);
-                progressBar.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
-            {
-                super.onReceivedError(view, errorCode, description, failingUrl);
             }
 
             //重写此方法可以让webview处理https请求
@@ -213,6 +202,15 @@ public class ProgressWebView extends LinearLayout
     }
 
     /**
+     * 设置是否显示对话框
+     * @param showProgressBar {@code true} 加载中时显示 {@code false} 全程隐藏
+     */
+    public void setShowProgressBar(boolean showProgressBar)
+    {
+        this.showProgressBar = showProgressBar;
+    }
+
+    /**
      * 设置WebView标题变化监听器
      *
      * @param l 监听器
@@ -242,14 +240,17 @@ public class ProgressWebView extends LinearLayout
         public void onProgressChanged(WebView view, int newProgress)
         {
             super.onProgressChanged(view, newProgress);
-            if(newProgress == PROGRESS_100)
+            if(showProgressBar)
             {
-                progressBar.setVisibility(View.GONE);
-            }
-            else
-            {
-                progressBar.setProgress(newProgress);
-                progressBar.setVisibility(View.VISIBLE);
+                if(newProgress == PROGRESS_100)
+                {
+                    progressBar.setVisibility(View.GONE);
+                }
+                else
+                {
+                    progressBar.setProgress(newProgress);
+                    progressBar.setVisibility(View.VISIBLE);
+                }
             }
         }
 

@@ -60,6 +60,8 @@
         </activity>
         <activity android:name=".customview.AuthEditTextActivity2">
         </activity>
+        <activity android:name=".other.WebViewActivity">
+        </activity>
     </application>
 
 </manifest>

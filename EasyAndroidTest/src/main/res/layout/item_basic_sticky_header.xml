@@ -6,7 +6,8 @@
     android:background="@color/pink"
     android:orientation="vertical">
 
-    <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
+    <TextView
+        android:gravity="center"
         android:id="@+id/tv"
         android:layout_width="@dimen/_100dp"
         android:layout_height="match_parent"

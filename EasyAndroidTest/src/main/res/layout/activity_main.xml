@@ -63,79 +63,18 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:text="网络测试"
+                android:layout_height="wrap_content"
                 android:onClick="onNetWork"
+                android:text="网络测试"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:text="测试webView"
+                android:onClick="onShowWebView"
                 android:layout_height="wrap_content"/>
 
         </com.ayvytr.easyandroid.view.custom.FlowLayout>
 
-        <com.ayvytr.easyandroid.view.custom.FlowLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp">
-
-            <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/pink"
-                android:text="测试专区"
-                android:textStyle="bold"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onTestPackages"
-                android:text="测试Packages类"/>
-
-        </com.ayvytr.easyandroid.view.custom.FlowLayout>
-
-        <com.ayvytr.easyandroid.view.custom.FlowLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20dp">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onGetClipboard"
-                android:text="获取剪贴板"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onSetClipboard"
-                android:text="设置剪贴板"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onGetAppName"
-                android:text="获取APP名称"/>
-
-            <Button
-                android:id="@+id/btnPerform"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onPerformClick"
-                android:text="performClick"/>
-
-        </com.ayvytr.easyandroid.view.custom.FlowLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50">
-
-            <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="SeekBarPressure"/>
-
-            <com.ayvytr.easyandroid.view.custom.SeekBarPressure
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
 
         <ImageView
             android:id="@+id/iv"

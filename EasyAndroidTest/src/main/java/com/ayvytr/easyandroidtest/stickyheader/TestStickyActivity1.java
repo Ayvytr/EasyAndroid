@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.view.activity.BaseActivity;
-import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
 import com.ayvytr.easyandroidtest.R;
 import com.ayvytr.easyandroidtest.stickyheader.itemdecoration.PrettyItemDecoration;
 
@@ -86,7 +86,7 @@ public class TestStickyActivity1 extends BaseActivity
         public class Vh extends RecyclerView.ViewHolder
         {
             @BindView(R.id.tv)
-            CenterGravityTextView tv;
+            TextView tv;
             private View view;
 
             public Vh(View view)

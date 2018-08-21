@@ -23,6 +23,7 @@ import com.ayvytr.easyandroidtest.other.BitmapActivity;
 import com.ayvytr.easyandroidtest.other.PackagesActivity;
 import com.ayvytr.easyandroidtest.other.PopupWindowActivity;
 import com.ayvytr.easyandroidtest.other.SystemInfoActivity;
+import com.ayvytr.easyandroidtest.other.WebViewActivity;
 import com.ayvytr.easyandroidtest.stickyheader.StickyHeaderActivity;
 import com.ayvytr.logger.L;
 
@@ -86,7 +87,6 @@ public class MainActivity extends BaseActivity
         Managers.getVibrator().vibrate(1000);
         String string = ResTool.getString(R.string.app_name);
         ToastTool.show("获取到Res中APP名称:" + string);
-        findViewById(R.id.btnPerform).performClick();
     }
 
     public void onSeePopupWindow(View view)
@@ -163,5 +163,10 @@ public class MainActivity extends BaseActivity
     public void onNetWork(View view)
     {
         startActivity(new Intent(getContext(), NetworkActivity.class));
+    }
+
+    public void onShowWebView(View view)
+    {
+        startActivity(new Intent(getContext(), WebViewActivity.class));
     }
 }

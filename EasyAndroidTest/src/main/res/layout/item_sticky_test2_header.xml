@@ -3,17 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_50dp"
-    android:background="@color/blue"
     android:orientation="horizontal">
 
     <TextView
         android:layout_width="@dimen/_50dp"
         android:layout_height="match_parent"
         android:gravity="left|center"
+        android:textColor="@color/black"
         android:text="header"/>
 
-    <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
+    <TextView
         android:id="@+id/tv"
+        android:gravity="center"
         android:layout_width="@dimen/_60dp"
         android:layout_height="match_parent"
         android:text="Content"
