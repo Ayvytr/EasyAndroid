@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:text="Content"
         android:textSize="@dimen/_24sp"
-        android:textColor="@color/yellow_green"
+        android:textColor="@color/black"
         android:textStyle="bold"/>
 
 </LinearLayout>

@@ -39,7 +39,9 @@ import java.lang.reflect.Field;
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 2.2.0
+ * @deprecated 在尝试单独提供一个功能完善的WebView库。因为WebView涉及内容太多，且内存泄漏问题严重。不推荐使用系统原生的
  */
+@Deprecated
 public class ProgressWebView extends LinearLayout
 {
 

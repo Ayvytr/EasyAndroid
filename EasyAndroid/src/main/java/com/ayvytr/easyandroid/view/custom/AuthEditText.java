@@ -2,6 +2,7 @@ package com.ayvytr.easyandroid.view.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
@@ -21,7 +22,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ayvytr.easyandroid.R;
-import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
 
 import java.util.ArrayList;
@@ -100,7 +100,7 @@ public class AuthEditText extends RelativeLayout
         textSize = t.getDimensionPixelSize(R.styleable.AuthEditText_textSize, 18);
         textColor = t.getColor(R.styleable.AuthEditText_textColor, 0xff888888);
 
-        frameColor = t.getColor(R.styleable.AuthEditText_frameColor, Colors.BLACK);
+        frameColor = t.getColor(R.styleable.AuthEditText_frameColor, Color.BLACK);
 
         frameWidth = t.getDimensionPixelOffset(R.styleable.AuthEditText_frameWidth, 1);
 
@@ -112,7 +112,7 @@ public class AuthEditText extends RelativeLayout
         et = new EditText(context);
         et.setBackgroundDrawable(null);
         et.setCursorVisible(false);
-        et.setTextColor(Colors.TRANSPARENT);
+        et.setTextColor(Color.TRANSPARENT);
         addDefaultTextChangeListener();
 
         inputType = InputType.valueOf(t.getInt(R.styleable.AuthEditText_inputType, 0));

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_100dp"
     android:layout_height="@dimen/_50dp"
-    android:background="@color/acid_green"
+    android:background="@color/green"
     android:orientation="vertical">
 
     <com.ayvytr.easyandroid.view.custom.CenterGravityTextView
@@ -12,6 +12,6 @@
         android:layout_height="match_parent"
         android:background="@color/purple"
         android:text="Content"
-        android:textColor="@color/blue_berry"/>
+        android:textColor="@color/blue"/>
 
 </LinearLayout>

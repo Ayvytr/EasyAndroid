@@ -13,9 +13,11 @@ import java.util.List;
  * Date: 2017/5/3
  *
  * @author davidwang
+ * @deprecated 因未提供代码中动态设置布局的方法，不建议使用，正在尝试寻找功能相对完善的流式布局
  */
 
-public class FlowLayout extends FrameLayout
+@Deprecated
+class FlowLayout extends FrameLayout
 {
     /**
      * 存储所有的View，按行记录

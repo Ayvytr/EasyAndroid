@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.Convert;
 import com.ayvytr.easyandroid.view.activity.BaseActivity;
 import com.ayvytr.easyandroid.view.custom.CenterGravityTextView;
@@ -40,9 +39,9 @@ public class TestStickyActivity1 extends BaseActivity
         basicAdapter = new BasicAdapter();
         recyclerView.setAdapter(basicAdapter);
         recyclerView.addItemDecoration(new PrettyItemDecoration(PrettyItemDecoration.VERTICAL,
-                Colors.ORANGE_COLOR_WHEEL, 10));
+                0XFFFF7F00, 10));
         recyclerView.addItemDecoration(
-                new PrettyItemDecoration(PrettyItemDecoration.HORIZONTAL, Colors.ORANGE_COLOR_WHEEL,
+                new PrettyItemDecoration(PrettyItemDecoration.HORIZONTAL, 0XFFFF7F00,
                         10));
     }
 

@@ -24,7 +24,7 @@ public class ClipboardTool
 {
     private static final String TEXT = "text";
     private static final String URI = "uri";
-    private static final String Intent = "intent";
+    private static final String INTENT = "intent";
 
     private ClipboardTool()
     {
@@ -111,7 +111,7 @@ public class ClipboardTool
     public static void setIntent(Intent intent)
     {
         ClipboardManager clipboardManager = Managers.getClipboardManager();
-        clipboardManager.setPrimaryClip(ClipData.newIntent(Intent, intent));
+        clipboardManager.setPrimaryClip(ClipData.newIntent(INTENT, intent));
     }
 
     /**

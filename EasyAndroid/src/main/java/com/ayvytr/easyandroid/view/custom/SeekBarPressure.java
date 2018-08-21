@@ -16,8 +16,10 @@ import com.ayvytr.easyandroid.R;
  *
  * @author Ayvytr <a href="https://github.com/Ayvytr" target="_blank">'s GitHub</a>
  * @since 1.6.0
+ * @deprecated 有性能问题。尝试在后续版本解决
  */
 
+@Deprecated
 public class SeekBarPressure extends View
 {
     private static final int CLICK_ON_LOW = 1;      //点击在前滑块上

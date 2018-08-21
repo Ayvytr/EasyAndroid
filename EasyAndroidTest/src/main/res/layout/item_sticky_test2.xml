@@ -10,6 +10,6 @@
         android:layout_width="@dimen/_100dp"
         android:layout_height="match_parent"
         android:text="Content"
-        android:textColor="@color/blue_berry"/>
+        android:textColor="@color/blue"/>
 
 </LinearLayout>

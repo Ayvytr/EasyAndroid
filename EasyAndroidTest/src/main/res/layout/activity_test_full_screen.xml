@@ -55,7 +55,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/acid_green"
+            android:background="@color/pink"
             android:onClick="onTestActivityFullScreen"
             android:text="测试Activity"/>
     </LinearLayout>

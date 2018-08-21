@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -21,7 +22,6 @@ import android.widget.Toast;
 
 import com.ayvytr.easyandroid.R;
 import com.ayvytr.easyandroid.tools.BitmapTool;
-import com.ayvytr.easyandroid.tools.Colors;
 import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
 import com.ayvytr.easyandroid.tools.withcontext.ResCompat;
 
@@ -390,8 +390,8 @@ public class QuickIndexView extends View
         toastView.addView(toastTextView);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickIndexView);
-        textColor = typedArray.getColor(R.styleable.QuickIndexView_textColor, Colors.BLACK);
-        quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Colors.BLACK);
+        textColor = typedArray.getColor(R.styleable.QuickIndexView_textColor, Color.BLACK);
+        quickTextColor = typedArray.getColor(R.styleable.QuickIndexView_quickTextColor, Color.BLACK);
         topDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_topDrawable);
         bottomDrawable = typedArray.getDrawable(R.styleable.QuickIndexView_bottomDrawable);
 

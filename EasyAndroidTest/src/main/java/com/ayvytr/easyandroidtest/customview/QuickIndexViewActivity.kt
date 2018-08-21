@@ -1,10 +1,10 @@
 package com.ayvytr.easyandroidtest.customview
 
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.ayvytr.easyandroid.tools.Colors
 import com.ayvytr.easyandroid.tools.withcontext.DensityTool
 import com.ayvytr.easyandroid.tools.withcontext.Res
 import com.ayvytr.easyandroidtest.R
@@ -85,7 +85,7 @@ class QuickIndexViewActivity : AppCompatActivity()
     }
 
     private val randomColor: Int
-        get() = Colors.rgb(random.nextInt(0xff), random.nextInt(0xff), random.nextInt(0xff))
+        get() = Color.rgb(random.nextInt(0xff), random.nextInt(0xff), random.nextInt(0xff))
 
     private val randomToastPx: Int
         get()

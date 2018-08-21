@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_50dp"
-    android:background="@color/pale_blue"
+    android:background="@color/blue"
     android:orientation="horizontal">
 
     <TextView
@@ -17,6 +17,6 @@
         android:layout_width="@dimen/_60dp"
         android:layout_height="match_parent"
         android:text="Content"
-        android:textColor="@color/blue_berry"/>
+        android:textColor="@color/aero"/>
 
 </LinearLayout>

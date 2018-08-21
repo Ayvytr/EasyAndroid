@@ -1,9 +1,9 @@
 package com.ayvytr.easyandroidtest.customview
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
-import com.ayvytr.easyandroid.tools.Colors
 import com.ayvytr.easyandroid.tools.withcontext.ToastTool
 import com.ayvytr.easyandroid.view.custom.AuthEditText
 import com.ayvytr.easyandroidtest.R
@@ -67,7 +67,7 @@ class AuthEditTextActivity2 : AppCompatActivity()
     private val randomColor: Int
         get()
         {
-            return Colors.rgb(random.nextInt(0xff), random.nextInt(0xff), random.nextInt(0xff))
+            return Color.rgb(random.nextInt(0xff), random.nextInt(0xff), random.nextInt(0xff))
         }
 
     private val randomInputType: AuthEditText.InputType

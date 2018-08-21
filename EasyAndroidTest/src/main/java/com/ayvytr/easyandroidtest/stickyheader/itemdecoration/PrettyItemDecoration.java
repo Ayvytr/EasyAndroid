@@ -12,8 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.ayvytr.easyandroid.tools.Colors;
-
 /**
  * {@link RecyclerView}的{@link RecyclerView#addItemDecoration(RecyclerView.ItemDecoration)}，支持
  * {@link LinearLayoutManager}, {@link GridLayoutManager}, 可自定义方向，颜色，间隔线宽度.
@@ -48,7 +46,7 @@ public class PrettyItemDecoration extends RecyclerView.ItemDecoration
 
     public PrettyItemDecoration(int orientation)
     {
-        this(orientation, Colors.AERO);
+        this(orientation, 0XFF7CB9E8);
     }
 
     public PrettyItemDecoration(int orientation, @ColorInt int color)
