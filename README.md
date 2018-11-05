@@ -1,13 +1,45 @@
 [![jCenter](https://img.shields.io/badge/jCenter-2.2.0-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-# EasyAndroid 库
+# ~~EasyAndroid 库 (已停止更新)，~~使用[EasyKotlin库](https://github.com/Ayvytr/EasyKotlin)取代
+
+# 推荐使用Kotlin开发Android应用
+
+
+
+## EasyKotlin 取代 EasyAndroid变更列表
+
+| EasyAndroid                                                  | EasyKotlin                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| AppInfo AppInfoCache Pachages                                | 废弃，未解决占用内存过多的问题                               |
+| RegexConstant RegexTool                                      | 废弃，某些正则方法测试不全等问题，正则匹配不能覆盖所有情况   |
+| Sp SpManager                                                 | 废弃，内存泄漏                                               |
+| BarTool                                                      | StatusBar.kt  Context.getStatusBarHeight 专门提供了显示隐藏状态栏，获取状态栏高度，显示隐藏标题栏方法 |
+| ClipBoardTool                                                | Clipboard.kt                                                 |
+| DensityTool                                                  | Context.kt  dp2px, px2dp作为Context类扩展方法提供            |
+| IntentTool                                                   | 废弃                                                         |
+| Managers                                                     | Manager.kt                                                   |
+| Res ResCompat ResTool                                        | Res.kt 作为Context扩展方法提供                               |
+| ScreenTool                                                   | Screen.kt 作为Context和Activity扩展方法提供                  |
+| ToastTool                                                    | Toast.kt                                                     |
+| BitmapTool                                                   | Bitmap.kt                                                    |
+| Convert                                                      | 弃用                                                         |
+| FileTool                                                     | 弃用                                                         |
+| TextTool                                                     | 弃用                                                         |
+| BaseActivity                                                 | 弃用继承取代AppCompatActivity的方法，提供了Activity扩展方法  |
+| ViewTool                                                     | View.kt 提供了View显示隐藏等多个扩展方法                     |
+| Easy                                                         | 弃用                                                         |
+| [AuthEditText等自定义View（点击跳转到自定义View库）](https://github.com/Ayvytr/AndroidCustomViews) | 不再提供                                                     |
+
+
+
+
 
 # 编译
 
 ## JCenter
 	compile 'com.ayvytr:EasyAndroid:2.2.0'
-	
+
 ## ~~JitPack (已弃用)~~
 
 > ## [English](README_EN.md)
@@ -15,7 +47,7 @@
 > ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
     直接使用
-    
+
 > ### [我要打印日志](https://github.com/Ayvytr/Logger)
 
 ## 2.2.0 添加了<font color=red>ProgressWebView</font>，添加了进度条加载功能，并专门帮你搞定WebView资源回收问题；此版本删除了BaseEasyActivity，原BaseEasyActivity功能全部移到BaseActivity，尽可能减少了Activity继承层级，并且添加了是否禁用sp字体随系统缩放的功能
@@ -53,7 +85,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
         Sp defaultSp = SpManager.getDefault(context).getSp();
         //获取指定名称的Sp实例
         Sp yourSp = SpManager.getDefault(context).getSp("your_sp_name");
-
+    
         //使用 获取值
         int i = yourSp.getInt("key");
         i = yourSp.getInt("key", 10);
@@ -63,7 +95,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
         Map<String, ?> all = yourSp.getAll();
         //删除值
         yourSp.remove("key");
-
+    
         //删除默认的sp文件
         SpManager.getDefault(context).deleteSp();
         //删除指定名称的sp文件
@@ -79,9 +111,9 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 	CenterGravityTextView
 	LeftCenterGravityTextView
 	RightCenterGravityTextView
-
+	
 	SeekBarPressure: 双Thumb的SeekBar
-
+	
 	FlowLayout
 	
 	AuthEditText
@@ -103,7 +135,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		zoom2Drawable
 		rotate
 		rotate2Drawable
-
+	
 	Colors 		提供了超过1000种颜色，以及获取红绿蓝等方法。
 		alpha
 		argb
@@ -111,14 +143,14 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		g
 		r
 		rgb
-
+	
 	Convert		类型转换类，仿照了C#的Convert类（对这个类情(zhen)有(de)独(hao)钟(yong)）
 				提供了大部分基本类型到bool，int，byte的转换，以及isZero方法
 		toBool
 		izZero
 		toInt
 		toByte
-
+	
 	EncodeTool 	编码解码相关操作类
 		urlEncode
 		urlDecode
@@ -127,7 +159,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		base64UrlSafeEncode
 		htmlEncode
 		htmlDecode
-
+	
 	EncryptTool	加密解密相关操作类
 		encryptMD2ToString
 		encryptMD2
@@ -181,78 +213,78 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		hex2Dec
 		base64Encode
 		base64Decode
-
+	
 	FileTool	文件操作类，判断是不是文件/目录，是不是存在，重命名，创建文件/目录，列出文件/目录，
 				获取文件名/文件标题（不包含扩展名), 有没有扩展名，读/写文件等方法
 		createDir
-        createFile
-        fromName
-        getByteArray
-        getExtension
-        getExtension
-        getLastModified
-        getLowerName
-        getName
-        getNamesExtensionsList
-        getNamesList
-        getTitle
-        hasExtension
-        isDir
-        isExists
-        isFile
-        isTyped
-        listAll
-        listAllDirs
-        listAllDirsDislikeNames
-        listAllDirsDislikeNamesNoCase
-        listAllDirsLikeNames
-        listAllDirsLikeNamesNoCase
-        listAllDirsWithNames
-        listAllDirsWithNamesNoCase
-        listAllDirsWithoutNames
-        listAllDirsWithoutNamesNoCase
-        listAllDislikeNames
-        listAllDislikeNamesNoCase
-        listAllLikeNames
-        listAllLikeNamesNoCase
-        listAllWithExtension
-        listAllWithNames
-        listAllWithNamesNoCase
-        listAllWithoutExtension
-        listAllWithoutNames
-        listAllWithoutNamesNoCase
-        listDirs
-        listDirsDislikeNames
-        listDirsDislikeNamesNoCase
-        listDirsLikeNames
-        listDirsLikeNamesNoCase
-        listDirsWithNames
-        listDirsWithNamesNoCase
-        listDirsWithoutNames
-        listDirsWithoutNamesNoCase
-        listFiles
-        listFilesDislikeNames
-        listFilesDislikeNamesNoCase
-        listFilesLikeNames
-        listFilesLikeNamesNoCase
-        listFilesNames
-        listFilesPaths
-        listFilesWithExtension
-        listFilesWithNames
-        listFilesWithNamesNoCase
-        listFilesWithoutExtension
-        listFilesWithoutNames
-        listFilesWithoutNamesNoCase
-        of
-        open
-        read
-        readFile
-        rename
-        toFileNames
-        toFilePaths
-        write
-        writeFile
-
+	    createFile
+	    fromName
+	    getByteArray
+	    getExtension
+	    getExtension
+	    getLastModified
+	    getLowerName
+	    getName
+	    getNamesExtensionsList
+	    getNamesList
+	    getTitle
+	    hasExtension
+	    isDir
+	    isExists
+	    isFile
+	    isTyped
+	    listAll
+	    listAllDirs
+	    listAllDirsDislikeNames
+	    listAllDirsDislikeNamesNoCase
+	    listAllDirsLikeNames
+	    listAllDirsLikeNamesNoCase
+	    listAllDirsWithNames
+	    listAllDirsWithNamesNoCase
+	    listAllDirsWithoutNames
+	    listAllDirsWithoutNamesNoCase
+	    listAllDislikeNames
+	    listAllDislikeNamesNoCase
+	    listAllLikeNames
+	    listAllLikeNamesNoCase
+	    listAllWithExtension
+	    listAllWithNames
+	    listAllWithNamesNoCase
+	    listAllWithoutExtension
+	    listAllWithoutNames
+	    listAllWithoutNamesNoCase
+	    listDirs
+	    listDirsDislikeNames
+	    listDirsDislikeNamesNoCase
+	    listDirsLikeNames
+	    listDirsLikeNamesNoCase
+	    listDirsWithNames
+	    listDirsWithNamesNoCase
+	    listDirsWithoutNames
+	    listDirsWithoutNamesNoCase
+	    listFiles
+	    listFilesDislikeNames
+	    listFilesDislikeNamesNoCase
+	    listFilesLikeNames
+	    listFilesLikeNamesNoCase
+	    listFilesNames
+	    listFilesPaths
+	    listFilesWithExtension
+	    listFilesWithNames
+	    listFilesWithNamesNoCase
+	    listFilesWithoutExtension
+	    listFilesWithoutNames
+	    listFilesWithoutNamesNoCase
+	    of
+	    open
+	    read
+	    readFile
+	    rename
+	    toFileNames
+	    toFilePaths
+	    write
+	    writeFile
+	
 	RegexTool	正则工具类，包括验证手机号，邮箱，身份证号码等
 		isMobileSimple
 		isMobileExact
@@ -270,7 +302,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		getSplits
 		getReplaceFirst
 		getReplaceAll
-
+	
 	TextTool	提供了众多的字符串操作功能，包括判空，是不是字符串，分割字符串（会去掉末尾的regex）等功能
 		isEmpty
 		isDigit
@@ -290,7 +322,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		getClipboardManager
 		getWindowManager
 		getKeyguardManager
-
+	
 	BarTool	StatusBar, ActionBar操作工具类		
 		setColor
 		setColorForSwipeBack
@@ -324,7 +356,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		showNotificationBar
 		hideNotificationBar
 		invokePanels
-
+	
 	ClipboardTool	剪贴板操作类
 		setText
 		getText
@@ -333,11 +365,11 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		getUri
 		setIntent
 		getIntent
-
+	
 	DensityTool	Dp - Px 相互转化类，提供了int，float，double 3种类型的重载方法，尽可能减少外部强制类型转换.
 		px2dp
 		dp2px
-
+	
 	IntentTool	获取常用的Intent
 		getInstallAppIntent
 		getUninstallAppIntent
@@ -351,7 +383,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		getCallIntent
 		getSendSmsIntent
 		getCaptureIntent
-
+	
 	ResTool		获取资源中Drawable，String，dimension，color, Configuration.
 		getDrawable
 		getString
@@ -361,7 +393,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		getDimenFloatToDp
 		getColor
 		getConfiguration
-
+	
 	ScreenTool	提供了获取屏幕尺寸，宽高，屏幕旋转方向，设置为竖屏，是不是横屏/竖屏，获取屏幕截图（包含/不包含状态栏)， 判断是不是锁屏的功能.
 		getDisplayMetrics
 		getScreenWidth
@@ -375,13 +407,13 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		captureWithStatusBar
 		captureWithoutStatusBar
 		isScreenLock
-
+	
 	ToastTool 	Toast工具类，提供简便的Toast创建和输出功能
-    	make
+		make
 		makeLong
 		show
 		showLong
-
+	
 	Managers	获取Android管理类实例``
 		getAccessibilityManager
 		getAccountManager
@@ -427,7 +459,7 @@ SpManager管理Sp，Sp封装了SharedPreference各种操作，精简了SharedPre
 		getVibrator
 		getWallpaperManager
 		getWindowManager
-		    
+
 > ## 库的测试类
 	ConvertTest
 	FileToolTest
