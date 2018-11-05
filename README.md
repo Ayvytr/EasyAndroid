@@ -23,7 +23,7 @@
 | ScreenTool                                                   | Screen.kt 作为Context和Activity扩展方法提供                  |
 | ToastTool                                                    | Toast.kt                                                     |
 | BitmapTool                                                   | Bitmap.kt                                                    |
-| Convert                                                      | 弃用                                                         |
+| Convert                                                      | 弃用，Kotlin提供了toString toInt等方法                       |
 | FileTool                                                     | 弃用                                                         |
 | TextTool                                                     | 弃用                                                         |
 | BaseActivity                                                 | 弃用继承取代AppCompatActivity的方法，提供了Activity扩展方法  |
