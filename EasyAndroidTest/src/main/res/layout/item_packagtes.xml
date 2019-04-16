@@ -2,12 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_50"
+    android:layout_height="@dimen/_50dp"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/iv"
-        android:layout_width="@dimen/dp_50"
+        android:layout_width="@dimen/_50dp"
         android:layout_height="match_parent"
         android:src="@color/colorPrimary"/>
 
@@ -16,18 +16,18 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/dp_20">
+        android:paddingLeft="@dimen/_20dp">
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_0"
+            android:layout_height="@dimen/_0dp"
             android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/tvPackageName"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_0"
+            android:layout_height="@dimen/_0dp"
             android:layout_weight="1"/>
 
     </LinearLayout>

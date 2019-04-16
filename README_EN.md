@@ -1,4 +1,4 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.2.0-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.3.0-re.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
 # EasyAndroid Library
@@ -8,7 +8,7 @@ Simplify development steps for Android Developers.(为Android开发者提供的�
 # Build
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:2.2.0'
+	implementation 'com.ayvytr:EasyAndroid:2.3.0'
 
 ## ~~JitPack (Deprecated)~~
 

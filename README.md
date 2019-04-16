@@ -1,7 +1,7 @@
-[![jCenter](https://img.shields.io/badge/jCenter-2.2.0-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
+[![jCenter](https://img.shields.io/badge/jCenter-2.3.0-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-# ~~EasyAndroid 库 (已停止更新)，~~使用[EasyKotlin库](https://github.com/Ayvytr/EasyKotlin)取代
+# ~~EasyAndroid 库 (已恢复更新)
 
 # 推荐使用Kotlin开发Android应用
 
@@ -38,7 +38,7 @@
 # 编译
 
 ## JCenter
-	compile 'com.ayvytr:EasyAndroid:2.2.0'
+	implementation 'com.ayvytr:EasyAndroid:2.3.0'
 
 ## ~~JitPack (已弃用)~~
 

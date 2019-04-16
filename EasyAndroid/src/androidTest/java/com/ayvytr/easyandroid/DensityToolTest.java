@@ -4,8 +4,6 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.ayvytr.easyandroid.tools.withcontext.DensityTool;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumentation test, which will execute on an Android device.
- * 测试 DensityTool 的工具类，对比类：DensityUtils
+ * 测试 DensityUtil 的工具类，对比类：DensityUtils
  *
  * @see DensityTool
  * @see DensityUtils
