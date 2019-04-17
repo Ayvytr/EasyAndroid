@@ -3,8 +3,13 @@
 
 # ~~EasyAndroid 库 (已恢复更新)
 
-# 推荐使用Kotlin开发Android应用
+# 引入
 
+## JCenter
+	implementation 'com.ayvytr:EasyAndroid:2.3.0'
+
+## Kotlin版库[README](README-ktx)： 简化Android开发的Kotlin库
+    implementation 'com.ayvytr:ktx:2.3.0'
 
 
 ## EasyKotlin 取代 EasyAndroid变更列表
@@ -35,14 +40,7 @@
 
 
 
-# 编译
 
-## JCenter
-	implementation 'com.ayvytr:EasyAndroid:2.3.0'
-
-## ~~JitPack (已弃用)~~
-
-> ## [English](README_EN.md)
 
 > ## 使用
     (有关Context类:   先在 'Application.onCreate()' 中调用 'Easy.getDefault().init(this);')
