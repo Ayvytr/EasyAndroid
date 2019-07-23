@@ -8,9 +8,6 @@
 ## JCenter
 	implementation 'com.ayvytr:EasyAndroid:2.3.0'
 
-## Kotlin版库[README](README-ktx)： 简化Android开发的Kotlin库
-    implementation 'com.ayvytr:ktx:2.3.0'
-
 
 ## EasyKotlin 取代 EasyAndroid变更列表
 
