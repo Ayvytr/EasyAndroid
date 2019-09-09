@@ -1,7 +1,7 @@
 [![jCenter](https://img.shields.io/badge/jCenter-2.3.0-red.svg)](https://bintray.com/ayvytr/maven/EasyAndroid/_latestVersion)
 [![License](https://img.shields.io/badge/License-Apache--2.0%20-blue.svg)](license)
 
-# ~~EasyAndroid 库 (已恢复更新)
+# ~~EasyAndroid 库 (已停止更新)~~
 
 # 引入
 
